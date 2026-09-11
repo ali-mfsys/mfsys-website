@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function CardGrid({items}:{items:readonly (readonly [string,string,string])[]}){return <div className="card-grid">{items.map(([title,text,href])=><article className="card content-card" key={title}><div className="eyebrow">MFSYS</div><h3>{title}</h3><p>{text}</p><Link href={href}>Explore →</Link></article>)}</div>}
