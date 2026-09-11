@@ -1,1 +1,1 @@
-import ProductPage from "../../../components/ProductPage";import {productData} from "../../../lib/product-data";export default function Page(){const product=productData.find(x=>x.name==="CiiHive")!;return <ProductPage product={product}/>}
+import ProductPage from "../../../components/ProductPage";import CiiHiveArchitecture from "../../../components/CiiHiveArchitecture";import {productData} from "../../../lib/product-data";export default function Page(){const product=productData.find(x=>x.name==="CiiHive")!;return <><ProductPage product={product}/><CiiHiveArchitecture/></>}
