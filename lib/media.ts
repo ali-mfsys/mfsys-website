@@ -1,0 +1,1 @@
+export const mediaPolicy={images:{formats:["image/avif","image/webp"],responsive:true,lazyLoad:true},video:{formats:["video/mp4","video/webm"],preload:"metadata",autoplayMutedLoop:true,posterRequired:true,maxHeroBytes:8000000},documents:{formats:["application/pdf"]},cdn:true};
