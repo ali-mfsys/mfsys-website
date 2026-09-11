@@ -1,0 +1,1 @@
+import ProductPage from "../../../components/ProductPage";import {productData} from "../../../lib/product-data";export default function Page(){return <ProductPage product={productData.find(x=>x.name==="CargoGuard")!}/>}
