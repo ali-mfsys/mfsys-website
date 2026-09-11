@@ -1,0 +1,89 @@
+generator client { provider = "prisma-client-js" }
+datasource db { provider = "postgresql" url = env("DATABASE_URL") }
+
+enum Role { SUPER_ADMIN ADMIN EDITOR AUTHOR }
+enum Status { DRAFT REVIEW APPROVED PUBLISHED ARCHIVED }
+
+model User {
+ id String @id @default(cuid())
+ name String
+ email String @unique
+ role Role @default(EDITOR)
+ status Status @default(APPROVED)
+ createdAt DateTime @default(now())
+ updatedAt DateTime @updatedAt
+ lastLoginAt DateTime?
+ auditLogs AuditLog[]
+}
+model Page {
+ id String @id @default(cuid())
+ slug String @unique
+ title String
+ seoTitle String?
+ seoDescription String?
+ ogImage String?
+ status Status @default(DRAFT)
+ publishedAt DateTime?
+ sections Section[]
+ createdAt DateTime @default(now())
+ updatedAt DateTime @updatedAt
+}
+model Section {
+ id String @id @default(cuid())
+ pageId String
+ type String
+ sortOrder Int @default(0)
+ content Json
+ settings Json?
+ page Page @relation(fields:[pageId],references:[id],onDelete:Cascade)
+ createdAt DateTime @default(now())
+ updatedAt DateTime @updatedAt
+ @@index([pageId,sortOrder])
+}
+model Product {
+ id String @id @default(cuid())
+ slug String @unique
+ name String
+ tagline String
+ description String
+ status Status @default(DRAFT)
+ seoTitle String?
+ seoDescription String?
+ createdAt DateTime @default(now())
+ updatedAt DateTime @updatedAt
+}
+model Insight {
+ id String @id @default(cuid())
+ slug String @unique
+ title String
+ type String
+ excerpt String?
+ body Json
+ coverImage String?
+ author String?
+ publishedAt DateTime?
+ status Status @default(DRAFT)
+ createdAt DateTime @default(now())
+ updatedAt DateTime @updatedAt
+}
+model Media {
+ id String @id @default(cuid())
+ filename String
+ url String
+ alt String
+ caption String?
+ type String
+ width Int?
+ height Int?
+ createdAt DateTime @default(now())
+}
+model AuditLog {
+ id String @id @default(cuid())
+ userId String
+ action String
+ entity String
+ entityId String?
+ createdAt DateTime @default(now())
+ user User @relation(fields:[userId],references:[id])
+ @@index([entity,entityId])
+}
