@@ -1,0 +1,1 @@
+export const authConfig={sessionMaxAge:8*60*60,requireMfa:true,roles:["SUPER_ADMIN","ADMIN","EDITOR","AUTHOR"] as const};export type AdminRole=typeof authConfig.roles[number];
