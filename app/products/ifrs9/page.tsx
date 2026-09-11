@@ -1,0 +1,1 @@
+import ProductPage from "../../../components/ProductPage";import {productData} from "../../../lib/product-data";export default function Page(){const product=productData.find(x=>x.name==="IFRS9 Impairment Solution")!;return <ProductPage product={product}/>}
