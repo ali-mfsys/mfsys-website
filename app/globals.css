@@ -139,3 +139,18 @@ p{line-height:1.7;color:var(--grey-500)}
 .proof-grid>div{padding:24px;background:var(--navy);display:grid;gap:7px}.proof-grid strong{font:800 2rem "Space Grotesk";color:#7CC8FF}.proof-grid span{font-size:.78rem;color:rgba(255,255,255,.62);line-height:1.45}
 .proof-section{background:#fff}.testimonial-stack{display:grid;gap:12px}.testimonial-stack blockquote{margin:0;padding:26px 28px;border:1px solid var(--grey-100);border-left:4px solid var(--orange);border-radius:18px;background:var(--grey-50);font:600 1rem/1.6 "DM Sans";color:var(--navy);box-shadow:var(--shadow-sm)}.testimonial-stack cite{display:block;margin-top:13px;font-style:normal;font:700 .72rem "DM Sans";color:var(--grey-500)}
 @media(max-width:760px){.proof-grid{grid-template-columns:1fr 1fr}.proof-grid>div{padding:18px}.proof-grid strong{font-size:1.6rem}}
+
+
+/* Directory v2 — editorial profile and ecosystem treatment */
+.team-accent{display:inline-block;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:#7CC8FF;font-weight:850;margin-bottom:7px}
+.team-meta h3{margin-top:0}
+.directory-note{margin-top:26px;padding:18px 20px;border:1px solid rgba(11,111,211,.14);border-radius:16px;background:linear-gradient(90deg,#EAF3FF,#F7F9FC);display:flex;justify-content:space-between;gap:18px;align-items:center}
+.directory-note span{font-size:.62rem;letter-spacing:.15em;font-weight:900;color:var(--blue)}
+.directory-note strong{font-size:.82rem;color:var(--grey-700)}
+.partner-card{transition:transform var(--transition),background var(--transition),border-color var(--transition)}
+.partner-card:hover{transform:translateY(-3px);background:rgba(255,255,255,.08);border-color:rgba(124,200,255,.32)}
+.partner-category{display:block;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:#7CC8FF;font-weight:850;margin-bottom:5px}
+.admin-record{display:flex!important;grid-template-columns:none!important;flex-direction:row;align-items:center;gap:12px}
+.admin-record-avatar{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--blue),var(--indigo));color:#fff;display:grid;place-items:center;font-weight:850;overflow:hidden;flex:0 0 auto}
+.admin-record-avatar img{width:100%;height:100%;object-fit:cover}
+@media(max-width:760px){.directory-note{align-items:flex-start;flex-direction:column}.admin-record{min-width:0}}
