@@ -1,14 +1,30 @@
-import type {MetadataRoute} from "next";
-import {products,solutions} from "../lib/site-data";
+import type { MetadataRoute } from "next";
+import { products, solutions } from "../lib/site-data";
 
-const base="https://mfsys.ca";
+const base = "https://mfsys.ca";
 
-export default function sitemap():MetadataRoute.Sitemap{
-  const now=new Date();
-  const routes=["/","/about","/industries","/ai-innovation","/insights","/products","/solutions","/contact"];
+export default function sitemap(): MetadataRoute.Sitemap {
+  const now = new Date();
+  const routes = ["/", "/about", "/industries", "/ai-innovation", "/insights", "/products", "/solutions", "/contact"];
+
   return [
-    ...routes.map((path)=>({url:`${base}${path}`,lastModified:now,changeFrequency:path==="/"?"weekly":"monthly" as const,priority:path==="/"?1:.7})),
-    ...products.map(([, ,path])=>({url:`${base}${path}`,lastModified:now,changeFrequency:"monthly" as const,priority:.7})),
-    ...solutions.map(([, ,path])=>({url:`${base}${path}`,lastModified:now,changeFrequency:"monthly" as const,priority:.65}))
+    ...routes.map((path): MetadataRoute.Sitemap[number] => ({
+      url: `${base}${path}`,
+      lastModified: now,
+      changeFrequency: path === "/" ? "weekly" : "monthly",
+      priority: path === "/" ? 1 : 0.7,
+    })),
+    ...products.map(([, , path]): MetadataRoute.Sitemap[number] => ({
+      url: `${base}${path}`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    })),
+    ...solutions.map(([, , path]): MetadataRoute.Sitemap[number] => ({
+      url: `${base}${path}`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.65,
+    })),
   ];
 }
