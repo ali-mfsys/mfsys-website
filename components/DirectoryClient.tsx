@@ -10,36 +10,42 @@ export default function DirectoryClient({team,partners}:{team:DirectoryItem[];pa
   const [category,setCategory]=useState("All");
   const filtered=useMemo(()=>category==="All"?team:team.filter(x=>x.category===category),[category,team]);
   const featured=filtered.filter(x=>x.featured).slice(0,2);
-  const rest=filtered.filter(x=>!featured.includes(x)).slice(0,8);
+  const rest=filtered.filter(x=>!featured.includes(x)).slice(0,10);
 
   return <>
     <section className="team-section">
       <div className="container">
-        <div className="team-head"><div><div className="eyebrow">PEOPLE & CULTURE</div><h2>People who turn complex challenges into practical technology.</h2></div><p>MFSYS brings business, financial services and technology expertise together across disciplines.</p></div>
-        <div className="team-filter" role="tablist" aria-label="Team filters">{categories.map(x=><button key={x} className={category===x?"active":""} onClick={()=>setCategory(x)}>{x}</button>)}</div>
+        <div className="team-head">
+          <div><div className="eyebrow">PEOPLE & CULTURE</div><h2>People who turn complex challenges into practical technology.</h2></div>
+          <p>MFSYS brings business, financial services and technology expertise together across disciplines.</p>
+        </div>
+        <div className="team-filter" role="tablist" aria-label="Team filters">
+          {categories.map(x=><button key={x} className={category===x?"active":""} onClick={()=>setCategory(x)}>{x}</button>)}
+        </div>
         <div className="team-rail">
           {featured.map(x=><button className="team-card team-feature team-card-button" key={x.id} onClick={()=>setSelected(x)} aria-label={`View profile for ${x.name}`}>
-            {x.imageUrl?<img className="team-photo" src={x.imageUrl} alt={x.name}/>:<div className="team-placeholder" aria-hidden="true">{initials(x.name)}</div>}
-            <div className="team-meta"><h3>{x.name}</h3><p>{x.role}</p></div>
+            {x.imageUrl?<img className="team-photo" src={x.imageUrl} alt={x.name} loading="lazy"/>:<div className="team-placeholder" aria-hidden="true">{initials(x.name)}</div>}
+            <div className="team-meta"><span className="team-accent">MFSYS / {x.category}</span><h3>{x.name}</h3><p>{x.role}</p></div>
           </button>)}
           {rest.map(x=><button className="team-card team-card-button" key={x.id} onClick={()=>setSelected(x)} aria-label={`View profile for ${x.name}`}>
-            {x.imageUrl?<img className="team-photo" src={x.imageUrl} alt={x.name}/>:<div className="team-placeholder" aria-hidden="true">{initials(x.name)}</div>}
-            <div className="team-meta"><h3>{x.name}</h3><p>{x.role}</p></div>
+            {x.imageUrl?<img className="team-photo" src={x.imageUrl} alt={x.name} loading="lazy"/>:<div className="team-placeholder" aria-hidden="true">{initials(x.name)}</div>}
+            <div className="team-meta"><span className="team-accent">{x.category}</span><h3>{x.name}</h3><p>{x.role}</p></div>
           </button>)}
         </div>
+        <div className="directory-note"><span>DATABASE-DRIVEN DIRECTORY</span><strong>Profiles can be added, edited, reordered or removed from the MFSYS admin workspace.</strong></div>
         <div style={{marginTop:24}}><a className="btn" href="/about">Meet the full MFSYS team →</a></div>
       </div>
     </section>
 
     <section className="partners">
       <div className="container">
-        <div className="eyebrow">PARTNERS & COLLABORATIONS</div>
-        <h2>Relationships that extend our impact.</h2>
+        <div className="eyebrow">PARTNERS & TECHNOLOGY ECOSYSTEM</div>
+        <h2>Relationships and platforms that extend our impact.</h2>
         <div className="partner-grid">
-          {partners.map(x=><article className="partner-card" key={x.id}>
-            <div className="partner-logo">{x.logoUrl?<img src={x.logoUrl} alt={x.name}/>:initials(x.name)}</div>
-            <div><h3>{x.name}</h3><p>{x.bio||x.category}</p></div>
-          </article>)}
+          {partners.map(x=><a className="partner-card" key={x.id} href={x.website||"#"} target={x.website?"_blank":undefined} rel={x.website?"noreferrer":undefined} onClick={e=>{if(!x.website)e.preventDefault()}}>
+            <div className="partner-logo">{x.logoUrl?<img src={x.logoUrl} alt={x.name} loading="lazy"/>:initials(x.name)}</div>
+            <div><span className="partner-category">{x.category}</span><h3>{x.name}</h3><p>{x.bio||"MFSYS ecosystem relationship."}</p></div>
+          </a>)}
         </div>
       </div>
     </section>
