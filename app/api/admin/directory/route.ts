@@ -1,7 +1,7 @@
 import {NextResponse} from "next/server";
 import {z} from "zod";
 import {cookies} from "next/headers";
-import {eq,asc,and} from "drizzle-orm";
+import {eq,asc} from "drizzle-orm";
 import {getDb} from "../../../../lib/db";
 import {pages,sections} from "../../../../lib/db/schema";
 import {verifySession} from "../../../../lib/auth";
@@ -16,26 +16,18 @@ const itemSchema=z.object({
   bio:z.string().max(500).optional(),
   imageUrl:z.string().url().optional().or(z.literal("")),
   logoUrl:z.string().url().optional().or(z.literal("")),
+  website:z.string().url().optional().or(z.literal("")),
   featured:z.boolean().optional(),
   sortOrder:z.number().int().default(0)
 });
 
-async function guard(){
-  return verifySession((await cookies()).get("mfsys_admin_session")?.value);
-}
+async function guard(){return verifySession((await cookies()).get("mfsys_admin_session")?.value);}
 
 async function directoryPage(){
   const db=getDb();
   const [existing]=await db.select({id:pages.id}).from(pages).where(eq(pages.slug,"site-directory")).limit(1);
   if(existing) return existing.id;
-  const [created]=await db.insert(pages).values({
-    slug:"site-directory",
-    title:"Team & Partners",
-    seoTitle:"MFSYS Team & Partners",
-    seoDescription:"MFSYS people, partners and collaborations.",
-    status:"PUBLISHED",
-    publishedAt:new Date()
-  }).returning({id:pages.id});
+  const [created]=await db.insert(pages).values({slug:"site-directory",title:"Team & Partners",seoTitle:"MFSYS Team & Partners",seoDescription:"MFSYS people, partners and collaborations.",status:"PUBLISHED",publishedAt:new Date()}).returning({id:pages.id});
   return created.id;
 }
 
@@ -63,12 +55,7 @@ export async function POST(req:Request){
   const parsed=itemSchema.safeParse(body);
   if(!parsed.success) return NextResponse.json({error:"Invalid directory item",details:parsed.error.flatten()},{status:400});
   const {id,...content}=parsed.data;
-  const [row]=await getDb().insert(sections).values({
-    pageId,
-    type:content.kind==="team"?"directory-team":"directory-partner",
-    sortOrder:content.sortOrder,
-    content
-  }).returning();
+  const [row]=await getDb().insert(sections).values({pageId,type:content.kind==="team"?"directory-team":"directory-partner",sortOrder:content.sortOrder,content}).returning();
   return NextResponse.json({id:row.id,...content},{status:201});
 }
 
