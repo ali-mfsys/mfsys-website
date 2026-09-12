@@ -49,13 +49,13 @@ export const legacyTeam:Omit<DirectoryItem,"id"|"kind">[]=[
 ];
 
 const legacyTechPartners=[
-{name:"Microsoft",category:"Technology Ecosystem",bio:"Technology ecosystem collaboration.",logoUrl:"https://mfsys.ca/wp-content/uploads/2019/06/micro-soft.jpg",sortOrder:1},
-{name:"Red Hat",category:"Technology Ecosystem",bio:"Enterprise open-source technology ecosystem.",logoUrl:"https://mfsys.ca/wp-content/uploads/2019/06/red-hat.jpg",sortOrder:2},
-{name:"AWS",category:"Cloud Technology",bio:"Cloud infrastructure and delivery ecosystem.",logoUrl:"https://mfsys.ca/wp-content/uploads/2019/06/aws.jpg",sortOrder:3},
-{name:"SAP",category:"Enterprise Technology",bio:"Enterprise technology ecosystem.",logoUrl:"https://mfsys.ca/wp-content/uploads/2019/06/sap.jpg",sortOrder:4},
-{name:"IBM",category:"Technology Ecosystem",bio:"Enterprise technology ecosystem.",logoUrl:"https://mfsys.ca/wp-content/uploads/2019/06/ibm.jpg",sortOrder:5},
-{name:"MongoDB",category:"Data Technology",bio:"Modern data platform ecosystem.",logoUrl:"https://mfsys.ca/wp-content/uploads/2019/06/mongo-db.jpg",sortOrder:6},
-{name:"Angular",category:"Software Engineering",bio:"Web application engineering ecosystem.",logoUrl:"https://mfsys.ca/wp-content/uploads/2019/06/angular-js.jpg",sortOrder:7}
+{name:"Microsoft",category:"Technology Ecosystem",bio:"Technology ecosystem collaboration.",logoUrl:"https://mfsys.ca/wp-content/uploads/2019/06/micro-soft.jpg",website:"https://www.microsoft.com",sortOrder:1},
+{name:"Red Hat",category:"Technology Ecosystem",bio:"Enterprise open-source technology ecosystem.",logoUrl:"https://mfsys.ca/wp-content/uploads/2019/06/red-hat.jpg",website:"https://www.redhat.com",sortOrder:2},
+{name:"AWS",category:"Cloud Technology",bio:"Cloud infrastructure and delivery ecosystem.",logoUrl:"https://mfsys.ca/wp-content/uploads/2019/06/aws.jpg",website:"https://aws.amazon.com",sortOrder:3},
+{name:"SAP",category:"Enterprise Technology",bio:"Enterprise technology ecosystem.",logoUrl:"https://mfsys.ca/wp-content/uploads/2019/06/sap.jpg",website:"https://www.sap.com",sortOrder:4},
+{name:"IBM",category:"Technology Ecosystem",bio:"Enterprise technology ecosystem.",logoUrl:"https://mfsys.ca/wp-content/uploads/2019/06/ibm.jpg",website:"https://www.ibm.com",sortOrder:5},
+{name:"MongoDB",category:"Data Technology",bio:"Modern data platform ecosystem.",logoUrl:"https://mfsys.ca/wp-content/uploads/2019/06/mongo-db.jpg",website:"https://www.mongodb.com",sortOrder:6},
+{name:"Angular",category:"Software Engineering",bio:"Web application engineering ecosystem.",logoUrl:"https://mfsys.ca/wp-content/uploads/2019/06/angular-js.jpg",website:"https://angular.dev",sortOrder:7}
 ];
 
 export const legacyPartners:Omit<DirectoryItem,"id"|"kind">[]=[
