@@ -55,7 +55,7 @@ export async function POST(req:Request){
     const db=getDb();
     const existing=await db.select({id:sections.id}).from(sections).where(eq(sections.pageId,pageId)).limit(1);
     if(existing.length) return NextResponse.json({message:"Directory already contains records."},{status:409});
-    const records=[...legacyTeam.map((x,i)=>({pageId,type:"directory-team",sortOrder:i+1,content:x})),...legacyPartners.map((x,i)=>({pageId,type:"directory-partner",sortOrder:100+i+1,content:x}))];
+    const records=[...legacyTeam.map((x,i)=>({pageId,type:"directory-team" as const,sortOrder:i+1,content:x})),...legacyPartners.map((x,i)=>({pageId,type:"directory-partner" as const,sortOrder:100+i+1,content:x}))];
     await db.insert(sections).values(records);
     return NextResponse.json({created:records.length},{status:201});
   }
