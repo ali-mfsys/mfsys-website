@@ -24,7 +24,7 @@ export default function DirectoryAdmin(){
    e.preventDefault();
    const payload={...form,kind,sortOrder:Number(form.sortOrder)};
    const r=await fetch("/api/admin/directory",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});
-   const d=await r.json();if(r.ok){setItems(x=>[...x,d]);setForm({...blank,kind});setMessage("Record added.");}else setMessage(d.error||"Could not add record");
+   const d=await r.json();if(r.ok){setItems(x=>[...x,d]);setForm({...blank});setMessage("Record added.");}else setMessage(d.error||"Could not add record");
  }
  async function remove(id:string){
    if(!confirm("Remove this record from the website?")) return;
