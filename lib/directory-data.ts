@@ -45,7 +45,7 @@ export const legacyTeam:Omit<DirectoryItem,"id"|"kind">[]=[
 {name:"Jahangir Khan",role:"Office Assistant",category:"Operations",sortOrder:42}
 ];
 
-export const legacyPartners:Omit<DirectoryItem,"id">[]=[
+export const legacyPartners:Omit<DirectoryItem,"id"|"kind">[]=[
 {name:"Aga Khan Agency for Microfinance",category:"Financial Services",bio:"Long-standing collaboration across digital financial services and microfinance transformation.",sortOrder:1},
 {name:"Aga Khan Foundation",category:"Development",bio:"Collaboration supporting technology-enabled social and economic development initiatives.",sortOrder:2},
 {name:"Orange Mobile",category:"Digital Finance",bio:"Technology collaboration for digital financial services, channels and transaction capabilities.",sortOrder:3},
