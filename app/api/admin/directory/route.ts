@@ -67,7 +67,12 @@ export async function PATCH(req:Request){
   const existing=await getDb().select().from(sections).where(eq(sections.id,id)).limit(1);
   if(!existing.length) return NextResponse.json({error:"Not found"},{status:404});
   const nextContent={...(existing[0].content as object),...parsed};
-  const [row]=await getDb().update(sections).set({content:nextContent,sortOrder:parsed.sortOrder ?? existing[0].sortOrder}).where(eq(sections.id,id)).returning();
+  const nextType=nextContent.kind==="team"?"directory-team":"directory-partner";
+  const [row]=await getDb().update(sections).set({
+    content:nextContent,
+    type:nextType,
+    sortOrder:parsed.sortOrder ?? existing[0].sortOrder
+  }).where(eq(sections.id,id)).returning();
   return NextResponse.json({id:row.id,...nextContent});
 }
 
