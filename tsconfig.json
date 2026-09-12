@@ -8,7 +8,11 @@
     "moduleResolution": "bundler",
     "jsx": "preserve",
     "resolveJsonModule": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    }
   },
   "include": ["**/*.ts", "**/*.tsx"]
 }
