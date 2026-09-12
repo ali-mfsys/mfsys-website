@@ -46,10 +46,10 @@ export default function Home(){
     <section className="proof-band">
       <div className="container">
         <div className="proof-grid">
-          <div><strong>12+</strong><span>countries with implementation experience</span></div>
-          <div><strong>10+</strong><span>years of banking & financial technology experience</span></div>
-          <div><strong>100%</strong><span>project success track record highlighted by MFSYS</span></div>
-          <div><strong>AI</strong><span>embedded across the next generation of products</span></div>
+          <div><strong>12+</strong><span>countries with MFSYS implementation experience</span></div>
+          <div><strong>30+</strong><span>financial institutions served across global markets</span></div>
+          <div><strong>100+</strong><span>professionals across business, banking and technology</span></div>
+          <div><strong>AI</strong><span>embedded across the next generation of MFSYS products</span></div>
         </div>
       </div>
     </section>
