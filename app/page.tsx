@@ -43,6 +43,33 @@ export default function Home(){
       </div>
     </section>
 
+    <section className="proof-band">
+      <div className="container">
+        <div className="proof-grid">
+          <div><strong>12+</strong><span>countries with implementation experience</span></div>
+          <div><strong>10+</strong><span>years of banking & financial technology experience</span></div>
+          <div><strong>100%</strong><span>project success track record highlighted by MFSYS</span></div>
+          <div><strong>AI</strong><span>embedded across the next generation of products</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section className="section proof-section">
+      <div className="container">
+        <div className="two-col">
+          <div>
+            <div className="eyebrow">CLIENT EXPERIENCE</div>
+            <h2>Technology is only successful when it creates confidence.</h2>
+            <p>MFSYS's legacy site highlights long-term relationships, successful core banking implementations and client satisfaction across challenging environments.</p>
+          </div>
+          <div className="testimonial-stack">
+            <blockquote>“The technical and management people at MFSYS delivered a high quality solution on time and on budget.”<cite>Asif Lalani · MIS Manager / Consultant</cite></blockquote>
+            <blockquote>“Working with MFSYS has been one of the best things for our organization because of the successful implementation of core Microfinance banking system.”<cite>Jean Louis G. Ouedraogo · Regional IT Manager</cite></blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <DirectoryShowcase/>
 
     <section className="container section">
