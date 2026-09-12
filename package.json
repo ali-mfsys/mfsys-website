@@ -20,6 +20,8 @@
     "postgres": "3.4.7"
   },
   "devDependencies": {
+    "@types/node": "latest",
+    "@types/react": "latest",
     "vitest": "latest",
     "drizzle-kit": "latest"
   }
