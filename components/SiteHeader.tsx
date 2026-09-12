@@ -37,13 +37,7 @@ export default function SiteHeader(){
   return <header className="site-header">
     <div className="container nav-wrap">
       <Link className="brand" href="/" onClick={closeAll} aria-label="MFSYS home">
-        <span className="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 44 44" role="img">
-            <path d="M6 31V12h5.5l8.5 11 8.5-11H34v19h-5V20l-9 11-9-11v11z" fill="currentColor"/>
-            <circle cx="36" cy="8" r="3" fill="var(--orange)"/>
-          </svg>
-        </span>
-        <span className="brand-copy"><span>MFSYS</span><small>INTELLIGENCE FOR IMPACT</small></span>
+        <img className="brand-logo" src="/mfsys-logo.svg" alt="MFSYS — Intelligence for Impact" width="210" height="61" />
       </Link>
 
       <button className="menu-toggle" aria-expanded={mobileOpen} aria-controls="primary-nav" onClick={()=>setMobileOpen(v=>!v)}>
