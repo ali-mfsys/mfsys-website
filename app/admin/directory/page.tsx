@@ -3,7 +3,7 @@ import {useEffect,useMemo,useState} from "react";
 
 type Item={id:string;kind:"team"|"partner";name:string;role?:string;category?:string;bio?:string;imageUrl?:string;logoUrl?:string;featured?:boolean;sortOrder:number};
 
-const blank={kind:"team" as const,name:"",role:"",category:"",bio:"",imageUrl:"",logoUrl:"",featured:false,sortOrder:1};
+const blank={name:"",role:"",category:"",bio:"",imageUrl:"",logoUrl:"",featured:false,sortOrder:1};
 
 export default function DirectoryAdmin(){
  const [items,setItems]=useState<Item[]>([]);
@@ -39,7 +39,7 @@ export default function DirectoryAdmin(){
    <div className="admin-panels">
      <section className="admin-panel">
        <div className="panel-head"><div><span className="admin-kicker">ADD RECORD</span><h2>{kind==="team"?"Team member":"Partner / collaboration"}</h2></div>
-         <select value={kind} onChange={e=>{const k=e.target.value as "team"|"partner";setKind(k);setForm({...blank,kind:k})}}><option value="team">Team</option><option value="partner">Partner</option></select>
+         <select value={kind} onChange={e=>{const k=e.target.value as "team"|"partner";setKind(k);setForm({...blank})}}><option value="team">Team</option><option value="partner">Partner</option></select>
        </div>
        <form className="directory-form" onSubmit={add}>
          <label className="editor-field full">Name<input required value={form.name} onChange={e=>setForm({...form,name:e.target.value})}/></label>
