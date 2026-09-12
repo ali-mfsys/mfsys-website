@@ -27,7 +27,7 @@ async function loadDirectory(){
   }
 }
 
-export default async function DirectoryShowcase(){
+export default async function DirectoryShowcase({full=false}:{full?:boolean}){
   const data=await loadDirectory();
-  return <DirectoryClient team={data.team} partners={data.partners}/>;
+  return <DirectoryClient team={data.team} partners={data.partners} full={full}/>;
 }
