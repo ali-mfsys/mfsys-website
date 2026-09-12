@@ -64,7 +64,7 @@ p{line-height:1.7;color:var(--grey-500)}
 .page-hero h1{max-width:1000px;margin:.35em 0}.page-hero p{max-width:760px;font-size:1.2rem}
 .section{padding:82px 0}.section-dark{background:var(--navy);color:#fff}.section-dark p{color:rgba(255,255,255,.7)}
 .card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.content-card{padding:28px;min-height:230px}.content-card h3{font-size:1.45rem;margin:12px 0}.content-card a{color:var(--blue);font-weight:800}
+.content-card{padding:28px;min-height:230px}.content-card h3{font-size:1.45rem;margin:12px 0}.content-card a,.content-card-link{color:var(--blue);font-weight:800}.content-card-link{display:inline-block;margin-top:10px;font-size:.84rem}
 .two-col{display:grid;grid-template-columns:1.15fr .85fr;gap:60px}
 .cta-panel{padding:60px;border-radius:var(--radius-xl);background:linear-gradient(135deg,#EAF3FF,#FFF7F0);border:1px solid rgba(7,25,35,.08)}.cta-panel h2{max-width:760px}
 
