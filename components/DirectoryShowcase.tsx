@@ -11,7 +11,7 @@ async function loadDirectory(){
     if(!page) return {team:legacyTeam.map((x,i)=>({...x,id:`legacy-team-${i}`,kind:"team" as const})),partners:legacyPartners.map((x,i)=>({...x,id:`legacy-partner-${i}`,kind:"partner" as const}))};
     const rows=await db.select().from(sections).where(eq(sections.pageId,page.id)).orderBy(asc(sections.sortOrder));
     const items=rows.filter(r=>r.type==="directory-team"||r.type==="directory-partner").map(r=>({id:r.id,...(r.content as object),kind:r.type==="directory-team"?"team":"partner"} as DirectoryItem));
-    return {team:items.filter(x=>x.kind==="team"),partners:items.filter(x=>x.kind==="partner")};
+    if(!items.length) return {team:legacyTeam.map((x,i)=>({...x,id:`legacy-team-${i}`,kind:"team" as const})),partners:legacyPartners.map((x,i)=>({...x,id:`legacy-partner-${i}`,kind:"partner" as const}))};\n    return {team:items.filter(x=>x.kind==="team"),partners:items.filter(x=>x.kind==="partner")};
   }catch{
     return {team:legacyTeam.map((x,i)=>({...x,id:`legacy-team-${i}`,kind:"team" as const})),partners:legacyPartners.map((x,i)=>({...x,id:`legacy-partner-${i}`,kind:"partner" as const}))};
   }
