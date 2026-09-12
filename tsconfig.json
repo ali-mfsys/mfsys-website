@@ -9,7 +9,6 @@
     "jsx": "preserve",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./*"]
     }
