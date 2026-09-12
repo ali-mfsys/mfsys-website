@@ -6,6 +6,7 @@ function initials(name:string){return name.split(" ").filter(Boolean).slice(0,2)
 
 export default function DirectoryClient({team,partners}:{team:DirectoryItem[];partners:DirectoryItem[]}){
   const categories=["All",...Array.from(new Set(team.map(x=>x.category).filter(Boolean) as string[]))];
+  const [selected,setSelected]=useState<DirectoryItem|null>(null);
   const [category,setCategory]=useState("All");
   const filtered=useMemo(()=>category==="All"?team:team.filter(x=>x.category===category),[category,team]);
   const featured=filtered.filter(x=>x.featured).slice(0,2);
@@ -17,11 +18,11 @@ export default function DirectoryClient({team,partners}:{team:DirectoryItem[];pa
         <div className="team-head"><div><div className="eyebrow">PEOPLE & CULTURE</div><h2>People who turn complex challenges into practical technology.</h2></div><p>MFSYS brings business, financial services and technology expertise together across disciplines.</p></div>
         <div className="team-filter" role="tablist" aria-label="Team filters">{categories.map(x=><button key={x} className={category===x?"active":""} onClick={()=>setCategory(x)}>{x}</button>)}</div>
         <div className="team-rail">
-          {featured.map(x=><article className="team-card team-feature" key={x.id}>
+          {featured.map(x=><button className="team-card team-feature team-card-button" key={x.id} onClick={()=>setSelected(x)} aria-label={`View profile for ${x.name}`}>
             {x.imageUrl?<img className="team-photo" src={x.imageUrl} alt={x.name}/>:<div className="team-placeholder" aria-hidden="true">{initials(x.name)}</div>}
             <div className="team-meta"><h3>{x.name}</h3><p>{x.role}</p></div>
           </article>)}
-          {rest.map(x=><article className="team-card" key={x.id}>
+          {rest.map(x=><button className="team-card team-card-button" key={x.id} onClick={()=>setSelected(x)} aria-label={`View profile for ${x.name}`}>
             {x.imageUrl?<img className="team-photo" src={x.imageUrl} alt={x.name}/>:<div className="team-placeholder" aria-hidden="true">{initials(x.name)}</div>}
             <div className="team-meta"><h3>{x.name}</h3><p>{x.role}</p></div>
           </article>)}
@@ -42,5 +43,16 @@ export default function DirectoryClient({team,partners}:{team:DirectoryItem[];pa
         </div>
       </div>
     </section>
+
+    {selected&&<div className="profile-modal" role="dialog" aria-modal="true" aria-labelledby="profile-title" onClick={()=>setSelected(null)}>
+      <div className="profile-card" onClick={e=>e.stopPropagation()}>
+        <button className="profile-close" onClick={()=>setSelected(null)} aria-label="Close profile">×</button>
+        <div className="profile-avatar">{selected.imageUrl?<img src={selected.imageUrl} alt="" />:initials(selected.name)}</div>
+        <div className="eyebrow">{selected.category||"MFSYS"}</div>
+        <h2 id="profile-title">{selected.name}</h2>
+        <strong>{selected.role}</strong>
+        {selected.bio&&<p>{selected.bio}</p>}
+      </div>
+    </div>}
   </>;
 }
