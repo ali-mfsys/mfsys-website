@@ -1,5 +1,5 @@
 import "./globals.css";
 import ServiceWorker from "../components/ServiceWorker";
 import SiteHeader from "../components/SiteHeader";
-export const metadata={title:"MFSYS | AI-Powered Financial Technology",description:"MFSYS — Intelligence for Impact. AI-powered technology shaping the future with AI and beyond.",applicationName:"MFSYS",metadataBase:new URL("https://www.mfsys.com"),robots:{index:true,follow:true}};
+export const metadata={title:"MFSYS | AI-Powered Financial Technology",description:"MFSYS — AI-powered technology for financial services, digital economies and sustainable enterprises.",applicationName:"MFSYS",metadataBase:new URL("https://mfsys.ca"),robots:{index:true,follow:true}};
 export default function Layout({children}:{children:React.ReactNode}){return <html lang="en"><body><ServiceWorker/><a className="skip" href="#main">Skip to content</a><SiteHeader/>{children}<footer className="site-footer"><div className="container footer-grid"><div><div className="footer-brand">MFSYS</div><div className="eyebrow">INTELLIGENCE FOR IMPACT</div></div><div><h3>AI-powered technology for financial services, digital economies and sustainable enterprises.</h3><p>© MFSYS Technologies. All rights reserved.</p></div></div></footer></body></html>}
