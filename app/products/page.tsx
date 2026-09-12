@@ -7,12 +7,7 @@ export const dynamic = "force-dynamic";
 
 export default async function Page(){
   const cmsProducts=await getPublishedProducts();
-  const items=cmsProducts.map(p=>({
-    title:p.name,
-    eyebrow:p.name.toUpperCase(),
-    text:p.tagline,
-    href:`/products/${p.slug}`
-  }));
+  const items=cmsProducts.map(p=>[p.name,p.tagline,`/products/${p.slug}`] as const);
   const products=items.length?items:staticProducts;
   return <main id="main">
     <PageHero eyebrow="PRODUCTS" title="Purpose-built platforms. Intelligence at the core." text="A portfolio of enterprise products designed for financial inclusion, sustainable growth and connected operations."/>
