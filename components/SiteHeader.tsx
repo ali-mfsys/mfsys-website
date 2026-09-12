@@ -12,8 +12,13 @@ export default function SiteHeader(){
     const close=(e:MouseEvent)=>{
       if(navRef.current && !navRef.current.contains(e.target as Node)) setOpen(null);
     };
+    const onKey=(e:KeyboardEvent)=>{if(e.key==="Escape"){setOpen(null);setMobileOpen(false)}};
     document.addEventListener("mousedown",close);
-    return()=>document.removeEventListener("mousedown",close);
+    document.addEventListener("keydown",onKey);
+    return()=>{
+      document.removeEventListener("mousedown",close);
+      document.removeEventListener("keydown",onKey);
+    };
   },[]);
 
   const closeAll=()=>{setOpen(null);setMobileOpen(false)};
@@ -21,7 +26,7 @@ export default function SiteHeader(){
   return <header className="site-header">
     <div className="container nav-wrap">
       <Link className="brand" href="/" onClick={closeAll} aria-label="MFSYS home">
-        <span className="brand-mark" aria-hidden="true">M</span>
+        <span className="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40" role="img"><path d="M7 30V10h6l7 10 7-10h6v20h-6V20l-7 10-7-10v10z" fill="currentColor"/></svg></span>
         <span className="brand-copy"><span>MFSYS</span><small>INTELLIGENCE FOR IMPACT</small></span>
       </Link>
 
