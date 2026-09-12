@@ -1,7 +1,5 @@
-import {db} from "./db";
+import {getDb} from "./db";
 import {auditLogs} from "./db/schema";
-
-export {db};
 
 export async function audit(
   userId: string,
@@ -9,7 +7,7 @@ export async function audit(
   entity: string,
   entityId?: string
 ) {
-  return db.insert(auditLogs).values({
+  return getDb().insert(auditLogs).values({
     userId,
     action,
     entity,
