@@ -1,6 +1,6 @@
 export type DirectoryItem={id:string;kind:"team"|"partner";name:string;role?:string;category?:string;bio?:string;imageUrl?:string;logoUrl?:string;featured?:boolean;sortOrder:number};
 
-export const legacyTeam:Omit<DirectoryItem,"id">[]=[
+export const legacyTeam:Omit<DirectoryItem,"id"|"kind">[]=[
 {name:"Ali Ahmed",role:"Founder & CEO",category:"Leadership",featured:true,sortOrder:1},
 {name:"Karim Maknojia",role:"CTO",category:"Leadership",featured:true,sortOrder:2},
 {name:"Shahid Ahmed",role:"Chief Operating Officer",category:"Leadership",featured:true,sortOrder:3},
