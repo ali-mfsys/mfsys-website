@@ -1,7 +1,7 @@
 import {NextResponse} from "next/server";
 import {z} from "zod";
 import {cookies} from "next/headers";
-import {db} from "../../../../lib/db";
+import {getDb} from "../../../../lib/db";
 import {auditLogs,pages,users} from "../../../../lib/db/schema";
 import {eq} from "drizzle-orm";
 import {verifySession} from "../../../../lib/auth";
@@ -25,7 +25,7 @@ async function guard(){
 export async function GET(){
   const denied=await guard();
   if(denied)return denied;
-  return NextResponse.json(await db.select().from(pages));
+  return NextResponse.json(await getDb().select().from(pages));
 }
 
 export async function POST(req:Request){
@@ -36,12 +36,12 @@ export async function POST(req:Request){
   const parsed=pageSchema.safeParse(await req.json());
   if(!parsed.success)return NextResponse.json({error:"Invalid content payload"},{status:400});
 
-  const [row]=await db.insert(pages).values(parsed.data).returning();
+  const [row]=await getDb().insert(pages).values(parsed.data).returning();
 
   if(s){
-    const [user]=await db.select({id:users.id}).from(users).where(eq(users.email,s.email));
+    const [user]=await getDb().select({id:users.id}).from(users).where(eq(users.email,s.email));
     if(user){
-      await db.insert(auditLogs).values({
+      await getDb().insert(auditLogs).values({
         userId:user.id,
         action:"CREATE",
         entity:"PAGE",
@@ -62,7 +62,7 @@ export async function PATCH(req:Request){
   const data=pageSchema.partial().parse(body);
   delete (data as any).id;
 
-  const [row]=await db.update(pages)
+  const [row]=await getDb().update(pages)
     .set({...data,updatedAt:new Date()})
     .where(eq(pages.id,id))
     .returning();
