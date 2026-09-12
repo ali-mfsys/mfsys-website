@@ -21,11 +21,11 @@ export default function DirectoryClient({team,partners}:{team:DirectoryItem[];pa
           {featured.map(x=><button className="team-card team-feature team-card-button" key={x.id} onClick={()=>setSelected(x)} aria-label={`View profile for ${x.name}`}>
             {x.imageUrl?<img className="team-photo" src={x.imageUrl} alt={x.name}/>:<div className="team-placeholder" aria-hidden="true">{initials(x.name)}</div>}
             <div className="team-meta"><h3>{x.name}</h3><p>{x.role}</p></div>
-          </article>)}
+          </button>)}
           {rest.map(x=><button className="team-card team-card-button" key={x.id} onClick={()=>setSelected(x)} aria-label={`View profile for ${x.name}`}>
             {x.imageUrl?<img className="team-photo" src={x.imageUrl} alt={x.name}/>:<div className="team-placeholder" aria-hidden="true">{initials(x.name)}</div>}
             <div className="team-meta"><h3>{x.name}</h3><p>{x.role}</p></div>
-          </article>)}
+          </button>)}
         </div>
         <div style={{marginTop:24}}><a className="btn" href="/about">Meet the full MFSYS team →</a></div>
       </div>
