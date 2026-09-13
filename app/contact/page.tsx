@@ -3,7 +3,7 @@ import {FormEvent,useState} from "react";
 import Link from "next/link";
 export default function Page(){
  const [sent,setSent]=useState(false);
- const submit=(e:FormEvent<HTMLFormElement>)=>{e.preventDefault();setSent(true)};
+ const submit=(e:FormEvent<HTMLFormElement>)=>{e.preventDefault();const form=e.currentTarget;const data=new FormData(form);const subject=encodeURIComponent(`MFSYS enquiry — ${data.get("organization")||data.get("name")||"Website"}`);const body=encodeURIComponent(`Name: ${data.get("name")}\nWork email: ${data.get("email")}\nOrganization: ${data.get("organization")}\nType: ${data.get("type")}\n\nChallenge:\n${data.get("message")}`);window.location.href=`mailto:info@mfsys.ca?subject=${subject}&body=${body}`;setSent(true)};
  return <main id="main"><section className="contact-hero"><div className="container"><div className="eyebrow">CONTACT MFSYS</div><h1>Let’s shape what<br/><span>comes next.</span></h1><p>Tell us about your institution, challenge or transformation ambition. We’ll connect you with the right MFSYS team.</p></div></section>
  <section className="container section contact-grid">
   <div className="contact-form-wrap"><div className="contact-kicker">START A CONVERSATION</div><h2>What are you looking to build?</h2>
