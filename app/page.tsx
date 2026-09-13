@@ -5,6 +5,7 @@ import DirectoryShowcase from "../components/DirectoryShowcase";
 import ProductsShowcase from "../components/ProductsShowcase";
 import SolutionsChallenge from "../components/SolutionsChallenge";
 import AIInnovation from "../components/AIInnovation";
+import ImpactCases from "../components/ImpactCases";
 
 const offices=[
   {city:"Islamabad, Pakistan",address:"Level-1, Block-A, STP — Software Technology Park, Service Road North, I-9/3",marker:"33.6487,73.0789"},
@@ -33,6 +34,8 @@ export default function Home(){
     <SolutionsChallenge/>
 
     <AIInnovation/>
+
+    <ImpactCases/>
 
     <section className="presence">
       <div className="container">
