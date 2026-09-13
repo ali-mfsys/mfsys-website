@@ -20,8 +20,8 @@ export default function ProductsShowcase(){
       <h2>Purpose-built intelligence.<br/><span>Ready for the real world.</span></h2>
     </div>
     <div className="products-head-copy">
-      <p>Our products turn deep domain expertise into scalable platforms for banking, lending, Islamic finance, climate and connected enterprise operations.</p>
-      <Link className="text-link" href="/products">View all products →</Link>
+      <p>MFSYS products turn deep domain expertise into intelligent, scalable platforms. Each product is designed to solve a specific operational challenge while connecting into a broader digital ecosystem.</p>
+      <Link className="text-link" href="/products">Explore the product portfolio →</Link>
     </div>
    </div>
    <div className="product-feature">
