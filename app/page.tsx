@@ -7,6 +7,7 @@ import SolutionsChallenge from "../components/SolutionsChallenge";
 import AIInnovation from "../components/AIInnovation";
 import ImpactCases from "../components/ImpactCases";
 import AboutMFSYS from "../components/AboutMFSYS";
+import FinalCTA from "../components/FinalCTA";
 
 const offices=[
   {city:"Islamabad, Pakistan",address:"Level-1, Block-A, STP — Software Technology Park, Service Road North, I-9/3",marker:"33.6487,73.0789"},
@@ -86,6 +87,8 @@ export default function Home(){
     </section>
 
     <DirectoryShowcase/>
+
+    <FinalCTA/>
 
 
 
