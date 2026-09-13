@@ -3,6 +3,7 @@ import HeroNarrative from "../components/hero/HeroNarrative";
 import IntelligenceFlow from "../components/IntelligenceFlow";
 import DirectoryShowcase from "../components/DirectoryShowcase";
 import ProductsShowcase from "../components/ProductsShowcase";
+import SolutionsChallenge from "../components/SolutionsChallenge";
 
 const offices=[
   {city:"Islamabad, Pakistan",address:"Level-1, Block-A, STP — Software Technology Park, Service Road North, I-9/3",marker:"33.6487,73.0789"},
@@ -27,6 +28,8 @@ export default function Home(){
     <IntelligenceFlow/>
 
     <ProductsShowcase/>
+
+    <SolutionsChallenge/>
 
     <section className="presence">
       <div className="container">
@@ -75,15 +78,7 @@ export default function Home(){
 
     <DirectoryShowcase/>
 
-    <section className="container section">
-      <div className="eyebrow">SOLUTIONS</div>
-      <h2>Technology built around real-world challenges.</h2>
-      <div className="ecosystem-grid">
-        {["Digital Banking","Digital Lending","Islamic Finance","Agri Finance","AI Credit Intelligence","Climate & Carbon","Logistics & Supply Chain","Agentic AI"].map(x=>
-          <div className="card content-card" key={x}><h3>{x}</h3><Link href="/solutions">Explore →</Link></div>
-        )}
-      </div>
-    </section>
+
 
     <section className="container section">
       <div className="cta-panel">
