@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 const cases=[
@@ -6,6 +7,9 @@ const cases=[
 ["Climate & Sustainability","Pakistan","Building digital infrastructure for the carbon economy","Project registration, MRV, carbon-credit computation and marketplace workflows in one connected ecosystem.","XchangeCarbon"],
 ["Development Finance","Gilgit-Baltistan","Connecting farmers, cooperatives and finance","Digital platforms connecting producer organizations, value chains and financial services for better decisions.","DigitalKisaan"]
 ];
+
+
+export const metadata: Metadata = { title: "Case Studies | MFSYS", description: "Explore selected MFSYS technology implementations across financial services, logistics, climate and development finance.", alternates: { canonical: "/case-studies" }, openGraph: { title: "Case Studies | MFSYS", description: "Explore selected MFSYS technology implementations across financial services, logistics, climate and development finance.", url: "https://mfsys.ca/case-studies" } };
 
 export default function CaseStudies(){
  return <main id="main">
