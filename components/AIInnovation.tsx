@@ -15,17 +15,17 @@ export default function AIInnovation(){
   <div className="container">
    <div className="ai-head">
     <div><div className="eyebrow">AI & INNOVATION</div><h2>AI is not an add-on.<br/><span>It is the intelligence layer.</span></h2></div>
-    <p>MFSYS embeds artificial intelligence into the systems that capture data, assess risk, predict outcomes and turn decisions into measurable action.</p>
+    <p>MFSYS treats AI as an intelligence layer across the enterprise—helping institutions capture better data, assess risk, predict outcomes, support decisions and automate action while keeping people accountable for important decisions.</p>
    </div>
    <div className="ai-engine">
     <div className="ai-engine-copy">
       <div className="ai-engine-kicker">THE MFSYS AI DECISION ENGINE</div>
       <h3>From data to <span>better decisions.</span></h3>
-      <p>Our approach combines domain expertise, machine intelligence and responsible human oversight to create practical AI for real-world institutions.</p>
+      <p>Our approach combines domain expertise, machine intelligence and responsible human oversight. The goal is practical AI: explainable where decisions matter, measurable where outcomes matter, and designed to work with the systems institutions already use.</p>
       <div className="ai-sequence">
        {["DATA","ANALYZE","PREDICT","DECIDE","ACT","IMPACT"].map((x,i)=><div key={x} className="ai-sequence-step"><b>{String(i+1).padStart(2,"0")}</b><span>{x}</span>{i<5&&<i>→</i>}</div>)}
       </div>
-      <Link className="btn btn-primary" href="/ai-innovation">Explore AI & Innovation →</Link>
+      <Link className="btn btn-primary" href="/ai-innovation">Discover the MFSYS intelligence layer →</Link>
     </div>
     <div className="ai-visual" aria-hidden="true">
       <div className="ai-grid-lines"/>
