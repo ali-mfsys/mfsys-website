@@ -1,6 +1,10 @@
+import type { Metadata } from "next";
 "use client";
 import {FormEvent,useState} from "react";
 import Link from "next/link";
+
+export const metadata: Metadata = { title: "Contact MFSYS | Start a Conversation", description: "Connect with MFSYS about financial technology, AI, digital transformation, climate, logistics and enterprise solutions.", alternates: { canonical: "/contact" }, openGraph: { title: "Contact MFSYS | Start a Conversation", description: "Connect with MFSYS about financial technology, AI, digital transformation, climate, logistics and enterprise solutions.", url: "https://mfsys.ca/contact" } };
+
 export default function Page(){
  const [sent,setSent]=useState(false);
  const submit=(e:FormEvent<HTMLFormElement>)=>{e.preventDefault();const form=e.currentTarget;const data=new FormData(form);const subject=encodeURIComponent(`MFSYS enquiry — ${data.get("organization")||data.get("name")||"Website"}`);const body=encodeURIComponent(`Name: ${data.get("name")}\nWork email: ${data.get("email")}\nOrganization: ${data.get("organization")}\nType: ${data.get("type")}\n\nChallenge:\n${data.get("message")}`);window.location.href=`mailto:info@mfsys.ca?subject=${subject}&body=${body}`;setSent(true)};
