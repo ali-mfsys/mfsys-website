@@ -89,16 +89,5 @@ export default function Home(){
     <DirectoryShowcase/>
 
     <FinalCTA/>
-
-
-
-    <section className="container section">
-      <div className="cta-panel">
-        <div className="eyebrow">INTELLIGENCE FOR IMPACT</div>
-        <h2>Let's shape what comes next.</h2>
-        <p>From core banking and lending to AI, climate and logistics, MFSYS combines domain expertise with modern digital engineering.</p>
-        <Link className="btn btn-primary" href="/contact">Talk to MFSYS →</Link>
-      </div>
-    </section>
   </main>;
 }
