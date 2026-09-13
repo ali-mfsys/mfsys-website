@@ -1,0 +1,3 @@
+import type { Metadata } from "next";
+export const metadata: Metadata = { title: "Contact MFSYS | Start a Conversation", description: "Connect with MFSYS about financial technology, AI, digital transformation, climate, logistics and enterprise solutions.", alternates: { canonical: "/contact" }, openGraph: { title: "Contact MFSYS | Start a Conversation", description: "Connect with MFSYS about financial technology, AI, digital transformation, climate, logistics and enterprise solutions.", url: "https://mfsys.ca/contact" } };
+export default function Layout({children}:{children:React.ReactNode}){return children;}
