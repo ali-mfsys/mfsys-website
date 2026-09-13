@@ -16,6 +16,7 @@ export default function HeroNarrative(){
  useEffect(()=>{const id=setInterval(()=>setI(x=>(x+1)%sectorStory.length),7000);return()=>clearInterval(id)},[]);
  const s=sectorStory[i];
  return <section className="hero" aria-labelledby="hero-title">
+  <div className="hero-video-wrap" aria-hidden="true"><video className="hero-video" autoPlay muted loop playsInline preload="metadata" poster="/hero-poster.jpg"><source src="/mfsys-hero.mp4" type="video/mp4" /></video></div>
   <div className="hero-visual" aria-hidden="true">
    <div className="hero-grid"/>
    <div className="hero-glow"/>
