@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import PageHero from "../../../components/PageHero";
 import { solutions } from "../../../lib/site-data";
+import type { Metadata } from "next";
 
 const details: Record<string, {eyebrow:string; intro:string; capabilities:string[]; outcomes:string[]}> = {
   "digital-banking": { eyebrow:"DIGITAL BANKING", intro:"Modern, cloud-native banking technology that connects core operations, digital channels, data and intelligence in one scalable ecosystem.", capabilities:["Core banking and account management","Digital onboarding, KYC and customer 360","Mobile and web banking channels","Workflow, API and ecosystem integration"], outcomes:["Faster digital transformation","Lower operational complexity","Consistent customer experience"] },
@@ -16,6 +17,19 @@ const details: Record<string, {eyebrow:string; intro:string; capabilities:string
   "agentic-ai": { eyebrow:"AGENTIC AI", intro:"AI agents and workflow automation for repetitive, high-value enterprise processes with governance and human oversight.", capabilities:["Task-specific AI agents","Workflow orchestration","Human-in-the-loop approvals","Audit and performance monitoring"], outcomes:["Higher team productivity","Faster process execution","Controlled AI adoption"] },
   "ai-transformation": { eyebrow:"AI & DIGITAL TRANSFORMATION", intro:"Strategy, architecture and implementation services that help organizations turn AI and digital transformation into measurable business outcomes.", capabilities:["AI readiness and strategy","Enterprise architecture","Data and integration roadmaps","Implementation and change enablement"], outcomes:["Clear transformation priorities","Modern technology foundations","Sustainable adoption"] }
 };
+
+export async function generateMetadata({params}:{params:Promise<{slug:string}>}):Promise<Metadata>{
+  const {slug}=await params;
+  const match=solutions.find(([, , path])=>path.endsWith("/"+slug));
+  const detail=details[slug];
+  if(!match || !detail) return {};
+  return {
+    title: match[0]+" | MFSYS",
+    description: detail.intro,
+    alternates: {canonical: "/solutions/"+slug},
+    openGraph: {title: match[0]+" | MFSYS", description: detail.intro, url: "https://mfsys.ca/solutions/"+slug}
+  };
+}
 
 export function generateStaticParams(){ return solutions.map(([, , path])=>({slug:path.split("/").pop()!})); }
 
