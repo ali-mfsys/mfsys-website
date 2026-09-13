@@ -1,9 +1,7 @@
-import type { Metadata } from "next";
 "use client";
 import {FormEvent,useState} from "react";
 import Link from "next/link";
 
-export const metadata: Metadata = { title: "Contact MFSYS | Start a Conversation", description: "Connect with MFSYS about financial technology, AI, digital transformation, climate, logistics and enterprise solutions.", alternates: { canonical: "/contact" }, openGraph: { title: "Contact MFSYS | Start a Conversation", description: "Connect with MFSYS about financial technology, AI, digital transformation, climate, logistics and enterprise solutions.", url: "https://mfsys.ca/contact" } };
 
 export default function Page(){
  const [sent,setSent]=useState(false);
