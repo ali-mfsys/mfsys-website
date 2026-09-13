@@ -1,10 +1,10 @@
 import type { MetadataRoute } from "next";
 import { products, solutions } from "../lib/site-data";
 
-const base = "https://mfsys.ca";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
+  const base = "https://mfsys.ca";
   const routes = ["/", "/about", "/industries", "/ai-innovation", "/insights", "/products", "/solutions", "/case-studies", "/contact"];
 
   return [
