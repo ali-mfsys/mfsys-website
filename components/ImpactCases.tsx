@@ -11,16 +11,16 @@ export default function ImpactCases(){
   <div className="container">
    <div className="impact-head">
     <div><div className="eyebrow">GLOBAL IMPACT</div><h2>Built for complexity.<br/><span>Proven in the real world.</span></h2></div>
-    <div><p>From financial institutions to freight networks and emerging climate markets, MFSYS delivers technology where reliability, scale and local context matter.</p><Link className="text-link" href="/case-studies">View case studies →</Link></div>
+    <div><p>MFSYS brings more than two decades of technology and financial-services experience to complex environments. Our platforms are designed for institutions where reliability, scale, security and local context matter.</p><Link className="text-link" href="/case-studies">View case studies →</Link></div>
    </div>
    <div className="impact-grid">
     {cases.map((c,i)=><Link href={c.href} className={i===0?"impact-card impact-feature":"impact-card"} key={c.num}>
       <div className="impact-card-top"><span>{c.num}</span><small>{c.client} · {c.region}</small></div>
       <div className="impact-visual"><div className="impact-lines"/><div className="impact-globe"/><strong>{i===0?"FINANCE":i===1?"FREIGHT":i===2?"CLIMATE":"VALUE CHAIN"}</strong></div>
-      <div className="impact-body"><h3>{c.title}</h3><p>{c.text}</p><div className="impact-stats">{c.stats.map(s=><span key={s}>{s}</span>)}</div><b>Explore impact ↗</b></div>
+      <div className="impact-body"><h3>{c.title}</h3><p>{c.text}</p><div className="impact-stats">{c.stats.map(s=><span key={s}>{s}</span>)}</div><b>Explore the story ↗</b></div>
     </Link>)}
    </div>
-   <div className="impact-proof"><div><strong>12+</strong><span>countries</span></div><div><strong>30+</strong><span>financial institutions</span></div><div><strong>100+</strong><span>professionals</span></div><div><strong>18+</strong><span>years average leadership experience</span></div></div>
+   <div className="impact-proof"><div><strong>12+</strong><span>countries served</span></div><div><strong>30+</strong><span>financial institutions</span></div><div><strong>100+</strong><span>technology professionals</span></div><div><strong>18+</strong><span>years average leadership experience</span></div></div>
   </div>
  </section>;
 }
