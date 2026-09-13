@@ -1,8 +1,8 @@
 import Link from "next/link";
 
 export default function SiteFooter(){
- const columns=[
-  ["SOLUTIONS",["Core Banking","Digital Lending","Islamic Finance","Climate & Carbon","Digital Agriculture","Logistics"],["/solutions/core-banking","/solutions/lending","/solutions/islamic-finance","/solutions/climate","/solutions/agriculture","/solutions/logistics"]],
+ const columns: Array<[string,string[],string[]]>=[
+  ["SOLUTIONS",["Core Banking","Digital Lending","Islamic Finance","Climate & Carbon","Digital Agriculture","Logistics"],["/solutions/digital-banking","/solutions/loan-origination","/solutions/islamic-finance","/solutions/climate-carbon","/solutions/agri-finance","/solutions/logistics"]],
   ["PRODUCTS",["CiiHive","LoanLeaf","Smart Mudarabah","CargoGuard","XchangeCarbon","IFRS9"],["/products/ciihive","/products/loanleaf","/products/smart-mudarabah","/products/cargoguard","/products/xchangecarbon","/products/ifrs9"]],
   ["COMPANY",["About MFSYS","AI & Innovation","Case Studies","Insights","Careers","Contact"],["/about","/ai-innovation","/case-studies","/insights","/careers","/contact"]],
  ];
