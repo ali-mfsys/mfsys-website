@@ -18,7 +18,7 @@ export default function SolutionsChallenge(){
   <div className="container">
    <div className="solutions-challenge-head">
     <div><div className="eyebrow">SOLUTIONS BY CHALLENGE</div><h2>Technology starts with the problem.<br/><span>Intelligence solves it.</span></h2></div>
-    <p>MFSYS combines deep domain knowledge with modern engineering to solve complex challenges across financial services, climate, agriculture and connected enterprise operations.</p>
+    <p>From modern banking and intelligent lending to Islamic finance, climate, agriculture and freight, MFSYS connects the right intelligence, workflow and technology to each business challenge.</p>
    </div>
    <div className="challenge-layout">
     <div className="challenge-nav" role="tablist" aria-label="MFSYS solutions by challenge">
@@ -33,7 +33,7 @@ export default function SolutionsChallenge(){
       <h3>{item.title}</h3>
       <p>{item.text}</p>
       <div className="capability-list">{item.cap.map((x,i)=><div key={x}><span>0{i+1}</span>{x}</div>)}</div>
-      <div className="challenge-footer"><div><small>POWERED BY</small><strong>{item.product}</strong></div><Link className="btn btn-primary" href={item.href}>Explore solution →</Link></div>
+      <div className="challenge-footer"><div><small>POWERED BY</small><strong>{item.product}</strong></div><Link className="btn btn-primary" href={item.href}>See how MFSYS solves it →</Link></div>
     </article>
    </div>
   </div>
