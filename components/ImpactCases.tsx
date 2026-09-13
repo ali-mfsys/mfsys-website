@@ -22,4 +22,5 @@ export default function ImpactCases(){
    </div>
    <div className="impact-proof"><div><strong>12+</strong><span>countries</span></div><div><strong>30+</strong><span>financial institutions</span></div><div><strong>100+</strong><span>professionals</span></div><div><strong>18+</strong><span>years average leadership experience</span></div></div>
   </div>
- </section>
+ </section>;
+}
