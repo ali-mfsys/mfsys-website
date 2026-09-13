@@ -1,9 +1,13 @@
+import type { Metadata } from "next";
 import PageHero from "../../components/PageHero";
 import CardGrid from "../../components/CardGrid";
 import { products as staticProducts } from "../../lib/site-data";
 import { getPublishedProducts } from "../../lib/product-cms";
 
 export const dynamic = "force-dynamic";
+
+
+export const metadata: Metadata = { title: "Products | MFSYS", description: "Explore MFSYS enterprise technology products for digital banking, lending, Islamic finance, climate, agriculture and logistics.", alternates: { canonical: "/products" }, openGraph: { title: "Products | MFSYS", description: "Explore MFSYS enterprise technology products for digital banking, lending, Islamic finance, climate, agriculture and logistics.", url: "https://mfsys.ca/products" } };
 
 export default async function Page(){
   const cmsProducts=await getPublishedProducts();
