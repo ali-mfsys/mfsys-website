@@ -10,8 +10,6 @@ export const solutions=[
 ["Logistics & Supply Chain","Connected freight, tracking, compliance and operational visibility.","/solutions/logistics"],
 ["Core Banking","AI-native digital core banking infrastructure for modern financial institutions.","/solutions/core-banking"],
 ["Digital Lending","Intelligent digital lending from application to decision and servicing.","/solutions/lending"],
-["Climate Intelligence","Digital climate, MRV and carbon-market infrastructure.","/solutions/climate"],
-["Digital Agriculture","Connected farmer, cooperative and value-chain finance platforms.","/solutions/agriculture"],
 ["Agentic AI Enterprise Automation","AI agents and workflow automation for high-value enterprise processes.","/solutions/agentic-ai"],
 ["AI & Digital Transformation Consulting","Strategy, architecture and implementation for intelligent enterprises.","/solutions/ai-transformation"]
 ] as const;
