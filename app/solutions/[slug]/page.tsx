@@ -15,6 +15,10 @@ const details: Record<string, {eyebrow:string; intro:string; capabilities:string
   "logistics": { eyebrow:"LOGISTICS & SUPPLY CHAIN", intro:"Connected freight technology that brings booking, dispatch, tracking, compliance and proof of delivery into one operational view.", capabilities:["Load booking and dispatch","GPS tracking and geofencing","Driver KYC and compliance","Proof of delivery and exception management"], outcomes:["Greater shipment visibility","Reduced operational risk","Faster exception resolution"] },
   "agentic-ai": { eyebrow:"AGENTIC AI", intro:"AI agents and workflow automation for repetitive, high-value enterprise processes with governance and human oversight.", capabilities:["Task-specific AI agents","Workflow orchestration","Human-in-the-loop approvals","Audit and performance monitoring"], outcomes:["Higher team productivity","Faster process execution","Controlled AI adoption"] },
   "ai-transformation": { eyebrow:"AI & DIGITAL TRANSFORMATION", intro:"Strategy, architecture and implementation services that help organizations turn AI and digital transformation into measurable business outcomes.", capabilities:["AI readiness and strategy","Enterprise architecture","Data and integration roadmaps","Implementation and change enablement"], outcomes:["Clear transformation priorities","Modern technology foundations","Sustainable adoption"] }
+  "core-banking": details["digital-banking"],
+  "lending": details["loan-origination"],
+  "climate": details["climate-carbon"],
+  "agriculture": details["agri-finance"],
 };
 
 export function generateStaticParams(){ return solutions.map(([, , path])=>({slug:path.split("/").pop()!})); }
