@@ -2,6 +2,7 @@ import Link from "next/link";
 import HeroNarrative from "../components/hero/HeroNarrative";
 import IntelligenceFlow from "../components/IntelligenceFlow";
 import DirectoryShowcase from "../components/DirectoryShowcase";
+import ProductsShowcase from "../components/ProductsShowcase";
 
 const offices=[
   {city:"Islamabad, Pakistan",address:"Level-1, Block-A, STP — Software Technology Park, Service Road North, I-9/3",marker:"33.6487,73.0789"},
@@ -24,6 +25,8 @@ export default function Home(){
     </section>
 
     <IntelligenceFlow/>
+
+    <ProductsShowcase/>
 
     <section className="presence">
       <div className="container">
