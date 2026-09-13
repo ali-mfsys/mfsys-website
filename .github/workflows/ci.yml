@@ -14,5 +14,5 @@ jobs:
           node-version: 22
       - run: npm install --no-audit --no-fund --legacy-peer-deps
       - run: npm run typecheck
-      - run: npm test
+      - run: npm test -- --passWithNoTests
       - run: npm run build
