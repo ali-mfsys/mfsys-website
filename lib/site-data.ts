@@ -12,7 +12,8 @@ export const solutions=[
 ["AI & Digital Transformation Consulting","Strategy, architecture and implementation for intelligent enterprises.","/solutions/ai-transformation"]
 ] as const;
 export const products=[
-["CiiHive","AI-native digital core banking platform.","/products/ciihive"],
+["CiiHive","Cloud-native digital core banking for banks, microfinance and fintech.","/products/ciihive"],
+["mConnect","Enterprise middleware and integration for connected financial services.","/products/mconnect"],
 ["LoanLeaf","Digital loan origination and workflow platform.","/products/loanleaf"],
 ["Smart Mudarabah","End-to-end digital Islamic Mudarabah management.","/products/smart-mudarabah"],
 ["DigitalKisaan","Digital platform for farmers, cooperatives and value chains.","/products/digitalkisaan"],
