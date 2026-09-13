@@ -1,1 +1,5 @@
-import ProductPage from "../../../components/ProductPage";import CiiHiveArchitecture from "../../../components/CiiHiveArchitecture";import {productData} from "../../../lib/product-data";export default function Page(){const product=productData.find(x=>x.name==="CiiHive")!;return <><ProductPage product={product}/><CiiHiveArchitecture/></>}
+import type { Metadata } from "next";
+import ProductPage from "../../../components/ProductPage";import CiiHiveArchitecture from "../../../components/CiiHiveArchitecture";import {productData} from "../../../lib/product-data";
+export const metadata: Metadata = { title: "CiiHive | MFSYS", description: "A cloud-native, microservices-based digital core banking platform designed for modern financial institutions, with intelligence embedded across the customer and lending lifecycle.", alternates: { canonical: "/products/ciihive" }, openGraph: { title: "CiiHive | MFSYS", description: "A cloud-native, microservices-based digital core banking platform designed for modern financial institutions, with intelligence embedded across the customer and lending lifecycle.", url: "https://mfsys.ca/products/ciihive" } };
+
+export default function Page(){const product=productData.find(x=>x.name==="CiiHive")!;return <><ProductPage product={product}/><CiiHiveArchitecture/></>}
