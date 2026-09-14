@@ -31,3 +31,4 @@ Production integrations for database, identity, media/CDN and monitoring must be
 ## Release Candidate
 
 The `main` branch is the current Vercel review candidate. Production domain migration to `mfsys.ca` is intentionally deferred until final UAT approval.
+Production release trigger — MFSYS website
