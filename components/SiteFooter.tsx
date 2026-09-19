@@ -9,7 +9,7 @@ export default function SiteFooter(){
  return <footer className="site-footer">
   <div className="container">
    <div className="footer-top">
-    <div className="footer-brand"><img className="footer-logo" src="/mfsys-logo.svg" alt="MFSYS — Intelligence for Impact" width="180" height="70"/><p>Intelligent technology for financial services, digital economies and sustainable enterprises.</p><div className="footer-social"><a href="https://www.linkedin.com/company/mfsys" target="_blank" rel="noreferrer">LinkedIn ↗</a></div></div>
+    <div className="footer-brand"><img className="footer-logo" src="/mfsys-original-logo.png" alt="MFSYS — Intelligence for Impact" width="150" height="122"/><p>Intelligent technology for financial services, digital economies and sustainable enterprises.</p><div className="footer-social"><a href="https://www.linkedin.com/company/mfsys" target="_blank" rel="noreferrer">LinkedIn ↗</a></div></div>
     {columns.map(([title,labels,hrefs])=><div className="footer-column" key={title}><h3>{title}</h3>{labels.map((x,i)=><Link href={hrefs[i]} key={x}>{x}</Link>)}</div>)}
     <div className="footer-contact"><h3>LET'S TALK</h3><a href="mailto:info@mfsys.ca">info@mfsys.ca</a><a href="tel:+16479607418">+1 647 960 7418</a><p>Toronto · Islamabad · Melbourne</p></div>
    </div>
