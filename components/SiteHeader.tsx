@@ -3,6 +3,7 @@ import Link from "next/link";
 import {useEffect,useRef,useState} from "react";
 import {usePathname} from "next/navigation";
 import {solutions,products} from "../lib/site-data";
+import BrandLogo from "./BrandLogo";
 
 export default function SiteHeader(){
  const pathname=usePathname();
@@ -26,7 +27,7 @@ export default function SiteHeader(){
   </div>
   <div className="container nav-wrap">
    <Link className="brand" href="/" onClick={closeAll} aria-label="MFSYS home">
-    <img className="brand-logo" src="/mfsys-original-logo.png" alt="MFSYS Technologies Limited" width="132" height="107"/>
+    <BrandLogo className="brand-logo" alt="MFSYS Technologies Limited"/>
    </Link>
    <button className="menu-toggle" aria-expanded={mobileOpen} aria-controls="primary-nav" onClick={()=>setMobileOpen(v=>!v)}>{mobileOpen?"Close":"Menu"}</button>
    <nav ref={navRef} id="primary-nav" className={mobileOpen?"primary-nav open":"primary-nav"} aria-label="Primary">
