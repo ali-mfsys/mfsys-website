@@ -20,7 +20,7 @@ export default function SiteHeader(){
  return <header className="site-header">
   <div className="container nav-wrap">
    <Link className="brand" href="/" onClick={closeAll} aria-label="MFSYS home">
-    <img className="brand-logo" src="/mfsys-logo.svg" alt="MFSYS — Intelligence for Impact" width="132" height="92"/>
+    <img className="brand-logo" src="/mfsys-logo.svg" alt="MFSYS — Intelligence for Impact" width="118" height="113"/>
    </Link>
    <button className="menu-toggle" aria-expanded={mobileOpen} aria-controls="primary-nav" onClick={()=>setMobileOpen(v=>!v)}>{mobileOpen?"Close":"Menu"}</button>
    <nav ref={navRef} id="primary-nav" className={mobileOpen?"primary-nav open":"primary-nav"} aria-label="Primary">
