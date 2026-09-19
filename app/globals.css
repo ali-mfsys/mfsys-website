@@ -341,3 +341,20 @@ p{line-height:1.7;color:var(--grey-500)}
 .hero-overlay{z-index:2}
 @media(prefers-reduced-motion:reduce){.hero-video{display:none}.hero-video-wrap{background:radial-gradient(circle at 75% 35%,rgba(11,111,211,.45),transparent 45%),#06141d}}
 @media(max-width:760px){.hero-video{object-position:58% center}.hero-video-wrap:after{background:linear-gradient(90deg,rgba(4,18,28,.9),rgba(4,18,28,.62)),linear-gradient(180deg,rgba(4,18,28,.3),rgba(4,18,28,.65))}}
+
+
+/* Correct MFSYS logo lockup */
+.site-header .nav-wrap{min-height:118px;height:118px}
+.site-header .brand{min-width:118px;height:118px;display:flex;align-items:center}
+.site-header .brand-logo{display:block;width:118px;height:113px;max-height:none;object-fit:contain;object-position:center}
+@media(max-width:980px){
+  .site-header .nav-wrap{min-height:86px;height:86px}
+  .site-header .brand{height:86px;min-width:88px}
+  .site-header .brand-logo{width:88px;height:84px}
+  .site-header .primary-nav.open{top:calc(100% + 8px)}
+}
+@media(max-width:760px){
+  .site-header .nav-wrap{min-height:86px;height:86px}
+  .site-header .brand{height:86px;min-width:88px}
+  .site-header .brand-logo{width:88px;height:84px}
+}
