@@ -19,6 +19,18 @@ export default function Home(){
   return <main id="main">
     <HeroNarrative/>
 
+    <section className="home-proof" aria-label="MFSYS at a glance">
+      <div className="container">
+        <div className="home-proof-grid">
+          <div className="home-proof-item"><div className="home-proof-icon">▥</div><div><strong>30+</strong><span>Financial Institutions</span></div></div>
+          <div className="home-proof-item"><div className="home-proof-icon">◎</div><div><strong>12+</strong><span>Countries</span></div></div>
+          <div className="home-proof-item"><div className="home-proof-icon">♧</div><div><strong>100+</strong><span>Professionals</span></div></div>
+          <div className="home-proof-item"><div className="home-proof-icon">◉</div><div><strong>40%</strong><span>Female Workforce</span></div></div>
+        </div>
+        <div className="home-proof-tag">SOLUTIONS FOR PEOPLE, COMMUNITIES AND A SUSTAINABLE TOMORROW</div>
+      </div>
+    </section>
+
     <section className="container ecosystem">
       <div className="eyebrow">THE MFSYS INTELLIGENCE ECOSYSTEM</div>
       <h2>One intelligence core. Multiple sectors. Measurable impact.</h2>
