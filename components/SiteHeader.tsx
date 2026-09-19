@@ -18,9 +18,15 @@ export default function SiteHeader(){
  },[]);
  const closeAll=()=>{setOpen(null);setMobileOpen(false)};
  return <header className="site-header">
+  <div className="utility-bar">
+   <div className="container utility-inner">
+    <div className="utility-left"><span>◉</span><span>Global Presence</span><i/> <span>12+ Countries</span><i/> <span>30+ Financial Institutions</span></div>
+    <div className="utility-right"><Link href="/careers" onClick={closeAll}>Careers</Link><Link href="/insights" onClick={closeAll}>News</Link><Link href="/insights" onClick={closeAll}>Resources</Link><Link href="/contact" onClick={closeAll}>Contact</Link><span aria-hidden="true">⌕</span></div>
+   </div>
+  </div>
   <div className="container nav-wrap">
    <Link className="brand" href="/" onClick={closeAll} aria-label="MFSYS home">
-    <img className="brand-logo" src="/mfsys-logo.svg" alt="MFSYS — Intelligence for Impact" width="118" height="113"/>
+    <img className="brand-logo" src="/mfsys-logo.svg" alt="MFSYS Technologies Limited" width="118" height="113"/>
    </Link>
    <button className="menu-toggle" aria-expanded={mobileOpen} aria-controls="primary-nav" onClick={()=>setMobileOpen(v=>!v)}>{mobileOpen?"Close":"Menu"}</button>
    <nav ref={navRef} id="primary-nav" className={mobileOpen?"primary-nav open":"primary-nav"} aria-label="Primary">
@@ -34,7 +40,7 @@ export default function SiteHeader(){
     <Link href="/ai-innovation" onClick={closeAll}>AI & Innovation</Link>
     <Link href="/insights" onClick={closeAll}>Insights</Link>
     <Link href="/about" onClick={closeAll}>About MFSYS</Link>
-    <Link className="nav-cta" href="/contact" onClick={closeAll}>Contact Us →</Link>
+    <Link className="nav-cta" href="/contact" onClick={closeAll}>Get in Touch <span>→</span></Link>
    </nav>
   </div>
  </header>;
