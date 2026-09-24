@@ -5,5 +5,5 @@ type BrandLogoProps = Omit<ImgHTMLAttributes<HTMLImageElement>,"src"> & {
 };
 
 export default function BrandLogo({alt,...props}:BrandLogoProps){
-  return <img src="/brand/mfsys-logo.png" alt={alt} {...props}/>;
+  return <img src="/brand/mfsys-logo.svg" alt={alt} {...props}/>;
 }
