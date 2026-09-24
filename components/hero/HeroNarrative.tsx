@@ -59,7 +59,7 @@ export default function HeroNarrative(){
  const slide = slides[active];
 
  return <section className="hero" aria-labelledby="hero-title">
-  <div className="hero-video-wrap" aria-hidden="true"><video className="hero-video" autoPlay muted loop playsInline preload="metadata"><source src={active === 4 ? "/hero-video-mfsyslogo.mp4" : "/mfsys-hero-bg-15s.mp4"} type="video/mp4" /><source src="/mfsys-hero-bg-15s.mp4" type="video/mp4" /></video></div>
+  <div className="hero-video-wrap" aria-hidden="true"><video key={active} className="hero-video" autoPlay muted loop playsInline preload="metadata"><source src={active === 4 ? "/hero-video-mfsyslogo.mp4" : "/mfsys-hero-bg-15s.mp4"} type="video/mp4" /><source src="/mfsys-hero-bg-15s.mp4" type="video/mp4" /></video></div>
   <div className="hero-visual" aria-hidden="true">
    <div className="hero-grid"/><div className="hero-glow"/>
    <div className="hero-orbit hero-orbit-a"/><div className="hero-orbit hero-orbit-b"/><div className="hero-orbit hero-orbit-c"/>
