@@ -1,7 +1,6 @@
 import Link from "next/link";
 import HeroNarrative from "../components/hero/HeroNarrative";
 import IntelligenceFlow from "../components/IntelligenceFlow";
-import DirectoryShowcase from "../components/DirectoryShowcase";
 import ProductsShowcase from "../components/ProductsShowcase";
 import SolutionsChallenge from "../components/SolutionsChallenge";
 import AIInnovation from "../components/AIInnovation";
@@ -98,7 +97,6 @@ export default function Home(){
       </div>
     </section>
 
-    <DirectoryShowcase/>
 
     <FinalCTA/>
   </main>;
