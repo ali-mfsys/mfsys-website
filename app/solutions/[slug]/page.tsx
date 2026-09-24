@@ -3,6 +3,7 @@ import Link from "next/link";
 import PageHero from "../../../components/PageHero";
 import { solutions } from "../../../lib/site-data";
 import type { Metadata } from "next";
+import DigitalBankingExperience from "../../../components/DigitalBankingExperience";
 
 const details: Record<string, {eyebrow:string; intro:string; capabilities:string[]; outcomes:string[]}> = {
   "digital-banking": { eyebrow:"DIGITAL BANKING", intro:"Modern, cloud-native banking technology that connects core operations, digital channels, data and intelligence in one scalable ecosystem.", capabilities:["Core banking and account management","Digital onboarding, KYC and customer 360","Mobile and web banking channels","Workflow, API and ecosystem integration"], outcomes:["Faster digital transformation","Lower operational complexity","Consistent customer experience"] },
