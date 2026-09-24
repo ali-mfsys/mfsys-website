@@ -20,7 +20,7 @@ const solutionMap=new Map(solutions.map(x=>[x[0],x]));
 const productMap=new Map(products.map(x=>[x[0],x]));
 
 function GroupLink({name,kind,onNavigate}:{name:string;kind:"solution"|"product";onNavigate:()=>void}){
- const item=kind==="solution"?solutionMap.get(name):productMap.get(name);
+ const item=kind==="solution"?solutions.find(x=>x[0]===name):products.find(x=>x[0]===name);
  if(!item)return null;
  return <Link className="mfsys-mega__item" href={item[2]} role="menuitem" onClick={onNavigate}><span className="mfsys-mega__item-mark" aria-hidden="true">↗</span><span><strong>{item[0]}</strong><small>{item[1]}</small></span></Link>;
 }
