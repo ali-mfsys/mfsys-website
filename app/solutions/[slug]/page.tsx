@@ -39,6 +39,7 @@ export default async function SolutionDetail({params}:{params:Promise<{slug:stri
   const match=solutions.find(([, , path])=>path.endsWith("/"+slug));
   const detail=details[slug];
   if(!match || !detail) notFound();
+  if(slug === "digital-banking") return <main id="main"><DigitalBankingExperience /></main>;
   return <main id="main">
     <PageHero eyebrow={detail.eyebrow} title={match[0]} text={detail.intro}/>
     <section className="container section solution-detail">
