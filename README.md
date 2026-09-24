@@ -27,8 +27,5 @@ Copy `.env.example` to `.env.local`, install dependencies, then run `npm run dev
 
 Production integrations for database, identity, media/CDN and monitoring must be configured through environment variables and deployment infrastructure.
 
-
-## Release Candidate
-
-The `main` branch is the current Vercel review candidate. Production domain migration to `mfsys.ca` is intentionally deferred until final UAT approval.
-Production release trigger — MFSYS website
+## Deployment
+The production website is deployed through **Cloudflare Workers** from the `main` branch.
