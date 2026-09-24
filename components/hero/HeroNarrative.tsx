@@ -1,4 +1,5 @@
 "use client";
+// Homepage hero: five interactive slides with automatic rotation.
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
