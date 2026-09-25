@@ -75,5 +75,5 @@ function AssetVisual({ src, className }: { src: string; className: string }) {
 }
 function SolutionsVisual() { return <AssetVisual src="/menu-assets/graphics/solutions-hero.svg" className="mfsys-art-solutions" />; }
 function ProductVisual() { return <AssetVisual src="/menu-assets/graphics/products-hero.svg" className="mfsys-art-products" />; }
-function IndustryVisual() { return <AssetVisual src="/menu-assets/graphics/solutions-hero.svg" className="mfsys-art-industries" />; }
+function IndustryVisual() { return <AssetVisual src="/menu-assets/graphics/industries-hero.svg" className="mfsys-art-industries" />; }
 function AiVisual() { return <AssetVisual src="/menu-assets/graphics/ai-innovation-hero.svg" className="mfsys-art-ai" />; }}
