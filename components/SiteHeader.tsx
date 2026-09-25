@@ -87,11 +87,19 @@ function AiVisual(){
  </div>;
 }
 
+const menuIcons:Record<string,string>={
+ "Digital Banking Solution":"▦","Digital Loan Origination System (LOS)":"▤","Islamic Finance":"◔",
+ "AI-Based Credit Intelligence":"◉","AI-Enabled Mobile Lending":"◌","Digital Wallet & Payment":"▣",
+ "Agri Finance & Supply Chain":"⌁","Climate & Carbon":"✦","Logistics & Supply Chain":"⇄",
+ "Agentic AI Enterprise Automation":"⚙","AI & Digital Transformation Consulting":"⌘",
+ "CiiHive":"▦","mConnect":"⇄","LoanLeaf":"▤","Smart Mudarabah":"◔","DigitalKisaan":"⌁","LoanIQ":"◉",
+ "Zaroraat24":"▣","XchangeCarbon":"✦","CargoGuard":"⇄","IFRS9 Impairment Solution":"▥"
+};
 function GroupLink({name,kind,onNavigate}:{name:string;kind:"solution"|"product";onNavigate:()=>void}){
  const item=kind==="solution"?solutions.find(x=>x[0]===name):products.find(x=>x[0]===name);
  if(!item)return null;
  return <Link className="mfsys-v2-item" href={item[2]} role="menuitem" onClick={onNavigate}>
-  <span className="mfsys-v2-icon" aria-hidden="true">↗</span>
+  <span className="mfsys-v2-icon" aria-hidden="true">{menuIcons[name]||"↗"}</span>
   <span><strong>{item[0]}</strong><small>{item[1]}</small></span>
   <em aria-hidden="true">›</em>
  </Link>;
