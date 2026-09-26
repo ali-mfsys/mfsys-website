@@ -17,7 +17,32 @@ const productGroups=[
  {title:"Climate & Logistics",items:["XchangeCarbon","CargoGuard","IFRS9 Impairment Solution"]}
 ];
 const solutionMap=new Map(solutions.map(x=>[x[0],x]));
-const productMap=new Map(products.map(x=>[x[0],x]));
+const productMap=new Map(products.map(x=>[x[0],x]));const iconMap: Record<string, string> = {
+ "Digital Banking Solution": "/menu-assets/icons/icon-banking.svg",
+ "Digital Loan Origination System (LOS)": "/menu-assets/icons/icon-los.svg",
+ "Islamic Finance": "/menu-assets/icons/icon-islamic-finance.svg",
+ "AI-Based Credit Intelligence": "/menu-assets/icons/icon-ai-credit.svg",
+ "AI-Enabled Mobile Lending": "/menu-assets/icons/icon-mobile-lending.svg",
+ "Digital Wallet & Payment": "/menu-assets/icons/icon-wallet.svg",
+ "Agri Finance & Supply Chain": "/menu-assets/icons/icon-agriculture.svg",
+ "Climate & Carbon": "/menu-assets/icons/icon-climate.svg",
+ "Logistics & Supply Chain": "/menu-assets/icons/icon-logistics.svg",
+ "Agentic AI Enterprise Automation": "/menu-assets/icons/icon-agentic-ai.svg",
+ "AI & Digital Transformation Consulting": "/menu-assets/icons/icon-consulting.svg",
+};
+
+function GroupLink({name,kind,onNavigate,featured=false}:{name:string;kind:"solution"|"product";onNavigate:()=>void;featured?:boolean}){
+ const item=kind==="solution"?solutions.find(x=>x[0]===name):products.find(x=>x[0]===name);
+ if(!item)return null;
+ return <Link href={item[2]} className={`mfsys-editorial-item${featured?" is-featured":""}`} onClick={onNavigate}>
+  <span className="mfsys-editorial-icon"><img src={iconMap[name] || "/menu-assets/icons/icon-innovation.svg"} alt="" /></span>
+  <span className="mfsys-editorial-item-copy"><strong>{item[0]}</strong><small>{item[1]}</small></span>
+  <span className="mfsys-editorial-arrow">›</span>
+ </Link>;
+}
+
+function SolutionsVisual(){return <div className="mfsys-editorial-art mfsys-art-solutions" aria-hidden="true"><img src="/menu-assets/graphics/solutions-hero.svg" alt="" /></div>}
+
 
 function GroupLink({name,kind,onNavigate}:{name:string;kind:"solution"|"product";onNavigate:()=>void}){
  const item=kind==="solution"?solutions.find(x=>x[0]===name):products.find(x=>x[0]===name);
@@ -50,9 +75,16 @@ export default function SiteHeader(){
    <button className="menu-toggle" aria-expanded={mobileOpen} aria-controls="mobile-navigation" onClick={()=>setMobileOpen(v=>!v)}>{mobileOpen?"Close":"Menu"}</button>
    <nav ref={navRef} className="primary-nav" aria-label="Primary">
     <div className="nav-menu"><button className="nav-menu-trigger" aria-haspopup="true" aria-expanded={open==="solutions"} onClick={()=>setOpen(open==="solutions"?null:"solutions")}>Solutions <span aria-hidden="true">⌄</span></button>
-     {open==="solutions"&&<div className="mfsys-mega mfsys-mega--solutions" role="menu">
-      <div className="mfsys-mega__intro"><span className="mfsys-mega__eyebrow">MFSYS SOLUTIONS</span><strong>Technology built around real-world challenges.</strong><p>Intelligent platforms for financial services, digital economies and sustainable enterprises.</p><Link className="mfsys-mega__explore" href="/solutions" onClick={closeAll}>Explore all solutions <span>→</span></Link></div>
-      <div className="mfsys-mega__body">{solutionGroups.map(g=><div className="mfsys-mega__group" key={g.title}><span className="mfsys-mega__group-title">{g.title}</span>{g.items.map(name=><GroupLink key={name} name={name} kind="solution" onNavigate={closeAll}/>)}</div>)}</div>
+     {open==="solutions"&&<div id="solutions-menu" className="mfsys-editorial-mega solutions-menu" role="menu">
+      <section className="editorial-intro">
+       <div className="editorial-art-wrap"><SolutionsVisual/><div className="art-lake"/><div className="art-network"><i>DATA</i><i>AI</i><i>CORE BANKING</i><i>RISK</i><i>PAYMENTS</i><i>CLOUD</i><i>API</i></div><div className="art-scanline"/></div>
+       <div className="editorial-copy"><span className="editorial-eyebrow">MFSYS SOLUTIONS —</span><h2>Technology built for intelligent financial ecosystems.</h2><p>Digital solutions for financial inclusion, sustainable growth and more resilient communities.</p><Link href="/solutions" onClick={closeAll}>Explore All Solutions <b>→</b></Link></div>
+       <div className="editorial-proof"><span><b>12+</b>Countries</span><span><b>30+</b>Financial Institutions</span><span><b>100+</b>Professionals</span></div>
+      </section>
+      <section className="editorial-solution-columns">
+       {solutionGroups.map((group,groupIndex)=><div className="editorial-group" key={group.title}><h3>{group.title}</h3>{group.items.map(name=><GroupLink key={name} name={name} kind="solution" featured={groupIndex===0&&name==="Digital Banking Solution"} onNavigate={closeAll}/>)}</div>)}
+       <div className="editorial-impact"><img src="/menu-assets/graphics/impact-mountains.svg" alt="" /><div className="impact-copy"><span>OUR IMPACT</span><strong>Building more inclusive, resilient and sustainable economies.</strong><Link href="/about" onClick={closeAll}>Our Impact →</Link></div></div>
+      </section>
      </div>}
     </div>
     <div className="nav-menu"><button className="nav-menu-trigger" aria-haspopup="true" aria-expanded={open==="products"} onClick={()=>setOpen(open==="products"?null:"products")}>Products <span aria-hidden="true">⌄</span></button>
