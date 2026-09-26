@@ -44,11 +44,6 @@ function GroupLink({name,kind,onNavigate,featured=false}:{name:string;kind:"solu
 function SolutionsVisual(){return <div className="mfsys-editorial-art mfsys-art-solutions" aria-hidden="true"><img src="/menu-assets/graphics/solutions-hero.svg" alt="" /></div>}
 
 
-function GroupLink({name,kind,onNavigate}:{name:string;kind:"solution"|"product";onNavigate:()=>void}){
- const item=kind==="solution"?solutions.find(x=>x[0]===name):products.find(x=>x[0]===name);
- if(!item)return null;
- return <Link className="mfsys-mega__item" href={item[2]} role="menuitem" onClick={onNavigate}><span className="mfsys-mega__item-mark" aria-hidden="true">↗</span><span><strong>{item[0]}</strong><small>{item[1]}</small></span></Link>;
-}
 
 export default function SiteHeader(){
  const pathname=usePathname();
