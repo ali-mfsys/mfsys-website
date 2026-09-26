@@ -386,3 +386,63 @@ brand{line-height:0}.solution-detail-grid{display:grid;grid-template-columns:min
 .mfsys-editorial-nav>.nav-menu>button.nav-menu-trigger[aria-expanded="true"]{color:#ff6a21!important}.mfsys-editorial-nav>.nav-menu>button.nav-menu-trigger[aria-expanded="true"]:after{content:"";position:absolute;left:0;right:0;bottom:-22px;height:2px;background:#ff6a21}
 @media(max-width:1180px){.mfsys-editorial-mega{width:calc(100vw - 22px)!important}.solutions-menu{grid-template-columns:27% 48% 25%}.mfsys-editorial-mega .editorial-copy{padding:22px 19px 70px}.mfsys-editorial-mega .editorial-copy h2{font-size:23px}}
 @media(max-width:900px){.mfsys-editorial-mega{display:none!important}.mfsys-editorial-nav>.nav-menu>button.nav-menu-trigger[aria-expanded="true"]:after{display:none}}
+
+
+/* Solutions editorial panel refinement — Step 1A */
+/* Restore the strong editorial treatment in the left panel without changing
+   the three solution columns or the Products/Industries menus. */
+.mfsys-editorial-mega .editorial-intro{
+  background:#082f55!important;
+  border-right:1px solid rgba(255,255,255,.14)!important;
+}
+.mfsys-editorial-mega .editorial-art-wrap{
+  z-index:0;
+  background:#082f55;
+}
+.mfsys-editorial-mega .mfsys-editorial-art{
+  opacity:1;
+}
+.mfsys-editorial-mega .mfsys-editorial-art>img{
+  object-position:center center;
+  filter:saturate(.88) contrast(1.04);
+}
+.mfsys-editorial-mega .editorial-art-wrap:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:5;
+  background:
+    linear-gradient(180deg,rgba(4,30,50,.34) 0%,rgba(4,30,50,.52) 48%,rgba(4,30,50,.92) 100%),
+    linear-gradient(90deg,rgba(4,30,50,.78) 0%,rgba(4,30,50,.34) 72%,rgba(4,30,50,.18) 100%);
+  pointer-events:none;
+}
+.mfsys-editorial-mega .art-lake,
+.mfsys-editorial-mega .art-network,
+.mfsys-editorial-mega .art-scanline{
+  display:none!important;
+}
+.mfsys-editorial-mega .editorial-copy{
+  z-index:8;
+  justify-content:flex-start;
+  padding:27px 24px 88px;
+}
+.mfsys-editorial-mega .editorial-eyebrow{
+  color:#ff9a57;
+  margin-bottom:12px;
+}
+.mfsys-editorial-mega .editorial-copy h2{
+  color:#fff;
+  text-shadow:0 2px 12px rgba(0,0,0,.2);
+}
+.mfsys-editorial-mega .editorial-copy p{
+  color:rgba(239,248,255,.86);
+}
+.mfsys-editorial-mega .editorial-copy>a{
+  margin-top:19px;
+  background:#ff6a21;
+  box-shadow:0 10px 24px rgba(0,0,0,.18);
+}
+.mfsys-editorial-mega .editorial-proof{
+  background:rgba(3,35,58,.94);
+  backdrop-filter:blur(5px);
+}
