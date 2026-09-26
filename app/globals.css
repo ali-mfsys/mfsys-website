@@ -769,3 +769,23 @@ brand{line-height:0}.solution-detail-grid{display:grid;grid-template-columns:min
 @media(max-width:1180px){
   .products-menu .product-suite-columns{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
+
+
+/* Products mega menu — approved hero artwork */
+.products-menu .mfsys-art-products{
+  background:#082f55;
+}
+.products-menu .mfsys-art-products img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+}
+.products-menu .mfsys-art-products:before{
+  background:
+    linear-gradient(180deg,rgba(4,30,50,.10) 0%,rgba(4,30,50,.34) 55%,rgba(4,30,50,.82) 100%),
+    linear-gradient(90deg,rgba(4,30,50,.58) 0%,rgba(4,30,50,.10) 100%);
+}
