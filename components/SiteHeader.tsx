@@ -18,16 +18,16 @@ const productGroups=[
 ];
 const solutionMap=new Map(solutions.map(x=>[x[0],x]));
 const productMap=new Map(products.map(x=>[x[0],x]));const productIconMap: Record<string, string> = {
- "CiiHive": "/menu-assets/icons/icon-ciihive.svg",
- "mConnect": "/menu-assets/icons/icon-mconnect.svg",
- "LoanLeaf": "/menu-assets/icons/icon-loanleaf.svg",
- "Smart Mudarabah": "/menu-assets/icons/icon-smart-mudarabah.svg",
- "DigitalKisaan": "/menu-assets/icons/icon-digitalkisaan.svg",
- "LoanIQ": "/menu-assets/icons/icon-loaniq.svg",
- "Zaroraat24": "/menu-assets/icons/icon-zaroraat24.svg",
- "XchangeCarbon": "/menu-assets/icons/icon-xchangecarbon.svg",
- "CargoGuard": "/menu-assets/icons/icon-cargoguard.svg",
- "IFRS9 Impairment Solution": "/menu-assets/icons/icon-ifrs9.svg",
+ "CiiHive": "/menu-assets/icons/icon-banking.svg",
+ "mConnect": "/menu-assets/icons/icon-consulting.svg",
+ "LoanLeaf": "/menu-assets/icons/icon-los.svg",
+ "Smart Mudarabah": "/menu-assets/icons/icon-islamic-finance.svg",
+ "DigitalKisaan": "/menu-assets/icons/icon-agriculture.svg",
+ "LoanIQ": "/menu-assets/icons/icon-ai-credit.svg",
+ "Zaroraat24": "/menu-assets/icons/icon-wallet.svg",
+ "XchangeCarbon": "/menu-assets/icons/icon-climate.svg",
+ "CargoGuard": "/menu-assets/icons/icon-logistics.svg",
+ "IFRS9 Impairment Solution": "/menu-assets/icons/icon-consulting.svg",
 };
 
 const iconMap: Record<string, string> = {
