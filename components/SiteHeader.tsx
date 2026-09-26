@@ -17,7 +17,20 @@ const productGroups=[
  {title:"Climate & Logistics",items:["XchangeCarbon","CargoGuard","IFRS9 Impairment Solution"]}
 ];
 const solutionMap=new Map(solutions.map(x=>[x[0],x]));
-const productMap=new Map(products.map(x=>[x[0],x]));const iconMap: Record<string, string> = {
+const productMap=new Map(products.map(x=>[x[0],x]));const productIconMap: Record<string, string> = {
+ "CiiHive": "/menu-assets/icons/icon-ciihive.svg",
+ "mConnect": "/menu-assets/icons/icon-mconnect.svg",
+ "LoanLeaf": "/menu-assets/icons/icon-loanleaf.svg",
+ "Smart Mudarabah": "/menu-assets/icons/icon-smart-mudarabah.svg",
+ "DigitalKisaan": "/menu-assets/icons/icon-digitalkisaan.svg",
+ "LoanIQ": "/menu-assets/icons/icon-loaniq.svg",
+ "Zaroraat24": "/menu-assets/icons/icon-zaroraat24.svg",
+ "XchangeCarbon": "/menu-assets/icons/icon-xchangecarbon.svg",
+ "CargoGuard": "/menu-assets/icons/icon-cargoguard.svg",
+ "IFRS9 Impairment Solution": "/menu-assets/icons/icon-ifrs9.svg",
+};
+
+const iconMap: Record<string, string> = {
  "Digital Banking Solution": "/menu-assets/icons/icon-banking.svg",
  "Digital Loan Origination System (LOS)": "/menu-assets/icons/icon-los.svg",
  "Islamic Finance": "/menu-assets/icons/icon-islamic-finance.svg",
@@ -35,7 +48,7 @@ function GroupLink({name,kind,onNavigate,featured=false}:{name:string;kind:"solu
  const item=kind==="solution"?solutions.find(x=>x[0]===name):products.find(x=>x[0]===name);
  if(!item)return null;
  return <Link href={item[2]} className={`mfsys-editorial-item${featured?" is-featured":""}`} onClick={onNavigate}>
-  <span className="mfsys-editorial-icon"><img src={iconMap[name] || "/menu-assets/icons/icon-innovation.svg"} alt="" /></span>
+  <span className="mfsys-editorial-icon"><img src={(kind==="product"?productIconMap[name]:iconMap[name]) || "/menu-assets/icons/icon-innovation.svg"} alt="" /></span>
   <span className="mfsys-editorial-item-copy"><strong>{item[0]}</strong><small>{item[1]}</small></span>
   <span className="mfsys-editorial-arrow">›</span>
  </Link>;
@@ -83,10 +96,19 @@ export default function SiteHeader(){
      </div>}
     </div>
     <div className="nav-menu"><button className="nav-menu-trigger" aria-haspopup="true" aria-expanded={open==="products"} onClick={()=>setOpen(open==="products"?null:"products")}>Products <span aria-hidden="true">⌄</span></button>
-     {open==="products"&&<div className="mfsys-mega mfsys-mega--products" role="menu">
-      <div className="mfsys-mega__intro"><span className="mfsys-mega__eyebrow">MFSYS PRODUCTS</span><strong>Purpose-built platforms. Ready for scale.</strong><p>Products engineered around banking, lending, climate and connected enterprise ecosystems.</p><Link className="mfsys-mega__explore" href="/products" onClick={closeAll}>Explore all products <span>→</span></Link></div>
-      <div className="mfsys-mega__body">{productGroups.map(g=><div className="mfsys-mega__group" key={g.title}><span className="mfsys-mega__group-title">{g.title}</span>{g.items.map(name=><GroupLink key={name} name={name} kind="product" onNavigate={closeAll}/>)}</div>)}</div>
-      <Link href="/products/ciihive" className="mfsys-mega__featured" onClick={closeAll}><span className="mfsys-mega__featured-kicker">FEATURED PLATFORM</span><strong>CiiHive</strong><p>AI-native digital banking core for modern financial institutions.</p><span>Explore CiiHive →</span></Link>
+     {open==="products"&&<div className="mfsys-editorial-mega products-menu" role="menu">
+      <section className="product-editorial-intro">
+       <div className="product-editorial-art"><div className="product-art-glow"/><div className="product-art-screen"><span>PRODUCT ECOSYSTEM</span><b>30+</b><small>financial institutions</small><i>CORE • LENDING • PAYMENTS • DATA</i></div><div className="product-art-orbit"/></div>
+       <div className="product-editorial-copy"><span className="editorial-eyebrow">OUR PRODUCTS —</span><h2>Purpose-built products for real-world impact.</h2><p>Scalable, cloud-native platforms trusted by 30+ financial institutions across 12 countries.</p><Link href="/products" onClick={closeAll}>Explore All Products <b>→</b></Link></div>
+      </section>
+      <section className="product-suite">
+       <div className="product-suite-heading"><span>PRODUCT SUITE</span></div>
+       <div className="product-suite-list">{productGroups.flatMap(g=>g.items).map((name,i)=><GroupLink key={name} name={name} kind="product" featured={name==="CiiHive"} onNavigate={closeAll}/>)}</div>
+      </section>
+      <Link href="/products/ciihive" className="product-featured" onClick={closeAll}>
+       <div className="product-featured-art"><div className="ciihive-laptop"><span>CiiHive</span><div/><div/><div/></div><div className="ciihive-phone"><span>CiiHive</span><i/><i/></div></div>
+       <div className="product-featured-copy"><span>FEATURED PRODUCT</span><strong>CiiHive</strong><b>Digital Core Banking Solution</b><p>A modern, scalable and intelligent core banking platform for financial inclusion.</p><em>Learn More →</em></div>
+      </Link>
      </div>}
     </div>
     <div className="nav-menu"><button className="nav-menu-trigger" aria-haspopup="true" aria-expanded={open==="industries"} onClick={()=>setOpen(open==="industries"?null:"industries")}>Industries <span aria-hidden="true">⌄</span></button>
