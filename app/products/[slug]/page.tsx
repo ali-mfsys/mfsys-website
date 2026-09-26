@@ -5,7 +5,7 @@ import { productData } from "../../../lib/product-data";
 
 type Params = { slug: string };
 
-function getProduct(slug: string){
+export function generateStaticParams(){\n  return productData.filter((product) => ["Glaxity","Include Mobile App","ShariahOne"].includes(product.name)).map((product) => ({slug: product.href.split("/").pop()!}));\n}\n\nfunction getProduct(slug: string){
   return productData.find((product) => product.href === `/products/${slug}`);
 }
 
