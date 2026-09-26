@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import ProductPage from "../../../../components/ProductPage";
-import { productData } from "../../../../lib/product-data";
+import ProductPage from "../../../components/ProductPage";
+import { productData } from "../../../lib/product-data";
 
 export const metadata: Metadata = {
   title: "ShariahOne | MFSYS",
