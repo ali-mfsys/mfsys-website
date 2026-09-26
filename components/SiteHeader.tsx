@@ -12,22 +12,30 @@ const solutionGroups=[
  {title:"Sector & Enterprise",items:["Agri Finance & Supply Chain","Climate & Carbon","Logistics & Supply Chain","Agentic AI Enterprise Automation","AI & Digital Transformation Consulting"]}
 ];
 const productGroups=[
- {title:"Core Platform",items:["CiiHive","mConnect"]},
- {title:"Lending & Finance",items:["LoanLeaf","Smart Mudarabah","LoanIQ","DigitalKisaan"]},
- {title:"Climate & Logistics",items:["XchangeCarbon","CargoGuard","IFRS9 Impairment Solution"]}
+ {title:"Core Banking Platform",items:["CiiHive","Glaxity","mConnect"]},
+ {title:"Digital Finance",items:["LoanLeaf","Include Mobile App","Zaroorat24"]},
+ {title:"Islamic Finance",items:["ShariahOne","Smart Mudarba"]},
+ {title:"AI & Credit Scoring",items:["LoanIQ"]},
+ {title:"Compliance and Risk",items:["IFRS9"]},
+ {title:"Digital Agriculture",items:["DigitalKisaan"]},
+ {title:"Climate Solutions",items:["XchangeCarbon"]},
+ {title:"Logistic Solutions",items:["CargoGuard"]}
 ];
 const solutionMap=new Map(solutions.map(x=>[x[0],x]));
 const productMap=new Map(products.map(x=>[x[0],x]));const productIconMap: Record<string, string> = {
  "CiiHive": "/menu-assets/icons/icon-banking.svg",
  "mConnect": "/menu-assets/icons/icon-consulting.svg",
+ "Glaxity": "/menu-assets/icons/icon-banking.svg",
  "LoanLeaf": "/menu-assets/icons/icon-los.svg",
- "Smart Mudarabah": "/menu-assets/icons/icon-islamic-finance.svg",
+ "Smart Mudarba": "/menu-assets/icons/icon-islamic-finance.svg",
  "DigitalKisaan": "/menu-assets/icons/icon-agriculture.svg",
  "LoanIQ": "/menu-assets/icons/icon-ai-credit.svg",
- "Zaroraat24": "/menu-assets/icons/icon-wallet.svg",
+ "Zaroorat24": "/menu-assets/icons/icon-wallet.svg",
+ "Include Mobile App": "/menu-assets/icons/icon-mobile-lending.svg",
+ "ShariahOne": "/menu-assets/icons/icon-islamic-finance.svg",
  "XchangeCarbon": "/menu-assets/icons/icon-climate.svg",
  "CargoGuard": "/menu-assets/icons/icon-logistics.svg",
- "IFRS9 Impairment Solution": "/menu-assets/icons/icon-consulting.svg",
+ "IFRS9": "/menu-assets/icons/icon-consulting.svg",
 };
 
 const iconMap: Record<string, string> = {
@@ -111,7 +119,7 @@ export default function SiteHeader(){
         <p>Scalable, cloud-native platforms trusted by 30+ financial institutions across 12 countries.</p>
         <Link href="/products" onClick={closeAll}>Explore All Products <b>→</b></Link>
        </div>
-       <div className="editorial-proof"><span><b>10</b>Products</span><span><b>30+</b>Financial Institutions</span><span><b>12+</b>Countries</span></div>
+       <div className="editorial-proof"><span><b>13</b>Products</span><span><b>30+</b>Financial Institutions</span><span><b>12+</b>Countries</span></div>
       </section>
       <section className="editorial-solution-columns product-suite-columns">
        {productGroups.map(group=><div className="editorial-group" key={group.title}><h3>{group.title}</h3>{group.items.map(name=><GroupLink key={name} name={name} kind="product" featured={name==="CiiHive"} onNavigate={closeAll}/>)}</div>)}
@@ -125,7 +133,7 @@ export default function SiteHeader(){
         <span>FEATURED PRODUCT</span>
         <strong>CiiHive</strong>
         <b>Digital Core Banking Solution</b>
-        <p>A modern, scalable and intelligent core banking platform for financial inclusion.</p>
+        <p>A purpose-built core banking system for microfinance banks, SACOs, MFIs, NBFCs, fintechs and cooperatives.</p>
         <em>Learn More →</em>
        </div>
       </Link>
