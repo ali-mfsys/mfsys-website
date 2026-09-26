@@ -12,7 +12,7 @@ export const metadata: Metadata = { title: "Products | MFSYS", description: "Exp
 export default async function Page(){
   const cmsProducts=await getPublishedProducts();
   const items=cmsProducts.map(p=>[p.name,p.tagline,`/products/${p.slug}`] as const);
-  const products=items.length?items:staticProducts;
+  const products=items.length?items:staticProducts.map(([name,description,href])=>[name,description,href] as const);
   return <main id="main">
     <PageHero eyebrow="PRODUCTS" title="Purpose-built platforms. Intelligence at the core." text="A portfolio of enterprise products designed for financial inclusion, sustainable growth and connected operations."/>
     <section className="container section"><CardGrid items={products}/></section>
