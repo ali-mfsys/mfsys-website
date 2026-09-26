@@ -97,17 +97,37 @@ export default function SiteHeader(){
     </div>
     <div className="nav-menu"><button className="nav-menu-trigger" aria-haspopup="true" aria-expanded={open==="products"} onClick={()=>setOpen(open==="products"?null:"products")}>Products <span aria-hidden="true">⌄</span></button>
      {open==="products"&&<div className="mfsys-editorial-mega products-menu" role="menu">
-      <section className="product-editorial-intro">
-       <div className="product-editorial-art"><div className="product-art-glow"/><div className="product-art-screen"><span>PRODUCT ECOSYSTEM</span><b>30+</b><small>financial institutions</small><i>CORE • LENDING • PAYMENTS • DATA</i></div><div className="product-art-orbit"/></div>
-       <div className="product-editorial-copy"><span className="editorial-eyebrow">OUR PRODUCTS —</span><h2>Purpose-built products for real-world impact.</h2><p>Scalable, cloud-native platforms trusted by 30+ financial institutions across 12 countries.</p><Link href="/products" onClick={closeAll}>Explore All Products <b>→</b></Link></div>
+      <section className="editorial-intro product-editorial-intro">
+       <div className="editorial-art-wrap">
+        <div className="mfsys-editorial-art mfsys-art-products" aria-hidden="true">
+         <div className="product-art-glow"/>
+         <div className="product-art-screen"><span>PRODUCT ECOSYSTEM</span><b>30+</b><small>financial institutions</small><i>CORE • LENDING • PAYMENTS • DATA</i></div>
+         <div className="product-art-orbit"/>
+        </div>
+       </div>
+       <div className="editorial-copy">
+        <span className="editorial-eyebrow">OUR PRODUCTS —</span>
+        <h2>Purpose-built products for real-world impact.</h2>
+        <p>Scalable, cloud-native platforms trusted by 30+ financial institutions across 12 countries.</p>
+        <Link href="/products" onClick={closeAll}>Explore All Products <b>→</b></Link>
+       </div>
+       <div className="editorial-proof"><span><b>10</b>Products</span><span><b>30+</b>Financial Institutions</span><span><b>12+</b>Countries</span></div>
       </section>
-      <section className="product-suite">
-       <div className="product-suite-heading"><span>PRODUCT SUITE</span></div>
-       <div className="product-suite-list">{productGroups.flatMap(g=>g.items).map((name,i)=><GroupLink key={name} name={name} kind="product" featured={name==="CiiHive"} onNavigate={closeAll}/>)}</div>
+      <section className="editorial-solution-columns product-suite-columns">
+       {productGroups.map(group=><div className="editorial-group" key={group.title}><h3>{group.title}</h3>{group.items.map(name=><GroupLink key={name} name={name} kind="product" featured={name==="CiiHive"} onNavigate={closeAll}/>)}</div>)}
       </section>
-      <Link href="/products/ciihive" className="product-featured" onClick={closeAll}>
-       <div className="product-featured-art"><div className="ciihive-laptop"><span>CiiHive</span><div/><div/><div/></div><div className="ciihive-phone"><span>CiiHive</span><i/><i/></div></div>
-       <div className="product-featured-copy"><span>FEATURED PRODUCT</span><strong>CiiHive</strong><b>Digital Core Banking Solution</b><p>A modern, scalable and intelligent core banking platform for financial inclusion.</p><em>Learn More →</em></div>
+      <Link href="/products/ciihive" className="editorial-impact product-featured" onClick={closeAll}>
+       <div className="product-featured-art">
+        <div className="ciihive-laptop"><span>CiiHive</span><div/><div/><div/></div>
+        <div className="ciihive-phone"><span>CiiHive</span><i/><i/></div>
+       </div>
+       <div className="impact-copy product-featured-copy">
+        <span>FEATURED PRODUCT</span>
+        <strong>CiiHive</strong>
+        <b>Digital Core Banking Solution</b>
+        <p>A modern, scalable and intelligent core banking platform for financial inclusion.</p>
+        <em>Learn More →</em>
+       </div>
       </Link>
      </div>}
     </div>
