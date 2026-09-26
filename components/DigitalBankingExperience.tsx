@@ -44,9 +44,12 @@ export default function DigitalBankingExperience(){
    <div className="dbx-platform">
     <aside className="dbx-side dbx-side-left"><div className="dbx-side-title">Channels & Customers</div>{channels.map((x,i)=><button key={x} onClick={()=>setActive((i%8)+1)}><span>{["▯","▱","▥","♙","▦"][i]}</span>{x}</button>)}<div className="dbx-side-card"><strong>Languages</strong><p>Multilingual UI<br/><small>English, Urdu, Arabic and more</small></p></div></aside>
     <div className="dbx-core-layout">
+     <div key={selected.id} className={"dbx-selected dbx-selected-"+selected.color} aria-live="polite">
+      <div className="dbx-selected-copy"><div className="dbx-selected-kicker"><span className={"dbx-dot dbx-dot-"+selected.color}></span><small>SELECTED CAPABILITY</small><b>{String(selected.id).padStart(2,"0")} / 08</b></div><h3>{selected.title}</h3><p>{selected.description}</p></div>
+      <ul>{selected.features.map(f=><li key={f}>{f}</li>)}</ul>
+     </div>
      <div className="dbx-module-grid">{modules.map(m=><button key={m.id} className={"dbx-module dbx-"+m.color+(active===m.id?" is-active":"")} onClick={()=>setActive(m.id)}><span className="dbx-module-num">{String(m.id).padStart(2,"0")}</span><span className="dbx-module-icon">{m.icon}</span><strong>{m.title}</strong><p>{m.description}</p><div className="dbx-feature-preview">{m.features.slice(0,3).map(f=><span key={f}>• {f}</span>)}</div></button>)}</div>
      <div className="dbx-core"><div className="dbx-core-ring"><span>Customers</span><span>Accounts</span><span>Products</span><span>Transactions</span><span>Ledger</span><span>Data</span></div><div className="dbx-core-center"><small>MFSYS</small><b>CiiHive</b><strong>Digital Banking Core</strong><em>Single Banking System of Record</em></div></div>
-     <div className="dbx-selected"><div><span className={"dbx-dot dbx-dot-"+selected.color}></span><small>SELECTED CAPABILITY</small><h3>{selected.title}</h3><p>{selected.description}</p></div><ul>{selected.features.map(f=><li key={f}>{f}</li>)}</ul></div>
     </div>
     <aside className="dbx-side dbx-side-right"><div className="dbx-side-title">Supported Institutions</div>{institutions.map((x,i)=><button key={x} onClick={()=>setActive(((i+3)%8)+1)}><span>{["◒","◈","▥","♙","⌘","◫"][i]}</span>{x}</button>)}<div className="dbx-side-card"><strong>Multi-Currency</strong><p>USD · EUR · GBP · PKR</p></div></aside>
    </div>
