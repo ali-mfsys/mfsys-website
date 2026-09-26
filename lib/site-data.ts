@@ -14,12 +14,12 @@ export const solutions=[
 
 export const products=[
 ["CiiHive","Core banking for microfinance banks, SACOs, MFIs, NBFCs, fintechs and cooperatives.","/products/ciihive","Core Banking Platform"],
-["Glaxity","Cloud-native, multi-tenant core banking for microfinance and banking.","/products","Core Banking Platform"],
+["Glaxity","Cloud-native, multi-tenant core banking for microfinance and banking.","/products/glaxity","Core Banking Platform"],
 ["mConnect","Middleware connecting core banking to wallets, payment switches and third-party services.","/products/mconnect","Core Banking Platform"],
 ["LoanLeaf","End-to-end digital loan origination from application to disbursement.","/products/loanleaf","Digital Finance"],
-["Include Mobile App","Full mobile banking for customers to manage their financials from mobile.","/products","Digital Finance"],
+["Include Mobile App","Full mobile banking for customers to manage their financials from mobile.","/products/include-mobile-app","Digital Finance"],
 ["Zaroorat24","24/7 nano lending with on-demand, need-based financing and rapid disbursement.","/products/zaroraat24","Digital Finance"],
-["ShariahOne","Shariah-compliant banking platform for Islamic products, contracts and profit distribution.","/products","Islamic Finance"],
+["ShariahOne","Shariah-compliant banking platform for Islamic products, contracts and profit distribution.","/products/shariahone","Islamic Finance"],
 ["Smart Mudarba","Mudaraba pool management, profit calculation and weightage-based distribution.","/products/smart-mudarabah","Islamic Finance"],
 ["LoanIQ","AI and machine-learning credit scoring using alternative data for thin-file borrowers.","/products/loaniq","AI & Credit Scoring"],
 ["IFRS9","Automated expected credit loss staging, provisioning and reporting.","/products/ifrs9","Compliance and Risk"],
