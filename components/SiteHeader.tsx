@@ -108,9 +108,7 @@ export default function SiteHeader(){
       <section className="editorial-intro product-editorial-intro">
        <div className="editorial-art-wrap">
         <div className="mfsys-editorial-art mfsys-art-products" aria-hidden="true">
-         <div className="product-art-glow"/>
-         <div className="product-art-screen"><span>PRODUCT ECOSYSTEM</span><b>30+</b><small>financial institutions</small><i>CORE • LENDING • PAYMENTS • DATA</i></div>
-         <div className="product-art-orbit"/>
+         <img src="/menu-assets/graphics/products-hero.jpg" alt="" />
         </div>
        </div>
        <div className="editorial-copy">
