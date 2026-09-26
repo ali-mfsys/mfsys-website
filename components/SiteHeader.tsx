@@ -41,7 +41,7 @@ function GroupLink({name,kind,onNavigate,featured=false}:{name:string;kind:"solu
  </Link>;
 }
 
-function SolutionsVisual(){return <div className="mfsys-editorial-art mfsys-art-solutions" aria-hidden="true"><img src="/menu-assets/graphics/solutions-hero.svg" alt="" /></div>}
+function SolutionsVisual(){return <div className="mfsys-editorial-art mfsys-art-solutions" aria-hidden="true"><img src="/menu-assets/graphics/solutions-tech-editorial.jpg" alt="" /></div>}
 
 
 
