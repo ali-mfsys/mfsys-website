@@ -962,3 +962,51 @@ brand{line-height:0}.solution-detail-grid{display:grid;grid-template-columns:min
 .products-menu .product-featured-copy{
   background:linear-gradient(180deg,#dff2ff 0%,rgba(223,242,255,.96) 34%,rgba(223,242,255,.20) 52%,rgba(223,242,255,0) 64%);
 }
+
+
+/* Products mega menu — left editorial panel: branded patterned background */
+.products-menu .product-editorial-intro{
+  background:
+    radial-gradient(circle at 82% 18%,rgba(38,166,255,.16),transparent 28%),
+    radial-gradient(circle at 18% 78%,rgba(17,178,107,.08),transparent 30%),
+    linear-gradient(135deg,#082f55 0%,#061f36 58%,#041727 100%)!important;
+  overflow:hidden;
+}
+.products-menu .product-editorial-intro .editorial-art-wrap{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  background:transparent;
+  opacity:.34;
+}
+.products-menu .product-editorial-intro .mfsys-art-products{
+  opacity:1;
+  background:
+    linear-gradient(135deg,rgba(8,47,85,.22),rgba(4,23,39,.42));
+}
+.products-menu .product-editorial-intro .mfsys-art-products img{
+  opacity:.28;
+  filter:saturate(.75) contrast(1.05) brightness(.78);
+}
+.products-menu .product-editorial-intro .mfsys-art-products:after{
+  background:
+    radial-gradient(circle at 78% 22%,rgba(64,185,255,.22),transparent 30%),
+    repeating-linear-gradient(135deg,rgba(122,207,255,.045) 0,rgba(122,207,255,.045) 1px,transparent 1px,transparent 24px),
+    linear-gradient(135deg,rgba(4,23,39,.12),rgba(4,23,39,.52));
+}
+.products-menu .product-editorial-intro:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  opacity:.42;
+  background:
+    linear-gradient(115deg,transparent 0 44%,rgba(92,200,255,.10) 44.2%,transparent 44.5%),
+    linear-gradient(25deg,transparent 0 64%,rgba(92,200,255,.08) 64.2%,transparent 64.5%);
+}
+.products-menu .product-editorial-intro .editorial-copy,
+.products-menu .product-editorial-intro .editorial-proof{
+  position:relative;
+  z-index:2;
+}
