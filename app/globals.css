@@ -859,3 +859,36 @@ brand{line-height:0}.solution-detail-grid{display:grid;grid-template-columns:min
   object-position:center top;
   background:#dff2ff;
 }
+
+
+/* Products mega menu — left editorial visual refinement */
+.products-menu .product-editorial-intro .editorial-art-wrap{
+  background:#061f36;
+}
+.products-menu .product-editorial-intro .mfsys-art-products{
+  background:#061f36;
+  opacity:1;
+}
+.products-menu .product-editorial-intro .mfsys-art-products img{
+  opacity:.88;
+  object-position:center;
+  filter:saturate(1.08) contrast(1.04) brightness(.82);
+}
+.products-menu .product-editorial-intro .mfsys-art-products:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 78% 24%,rgba(40,168,255,.22),transparent 34%),
+    linear-gradient(135deg,rgba(3,25,43,.18) 0%,rgba(3,25,43,.06) 45%,rgba(3,25,43,.48) 100%);
+  pointer-events:none;
+}
+.products-menu .product-editorial-intro .editorial-copy{
+  background:linear-gradient(180deg,rgba(5,31,52,.06) 0%,rgba(5,31,52,.08) 50%,rgba(5,31,52,.20) 100%);
+}
+.products-menu .product-editorial-intro .editorial-copy h2{
+  text-shadow:0 2px 18px rgba(0,0,0,.28);
+}
+.products-menu .product-editorial-intro .editorial-copy p{
+  text-shadow:0 1px 10px rgba(0,0,0,.24);
+}
