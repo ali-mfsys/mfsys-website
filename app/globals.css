@@ -941,3 +941,24 @@ brand{line-height:0}.solution-detail-grid{display:grid;grid-template-columns:min
 .products-menu .product-featured-copy>b{color:#0b5c8d}
 .products-menu .product-featured-copy p{color:#315d75}
 .products-menu .product-featured-copy em{color:#006ee5}
+
+
+/* Products mega menu — final CiiHive dark-tech balance */
+.products-menu .product-featured-art{
+  height:58%;
+  background:
+    radial-gradient(circle at 50% 35%,rgba(38,166,255,.28),transparent 38%),
+    linear-gradient(180deg,#2d7fa8 0%,#123f61 42%,#061f36 100%);
+}
+.products-menu .product-featured-art img{
+  filter:saturate(.94) contrast(1.08) brightness(.70);
+  mix-blend-mode:normal;
+}
+.products-menu .product-featured-art:after{
+  background:
+    linear-gradient(180deg,rgba(6,31,54,.12) 0%,rgba(6,31,54,.26) 34%,rgba(6,31,54,.78) 100%),
+    radial-gradient(circle at 50% 58%,rgba(45,177,255,.24),transparent 42%);
+}
+.products-menu .product-featured-copy{
+  background:linear-gradient(180deg,#dff2ff 0%,rgba(223,242,255,.96) 34%,rgba(223,242,255,.20) 52%,rgba(223,242,255,0) 64%);
+}
