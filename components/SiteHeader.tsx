@@ -108,7 +108,7 @@ export default function SiteHeader(){
       <section className="editorial-intro product-editorial-intro">
        <div className="editorial-art-wrap">
         <div className="mfsys-editorial-art mfsys-art-products" aria-hidden="true">
-         <img src="/menu-assets/graphics/products-hero.jpg" alt="" />
+         <img src="/menu-assets/graphics/products-editorial-tech.svg" alt="" />
         </div>
        </div>
        <div className="editorial-copy">
