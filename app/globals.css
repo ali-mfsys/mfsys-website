@@ -666,7 +666,7 @@ brand{line-height:0}.solution-detail-grid{display:grid;grid-template-columns:min
   position:absolute;
   inset:auto 0 0;
   z-index:0;
-  height:54%;
+  height:38%;
   overflow:hidden;
   background:#082f55;
 }
@@ -676,7 +676,7 @@ brand{line-height:0}.solution-detail-grid{display:grid;grid-template-columns:min
   height:100%;
   object-fit:cover;
   object-position:center center;
-  opacity:.94;
+  opacity:.96;
   filter:saturate(1.04) contrast(1.05) brightness(.82);
 }
 .products-menu .product-featured-visual:after{
