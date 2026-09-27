@@ -28,4 +28,4 @@ export const products=[
 ["CargoGuard","Logistics platform, protects loads against fraud and theft, real-time tracking","/products/cargoguard","Logistic Solutions"]
 ] as const;
 
-export const industries=["Banking, Microfinance, Fintech & SACOs","Islamic Finance","Agriculture","Climate & Sustainability","Development Finance","Logistics"];
+export const industries=["Microfinance & Banking","Islamic Finance","Agriculture & Rural Development","Climate & Carbon","Logistics & Supply Chain","Government & Development"];
