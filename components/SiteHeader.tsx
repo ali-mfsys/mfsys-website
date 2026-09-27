@@ -1,5 +1,29 @@
 "use client";
 import Link from "next/link";
+const industryVisualThemes:Record<string,{a:string;b:string;c:string;kind:string}>={
+ banking:{a:"#0B2D5B",b:"#1E66FF",c:"#7FD7FF",kind:"banking"},
+ islamic:{a:"#073B3A",b:"#11B26B",c:"#C7F5DF",kind:"islamic"},
+ agriculture:{a:"#244A2B",b:"#6FAF55",c:"#E6C66A",kind:"agriculture"},
+ climate:{a:"#123B5A",b:"#11B26B",c:"#8ED9FF",kind:"climate"},
+ logistics:{a:"#26364A",b:"#FF6A00",c:"#FFD18A",kind:"logistics"},
+ government:{a:"#243B68",b:"#6E8FCB",c:"#E4ECFF",kind:"government"}
+};
+function IndustryVisual({kind,intro=false}:{kind:string;intro?:boolean}){
+ const t=industryVisualThemes[kind]||industryVisualThemes.banking;
+ return <svg className="mfsys-industry-svg" viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <defs><linearGradient id={kind+"g"} x1="0" y1="0" x2="1" y2="1"><stop stopColor={t.a}/><stop offset=".55" stopColor={t.b}/><stop offset="1" stopColor={t.c}/></linearGradient><linearGradient id={kind+"w"} x1="0" y1="0" x2="0" y2="1"><stop stopColor="#fff" stopOpacity=".08"/><stop offset="1" stopColor="#031F32" stopOpacity=".62"/></linearGradient></defs>
+  <rect width="400" height="220" fill={"url(#"+kind+"g)"}/><rect width="400" height="220" fill={"url(#"+kind+"w)"}/>
+  <g opacity=".34" fill="none" stroke="#fff" strokeWidth="1">{Array.from({length:7},(_,i)=><path key={i} d={"M0 "+(35+i*28)+"H400"}/>)}{Array.from({length:9},(_,i)=><path key={"v"+i} d={"M"+(20+i*48)+" 0V220"}/>)}</g>
+  {kind==="banking"&&<g fill="none" stroke="#fff" strokeWidth="4" opacity=".9"><path d="M65 150h270M82 150V105h236v45M68 105l132-58 132 58M108 150v-45M152 150v-45M200 150v-45M248 150v-45M292 150v-45"/></g>}
+  {kind==="islamic"&&<g fill="none" stroke="#fff" strokeWidth="3" opacity=".9"><path d="M75 150h250M105 150v-45h190v45M105 105l95-48 95 48M170 105v-35M230 105V70"/><path d="M184 72a16 16 0 0 1 32 0v33h-32z"/></g>}
+  {kind==="agriculture"&&<g fill="none" stroke="#fff" strokeWidth="3" opacity=".9"><path d="M0 174Q90 112 180 166T400 140"/><path d="M200 178V92M200 118q-42-28-62-4M200 132q45-28 72-2M200 98q-25-34-18-50M200 112q28-38 52-39"/></g>}
+  {kind==="climate"&&<g fill="none" stroke="#fff" strokeWidth="4" opacity=".9"><path d="M72 166h256M105 166l25-82h20l25 82M130 84l10-27 10 27M205 166l18-105 18 105M223 61l10-26 10 26"/><circle cx="316" cy="48" r="23" fill="none"/><path d="M316 25v46M293 48h46"/></g>}
+  {kind==="logistics"&&<g fill="none" stroke="#fff" strokeWidth="4" opacity=".9"><path d="M60 148h280M80 148V94h155v54M235 148v-35h52l28 35M108 148a22 22 0 1 0 44 0M267 148a22 22 0 1 0 44 0"/><path d="M92 94h88v54"/></g>}
+  {kind==="government"&&<g fill="none" stroke="#fff" strokeWidth="4" opacity=".9"><path d="M70 160h260M88 160v-60h224v60M78 100l122-52 122 52M120 160v-60M160 160v-60M200 160v-60M240 160v-60M280 160v-60"/></g>}
+  {intro&&<g fill="none" stroke="#fff" strokeWidth="2" opacity=".7"><circle cx="320" cy="55" r="7"/><circle cx="355" cy="105" r="7"/><circle cx="290" cy="120" r="7"/><path d="M320 55l35 50-65 15 30-65"/></g>}
+ </svg>;
+}
+
 import {useEffect,useRef,useState} from "react";
 import {usePathname} from "next/navigation";
 import {solutions,products,industries} from "../lib/site-data";
@@ -23,12 +47,12 @@ const productGroups=[
 ];
 const solutionMap=new Map(solutions.map(x=>[x[0],x]));
 const industryMenuItems=[
- {name:"Microfinance & Banking",description:"Inclusive and digital financial services",icon:"/menu-assets/icons/icon-banking.svg",spritePosition:"0% 0%"},
- {name:"Islamic Finance",description:"Shariah-compliant banking and finance",icon:"/menu-assets/icons/icon-islamic-finance.svg",spritePosition:"50% 0%"},
- {name:"Agriculture & Rural Development",description:"Finance for farmers and value chains",icon:"/menu-assets/icons/icon-agriculture.svg",spritePosition:"100% 0%"},
- {name:"Climate & Carbon",description:"Carbon markets and climate resilience",icon:"/menu-assets/icons/icon-climate.svg",spritePosition:"0% 50%"},
- {name:"Logistics & Supply Chain",description:"Connected and efficient supply chains",icon:"/menu-assets/icons/icon-logistics.svg",spritePosition:"50% 50%"},
- {name:"Government & Development",description:"Digital solutions for greater impact",icon:"/menu-assets/icons/icon-consulting.svg",spritePosition:"100% 50%"}
+ {name:"Microfinance & Banking",description:"Inclusive and digital financial services",icon:"/menu-assets/icons/icon-banking.svg",visual:"banking"},
+ {name:"Islamic Finance",description:"Shariah-compliant banking and finance",icon:"/menu-assets/icons/icon-islamic-finance.svg",visual:"islamic"},
+ {name:"Agriculture & Rural Development",description:"Finance for farmers and value chains",icon:"/menu-assets/icons/icon-agriculture.svg",visual:"agriculture"},
+ {name:"Climate & Carbon",description:"Carbon markets and climate resilience",icon:"/menu-assets/icons/icon-climate.svg",visual:"climate"},
+ {name:"Logistics & Supply Chain",description:"Connected and efficient supply chains",icon:"/menu-assets/icons/icon-logistics.svg",visual:"logistics"},
+ {name:"Government & Development",description:"Digital solutions for greater impact",icon:"/menu-assets/icons/icon-consulting.svg",visual:"government"}
 ];
 
 const productMap=new Map(products.map(x=>[x[0],x]));const productIconMap: Record<string, string> = {
@@ -146,9 +170,7 @@ export default function SiteHeader(){
     <div className="nav-menu"><button className="nav-menu-trigger" aria-haspopup="true" aria-expanded={open==="industries"} onClick={()=>setOpen(open==="industries"?null:"industries")}>Industries <span aria-hidden="true">⌄</span></button>
      {open==="industries"&&<div className="mfsys-industries-menu" role="menu">
       <section className="mfsys-industries-intro">
-       <div className="mfsys-industries-visual" aria-hidden="true" style={{backgroundImage:'url("/menu-assets/graphics/industry-sprite.webp")',backgroundSize:"300% 300%",backgroundPosition:"0% 100%",backgroundRepeat:"no-repeat"}}>
-        <div className="mfsys-industries-visual-wash"/>
-        <div className="mfsys-industries-network"><i className="network-node n1">⌂</i><i className="network-node n2">◌</i><i className="network-node n3">▦</i><i className="network-node n4">⌁</i><i className="network-node n5">▣</i></div>
+       <div className="mfsys-industries-visual"><IndustryVisual kind="banking" intro/><div className="mfsys-industries-network"><i className="network-node n1">⌂</i><i className="network-node n2">◌</i><i className="network-node n3">▦</i><i className="network-node n4">⌁</i><i className="network-node n5">▣</i></div>
        </div>
        <div className="mfsys-industries-intro-copy">
         <span className="mfsys-industries-eyebrow">OUR INDUSTRIES <b>—</b></span>
@@ -159,7 +181,7 @@ export default function SiteHeader(){
       </section>
       <section className="mfsys-industries-grid" aria-label="Industries">
        {industryMenuItems.map((item,i)=><Link className="mfsys-industry-card" key={item.name} href="/industries" role="menuitem" onClick={closeAll}>
-        <div className="mfsys-industry-image" style={{backgroundImage:'url("/menu-assets/graphics/industry-sprite.webp")',backgroundSize:"300% 300%",backgroundPosition:item.spritePosition,backgroundRepeat:"no-repeat"}}><span className="mfsys-industry-icon"><img src={item.icon} alt="" /></span></div>
+        <div className="mfsys-industry-image"><IndustryVisual kind={item.visual}/><span className="mfsys-industry-icon"><img src={item.icon} alt="" /></span></div>
         <div className="mfsys-industry-copy"><strong>{item.name}</strong><p>{item.description}</p><span className="mfsys-industry-arrow">›</span></div>
        </Link>)}
       </section>
