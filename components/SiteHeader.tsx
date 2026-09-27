@@ -146,8 +146,7 @@ export default function SiteHeader(){
     <div className="nav-menu"><button className="nav-menu-trigger" aria-haspopup="true" aria-expanded={open==="industries"} onClick={()=>setOpen(open==="industries"?null:"industries")}>Industries <span aria-hidden="true">⌄</span></button>
      {open==="industries"&&<div className="mfsys-industries-menu" role="menu">
       <section className="mfsys-industries-intro">
-       <div className="mfsys-industries-visual" aria-hidden="true">
-        <img src="https://media.githubusercontent.com/media/ali-mfsys/mfsys-website/main/public/menu-assets/graphics/impact-mountains.jpg" alt="" />
+       <div className="mfsys-industries-visual" aria-hidden="true" style={{backgroundImage:'url("/menu-assets/graphics/industry-sprite.webp")',backgroundSize:"300% 300%",backgroundPosition:"0% 100%",backgroundRepeat:"no-repeat"}}>
         <div className="mfsys-industries-visual-wash"/>
         <div className="mfsys-industries-network"><i className="network-node n1">⌂</i><i className="network-node n2">◌</i><i className="network-node n3">▦</i><i className="network-node n4">⌁</i><i className="network-node n5">▣</i></div>
        </div>
@@ -160,7 +159,7 @@ export default function SiteHeader(){
       </section>
       <section className="mfsys-industries-grid" aria-label="Industries">
        {industryMenuItems.map((item,i)=><Link className="mfsys-industry-card" key={item.name} href="/industries" role="menuitem" onClick={closeAll}>
-        <div className="mfsys-industry-image"><img src={item.image} alt="" /><span className="mfsys-industry-icon"><img src={item.icon} alt="" /></span></div>
+        <div className="mfsys-industry-image" style={{backgroundImage:'url("/menu-assets/graphics/industry-sprite.webp")',backgroundSize:"300% 300%",backgroundPosition:item.spritePosition,backgroundRepeat:"no-repeat"}}><span className="mfsys-industry-icon"><img src={item.icon} alt="" /></span></div>
         <div className="mfsys-industry-copy"><strong>{item.name}</strong><p>{item.description}</p><span className="mfsys-industry-arrow">›</span></div>
        </Link>)}
       </section>
