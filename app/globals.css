@@ -1248,3 +1248,24 @@ brand{line-height:0}.solution-detail-grid{display:grid;grid-template-columns:min
 .products-menu .product-featured-art:after{
   display:none!important;
 }
+
+
+/* Products dropdown — hard image-free guard for both editorial side panels */
+.products-menu .product-editorial-intro{
+  background-image:none!important;
+}
+.products-menu .product-editorial-intro img,
+.products-menu .product-editorial-intro picture,
+.products-menu .product-editorial-intro video{
+  display:none!important;
+}
+.products-menu .product-featured-art{
+  background-image:
+    radial-gradient(circle at 58% 30%,rgba(42,185,255,.18),transparent 38%),
+    linear-gradient(180deg,#0b4b82 0%,#082f55 58%,#041b32 100%)!important;
+}
+.products-menu .product-featured-art img,
+.products-menu .product-featured-art picture,
+.products-menu .product-featured-art video{
+  display:none!important;
+}
