@@ -851,3 +851,11 @@ brand{line-height:0}.solution-detail-grid{display:grid;grid-template-columns:min
 .products-menu .product-featured-copy>b{color:#0b5c8d}
 .products-menu .product-featured-copy p{color:#315d75}
 .products-menu .product-featured-copy em{color:#006ee5}
+
+
+/* Products mega menu — fit approved CiiHive artwork without cropping */
+.products-menu .product-featured-art img{
+  object-fit:contain;
+  object-position:center top;
+  background:#dff2ff;
+}
