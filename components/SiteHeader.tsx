@@ -24,9 +24,9 @@ const productGroups=[
 const solutionMap=new Map(solutions.map(x=>[x[0],x]));
 const industryMenuItems=[
  {name:"Microfinance & Banking",description:"Inclusive and digital financial services",image:"/menu-assets/graphics/microfinance-banking.jpg",fallback:"/menu-assets/graphics/products-editorial-banking.jpg",icon:"/menu-assets/icons/icon-banking.svg"},
- {name:"Islamic Finance",description:"Shariah-compliant banking and finance",image:"/menu-assets/graphics/islamic-finance.jpg",fallback:"/menu-assets/graphics/impact-mountains.svg",icon:"/menu-assets/icons/icon-islamic-finance.svg"},
+ {name:"Islamic Finance",description:"Shariah-compliant banking and finance",image:"/menu-assets/graphics/islamic-finance-menu.jpg",fallback:"/menu-assets/graphics/impact-mountains.svg",icon:"/menu-assets/icons/icon-islamic-finance.svg"},
  {name:"Agriculture & Rural Development",description:"Finance for farmers and value chains",image:"/menu-assets/graphics/agriculture-rural-development.jpg",fallback:"/menu-assets/graphics/impact-tech-farmer.jpg",icon:"/menu-assets/icons/icon-agriculture.svg"},
- {name:"Climate & Carbon",description:"Carbon markets and climate resilience",image:"/menu-assets/graphics/climate-carbon.jpg",fallback:"/menu-assets/graphics/impact-mountains.svg",icon:"/menu-assets/icons/icon-climate.svg"},
+ {name:"Climate & Carbon",description:"Carbon markets and climate resilience",image:"/menu-assets/graphics/climate-carbon-menu.jpg",fallback:"/menu-assets/graphics/impact-mountains.svg",icon:"/menu-assets/icons/icon-climate.svg"},
  {name:"Logistics & Supply Chain",description:"Connected and efficient supply chains",image:"/menu-assets/graphics/logistics-supply-chain.jpg",fallback:"/menu-assets/graphics/products-hero.jpg",icon:"/menu-assets/icons/icon-logistics.svg"},
  {name:"Government & Development",description:"Digital solutions for greater impact",image:"/menu-assets/graphics/government-development.jpg",fallback:"/menu-assets/graphics/solutions-tech-editorial.jpg",icon:"/menu-assets/icons/icon-consulting.svg"}
 ];
@@ -147,7 +147,7 @@ export default function SiteHeader(){
      {open==="industries"&&<div className="mfsys-industries-menu" role="menu">
       <section className="mfsys-industries-intro">
        <div className="mfsys-industries-visual" aria-hidden="true">
-        <img src="/menu-assets/graphics/impact-mountains.jpg" alt="" onError={(e)=>{e.currentTarget.src="/menu-assets/graphics/impact-mountains.svg"}} />
+        <img src="/menu-assets/graphics/impact-mountains-menu.jpg" alt="" onError={(e)=>{e.currentTarget.src="/menu-assets/graphics/impact-mountains.svg"}} />
         <div className="mfsys-industries-visual-wash"/>
         <div className="mfsys-industries-network"><i className="network-node n1">⌂</i><i className="network-node n2">◌</i><i className="network-node n3">▦</i><i className="network-node n4">⌁</i><i className="network-node n5">▣</i></div>
        </div>
