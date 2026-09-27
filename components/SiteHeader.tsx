@@ -147,7 +147,7 @@ export default function SiteHeader(){
      {open==="industries"&&<div className="mfsys-industries-menu" role="menu">
       <section className="mfsys-industries-intro">
        <div className="mfsys-industries-visual" aria-hidden="true">
-        <img src="/menu-assets/graphics/impact-mountains.jpg" alt="" />
+        <img src="https://media.githubusercontent.com/media/ali-mfsys/mfsys-website/main/public/menu-assets/graphics/impact-mountains.jpg" alt="" />
         <div className="mfsys-industries-visual-wash"/>
         <div className="mfsys-industries-network"><i className="network-node n1">⌂</i><i className="network-node n2">◌</i><i className="network-node n3">▦</i><i className="network-node n4">⌁</i><i className="network-node n5">▣</i></div>
        </div>
