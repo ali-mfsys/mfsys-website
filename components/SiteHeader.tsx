@@ -79,7 +79,7 @@ function GroupLink({name,kind,onNavigate,featured=false}:{name:string;kind:"solu
 const industryCardData:Record<string,{image:string;icon:string}>={
  "Microfinance & Banking":{image:"/menu-assets/graphics/microfinance-banking-custom.svg",icon:"/menu-assets/icons/icon-banking.svg"},
  "Islamic Finance":{image:"/menu-assets/graphics/islamic-finance-custom.svg",icon:"/menu-assets/icons/icon-islamic-finance.svg"},
- "Agriculture & Rural Development":{image:"/menu-assets/graphics/agriculture-rural-development-custom.svg",icon:"/menu-assets/icons/icon-agriculture.svg"},
+ "Agriculture & Rural Development":{image:"",icon:"/menu-assets/icons/icon-agriculture.svg"},
  "Climate & Carbon":{image:"/menu-assets/graphics/climate-carbon.jpg",icon:"/menu-assets/icons/icon-climate.svg"},
  "Logistics & Supply Chain":{image:"/menu-assets/graphics/logistics-supply-chain.jpg",icon:"/menu-assets/icons/icon-logistics.svg"},
  "Government & Development":{image:"/menu-assets/graphics/government-development.jpg",icon:"/menu-assets/icons/icon-consulting.svg"}
@@ -89,8 +89,8 @@ function IndustryCard({name,onNavigate}:{name:string;onNavigate:()=>void}){
  const data=industryCardData[name];
  if(!data)return null;
  return <Link href="/industries" className="industry-card" onClick={onNavigate}>
-  <div className="industry-card-image">
-   <img src={data.image} alt="" />
+  <div className={`industry-card-image${data.image?"":" industry-card-image--no-image"}`}>
+   {data.image&&<img src={data.image} alt="" />}
    <span className="industry-card-icon"><img src={data.icon} alt="" /></span>
   </div>
   <div className="industry-card-body">
