@@ -10,7 +10,7 @@ const industryVisualThemes:Record<string,{a:string;b:string;c:string;kind:string
 };
 function IndustryVisual({kind,intro=false}:{kind:string;intro?:boolean}){
  const t=industryVisualThemes[kind]||industryVisualThemes.banking;
- return <svg className="mfsys-industry-svg" viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+ return <svg className="mfsys-industry-svg" style={{width:"100%",height:"100%",display:"block"}} viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
   <defs><linearGradient id={kind+"g"} x1="0" y1="0" x2="1" y2="1"><stop stopColor={t.a}/><stop offset=".55" stopColor={t.b}/><stop offset="1" stopColor={t.c}/></linearGradient><linearGradient id={kind+"w"} x1="0" y1="0" x2="0" y2="1"><stop stopColor="#fff" stopOpacity=".08"/><stop offset="1" stopColor="#031F32" stopOpacity=".62"/></linearGradient></defs>
   <rect width="400" height="220" fill={"url(#"+kind+"g)"}/><rect width="400" height="220" fill={"url(#"+kind+"w)"}/>
   <g opacity=".34" fill="none" stroke="#fff" strokeWidth="1">{Array.from({length:7},(_,i)=><path key={i} d={"M0 "+(35+i*28)+"H400"}/>)}{Array.from({length:9},(_,i)=><path key={"v"+i} d={"M"+(20+i*48)+" 0V220"}/>)}</g>
