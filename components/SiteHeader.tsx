@@ -23,12 +23,12 @@ const productGroups=[
 ];
 const solutionMap=new Map(solutions.map(x=>[x[0],x]));
 const industryMenuItems=[
- {name:"Microfinance & Banking",description:"Inclusive and digital financial services",image:"/api/industry-image/microfinance-banking.jpg",icon:"/menu-assets/icons/icon-banking.svg"},
- {name:"Islamic Finance",description:"Shariah-compliant banking and finance",image:"/api/industry-image/islamic-finance-menu.jpg",icon:"/menu-assets/icons/icon-islamic-finance.svg"},
- {name:"Agriculture & Rural Development",description:"Finance for farmers and value chains",image:"/api/industry-image/agriculture-rural-development.jpg",icon:"/menu-assets/icons/icon-agriculture.svg"},
- {name:"Climate & Carbon",description:"Carbon markets and climate resilience",image:"/api/industry-image/climate-carbon-menu.jpg",icon:"/menu-assets/icons/icon-climate.svg"},
- {name:"Logistics & Supply Chain",description:"Connected and efficient supply chains",image:"/api/industry-image/logistics-supply-chain.jpg",icon:"/menu-assets/icons/icon-logistics.svg"},
- {name:"Government & Development",description:"Digital solutions for greater impact",image:"/api/industry-image/government-development.jpg",icon:"/menu-assets/icons/icon-consulting.svg"}
+ {name:"Microfinance & Banking",description:"Inclusive and digital financial services",image:"/menu-assets/graphics/microfinance-banking.jpg",icon:"/menu-assets/icons/icon-banking.svg"},
+ {name:"Islamic Finance",description:"Shariah-compliant banking and finance",image:"/menu-assets/graphics/islamic-finance.jpg",icon:"/menu-assets/icons/icon-islamic-finance.svg"},
+ {name:"Agriculture & Rural Development",description:"Finance for farmers and value chains",image:"/menu-assets/graphics/agriculture-rural-development.jpg",icon:"/menu-assets/icons/icon-agriculture.svg"},
+ {name:"Climate & Carbon",description:"Carbon markets and climate resilience",image:"/menu-assets/graphics/climate-carbon.jpg",icon:"/menu-assets/icons/icon-climate.svg"},
+ {name:"Logistics & Supply Chain",description:"Connected and efficient supply chains",image:"/menu-assets/graphics/logistics-supply-chain.jpg",icon:"/menu-assets/icons/icon-logistics.svg"},
+ {name:"Government & Development",description:"Digital solutions for greater impact",image:"/menu-assets/graphics/government-development.jpg",icon:"/menu-assets/icons/icon-consulting.svg"}
 ];
 
 const productMap=new Map(products.map(x=>[x[0],x]));const productIconMap: Record<string, string> = {
@@ -147,7 +147,7 @@ export default function SiteHeader(){
      {open==="industries"&&<div className="mfsys-industries-menu" role="menu">
       <section className="mfsys-industries-intro">
        <div className="mfsys-industries-visual" aria-hidden="true">
-        <img src="/api/industry-image/impact-mountains-menu.jpg" alt="" />
+        <img src="/menu-assets/graphics/impact-mountains.jpg" alt="" />
         <div className="mfsys-industries-visual-wash"/>
         <div className="mfsys-industries-network"><i className="network-node n1">⌂</i><i className="network-node n2">◌</i><i className="network-node n3">▦</i><i className="network-node n4">⌁</i><i className="network-node n5">▣</i></div>
        </div>
