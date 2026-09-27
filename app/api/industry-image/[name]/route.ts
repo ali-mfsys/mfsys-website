@@ -1,6 +1,6 @@
 import {NextResponse} from "next/server";
 
-const ASSET_BASE = "https://media.githubusercontent.com/media/ali-mfsys/mfsys-website/4371c06746b90d7b093727846bc6c11f02f5c0d6/raw/public/menu-assets/graphics/";
+const ASSET_BASE = "https://media.githubusercontent.com/media/ali-mfsys/mfsys-website/main/public/menu-assets/graphics/";
 const ALLOWED: Record<string,string> = {
   "microfinance-banking.jpg": "microfinance-banking.jpg",
   "islamic-finance-menu.jpg": "islamic-finance-menu.jpg",
