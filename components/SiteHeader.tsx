@@ -76,11 +76,28 @@ function GroupLink({name,kind,onNavigate,featured=false}:{name:string;kind:"solu
  </Link>;
 }
 
-function IndustryLink({name,onNavigate,featured=false}:{name:string;onNavigate:()=>void;featured?:boolean}){
- return <Link href="/industries" className={`mfsys-editorial-item${featured?" is-featured":""}`} onClick={onNavigate}>
-  <span className="mfsys-editorial-icon"><img src="/menu-assets/icons/icon-consulting.svg" alt="" /></span>
-  <span className="mfsys-editorial-item-copy"><strong>{name}</strong><small>{industryDescriptions[name]}</small></span>
-  <span className="mfsys-editorial-arrow">›</span>
+const industryCardData:Record<string,{image:string;icon:string}>={
+ "Microfinance & Banking":{image:"/menu-assets/graphics/microfinance-banking.jpg",icon:"/menu-assets/icons/icon-banking.svg"},
+ "Islamic Finance":{image:"/menu-assets/graphics/islamic-finance.jpg",icon:"/menu-assets/icons/icon-islamic-finance.svg"},
+ "Agriculture & Rural Development":{image:"/menu-assets/graphics/agriculture-rural-development.jpg",icon:"/menu-assets/icons/icon-agriculture.svg"},
+ "Climate & Carbon":{image:"/menu-assets/graphics/climate-carbon.jpg",icon:"/menu-assets/icons/icon-climate.svg"},
+ "Logistics & Supply Chain":{image:"/menu-assets/graphics/logistics-supply-chain.jpg",icon:"/menu-assets/icons/icon-logistics.svg"},
+ "Government & Development":{image:"/menu-assets/graphics/government-development.jpg",icon:"/menu-assets/icons/icon-consulting.svg"}
+};
+
+function IndustryCard({name,onNavigate}:{name:string;onNavigate:()=>void}){
+ const data=industryCardData[name];
+ if(!data)return null;
+ return <Link href="/industries" className="industry-card" onClick={onNavigate}>
+  <div className="industry-card-image">
+   <img src={data.image} alt="" />
+   <span className="industry-card-icon"><img src={data.icon} alt="" /></span>
+  </div>
+  <div className="industry-card-body">
+   <strong>{name}</strong>
+   <small>{industryDescriptions[name]}</small>
+   <span className="industry-card-arrow">›</span>
+  </div>
  </Link>;
 }
 
@@ -157,22 +174,21 @@ export default function SiteHeader(){
      </div>}
     </div>
     <div className="nav-menu"><button className="nav-menu-trigger" aria-haspopup="true" aria-expanded={open==="industries"} onClick={()=>setOpen(open==="industries"?null:"industries")}>Industries <span aria-hidden="true">⌄</span></button>
-     {open==="industries"&&<div className="mfsys-editorial-mega industries-menu" role="menu">
-      <section className="editorial-intro industry-editorial-intro">
-       <div className="editorial-art-wrap">
-        <div className="mfsys-editorial-art mfsys-art-industries" aria-hidden="true"><img src="/menu-assets/graphics/impact-mountains.jpg" alt="" /></div>
-        <div className="art-lake"/><div className="art-network"><i>INCLUSION</i><i>CLIMATE</i><i>AGRI</i><i>LOGISTICS</i><i>DEVELOPMENT</i><i>DIGITAL</i></div><div className="art-scanline"/>
+     {open==="industries"&&<div className="mfsys-industries-mega" role="menu">
+      <section className="industries-editorial-panel">
+       <div className="industries-editorial-bg" aria-hidden="true"><img src="/menu-assets/graphics/impact-mountains.jpg" alt="" /></div>
+       <div className="industries-editorial-overlay" aria-hidden="true"/>
+       <div className="industries-editorial-copy">
+        <span className="editorial-eyebrow">OUR INDUSTRIES —</span>
+        <h2>Digital solutions for a more inclusive and sustainable world.</h2>
+        <p>Enabling financial inclusion, climate resilience and smarter supply chains across key sectors.</p>
+        <Link href="/industries" onClick={closeAll}>Explore All Industries <b>→</b></Link>
        </div>
-       <div className="editorial-copy"><span className="editorial-eyebrow">OUR INDUSTRIES —</span><h2>Digital solutions for a more inclusive and sustainable world.</h2><p>Enabling financial inclusion, climate resilience and smarter supply chains across key sectors.</p><Link href="/industries" onClick={closeAll}>Explore All Industries <b>→</b></Link></div>
-       <div className="editorial-proof"><span><b>6</b>Industries</span><span><b>12+</b>Countries</span><span><b>100+</b>Professionals</span></div>
+       <div className="industries-editorial-proof"><span><b>6</b>Industries</span><span><b>12+</b>Countries</span><span><b>100+</b>Professionals</span></div>
       </section>
-      <section className="editorial-solution-columns industry-suite-columns">
-       {industryGroups.map((group,groupIndex)=><div className="editorial-group" key={group.title}><h3>{group.title}</h3>{group.items.map(name=><IndustryLink key={name} name={name} featured={groupIndex===0&&name==="Microfinance & Banking"} onNavigate={closeAll}/>)}</div>)}
+      <section className="industries-card-grid">
+       {industryGroups.flatMap(group=>group.items).map(name=><IndustryCard key={name} name={name} onNavigate={closeAll}/>)}
       </section>
-      <Link href="/industries" className="editorial-impact industry-featured" onClick={closeAll}>
-       <div className="product-featured-visual" aria-hidden="true"><img src="/menu-assets/graphics/impact-mountains.jpg" alt="" /></div>
-       <div className="impact-copy product-featured-copy"><span>OUR IMPACT</span><strong>Building more inclusive, resilient and sustainable economies.</strong><p>Technology connecting finance, agriculture, climate action, logistics and development.</p><em>Explore Industries →</em></div>
-      </Link>
      </div>}
     </div>
     <Link href="/ai-innovation" onClick={closeAll}>AI & Innovation</Link><Link href="/insights" onClick={closeAll}>Insights</Link><Link href="/about" onClick={closeAll}>About MFSYS</Link><Link className="nav-cta" href="/contact" onClick={closeAll}>Get in Touch <span>→</span></Link>
