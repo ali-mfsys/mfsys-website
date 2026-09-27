@@ -124,7 +124,8 @@ export default function SiteHeader(){
       </section>
       <Link href="/products/ciihive" className="editorial-impact product-featured" onClick={closeAll}>
        <div className="product-featured-art">
-        <img src="/menu-assets/graphics/ciihive-devices.svg" alt="" />
+        <div className="ciihive-laptop"><span>CiiHive</span><div/><div/><div/></div>
+        <div className="ciihive-phone"><span>CiiHive</span><i/><i/></div>
        </div>
        <div className="impact-copy product-featured-copy">
         <span>FEATURED PRODUCT</span>
