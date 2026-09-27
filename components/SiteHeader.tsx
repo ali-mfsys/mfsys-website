@@ -106,11 +106,6 @@ export default function SiteHeader(){
     <div className="nav-menu"><button className="nav-menu-trigger" aria-haspopup="true" aria-expanded={open==="products"} onClick={()=>setOpen(open==="products"?null:"products")}>Products <span aria-hidden="true">⌄</span></button>
      {open==="products"&&<div className="mfsys-editorial-mega products-menu" role="menu">
       <section className="editorial-intro product-editorial-intro">
-       <div className="editorial-art-wrap">
-        <div className="mfsys-editorial-art mfsys-art-products" aria-hidden="true">
-         <img src="/menu-assets/graphics/products-editorial-tech.svg" alt="" />
-        </div>
-       </div>
        <div className="editorial-copy">
         <span className="editorial-eyebrow">OUR PRODUCTS —</span>
         <h2>Purpose-built products for real-world impact.</h2>
@@ -123,9 +118,6 @@ export default function SiteHeader(){
        {productGroups.map(group=><div className="editorial-group" key={group.title}><h3>{group.title}</h3>{group.items.map(name=><GroupLink key={name} name={name} kind="product" featured={name==="CiiHive"} onNavigate={closeAll}/>)}</div>)}
       </section>
       <Link href="/products/ciihive" className="editorial-impact product-featured" onClick={closeAll}>
-       <div className="product-featured-art">
-        <img src="/menu-assets/graphics/ciihive-devices.webp" alt="" />
-       </div>
        <div className="impact-copy product-featured-copy">
         <span>FEATURED PRODUCT</span>
         <strong>CiiHive</strong>
