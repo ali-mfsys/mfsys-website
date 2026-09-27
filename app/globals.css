@@ -812,3 +812,42 @@ brand{line-height:0}.solution-detail-grid{display:grid;grid-template-columns:min
   background:linear-gradient(180deg,rgba(8,47,85,.02) 0%,rgba(8,47,85,.28) 72%,rgba(8,47,85,.62) 100%);
   pointer-events:none;
 }
+
+
+/* Products mega menu — align CiiHive feature card to approved composition */
+.products-menu .product-featured{
+  position:relative;
+  background:#dff2ff;
+}
+.products-menu .product-featured-art{
+  position:absolute;
+  inset:0;
+  height:auto;
+  min-height:100%;
+  z-index:0;
+  background:#dff2ff;
+}
+.products-menu .product-featured-art img{
+  object-position:center;
+}
+.products-menu .product-featured-art:before{
+  display:none;
+}
+.products-menu .product-featured-art:after{
+  display:none;
+}
+.products-menu .product-featured-copy{
+  position:relative;
+  z-index:2;
+  height:100%;
+  min-height:100%;
+  justify-content:flex-end;
+  padding:24px 20px 22px;
+  color:#082f55;
+  background:linear-gradient(180deg,rgba(223,242,255,0) 42%,rgba(223,242,255,.12) 58%,rgba(223,242,255,.72) 100%);
+}
+.products-menu .product-featured-copy span{color:#176fb0}
+.products-menu .product-featured-copy strong{color:#082f55}
+.products-menu .product-featured-copy>b{color:#0b5c8d}
+.products-menu .product-featured-copy p{color:#315d75}
+.products-menu .product-featured-copy em{color:#006ee5}
