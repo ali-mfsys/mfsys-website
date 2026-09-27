@@ -78,7 +78,7 @@ function GroupLink({name,kind,onNavigate,featured=false}:{name:string;kind:"solu
 
 const industryCardData:Record<string,{image:string;icon:string}>={
  "Microfinance & Banking":{image:"/menu-assets/graphics/microfinance-banking-custom.svg",icon:"/menu-assets/icons/icon-banking.svg"},
- "Islamic Finance":{image:"/menu-assets/graphics/islamic-finance.jpg",icon:"/menu-assets/icons/icon-islamic-finance.svg"},
+ "Islamic Finance":{image:"/menu-assets/graphics/islamic-finance-custom.svg",icon:"/menu-assets/icons/icon-islamic-finance.svg"},
  "Agriculture & Rural Development":{image:"/menu-assets/graphics/agriculture-rural-development.jpg",icon:"/menu-assets/icons/icon-agriculture.svg"},
  "Climate & Carbon":{image:"/menu-assets/graphics/climate-carbon.jpg",icon:"/menu-assets/icons/icon-climate.svg"},
  "Logistics & Supply Chain":{image:"/menu-assets/graphics/logistics-supply-chain.jpg",icon:"/menu-assets/icons/icon-logistics.svg"},
