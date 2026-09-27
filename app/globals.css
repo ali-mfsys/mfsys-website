@@ -1154,3 +1154,70 @@ brand{line-height:0}.solution-detail-grid{display:grid;grid-template-columns:min
 @media(max-width:1180px){
   .products-menu{width:calc(100vw - 22px)!important}
 }
+
+
+/* Products menu — final visual layer cleanup */
+.products-menu .product-editorial-intro .editorial-art-wrap{
+  display:block!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:0!important;
+  opacity:1!important;
+  visibility:visible!important;
+  background:#071f45!important;
+}
+.products-menu .product-editorial-intro .mfsys-art-products{
+  position:absolute!important;
+  inset:0!important;
+  z-index:0!important;
+  width:100%!important;
+  height:100%!important;
+  opacity:1!important;
+  visibility:visible!important;
+  background:#071f45!important;
+}
+.products-menu .product-editorial-intro .mfsys-art-products img{
+  position:absolute!important;
+  inset:0!important;
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center center!important;
+  opacity:1!important;
+  visibility:visible!important;
+  filter:none!important;
+}
+.products-menu .product-editorial-intro:before{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:1!important;
+  pointer-events:none!important;
+  background:
+    linear-gradient(90deg,rgba(4,20,46,.16) 0%,rgba(4,20,46,.04) 72%,rgba(4,20,46,.02) 100%),
+    linear-gradient(180deg,rgba(4,20,46,.10) 0%,rgba(4,20,46,.02) 48%,rgba(4,20,46,.20) 100%)!important;
+  mix-blend-mode:normal!important;
+}
+.products-menu .product-editorial-intro .editorial-copy{
+  z-index:2!important;
+  background:linear-gradient(90deg,rgba(4,20,46,.18) 0%,rgba(4,20,46,.06) 72%,rgba(4,20,46,0) 100%)!important;
+}
+.products-menu .product-editorial-intro .editorial-copy h2,
+.products-menu .product-editorial-intro .editorial-copy p{
+  color:#fff!important;
+}
+.products-menu .product-editorial-intro .editorial-proof{
+  z-index:3!important;
+}
+
+/* Keep the CiiHive device image clearly visible while retaining the approved dark-tech treatment */
+.products-menu .product-featured-art{
+  opacity:1!important;
+  background:#082f55!important;
+}
+.products-menu .product-featured-art img{
+  opacity:1!important;
+  visibility:visible!important;
+  filter:saturate(1.02) contrast(1.06) brightness(.88)!important;
+}
