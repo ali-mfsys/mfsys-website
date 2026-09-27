@@ -730,3 +730,231 @@ brand{line-height:0}.solution-detail-grid{display:grid;grid-template-columns:min
   .products-menu .product-editorial-intro .editorial-copy h2{font-size:23px}
   .products-menu .product-suite-columns{grid-template-columns:repeat(2,minmax(0,1fr))}.products-menu .product-suite-columns .editorial-group{grid-column:auto}
 }
+
+
+/* Industries dropdown — approved visual card layout */
+.mfsys-industries-mega{
+  position:absolute!important;
+  left:50%!important;
+  right:auto!important;
+  top:100%!important;
+  transform:translateX(-50%)!important;
+  width:min(1220px,calc(100vw - 32px))!important;
+  height:414px;
+  display:grid!important;
+  grid-template-columns:34% 66%;
+  padding:0!important;
+  overflow:hidden!important;
+  background:#fff!important;
+  border:1px solid rgba(8,47,82,.16)!important;
+  border-top:2px solid #ff6a21!important;
+  border-radius:0 0 18px 18px!important;
+  box-shadow:0 24px 60px rgba(4,30,50,.24)!important;
+  z-index:1500!important;
+}
+.mfsys-industries-mega .industries-editorial-panel{
+  position:relative;
+  min-width:0;
+  overflow:hidden;
+  isolation:isolate;
+  background:#082f55;
+  color:#fff;
+}
+.mfsys-industries-mega .industries-editorial-bg,
+.mfsys-industries-mega .industries-editorial-bg img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+}
+.mfsys-industries-mega .industries-editorial-bg img{
+  object-fit:cover;
+  object-position:center center;
+  display:block;
+  filter:saturate(.9) contrast(1.05);
+}
+.mfsys-industries-mega .industries-editorial-overlay{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:
+    linear-gradient(180deg,rgba(3,30,52,.30) 0%,rgba(3,30,52,.56) 42%,rgba(3,30,52,.92) 100%),
+    linear-gradient(90deg,rgba(3,30,52,.78) 0%,rgba(3,30,52,.30) 72%,rgba(3,30,52,.12) 100%);
+}
+.mfsys-industries-mega .industries-editorial-copy{
+  position:relative;
+  z-index:3;
+  padding:25px 26px 82px;
+  min-height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+}
+.mfsys-industries-mega .editorial-eyebrow{
+  color:#ff9a57;
+  font-size:9px;
+  letter-spacing:.18em;
+  font-weight:900;
+  margin-bottom:12px;
+}
+.mfsys-industries-mega .industries-editorial-copy h2{
+  margin:0;
+  max-width:360px;
+  color:#fff;
+  font-size:clamp(25px,2.1vw,32px);
+  line-height:1.05;
+  letter-spacing:-.035em;
+  text-shadow:0 2px 12px rgba(0,0,0,.22);
+}
+.mfsys-industries-mega .industries-editorial-copy p{
+  margin:11px 0 0;
+  max-width:345px;
+  color:rgba(239,248,255,.88);
+  font-size:12px;
+  line-height:1.45;
+}
+.mfsys-industries-mega .industries-editorial-copy>a{
+  margin-top:18px;
+  padding:11px 15px;
+  border-radius:7px;
+  background:#ff6a21;
+  color:#fff;
+  font-size:10px;
+  font-weight:900;
+  box-shadow:0 10px 24px rgba(0,0,0,.18);
+}
+.mfsys-industries-mega .industries-editorial-copy>a b{
+  font-size:14px;
+  margin-left:5px;
+}
+.mfsys-industries-mega .industries-editorial-proof{
+  position:absolute;
+  z-index:4;
+  left:0;
+  right:0;
+  bottom:0;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  padding:10px 7px;
+  background:rgba(3,35,58,.94);
+  color:#fff;
+}
+.mfsys-industries-mega .industries-editorial-proof span{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  font-size:6px;
+  line-height:1.2;
+  color:#c8dbe7;
+  text-align:center;
+  border-right:1px solid rgba(255,255,255,.15);
+}
+.mfsys-industries-mega .industries-editorial-proof span:last-child{border-right:0}
+.mfsys-industries-mega .industries-editorial-proof b{font-size:13px;color:#fff}
+
+.mfsys-industries-mega .industries-card-grid{
+  min-width:0;
+  min-height:0;
+  padding:10px;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  grid-template-rows:repeat(2,minmax(0,1fr));
+  gap:10px;
+  background:#f7fafc;
+}
+.mfsys-industries-mega .industry-card{
+  min-width:0;
+  min-height:0;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  background:#fff;
+  border:1px solid #e3ebf0;
+  border-radius:8px;
+  box-shadow:0 5px 16px rgba(8,47,82,.07);
+  color:#082f55;
+  transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease;
+}
+.mfsys-industries-mega .industry-card:hover,
+.mfsys-industries-mega .industry-card:focus-visible{
+  transform:translateY(-2px);
+  border-color:#ffb98f;
+  box-shadow:0 9px 22px rgba(8,47,82,.12);
+}
+.mfsys-industries-mega .industry-card-image{
+  position:relative;
+  height:108px;
+  flex:0 0 108px;
+  overflow:hidden;
+  background:#dceaf2;
+}
+.mfsys-industries-mega .industry-card-image>img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  object-position:center;
+  transition:transform .25s ease;
+}
+.mfsys-industries-mega .industry-card:hover .industry-card-image>img{transform:scale(1.025)}
+.mfsys-industries-mega .industry-card-icon{
+  position:absolute;
+  left:10px;
+  bottom:-1px;
+  width:32px;
+  height:32px;
+  display:grid;
+  place-items:center;
+  border:2px solid #fff;
+  border-radius:9px;
+  background:#fff;
+  box-shadow:0 3px 9px rgba(8,47,82,.16);
+}
+.mfsys-industries-mega .industry-card-icon img{
+  width:24px;
+  height:24px;
+  display:block;
+  object-fit:contain;
+}
+.mfsys-industries-mega .industry-card-body{
+  position:relative;
+  flex:1;
+  min-width:0;
+  padding:10px 27px 9px 10px;
+}
+.mfsys-industries-mega .industry-card-body strong{
+  display:block;
+  color:#082f55;
+  font-size:13.5px;
+  line-height:1.12;
+  font-weight:800;
+}
+.mfsys-industries-mega .industry-card-body small{
+  display:block;
+  margin-top:5px;
+  color:#4e7390;
+  font-size:9.5px;
+  line-height:1.28;
+}
+.mfsys-industries-mega .industry-card-arrow{
+  position:absolute;
+  right:10px;
+  top:50%;
+  transform:translateY(-50%);
+  color:#1678c7;
+  font-size:21px;
+  line-height:1;
+  font-weight:500;
+}
+@media(max-width:1180px){
+  .mfsys-industries-mega{
+    width:calc(100vw - 22px)!important;
+    grid-template-columns:33% 67%;
+  }
+  .mfsys-industries-mega .industries-editorial-copy{padding:22px 19px 82px}
+  .mfsys-industries-mega .industries-editorial-copy h2{font-size:23px}
+  .mfsys-industries-mega .industry-card-image{height:100px;flex-basis:100px}
+}
+@media(max-width:900px){
+  .mfsys-industries-mega{display:none!important}
+}
