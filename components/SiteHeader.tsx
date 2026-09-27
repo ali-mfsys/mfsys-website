@@ -1,18 +1,5 @@
 "use client";
 import Link from "next/link";
-const industryVisualAssets:Record<string,string>={
- banking:"/menu-assets/graphics/microfinance-banking.jpg",
- islamic:"/menu-assets/graphics/islamic-finance.jpg",
- agriculture:"/menu-assets/graphics/agriculture-rural-development.jpg",
- climate:"/menu-assets/graphics/climate-carbon.jpg",
- logistics:"/menu-assets/graphics/logistics-supply-chain.jpg",
- government:"/menu-assets/graphics/government-development.jpg"
-};
-function IndustryVisual({kind,intro=false}:{kind:string;intro?:boolean}){
- const src=intro?"/menu-assets/graphics/impact-mountains.jpg":industryVisualAssets[kind]||industryVisualAssets.banking;
- return <img className="mfsys-industry-photo" src={src} alt="" aria-hidden="true"/>;
-}
-
 import {useEffect,useRef,useState} from "react";
 import {usePathname} from "next/navigation";
 import {solutions,products,industries} from "../lib/site-data";
@@ -35,14 +22,19 @@ const productGroups=[
  {title:"Logistic Solutions",items:["CargoGuard"]}
 ];
 const solutionMap=new Map(solutions.map(x=>[x[0],x]));
-const industryMenuItems=[
- {name:"Microfinance & Banking",description:"Inclusive and digital financial services",icon:"/menu-assets/icons/icon-banking.svg",visual:"banking"},
- {name:"Islamic Finance",description:"Shariah-compliant banking and finance",icon:"/menu-assets/icons/icon-islamic-finance.svg",visual:"islamic"},
- {name:"Agriculture & Rural Development",description:"Finance for farmers and value chains",icon:"/menu-assets/icons/icon-agriculture.svg",visual:"agriculture"},
- {name:"Climate & Carbon",description:"Carbon markets and climate resilience",icon:"/menu-assets/icons/icon-climate.svg",visual:"climate"},
- {name:"Logistics & Supply Chain",description:"Connected and efficient supply chains",icon:"/menu-assets/icons/icon-logistics.svg",visual:"logistics"},
- {name:"Government & Development",description:"Digital solutions for greater impact",icon:"/menu-assets/icons/icon-consulting.svg",visual:"government"}
+const industryGroups=[
+ {title:"Financial Services",items:["Microfinance & Banking","Islamic Finance"]},
+ {title:"Agriculture & Climate",items:["Agriculture & Rural Development","Climate & Carbon"]},
+ {title:"Infrastructure & Development",items:["Logistics & Supply Chain","Government & Development"]}
 ];
+const industryDescriptions:Record<string,string>={
+ "Microfinance & Banking":"Inclusive and digital financial services",
+ "Islamic Finance":"Shariah-compliant banking and finance",
+ "Agriculture & Rural Development":"Finance for farmers and value chains",
+ "Climate & Carbon":"Carbon markets and climate resilience",
+ "Logistics & Supply Chain":"Connected and efficient supply chains",
+ "Government & Development":"Digital solutions for greater impact"
+};
 
 const productMap=new Map(products.map(x=>[x[0],x]));const productIconMap: Record<string, string> = {
  "CiiHive": "/menu-assets/icons/icon-banking.svg",
@@ -80,6 +72,14 @@ function GroupLink({name,kind,onNavigate,featured=false}:{name:string;kind:"solu
  return <Link href={item[2]} className={`mfsys-editorial-item${featured?" is-featured":""}`} onClick={onNavigate}>
   <span className="mfsys-editorial-icon"><img src={(kind==="product"?productIconMap[name]:iconMap[name]) || "/menu-assets/icons/icon-innovation.svg"} alt="" /></span>
   <span className="mfsys-editorial-item-copy"><strong>{item[0]}</strong><small>{item[1]}</small></span>
+  <span className="mfsys-editorial-arrow">›</span>
+ </Link>;
+}
+
+function IndustryLink({name,onNavigate,featured=false}:{name:string;onNavigate:()=>void;featured?:boolean}){
+ return <Link href="/industries" className={`mfsys-editorial-item${featured?" is-featured":""}`} onClick={onNavigate}>
+  <span className="mfsys-editorial-icon"><img src="/menu-assets/icons/icon-consulting.svg" alt="" /></span>
+  <span className="mfsys-editorial-item-copy"><strong>{name}</strong><small>{industryDescriptions[name]}</small></span>
   <span className="mfsys-editorial-arrow">›</span>
  </Link>;
 }
@@ -157,29 +157,28 @@ export default function SiteHeader(){
      </div>}
     </div>
     <div className="nav-menu"><button className="nav-menu-trigger" aria-haspopup="true" aria-expanded={open==="industries"} onClick={()=>setOpen(open==="industries"?null:"industries")}>Industries <span aria-hidden="true">⌄</span></button>
-     {open==="industries"&&<div className="mfsys-industries-menu" role="menu">
-      <section className="mfsys-industries-intro">
-       <div className="mfsys-industries-visual"><IndustryVisual kind="banking" intro/><div className="mfsys-industries-photo-wash"/><div className="mfsys-industries-network"><i className="network-node n1">⌂</i><i className="network-node n2">◌</i><i className="network-node n3">▦</i><i className="network-node n4">⌁</i><i className="network-node n5">▣</i></div>
+     {open==="industries"&&<div className="mfsys-editorial-mega industries-menu" role="menu">
+      <section className="editorial-intro industry-editorial-intro">
+       <div className="editorial-art-wrap">
+        <div className="mfsys-editorial-art mfsys-art-industries" aria-hidden="true"><img src="/menu-assets/graphics/impact-mountains.jpg" alt="" /></div>
+        <div className="art-lake"/><div className="art-network"><i>INCLUSION</i><i>CLIMATE</i><i>AGRI</i><i>LOGISTICS</i><i>DEVELOPMENT</i><i>DIGITAL</i></div><div className="art-scanline"/>
        </div>
-       <div className="mfsys-industries-intro-copy">
-        <span className="mfsys-industries-eyebrow">OUR INDUSTRIES <b>—</b></span>
-        <h2>Digital solutions<br/>for a more inclusive<br/>and sustainable world.</h2>
-        <p>Enabling financial inclusion, climate resilience and smarter supply chains across key sectors.</p>
-        <Link href="/industries" onClick={closeAll}>Explore All Industries <b>→</b></Link>
-       </div>
+       <div className="editorial-copy"><span className="editorial-eyebrow">OUR INDUSTRIES —</span><h2>Digital solutions for a more inclusive and sustainable world.</h2><p>Enabling financial inclusion, climate resilience and smarter supply chains across key sectors.</p><Link href="/industries" onClick={closeAll}>Explore All Industries <b>→</b></Link></div>
+       <div className="editorial-proof"><span><b>6</b>Industries</span><span><b>12+</b>Countries</span><span><b>100+</b>Professionals</span></div>
       </section>
-      <section className="mfsys-industries-grid" aria-label="Industries">
-       {industryMenuItems.map((item,i)=><Link className="mfsys-industry-card" key={item.name} href="/industries" role="menuitem" onClick={closeAll}>
-        <div className="mfsys-industry-image"><IndustryVisual kind={item.visual}/><span className="mfsys-industry-icon"><img src={item.icon} alt="" /></span></div>
-        <div className="mfsys-industry-copy"><strong>{item.name}</strong><p>{item.description}</p><span className="mfsys-industry-arrow">›</span></div>
-       </Link>)}
+      <section className="editorial-solution-columns industry-suite-columns">
+       {industryGroups.map((group,groupIndex)=><div className="editorial-group" key={group.title}><h3>{group.title}</h3>{group.items.map(name=><IndustryLink key={name} name={name} featured={groupIndex===0&&name==="Microfinance & Banking"} onNavigate={closeAll}/>)}</div>)}
       </section>
+      <Link href="/industries" className="editorial-impact industry-featured" onClick={closeAll}>
+       <div className="product-featured-visual" aria-hidden="true"><img src="/menu-assets/graphics/impact-mountains.jpg" alt="" /></div>
+       <div className="impact-copy product-featured-copy"><span>OUR IMPACT</span><strong>Building more inclusive, resilient and sustainable economies.</strong><p>Technology connecting finance, agriculture, climate action, logistics and development.</p><em>Explore Industries →</em></div>
+      </Link>
      </div>}
     </div>
     <Link href="/ai-innovation" onClick={closeAll}>AI & Innovation</Link><Link href="/insights" onClick={closeAll}>Insights</Link><Link href="/about" onClick={closeAll}>About MFSYS</Link><Link className="nav-cta" href="/contact" onClick={closeAll}>Get in Touch <span>→</span></Link>
    </nav>
    <div id="mobile-navigation" className={mobileOpen?"mfsys-mobile-nav is-open":"mfsys-mobile-nav"} aria-hidden={!mobileOpen}>
-    {(["solutions","products","industries"] as MenuName[]).map(section=>{const label=section[0].toUpperCase()+section.slice(1);return <div className="mfsys-mobile-section" key={section}><button type="button" onClick={()=>toggleMobileSection(section)} aria-expanded={mobileSection===section}>{label}<span>{mobileSection===section?"−":"+"}</span></button>{mobileSection===section&&<div className="mfsys-mobile-links">{section==="solutions"&&solutions.map(x=><Link key={x[0]} href={x[2]} onClick={closeAll}>{x[0]}</Link>)}{section==="products"&&productGroups.map(group=><div className="mfsys-mobile-product-group" key={group.title}><strong>{group.title}</strong>{group.items.map(name=>{const item=products.find(x=>x[0]===name);return item?<Link key={name} href={item[2]} onClick={closeAll}>{name}</Link>:null})}</div>)}{section==="industries"&&industryMenuItems.map(x=><Link key={x.name} href="/industries" onClick={closeAll}>{x.name}</Link>)}</div>}</div>})}
+    {(["solutions","products","industries"] as MenuName[]).map(section=>{const label=section[0].toUpperCase()+section.slice(1);return <div className="mfsys-mobile-section" key={section}><button type="button" onClick={()=>toggleMobileSection(section)} aria-expanded={mobileSection===section}>{label}<span>{mobileSection===section?"−":"+"}</span></button>{mobileSection===section&&<div className="mfsys-mobile-links">{section==="solutions"&&solutions.map(x=><Link key={x[0]} href={x[2]} onClick={closeAll}>{x[0]}</Link>)}{section==="products"&&productGroups.map(group=><div className="mfsys-mobile-product-group" key={group.title}><strong>{group.title}</strong>{group.items.map(name=>{const item=products.find(x=>x[0]===name);return item?<Link key={name} href={item[2]} onClick={closeAll}>{name}</Link>:null})}</div>)}{section==="industries"&&industryGroups.map(group=><div className="mfsys-mobile-product-group" key={group.title}><strong>{group.title}</strong>{group.items.map(name=><Link key={name} href="/industries" onClick={closeAll}>{name}</Link>)}</div>)}</div>}</div>})}
     <Link href="/ai-innovation" onClick={closeAll}>AI & Innovation</Link><Link href="/insights" onClick={closeAll}>Insights</Link><Link href="/about" onClick={closeAll}>About MFSYS</Link><Link className="mfsys-mobile-cta" href="/contact" onClick={closeAll}>Get in Touch →</Link>
    </div>
   </div>
