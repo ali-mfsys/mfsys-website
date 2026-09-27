@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" preserveAspectRatio="xMidYMid slice">
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0b2d68"/><stop offset=".55" stop-color="#071f4d"/><stop offset="1" stop-color="#04172f"/></linearGradient>
+ <linearGradient id="beam" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#155dff" stop-opacity=".95"/><stop offset="1" stop-color="#0b2d68" stop-opacity=".2"/></linearGradient>
+ <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#27d9ff"/><stop offset="1" stop-color="#176eff"/></linearGradient>
+ <linearGradient id="orange" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff6a00"/><stop offset="1" stop-color="#ffb04a"/></linearGradient>
+ <filter id="glow"><feGaussianBlur stdDeviation="9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+ <filter id="soft"><feGaussianBlur stdDeviation="28"/></filter>
+ <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse"><path d="M42 0H0V42" fill="none" stroke="#5bcfff" stroke-opacity=".08"/></pattern>
+</defs>
+<rect width="800" height="1000" fill="url(#bg)"/>
+<path d="M0 0H520L800 245L470 505L800 770V1000H0Z" fill="url(#beam)" opacity=".92"/>
+<path d="M0 0H410L675 235L355 490L680 745L390 1000H0Z" fill="#123b93" opacity=".36"/>
+<rect width="800" height="1000" fill="url(#grid)" opacity=".72"/>
+<ellipse cx="580" cy="690" rx="260" ry="160" fill="#18bfff" opacity=".11" filter="url(#soft)"/>
+<g opacity=".78" stroke="#27d9ff" stroke-width="2" fill="none">
+ <path d="M480 710L610 620L720 680L620 770Z"/>
+ <path d="M420 820L610 700L760 790"/>
+ <path d="M450 620L555 545L700 615"/>
+</g>
+<g filter="url(#glow)">
+ <path d="M475 715L590 640L695 690L585 770Z" fill="#061b35" stroke="#28d8ff" stroke-width="4"/>
+ <path d="M495 670L610 595L715 645L600 720Z" fill="#08264a" stroke="#176eff" stroke-width="4"/>
+ <path d="M515 625L630 550L735 600L620 675Z" fill="#0a315a" stroke="#28d8ff" stroke-width="4"/>
+ <path d="M535 580L650 505L755 555L640 630Z" fill="#0b3c6b" stroke="#ff6a00" stroke-width="4"/>
+ <path d="M555 535L670 460L775 510L660 585Z" fill="#0b477d" stroke="#27d9ff" stroke-width="4"/>
+</g>
+<g fill="#06182d" stroke="#27d9ff" stroke-width="3">
+ <rect x="592" y="600" width="58" height="32" rx="4"/>
+ <rect x="575" y="650" width="62" height="34" rx="4"/>
+ <rect x="558" y="700" width="66" height="36" rx="4"/>
+</g>
+<text x="623" y="618" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="13" font-weight="700">BANK</text>
+<g fill="none" stroke="url(#cyan)" stroke-width="3" filter="url(#glow)">
+ <circle cx="455" cy="785" r="22"/><circle cx="705" cy="760" r="20"/><circle cx="735" cy="470" r="17"/>
+ <path d="M455 785L520 740M705 760L650 720M735 470L680 505"/>
+</g>
+<g fill="#ff6a00" filter="url(#glow)">
+ <circle cx="455" cy="785" r="5"/><circle cx="705" cy="760" r="5"/><circle cx="735" cy="470" r="5"/>
+</g>
+<g transform="translate(625 785)">
+ <rect width="62" height="112" rx="12" fill="#071a31" stroke="#28d8ff" stroke-width="3"/>
+ <rect x="8" y="14" width="46" height="68" rx="5" fill="#0e3b66"/>
+ <circle cx="31" cy="96" r="5" fill="#27d9ff"/>
+ <path d="M17 38h28M17 48h22M17 58h27" stroke="#7ceaff" stroke-width="3" opacity=".7"/>
+</g>
+<g fill="#27d9ff" opacity=".65"><circle cx="90" cy="760" r="3"/><circle cx="130" cy="690" r="2"/><circle cx="180" cy="830" r="3"/><circle cx="720" cy="350" r="3"/><circle cx="670" cy="410" r="2"/></g>
+</svg>
