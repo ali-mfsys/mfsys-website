@@ -1010,3 +1010,40 @@ brand{line-height:0}.solution-detail-grid{display:grid;grid-template-columns:min
   position:relative;
   z-index:2;
 }
+
+
+/* Products mega menu — unify left editorial panel into one visual surface */
+.products-menu .product-editorial-intro{
+  position:relative;
+  background:
+    linear-gradient(180deg,rgba(5,31,52,.48) 0%,rgba(5,31,52,.58) 48%,rgba(4,23,39,.72) 100%),
+    url("/menu-assets/graphics/products-hero.jpg") center/cover no-repeat!important;
+}
+.products-menu .product-editorial-intro .editorial-art-wrap{
+  display:none;
+}
+.products-menu .product-editorial-intro:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 78% 18%,rgba(51,182,255,.18),transparent 30%),
+    linear-gradient(135deg,transparent 0 47%,rgba(100,203,255,.08) 47.2%,transparent 47.6%),
+    repeating-linear-gradient(135deg,rgba(130,215,255,.035) 0,rgba(130,215,255,.035) 1px,transparent 1px,transparent 28px);
+  mix-blend-mode:screen;
+}
+.products-menu .product-editorial-intro:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background:linear-gradient(90deg,rgba(4,23,39,.12),rgba(4,23,39,0) 62%,rgba(4,23,39,.18));
+}
+.products-menu .product-editorial-intro .editorial-copy,
+.products-menu .product-editorial-intro .editorial-proof{
+  position:relative;
+  z-index:2;
+}
