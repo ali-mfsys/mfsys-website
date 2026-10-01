@@ -175,17 +175,6 @@ export default function SiteHeader(){
     </div>
     <div className="nav-menu"><button className="nav-menu-trigger" aria-haspopup="true" aria-expanded={open==="industries"} onClick={()=>setOpen(open==="industries"?null:"industries")}>Industries <span aria-hidden="true">⌄</span></button>
      {open==="industries"&&<div className="mfsys-industries-mega" role="menu">
-      <section className="industries-editorial-panel">
-       <div className="industries-editorial-bg" aria-hidden="true"><img src="/menu-assets/graphics/impact-mountains.jpg" alt="" /></div>
-       <div className="industries-editorial-overlay" aria-hidden="true"/>
-       <div className="industries-editorial-copy">
-        <span className="editorial-eyebrow">OUR INDUSTRIES —</span>
-        <h2>Digital solutions for a more inclusive and sustainable world.</h2>
-        <p>Enabling financial inclusion, climate resilience and smarter supply chains across key sectors.</p>
-        <Link href="/industries" onClick={closeAll}>Explore All Industries <b>→</b></Link>
-       </div>
-       <div className="industries-editorial-proof"><span><b>6</b>Industries</span><span><b>12+</b>Countries</span><span><b>100+</b>Professionals</span></div>
-      </section>
       <section className="industries-card-grid">
        {industryGroups.flatMap(group=>group.items).map(name=><IndustryCard key={name} name={name} onNavigate={closeAll}/>)}
       </section>
