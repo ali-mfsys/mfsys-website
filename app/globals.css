@@ -522,7 +522,7 @@ brand{line-height:0}.solution-detail-grid{display:grid;grid-template-columns:min
 
 /* Products dropdown — canonical implementation */
 .products-menu{
-  width:min(1130px,calc(100vw - 32px))!important;
+  width:min(1356px,calc(100vw - 32px))!important;
   grid-template-columns:20% 60% 20%!important;
 }
 
