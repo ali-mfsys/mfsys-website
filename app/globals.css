@@ -1205,3 +1205,16 @@ brand{line-height:0}.solution-detail-grid{display:grid;grid-template-columns:min
   background:#fff0e6!important;
   box-shadow:inset 0 0 0 1px #ffd5bf!important;
 }
+
+
+/* Products dropdown — enforce one category and one item column */
+.products-menu .editorial-solution-columns{
+  grid-template-columns:1fr!important;
+}
+.products-menu .editorial-group{
+  display:block!important;
+}
+.products-menu .editorial-group:nth-child(3){
+  display:block!important;
+  grid-column:auto!important;
+}
