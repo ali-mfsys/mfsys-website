@@ -857,18 +857,21 @@ brand{line-height:0}.solution-detail-grid{display:grid;grid-template-columns:min
   min-width:0;
   min-height:0;
   padding:10px;
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  grid-template-rows:repeat(2,minmax(0,1fr));
-  gap:10px;
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  padding:6px 10px;
   background:#f7fafc;
 }
 .mfsys-industries-mega .industry-card{
   min-width:0;
   min-height:0;
+  height:82px;
+  flex:0 0 82px;
   overflow:hidden;
   display:flex;
-  flex-direction:column;
+  flex-direction:row;
+  align-items:stretch;
   background:#fff;
   border:1px solid #e3ebf0;
   border-radius:8px;
@@ -884,8 +887,9 @@ brand{line-height:0}.solution-detail-grid{display:grid;grid-template-columns:min
 }
 .mfsys-industries-mega .industry-card-image{
   position:relative;
-  height:108px;
-  flex:0 0 108px;
+  width:132px;
+  height:100%;
+  flex:0 0 132px;
   overflow:hidden;
   background:#dceaf2;
 }
@@ -903,7 +907,7 @@ brand{line-height:0}.solution-detail-grid{display:grid;grid-template-columns:min
 .mfsys-industries-mega .industry-card-icon{
   position:absolute;
   left:10px;
-  bottom:-1px;
+  bottom:8px;
   width:32px;
   height:32px;
   display:grid;
@@ -923,18 +927,18 @@ brand{line-height:0}.solution-detail-grid{display:grid;grid-template-columns:min
   position:relative;
   flex:1;
   min-width:0;
-  padding:10px 27px 9px 10px;
+  padding:14px 35px 12px 14px;
 }
 .mfsys-industries-mega .industry-card-body strong{
   display:block;
   color:#082f55;
-  font-size:13.5px;
+  font-size:16px;
   line-height:1.12;
   font-weight:800;
 }
 .mfsys-industries-mega .industry-card-body small{
   display:block;
-  margin-top:5px;
+  margin-top:4px;
   color:#4e7390;
   font-size:9.5px;
   line-height:1.28;
