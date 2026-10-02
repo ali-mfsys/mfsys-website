@@ -148,8 +148,8 @@ export default function SiteHeader(){
    <nav ref={navRef} className="primary-nav" aria-label="Primary">
     <div className="nav-menu"><button className="nav-menu-trigger" aria-haspopup="true" aria-expanded={open==="solutions"} onClick={()=>setOpen(open==="solutions"?null:"solutions")}>Solutions <span aria-hidden="true">⌄</span></button>
      {open==="solutions"&&<div id="solutions-menu" className="mfsys-editorial-mega solutions-menu" role="menu">
-      <section className="editorial-solution-columns">
-       {solutionGroups.map((group,groupIndex)=><div className="editorial-group" key={group.title}><h3>{group.title}</h3>{group.items.map(name=><GroupLink key={name} name={name} kind="solution" featured={groupIndex===0&&name==="Digital Banking Solution"} onNavigate={closeAll}/>)}</div>)}
+      <section className="solutions-list">
+       {solutionGroups.flatMap(group=>group.items).map(name=><GroupLink key={name} name={name} kind="solution" featured={name==="Digital Banking Solution"} onNavigate={closeAll}/>)}
       </section>
      </div>}
     </div>
