@@ -94,8 +94,11 @@ function IndustryCard({name,onNavigate}:{name:string;onNavigate:()=>void}){
    <span className="industry-card-icon"><img src={data.icon} alt="" /></span>
   </div>
   <div className="industry-card-body">
-   <strong>{name}</strong>
-   <small>{industryDescriptions[name]}</small>
+   <span className="industry-card-icon"><img src={data.icon} alt="" /></span>
+   <div className="industry-card-copy">
+    <strong>{name}</strong>
+    <small>{industryDescriptions[name]}</small>
+   </div>
    <span className="industry-card-arrow">›</span>
   </div>
  </Link>;
