@@ -1334,3 +1334,14 @@ brand{line-height:0}.solution-detail-grid{display:grid;grid-template-columns:min
 .solutions-menu .editorial-group{
   height:auto!important;
 }
+
+
+/* Approved header-matched dropdown background */
+.solutions-menu,
+.products-menu{
+  background:#fff8ef!important;
+}
+.solutions-menu .editorial-group,
+.products-menu .editorial-group{
+  background:#fff!important;
+}
