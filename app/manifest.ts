@@ -14,7 +14,7 @@ export default function manifest():MetadataRoute.Manifest{
     lang:"en",
     dir:"ltr",
     icons:[
-      {src:"/icon.svg",sizes:"any",type:"image/svg+xml",purpose:"any maskable"}
+      {src:"/icon.svg",sizes:"any",type:"image/svg+xml",purpose:"any"}
     ],
     categories:["business","finance","technology"],
     shortcuts:[
