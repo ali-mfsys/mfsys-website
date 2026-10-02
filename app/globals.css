@@ -1220,7 +1220,7 @@ brand{line-height:0}.solution-detail-grid{display:grid;grid-template-columns:min
 }
 
 
-/* Products dropdown — final match to Solutions */
+/* Products dropdown — final match to Solutions (approved) */
 .products-menu{
   width:min(560px,calc(100vw - 32px))!important;
   height:auto!important;
