@@ -140,33 +140,9 @@ export default function SiteHeader(){
     </div>
     <div className="nav-menu"><button className="nav-menu-trigger" aria-haspopup="true" aria-expanded={open==="products"} onClick={()=>setOpen(open==="products"?null:"products")}>Products <span aria-hidden="true">⌄</span></button>
      {open==="products"&&<div className="mfsys-editorial-mega products-menu" role="menu">
-      <section className="editorial-intro product-editorial-intro">
-       <div className="product-editorial-visual" aria-hidden="true">
-        <img src="/menu-assets/graphics/products-editorial-banking.jpg" alt="" />
-       </div>
-       <div className="editorial-copy">
-        <span className="editorial-eyebrow">OUR PRODUCTS —</span>
-        <h2>Purpose-built products for real-world impact.</h2>
-        <p>Scalable, cloud-native platforms trusted by 30+ financial institutions across 12 countries.</p>
-        <Link href="/products" onClick={closeAll}>Explore All Products <b>→</b></Link>
-       </div>
-       <div className="editorial-proof"><span><b>13</b>Products</span><span><b>30+</b>Financial Institutions</span><span><b>12+</b>Countries</span></div>
-      </section>
       <section className="editorial-solution-columns product-suite-columns">
        {productGroups.map(group=><div className="editorial-group" key={group.title}><h3>{group.title}</h3>{group.items.map(name=><GroupLink key={name} name={name} kind="product" featured={name==="CiiHive"} onNavigate={closeAll}/>)}</div>)}
       </section>
-      <Link href="/products/ciihive" className="editorial-impact product-featured" onClick={closeAll}>
-       <div className="product-featured-visual" aria-hidden="true">
-        <img src="/menu-assets/graphics/ciihive-devices-menu.jpg" alt="" />
-       </div>
-       <div className="impact-copy product-featured-copy">
-        <span>FEATURED PRODUCT</span>
-        <strong>CiiHive</strong>
-        <b>Digital Core Banking Solution</b>
-        <p>A purpose-built core banking system for microfinance banks, SACOs, MFIs, NBFCs, fintechs and cooperatives.</p>
-        <em>Learn More →</em>
-       </div>
-      </Link>
      </div>}
     </div>
     <div className="nav-menu"><button className="nav-menu-trigger" aria-haspopup="true" aria-expanded={open==="industries"} onClick={()=>setOpen(open==="industries"?null:"industries")}>Industries <span aria-hidden="true">⌄</span></button>
