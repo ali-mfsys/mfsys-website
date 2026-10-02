@@ -5,7 +5,7 @@ import {usePathname} from "next/navigation";
 import {solutions,products,industries} from "../lib/site-data";
 import BrandLogo from "./BrandLogo";
 
-type MenuName="solutions"|"products"|"industries";
+type MenuName="solutions"|"products"|"industries"|"aiInnovation";
 const solutionGroups=[
  {title:"Financial Services",items:["Digital Banking Solution","Digital Loan Origination System (LOS)","Islamic Finance"]},
  {title:"Intelligence & Digital",items:["AI-Based Credit Intelligence","AI-Enabled Mobile Lending","Digital Wallet & Payment"]},
@@ -20,7 +20,15 @@ const productGroups=[
  {title:"Digital Agriculture",items:["DigitalKisaan"]},
  {title:"Climate Solutions",items:["XchangeCarbon"]},
  {title:"Logistic Solutions",items:["CargoGuard"]}
+];const aiInnovationItems=[
+ {name:"AI-Based Credit Intelligence",description:"Explainable scoring and risk models",icon:"/menu-assets/icons/icon-ai-credit.svg"},
+ {name:"Agentic AI Enterprise Automation",description:"AI agents and workflow automation",icon:"/menu-assets/icons/icon-agentic-ai.svg"},
+ {name:"Data Analytics & Insights",description:"Advanced analytics for better decisions",icon:"/menu-assets/icons/icon-consulting.svg"},
+ {name:"AI for Financial Inclusion",description:"Responsible and inclusive AI solutions",icon:"/menu-assets/icons/icon-mobile-lending.svg"},
+ {name:"Emerging Technologies",description:"Blockchain, open finance and digital identity",icon:"/menu-assets/icons/icon-innovation.svg"},
+ {name:"Innovation Lab",description:"Co-creating solutions for real-world impact",icon:"/menu-assets/icons/icon-innovation.svg"}
 ];
+
 const solutionMap=new Map(solutions.map(x=>[x[0],x]));
 const industryGroups=[
  {title:"Financial Services",items:["Microfinance & Banking","Islamic Finance"]},
@@ -152,7 +160,17 @@ export default function SiteHeader(){
       </section>
      </div>}
     </div>
-    <Link href="/ai-innovation" onClick={closeAll}>AI & Innovation</Link><Link href="/insights" onClick={closeAll}>Insights</Link><Link href="/about" onClick={closeAll}>About MFSYS</Link><Link className="nav-cta" href="/contact" onClick={closeAll}>Get in Touch <span>→</span></Link>
+    <div className="nav-menu"><button className="nav-menu-trigger" aria-haspopup="true" aria-expanded={open==="aiInnovation"} onClick={()=>setOpen(open==="aiInnovation"?null:"aiInnovation")}>AI & Innovation <span aria-hidden="true">⌄</span></button>
+     {open==="aiInnovation"&&<div className="mfsys-editorial-mega ai-innovation-menu" role="menu">
+      <section className="ai-innovation-list">
+       {aiInnovationItems.map(item=><Link key={item.name} href="/ai-innovation" className="mfsys-editorial-item" onClick={closeAll}>
+        <span className="mfsys-editorial-icon"><img src={item.icon} alt="" /></span>
+        <span className="mfsys-editorial-item-copy"><strong>{item.name}</strong><small>{item.description}</small></span>
+        <span className="mfsys-editorial-arrow">›</span>
+       </Link>)}
+      </section>
+     </div>}
+    </div><Link href="/insights" onClick={closeAll}>Insights</Link><Link href="/about" onClick={closeAll}>About MFSYS</Link><Link className="nav-cta" href="/contact" onClick={closeAll}>Get in Touch <span>→</span></Link>
    </nav>
    <div id="mobile-navigation" className={mobileOpen?"mfsys-mobile-nav is-open":"mfsys-mobile-nav"} aria-hidden={!mobileOpen}>
     {(["solutions","products","industries"] as MenuName[]).map(section=>{const label=section[0].toUpperCase()+section.slice(1);return <div className="mfsys-mobile-section" key={section}><button type="button" onClick={()=>toggleMobileSection(section)} aria-expanded={mobileSection===section}>{label}<span>{mobileSection===section?"−":"+"}</span></button>{mobileSection===section&&<div className="mfsys-mobile-links">{section==="solutions"&&solutions.map(x=><Link key={x[0]} href={x[2]} onClick={closeAll}>{x[0]}</Link>)}{section==="products"&&productGroups.map(group=><div className="mfsys-mobile-product-group" key={group.title}><strong>{group.title}</strong>{group.items.map(name=>{const item=products.find(x=>x[0]===name);return item?<Link key={name} href={item[2]} onClick={closeAll}>{name}</Link>:null})}</div>)}{section==="industries"&&industryGroups.map(group=><div className="mfsys-mobile-product-group" key={group.title}><strong>{group.title}</strong>{group.items.map(name=><Link key={name} href="/industries" onClick={closeAll}>{name}</Link>)}</div>)}</div>}</div>})}
