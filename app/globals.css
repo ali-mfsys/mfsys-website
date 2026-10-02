@@ -1081,3 +1081,34 @@ brand{line-height:0}.solution-detail-grid{display:grid;grid-template-columns:min
     max-width:760px!important;
   }
 }
+
+
+/* Solutions dropdown — single-column compact layout */
+.solutions-menu{
+  width:min(560px,calc(100vw - 32px))!important;
+}
+.solutions-menu .editorial-solution-columns{
+  grid-template-columns:1fr!important;
+  gap:6px!important;
+}
+.solutions-menu .editorial-group{
+  padding:7px!important;
+}
+.solutions-menu .editorial-group:nth-child(3){
+  grid-column:auto!important;
+  display:block!important;
+}
+.solutions-menu .editorial-group h3{
+  margin-bottom:3px!important;
+}
+.solutions-menu .mfsys-editorial-item{
+  min-height:48px!important;
+  grid-template-columns:32px minmax(0,1fr) 13px!important;
+  padding:5px 6px!important;
+}
+.solutions-menu .mfsys-editorial-item-copy strong{
+  font-size:14px!important;
+}
+.solutions-menu .mfsys-editorial-item-copy small{
+  font-size:9px!important;
+}
