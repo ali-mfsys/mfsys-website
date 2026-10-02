@@ -1223,8 +1223,8 @@ brand{line-height:0}.solution-detail-grid{display:grid;grid-template-columns:min
 /* Products dropdown — final match to Solutions (approved) */
 .products-menu{
   width:min(560px,calc(100vw - 32px))!important;
-  height:auto!important;
-  max-height:min(720px,calc(100vh - 135px))!important;
+  height:min(780px,calc(100vh - 125px))!important;
+  max-height:780px!important;
   display:block!important;
   padding:8px!important;
   overflow-y:auto!important;
