@@ -155,8 +155,8 @@ export default function SiteHeader(){
     </div>
     <div className="nav-menu"><button className="nav-menu-trigger" aria-haspopup="true" aria-expanded={open==="products"} onClick={()=>setOpen(open==="products"?null:"products")}>Products <span aria-hidden="true">⌄</span></button>
      {open==="products"&&<div className="mfsys-editorial-mega products-menu" role="menu">
-      <section className="editorial-solution-columns product-suite-columns">
-       {productGroups.map(group=><div className="editorial-group" key={group.title}><h3>{group.title}</h3>{group.items.map(name=><GroupLink key={name} name={name} kind="product" featured={name==="CiiHive"} onNavigate={closeAll}/>)}</div>)}
+      <section className="products-list">
+       {productGroups.flatMap(group=>group.items).map(name=><GroupLink key={name} name={name} kind="product" featured={name==="CiiHive"} onNavigate={closeAll}/>)}
       </section>
      </div>}
     </div>
