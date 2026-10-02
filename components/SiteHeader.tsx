@@ -91,7 +91,6 @@ function IndustryCard({name,onNavigate}:{name:string;onNavigate:()=>void}){
  return <Link href="/industries" className="industry-card" onClick={onNavigate}>
   <div className={`industry-card-image${data.image?"":" industry-card-image--no-image"}`}>
    {data.image&&<img src={data.image} alt="" />}
-   <span className="industry-card-icon"><img src={data.icon} alt="" /></span>
   </div>
   <div className="industry-card-body">
    <span className="industry-card-icon"><img src={data.icon} alt="" /></span>
