@@ -25,8 +25,8 @@ const productGroups=[
  {name:"Agentic AI Enterprise Automation",description:"AI agents and workflow automation",icon:"/menu-assets/icons/icon-agentic-ai.svg"},
  {name:"Data Analytics & Insights",description:"Advanced analytics for better decisions",icon:"/menu-assets/icons/icon-consulting.svg"},
  {name:"AI for Financial Inclusion",description:"Responsible and inclusive AI solutions",icon:"/menu-assets/icons/icon-mobile-lending.svg"},
- {name:"Emerging Technologies",description:"Blockchain, open finance and digital identity",icon:"/menu-assets/icons/icon-innovation.svg"},
- {name:"Innovation Lab",description:"Co-creating solutions for real-world impact",icon:"/menu-assets/icons/icon-innovation.svg"}
+ {name:"Emerging Technologies",description:"Blockchain, open finance and digital identity",icon:"/menu-assets/icons/icon-agentic-ai.svg"},
+ {name:"Innovation Lab",description:"Co-creating solutions for real-world impact",icon:"/menu-assets/icons/icon-consulting.svg"}
 ];
 
 const solutionMap=new Map(solutions.map(x=>[x[0],x]));
