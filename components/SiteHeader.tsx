@@ -133,15 +133,9 @@ export default function SiteHeader(){
    <nav ref={navRef} className="primary-nav" aria-label="Primary">
     <div className="nav-menu"><button className="nav-menu-trigger" aria-haspopup="true" aria-expanded={open==="solutions"} onClick={()=>setOpen(open==="solutions"?null:"solutions")}>Solutions <span aria-hidden="true">⌄</span></button>
      {open==="solutions"&&<div id="solutions-menu" className="mfsys-editorial-mega solutions-menu" role="menu">
-      <section className="editorial-intro">
-       <div className="editorial-art-wrap"><SolutionsVisual/><div className="art-lake"/><div className="art-network"><i>DATA</i><i>AI</i><i>CORE BANKING</i><i>RISK</i><i>PAYMENTS</i><i>CLOUD</i><i>API</i></div><div className="art-scanline"/></div>
-       <div className="editorial-copy"><span className="editorial-eyebrow">MFSYS SOLUTIONS —</span><h2>Technology built for intelligent financial ecosystems.</h2><p>Digital solutions for financial inclusion, sustainable growth and more resilient communities.</p><Link href="/solutions" onClick={closeAll}>Explore All Solutions <b>→</b></Link></div>
-       <div className="editorial-proof"><span><b>12+</b>Countries</span><span><b>30+</b>Financial Institutions</span><span><b>100+</b>Professionals</span></div>
-      </section>
       <section className="editorial-solution-columns">
        {solutionGroups.map((group,groupIndex)=><div className="editorial-group" key={group.title}><h3>{group.title}</h3>{group.items.map(name=><GroupLink key={name} name={name} kind="solution" featured={groupIndex===0&&name==="Digital Banking Solution"} onNavigate={closeAll}/>)}</div>)}
       </section>
-      <div className="editorial-impact"><img src="/menu-assets/graphics/impact-tech-farmer.jpg" alt="" /><div className="impact-copy"><span>OUR IMPACT</span><strong>Building more inclusive, resilient and sustainable economies.</strong><Link href="/about" onClick={closeAll}>Our Impact →</Link></div></div>
      </div>}
     </div>
     <div className="nav-menu"><button className="nav-menu-trigger" aria-haspopup="true" aria-expanded={open==="products"} onClick={()=>setOpen(open==="products"?null:"products")}>Products <span aria-hidden="true">⌄</span></button>
