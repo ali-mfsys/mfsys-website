@@ -19,7 +19,7 @@ const productGroups=[
  {title:"Compliance and Risk",items:["IFRS9"]},
  {title:"Digital Agriculture",items:["DigitalKisaan"]},
  {title:"Climate Solutions",items:["XchangeCarbon"]},
- {title:"Logistic Solutions",items:["CargoGuard"]}
+ {title:"Logistic Solutions",items:["CargoGuard","ClearPath"]}
 ];
 const solutionMap=new Map(solutions.map(x=>[x[0],x]));
 const industryGroups=[
@@ -49,6 +49,7 @@ const productMap=new Map(products.map(x=>[x[0],x]));const productIconMap: Record
  "ShariahOne": "/menu-assets/icons/icon-islamic-finance.svg",
  "XchangeCarbon": "/menu-assets/icons/icon-climate.svg",
  "CargoGuard": "/menu-assets/icons/icon-logistics.svg",
+ "ClearPath": "/menu-assets/icons/icon-logistics.svg",
  "IFRS9": "/menu-assets/icons/icon-consulting.svg",
 };
 
