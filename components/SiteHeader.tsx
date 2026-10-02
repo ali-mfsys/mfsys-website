@@ -181,13 +181,13 @@ export default function SiteHeader(){
        </Link>)}
       </section>
      </div>}
+    </div>
     <div className="nav-menu"><button className="nav-menu-trigger" aria-haspopup="true" aria-expanded={open==="industries"} onClick={()=>setOpen(open==="industries"?null:"industries")}>Industries <span aria-hidden="true">⌄</span></button>
      {open==="industries"&&<div className="mfsys-industries-mega" role="menu">
       <section className="industries-card-grid">
        {industryGroups.flatMap(group=>group.items).map(name=><IndustryCard key={name} name={name} onNavigate={closeAll}/>)}
       </section>
      </div>}
-    </div>
     </div><Link href="/about" onClick={closeAll}>About MFSYS</Link><Link className="nav-cta" href="/contact" onClick={closeAll}>Get in Touch <span>→</span></Link>
    </nav>
    <div id="mobile-navigation" className={mobileOpen?"mfsys-mobile-nav is-open":"mfsys-mobile-nav"} aria-hidden={!mobileOpen}>
