@@ -1603,3 +1603,13 @@ brand{line-height:0}.solution-detail-grid{display:grid;grid-template-columns:min
 @media(max-width:900px){
   .products-menu{display:none!important}
 }
+
+
+/* Industries dropdown — use the same cream tone as the main navigation bar */
+.mfsys-industries-mega{
+  background:#FFF7ED!important;
+}
+.mfsys-industries-mega .industry-card{
+  background:#FFF7ED!important;
+  border-color:rgba(8,47,82,.12)!important;
+}
