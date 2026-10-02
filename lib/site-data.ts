@@ -25,8 +25,7 @@ export const products=[
 ["IFRS9","Expected credit loss staging, provisioning and reporting","/products/ifrs9","Compliance and Risk"],
 ["DigitalKisaan","Agriculture MIS for farmer cooperatives and value chains","/products/digitalkisaan","Digital Agriculture"],
 ["XchangeCarbon","Carbon credit Marketplace linking community projects to climate finance","/products/xchangecarbon","Climate Solutions"],
-["CargoGuard","Logistics platform, protects loads against fraud and theft, real-time tracking","/products/cargoguard","Logistic Solutions"],
-["ClearPath","Digital freight and cargo lifecycle platform for tracking, compliance, fraud prevention and logistics operations.","/products","Logistic Solutions"]
+["CargoGuard","Logistics platform, protects loads against fraud and theft, real-time tracking","/products/cargoguard","Logistic Solutions"]
 ] as const;
 
 export const industries=["Microfinance & Banking","Islamic Finance","Agriculture & Rural Development","Climate & Carbon","Logistics & Supply Chain","Government & Development"];
