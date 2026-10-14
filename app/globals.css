@@ -1734,3 +1734,24 @@ brand{line-height:0}.solution-detail-grid{display:grid;grid-template-columns:min
 .connected-chart{height:48px;margin:11px 0}
 @media(max-width:640px){.connected-dashboard-metrics span{font-size:7px}.connected-visual{width:86%}}
 @media(prefers-reduced-motion:reduce){.connected-symbol,.connected-card:before{transition:none}}
+
+
+/* Intelligent Spectrum: final large-screen width and dashboard positioning */
+@media(min-width:1180px){
+.connected-ecosystem>.container{width:min(100% - 72px,1320px);max-width:1320px}
+.connected-grid{gap:18px}
+.connected-card{padding:25px}
+.connected-feature{padding:35px;min-height:500px}
+.connected-visual{right:0;bottom:4px;width:51%;height:54%}
+.connected-screen{right:20px;bottom:15px;transform:rotate(-3deg);width:min(320px,100%)}
+}
+@media(min-width:641px) and (max-width:1179px){
+.connected-visual{right:0;bottom:0;width:50%;height:52%}
+.connected-screen{right:18px;bottom:18px;transform:rotate(-3deg)}
+}
+@media(max-width:640px){
+.connected-feature{min-height:565px}
+.connected-visual{right:0;bottom:8px;width:88%;height:39%}
+.connected-screen{right:16px;bottom:10px;width:min(300px,96%);transform:rotate(-2deg)}
+.connected-intro p{font-size:15px}
+}
