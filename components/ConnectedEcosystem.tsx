@@ -6,7 +6,7 @@ const solutions=[
 ["05","AI & Credit Intelligence","Support smarter credit decisions through scoring and analytics.","AI Credit Intelligence","/solutions/ai-credit"],
 ["06","Agriculture & Rural Finance","Enable farmer financing and rural value chains.","DigitalKisaan","/solutions/agri-finance"],
 ["07","Risk, Compliance & Reporting","Support expected credit losses, portfolio risk and reporting.","IFRS 9 · Analytics","/products/ifrs9"],
-["08","Integration & Automation","Connect banking systems, digital channels and workflows.","mConnect · Agentic AI","/solutions/agentic-ai"
+["08","Integration & Automation","Connect banking systems, digital channels and workflows.","mConnect · Agentic AI","/solutions/agentic-ai"]
 ];
 export default function ConnectedEcosystem(){return <section className="connected-ecosystem" aria-labelledby="connected-heading"><div className="container">
 <div className="eyebrow">THE MFSYS CONNECTED ECOSYSTEM</div>
