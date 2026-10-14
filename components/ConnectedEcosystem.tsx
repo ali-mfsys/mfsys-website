@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 type SolutionIconName = "bank" | "lending" | "payments" | "islamic" | "ai" | "agriculture" | "risk" | "integration";
 function SolutionIcon({name}:{name:SolutionIconName}) {
- const paths:Record<SolutionIconName,React.ReactNode>={
+ const paths:Record<SolutionIconName,ReactNode>={
  bank:<><path d="m3 10 9-6 9 6M4 10h16M6 10v9m4-9v9m4-9v9m4-9v9M3 21h18"/></>,
  lending:<><path d="M3 16h5l3 2h5l5-5a2 2 0 0 0-3-2l-3 2h-5"/><path d="M3 12h5l3 2h4"/><circle cx="16" cy="6" r="3"/><path d="M16 4v4m-2-2h4"/></>,
  payments:<><path d="M4 7h16m-4-4 4 4-4 4M20 17H4m4-4-4 4 4 4"/></>,
@@ -15,13 +15,13 @@ function SolutionIcon({name}:{name:SolutionIconName}) {
  return <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{paths[name]}</svg>;
 }
 const solutions=[
-["02","Digital Lending","Digitize loan origination, approvals and servicing.","LoanLeaf · LoanIQ","/solutions/loan-origination"
-["03","Payments & Digital Channels","Connect wallets, mobile banking, remittances and payment networks.","mConnect · Digital Wallet","/solutions/payments"
-["04","Islamic Finance","Digitize Shariah-compliant financing workflows.","Smart Mudarabah · Zaroorat24","/solutions/islamic-finance"
-["05","AI & Credit Intelligence","Support smarter credit decisions through scoring and analytics.","AI Credit Intelligence","/solutions/ai-credit"
-["06","Agriculture & Rural Finance","Enable farmer financing and rural value chains.","DigitalKisaan","/solutions/agri-finance"
-["07","Risk, Compliance & Reporting","Support expected credit losses, portfolio risk and reporting.","IFRS 9 · Analytics","/products/ifrs9"
-["08","Integration & Automation","Connect banking systems, digital channels and workflows.","mConnect · Agentic AI","/solutions/agentic-ai"
+["02","Digital Lending","Digitize loan origination, approvals and servicing.","LoanLeaf · LoanIQ","/solutions/loan-origination","lending"],
+["03","Payments & Digital Channels","Connect wallets, mobile banking, remittances and payment networks.","mConnect · Digital Wallet","/solutions/payments","payments"],
+["04","Islamic Finance","Digitize Shariah-compliant financing workflows.","Smart Mudarabah · Zaroorat24","/solutions/islamic-finance","islamic"],
+["05","AI & Credit Intelligence","Support smarter credit decisions through scoring and analytics.","AI Credit Intelligence","/solutions/ai-credit","ai"],
+["06","Agriculture & Rural Finance","Enable farmer financing and rural value chains.","DigitalKisaan","/solutions/agri-finance","agriculture"],
+["07","Risk, Compliance & Reporting","Support expected credit losses, portfolio risk and reporting.","IFRS 9 · Analytics","/products/ifrs9","risk"],
+["08","Integration & Automation","Connect banking systems, digital channels and workflows.","mConnect · Agentic AI","/solutions/agentic-ai","integration"]
 ];
 export default function ConnectedEcosystem(){return <section className="connected-ecosystem" aria-labelledby="connected-heading"><div className="container">
 <div className="eyebrow">THE MFSYS CONNECTED ECOSYSTEM</div>
