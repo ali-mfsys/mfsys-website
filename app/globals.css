@@ -1700,3 +1700,13 @@ brand{line-height:0}.solution-detail-grid{display:grid;grid-template-columns:min
 @media(max-width:1100px){.connected-intro{display:block}.connected-intro p{max-width:700px;margin-top:18px}.connected-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.connected-feature{grid-column:span 2;grid-row:span 1;min-height:420px}.connected-bottom{align-items:flex-start;flex-direction:column}}
 @media(max-width:640px){.connected-ecosystem{padding:65px 0}.connected-grid{grid-template-columns:1fr}.connected-feature{grid-column:span 1;min-height:520px;padding:25px}.connected-visual{width:86%;height:38%}.connected-card{min-height:195px}.connected-actions{flex-wrap:wrap}.connected-intro h2{font-size:37px}}
 @media(prefers-reduced-motion:reduce){.connected-card,.connected-feature{transition:none}}
+
+
+/* Ecosystem final layout refinement: full-width final card closes the visual gap */
+@media(min-width:1101px){
+.connected-grid>.connected-card:last-child{grid-column:span 2;min-height:195px;background:linear-gradient(115deg,#ffffff,#eef7ff);border-color:#c8dfef}
+.connected-grid>.connected-card:last-child h3{font-size:21px}
+.connected-grid>.connected-card:last-child p{max-width:550px}
+}
+.connected-symbol{font-family:Arial,sans-serif;font-weight:700}
+.connected-screen strong{font-size:17px;line-height:1.3}
