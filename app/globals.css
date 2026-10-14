@@ -1710,3 +1710,27 @@ brand{line-height:0}.solution-detail-grid{display:grid;grid-template-columns:min
 }
 .connected-symbol{font-family:Arial,sans-serif;font-weight:700}
 .connected-screen strong{font-size:17px;line-height:1.3}
+
+
+/* Intelligent Spectrum: accessible, restrained solution accent system */
+.connected-ecosystem{position:relative;isolation:isolate;background:radial-gradient(ellipse at 88% 24%,#e0eefb 0,transparent 42%),linear-gradient(180deg,#f5f9fd 0%,#eaf2fa 100%)}
+.connected-ecosystem:before{content:"";position:absolute;z-index:-1;inset:0;pointer-events:none;opacity:.22;background-image:radial-gradient(#87b4d9 1px,transparent 1px);background-size:34px 34px;mask-image:linear-gradient(90deg,transparent 38%,#000 100%)}
+.connected-card{--accent:#2476d3;--tint:#e9f2ff;position:relative;overflow:hidden}
+.connected-card--lending{--accent:#138c80;--tint:#e1f7f2}
+.connected-card--payments{--accent:#0b94c4;--tint:#e2f6fc}
+.connected-card--islamic{--accent:#9b742c;--tint:#fcf4e2}
+.connected-card--ai{--accent:#7956d6;--tint:#f0eaff}
+.connected-card--agriculture{--accent:#438c52;--tint:#eaf6e9}
+.connected-card--risk{--accent:#b96424;--tint:#fff0e3}
+.connected-card--integration{--accent:#386cb0;--tint:#e9f1fc}
+.connected-card:before{content:"";position:absolute;inset:0 0 auto;height:3px;background:var(--accent);opacity:0;transition:opacity .2s}
+.connected-card:hover:before,.connected-card:focus-visible:before{opacity:1}
+.connected-symbol{background:var(--tint);color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 12%,transparent);font-family:inherit;transition:transform .25s,box-shadow .25s}
+.connected-card:hover .connected-symbol,.connected-card:focus-visible .connected-symbol{transform:translateY(-2px);box-shadow:0 6px 17px color-mix(in srgb,var(--accent) 17%,transparent)}
+.connected-card-foot{color:var(--accent)}
+.connected-feature .connected-glyph{color:#a5e6ff}
+.connected-dashboard-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;margin-top:12px}
+.connected-dashboard-metrics span{padding:6px 4px;background:#ffffff13;border:1px solid #ffffff1c;border-radius:5px;color:#d5edfc;font-size:8px;line-height:1.2;text-align:center}
+.connected-chart{height:48px;margin:11px 0}
+@media(max-width:640px){.connected-dashboard-metrics span{font-size:7px}.connected-visual{width:86%}}
+@media(prefers-reduced-motion:reduce){.connected-symbol,.connected-card:before{transition:none}}
