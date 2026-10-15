@@ -1829,3 +1829,35 @@ brand{line-height:0}.solution-detail-grid{display:grid;grid-template-columns:min
 .products-showcase .product-card-arrow{padding-top:12px}
 .products-showcase .product-portfolio-footer{margin-top:16px;padding:18px 24px}
 }
+
+
+/* Interactive product discovery — scoped, responsive and accessible */
+.products-showcase .product-discovery{margin-top:14px}
+.products-showcase .product-discovery-tabs{display:flex;gap:9px;overflow-x:auto;scrollbar-width:thin;padding:3px 2px 13px}
+.products-showcase .product-discovery-tab{flex:1 0 auto;min-width:125px;display:flex;align-items:center;justify-content:center;gap:9px;padding:10px 12px;border:1px solid #dce7f0;border-radius:13px;background:#fff;color:#38546d;font-size:12px;font-weight:700;cursor:pointer;transition:border-color .2s,background .2s,box-shadow .2s}
+.products-showcase .product-discovery-tab:hover{border-color:#8db8df;background:#f8fbff}
+.products-showcase .product-discovery-tab.active{border-color:#2b76ce;background:#edf5ff;color:#164b8c;box-shadow:0 3px 12px #153a6410}
+.products-showcase .product-discovery-tab:focus-visible{outline:3px solid #2377d9;outline-offset:2px}
+.products-showcase .product-discovery-tab-icon{--product-accent:#2874d0;--product-tint:#eaf3ff;display:grid;place-items:center;flex:none;width:27px;height:27px;border-radius:8px;background:var(--product-tint);color:var(--product-accent);font-size:17px}
+.products-showcase .product-discovery-tab-icon.product-card-teal,.products-showcase .product-discovery-panel.product-card-teal{--product-accent:#168b7a;--product-tint:#e9f8f4}
+.products-showcase .product-discovery-tab-icon.product-card-violet,.products-showcase .product-discovery-panel.product-card-violet{--product-accent:#7956d6;--product-tint:#f1ebff}
+.products-showcase .product-discovery-tab-icon.product-card-green,.products-showcase .product-discovery-panel.product-card-green{--product-accent:#478e53;--product-tint:#edf8ee}
+.products-showcase .product-discovery-tab-icon.product-card-amber,.products-showcase .product-discovery-panel.product-card-amber{--product-accent:#b87435;--product-tint:#fff3e6}
+.products-showcase .product-discovery-panel{--product-accent:#2874d0;--product-tint:#eaf3ff;display:grid;grid-template-columns:1.1fr .9fr;align-items:stretch;min-height:270px;overflow:hidden;border:1px solid #d9e6f0;border-radius:19px;background:#fff;box-shadow:0 13px 35px #12395c0a}
+.products-showcase .product-discovery-copy{padding:30px 36px;display:flex;align-items:flex-start;flex-direction:column;justify-content:center}
+.products-showcase .product-discovery-copy .product-kicker{font-size:10px;letter-spacing:.11em;color:var(--product-accent);font-weight:800}
+.products-showcase .product-discovery-copy h3{font-size:clamp(26px,3vw,37px);letter-spacing:-.035em;color:#102c46;margin:9px 0}
+.products-showcase .product-discovery-copy p{font-size:14px;line-height:1.7;color:#536b80;max-width:520px;margin:0 0 16px}
+.products-showcase .product-discovery-benefits{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:21px}
+.products-showcase .product-discovery-benefits span{font-size:11px;font-weight:650;color:#31566f;background:#f0f5fa;border-radius:30px;padding:7px 10px}
+.products-showcase .product-discovery-art{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:7px;min-height:265px;background:radial-gradient(circle at 50% 45%,#ffffff 0%,var(--product-tint) 68%,#e8f1fa 100%);border-left:1px solid #e4edf5;color:#153b58}
+.products-showcase .product-discovery-art-ring{width:135px;height:135px;display:grid;place-items:center;border:1px solid #b9d1e4;border-radius:50%;position:relative;margin-bottom:9px}
+.products-showcase .product-discovery-art-ring:before{content:"";position:absolute;inset:16px;border:1px solid #c5d9e9;border-radius:50%}
+.products-showcase .product-discovery-art-center{display:grid;place-items:center;width:65px;height:65px;border-radius:20px;background:var(--product-accent);color:#fff;font-size:37px;box-shadow:0 12px 28px #16395325;z-index:1}
+.products-showcase .product-discovery-orbit{position:absolute;width:12px;height:12px;background:var(--product-accent);border:3px solid white;border-radius:50%;top:8px;right:20px}
+.products-showcase .product-discovery-orbit.two{top:auto;right:auto;bottom:18px;left:7px;opacity:.6}
+.products-showcase .product-discovery-art strong{font-size:20px;letter-spacing:-.02em}
+.products-showcase .product-discovery-art small{font-size:11px;color:#647e92;text-align:center}
+@media(max-width:850px){.products-showcase .product-discovery-tab{flex:0 0 auto}.products-showcase .product-discovery-panel{grid-template-columns:1fr}.products-showcase .product-discovery-art{min-height:180px;border-left:0;border-top:1px solid #e4edf5}.products-showcase .product-discovery-art-ring{width:100px;height:100px;margin:14px 0 0}.products-showcase .product-discovery-art-center{width:50px;height:50px;font-size:28px}.products-showcase .product-discovery-art{padding-bottom:17px}}
+@media(max-width:640px){.products-showcase .product-discovery-copy{padding:26px 21px}.products-showcase .product-discovery-tab{font-size:11px;padding:8px 10px}.products-showcase .product-discovery-art{min-height:155px}.products-showcase .product-discovery-benefits span{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.products-showcase .product-discovery-tab{transition:none}}
