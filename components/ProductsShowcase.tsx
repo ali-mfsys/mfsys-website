@@ -1,51 +1,24 @@
 "use client";
 import Link from "next/link";
-import {products} from "../lib/site-data";
+import {useState} from "react";
 
-const productMeta=[
-  ["CiiHive","CORE BANKING","AI-native digital core banking for institutions serving millions.","/products/ciihive","01"],
-  ["LoanLeaf","LENDING","Digital loan origination, workflow and intelligent decisioning.","/products/loanleaf","02"],
-  ["Smart Mudarabah","ISLAMIC FINANCE","End-to-end digital Mudarabah management built around Shariah-aligned workflows.","/products/smart-mudarabah","03"],
-  ["CargoGuard","LOGISTICS","Real-time freight visibility, tracking, compliance and operational control.","/products/cargoguard","04"],
-  ["XchangeCarbon","CLIMATE","Digital carbon marketplace, MRV and climate ecosystem infrastructure.","/products/xchangecarbon","05"],
-  ["IFRS9 Impairment Solution","RISK & COMPLIANCE","ECL, PD, LGD and lifetime estimation for modern financial institutions.","/products/ifrs9","06"],
+const portfolio=[
+{name:"LoanLeaf",category:"DIGITAL LENDING",description:"Originate, assess and manage loans from application through approval and disbursement.",href:"/products/loanleaf",icon:"↗",color:"teal"},
+{name:"Smart Mudarabah",category:"ISLAMIC FINANCE",description:"Manage Shariah-aligned Mudarabah financing with connected digital workflows.",href:"/products/smart-mudarabah",icon:"◇",color:"violet"},
+{name:"CargoGuard",category:"LOGISTICS",description:"Improve freight visibility, shipment security and operational coordination.",href:"/products/cargoguard",icon:"⇢",color:"blue"},
+{name:"DigitalKisaan",category:"AGRICULTURE",description:"Connect farmer records, agricultural finance and rural value-chain operations.",href:"/products/digitalkisaan",icon:"✳",color:"green"},
+{name:"XchangeCarbon",category:"CLIMATE TECHNOLOGY",description:"Support carbon marketplace operations and digital monitoring, reporting and verification.",href:"/products/xchangecarbon",icon:"◈",color:"green"},
+{name:"IFRS 9",category:"RISK & COMPLIANCE",description:"Support expected credit loss modelling, impairment and financial risk reporting.",href:"/products/ifrs9",icon:"▣",color:"amber"},
 ];
-
+const modules=[{name:"Customer Accounts",icon:"◎",sub:"Customer & account management"},{name:"Loans & Credit",icon:"↗",sub:"Origination & servicing"},{name:"Savings & Deposits",icon:"▤",sub:"Deposit operations"},{name:"Payments",icon:"⇄",sub:"Digital channels"},{name:"General Ledger",icon:"▦",sub:"Financial operations"},{name:"Risk & Analytics",icon:"◈",sub:"Insights & reporting"}];
 export default function ProductsShowcase(){
- return <section className="products-showcase">
-  <div className="container">
-   <div className="products-head">
-    <div>
-      <div className="eyebrow">MFSYS PRODUCTS</div>
-      <h2>Purpose-built intelligence.<br/><span>Ready for the real world.</span></h2>
-    </div>
-    <div className="products-head-copy">
-      <p>MFSYS products turn deep domain expertise into intelligent, scalable platforms. Each product is designed to solve a specific operational challenge while connecting into a broader digital ecosystem.</p>
-      <Link className="text-link" href="/products">Explore the product portfolio →</Link>
-    </div>
-   </div>
-   <div className="product-feature">
-    <div className="product-feature-number">01</div>
-    <div className="product-feature-copy">
-      <span className="product-kicker">AI-NATIVE DIGITAL CORE BANKING</span>
-      <h3>CiiHive</h3>
-      <p>A cloud-native core banking platform designed to bring digital onboarding, lending, mobile banking, AI credit intelligence and IFRS 9 capabilities into one connected operating core.</p>
-      <div className="product-tags"><span>Core Banking</span><span>AI Credit</span><span>Mobile Banking</span><span>IFRS 9</span></div>
-      <Link className="btn btn-primary" href="/products/ciihive">Explore CiiHive →</Link>
-    </div>
-    <div className="product-feature-visual" aria-hidden="true">
-      <div className="product-ring ring-one"/><div className="product-ring ring-two"/><div className="product-ring ring-three"/>
-      <div className="product-node node-center"><b>CIH</b><small>INTELLIGENCE CORE</small></div>
-      <div className="product-node node-a">AI</div><div className="product-node node-b">RISK</div><div className="product-node node-c">DATA</div><div className="product-node node-d">MOBILE</div>
-      <div className="product-scan"/>
-    </div>
-   </div>
-   <div className="product-grid">
-    {productMeta.slice(1).map(([name,kicker,desc,href,num])=><Link className="product-card" href={href} key={name}>
-      <span className="product-card-num">{num}</span><span className="product-kicker">{kicker}</span>
-      <h3>{name}</h3><p>{desc}</p><span className="product-card-arrow">Explore product ↗</span>
-    </Link>)}
-   </div>
-  </div>
- </section>;
+const [focus,setFocus]=useState(0);
+return <section className="products-showcase" aria-labelledby="mfsys-products-title"><div className="container">
+<div className="products-head"><div><div className="eyebrow">MFSYS PRODUCTS</div><h2 id="mfsys-products-title">Purpose-built intelligence.<br/><span>Ready for the real world.</span></h2></div><div className="products-head-copy"><p>Specialized platforms that help financial institutions and enterprises modernize operations, serve customers and unlock new opportunities.</p><Link className="text-link" href="/products">Explore the complete product portfolio →</Link></div></div>
+<div className="product-feature"><div className="product-feature-number">01 / FLAGSHIP BANKING PLATFORM</div><div className="product-feature-copy"><span className="product-kicker">DIGITAL CORE BANKING</span><h3>CiiHive</h3><p>Modern core banking for microfinance banks, MFIs, NBFCs, SACCOs, cooperatives, credit unions and fintechs. Connect customer accounts, deposits, lending and financial operations with digital channels and analytics.</p><div className="product-tags"><span>Core Banking</span><span>Loan Management</span><span>Deposits</span><span>Multi-currency</span></div><Link className="btn btn-primary" href="/products/ciihive">Explore CiiHive →</Link></div>
+<div className="product-feature-visual"><div className="product-platform" aria-label="Illustrative CiiHive banking capabilities"><div className="product-platform-top"><span className="product-platform-dot"/><span className="product-platform-dot"/><span className="product-platform-dot"/><strong>CiiHive / Banking Operations</strong><span className="product-platform-status">CONNECTED</span></div><div className="product-platform-intro"><span>CONNECTED BANKING CAPABILITIES</span><strong>One banking foundation. Multiple services.</strong></div><div className="product-module-grid">{modules.map((m,i)=><button type="button" className={"product-module"+(focus===i?" selected":"")} key={m.name} onClick={()=>setFocus(i)} aria-pressed={focus===i}><span aria-hidden="true">{m.icon}</span><strong>{m.name}</strong></button>)}</div><div className="product-platform-bottom"><span>CAPABILITY IN FOCUS</span><strong>{modules[focus].name}</strong><small>{modules[focus].sub}</small></div></div><span className="product-visual-caption">Illustrative capability map · Not a product screenshot</span></div></div>
+<div className="product-portfolio-label"><div><span>02 / SPECIALIZED PLATFORMS</span><h3>Built for real business challenges.</h3></div><p>Explore the technology behind each solution.</p></div>
+<div className="product-grid">{portfolio.map((item,i)=><Link className={"product-card product-card-"+item.color} href={item.href} key={item.name}><div className="product-card-top"><span className="product-card-icon" aria-hidden="true">{item.icon}</span><span className="product-card-num">{String(i+2).padStart(2,"0")}</span></div><span className="product-kicker">{item.category}</span><h3>{item.name}</h3><p>{item.description}</p><span className="product-card-arrow">Explore product <span aria-hidden="true">↗</span></span></Link>)}</div>
+<div className="product-portfolio-footer"><div><strong>One partner. A connected technology portfolio.</strong><p>Discover core banking, lending, payments, Islamic finance, agriculture, AI and industry-specific platforms.</p></div><Link className="btn btn-primary" href="/products">Explore All Products →</Link></div>
+</div></section>;
 }
