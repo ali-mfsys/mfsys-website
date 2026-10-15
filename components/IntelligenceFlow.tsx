@@ -1,7 +1,8 @@
 "use client";
 import {useState} from "react";
 import type {ReactNode} from "react";
-import styles from "./IntelligenceFlow.module.css";
+// Stable, scoped global class names avoid missing CSS-module assets in edge previews.
+const styles = {"section":"mfsys-intel-section","intro":"mfsys-intel-intro","journey":"mfsys-intel-journey","journeyHeader":"mfsys-intel-journeyHeader","kicker":"mfsys-intel-kicker","exampleLabel":"mfsys-intel-exampleLabel","stepper":"mfsys-intel-stepper","step":"mfsys-intel-step","active":"mfsys-intel-active","stepIcon":"mfsys-intel-stepIcon","stepNumber":"mfsys-intel-stepNumber","stepName":"mfsys-intel-stepName","story":"mfsys-intel-story","storyMain":"mfsys-intel-storyMain","storyStep":"mfsys-intel-storyStep","outcome":"mfsys-intel-outcome","storyAside":"mfsys-intel-storyAside","asideEyebrow":"mfsys-intel-asideEyebrow","products":"mfsys-intel-products","controls":"mfsys-intel-controls","note":"mfsys-intel-note"};
 
 type IconName="database"|"brain"|"decision"|"workflow"|"impact";
 const stages=[
