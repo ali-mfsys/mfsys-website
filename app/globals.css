@@ -1807,3 +1807,25 @@ brand{line-height:0}.solution-detail-grid{display:grid;grid-template-columns:min
 @media(max-width:950px){.products-showcase .product-feature{grid-template-columns:1fr}.products-showcase .product-feature-visual{min-height:400px;padding:0 25px 30px}.products-showcase .product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.products-showcase .product-grid .product-card:last-child{grid-column:auto}}
 @media(max-width:640px){.products-showcase .product-feature-copy{padding:70px 25px 30px}.products-showcase .product-feature-visual{min-height:350px;padding:0 14px 25px}.product-platform{transform:none}.product-module-grid{gap:5px;padding:0 10px 14px}.product-module{padding:10px 7px;min-height:83px}.product-module strong{font-size:10px}.product-platform-top strong{font-size:9px}.product-platform-status{font-size:7px}.products-showcase .product-grid{grid-template-columns:1fr}.products-showcase .product-card{min-height:225px}.product-portfolio-label{align-items:start;flex-direction:column}.product-portfolio-footer{align-items:start;flex-direction:column;padding:23px}}
 @media(prefers-reduced-motion:reduce){.product-module{transition:none}.products-showcase .product-card{transition:none}}
+
+
+/* Compact products showcase: preserve content width and legible typography */
+@media(min-width:951px){
+.products-showcase{padding-top:76px;padding-bottom:78px}
+.products-showcase .products-head{margin-bottom:27px}
+.products-showcase .product-feature{min-height:390px}
+.products-showcase .product-feature-copy{padding:65px 36px 35px 44px}
+.products-showcase .product-feature-visual{min-height:390px;padding:32px 25px 22px}
+.products-showcase .product-feature h3{margin-top:7px;margin-bottom:9px}
+.products-showcase .product-feature-copy p{line-height:1.58;margin-bottom:15px}
+.products-showcase .product-tags{margin-bottom:19px}
+.products-showcase .product-platform-intro{padding-top:17px;padding-bottom:12px}
+.products-showcase .product-module{min-height:77px;gap:8px;padding:10px}
+.products-showcase .product-module-grid{padding-bottom:13px}
+.products-showcase .product-portfolio-label{margin-top:23px;margin-bottom:12px}
+.products-showcase .product-card{min-height:218px;padding:18px 20px}
+.products-showcase .product-card-top{margin-bottom:11px}
+.products-showcase .product-card h3{margin:7px 0}
+.products-showcase .product-card-arrow{padding-top:12px}
+.products-showcase .product-portfolio-footer{margin-top:16px;padding:18px 24px}
+}
