@@ -22,16 +22,23 @@ impact:<><path d="M3 19h18M5 16l5-5 4 3 6-8M16 6h4v4"/><path d="M5 20V9m5 11v-5m
 return <svg viewBox="0 0 24 24" width="27" height="27" fill="none" stroke="currentColor" strokeWidth="1.65" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{paths[name]}</svg>;
 }
 export default function IntelligenceFlow(){
-const [active,setActive]=useState(0);
+const [active,setActive]=useState(2);
 const selected=stages[active];
+const outcomes=[
+{heading:"A connected view of every customer",detail:"Bring together customer profiles, accounts, transactions, repayment histories and relevant external information.",result:"Customer and financial data become easier to access and understand"},
+{heading:"Turn information into useful insights",detail:"Analyze repayment patterns, portfolio trends and customer behavior to identify opportunities and potential risks.",result:"Patterns, trends and risk indicators become visible"},
+{heading:"Make informed credit decisions",detail:"Support lending decisions with configurable policies, scoring rules, eligibility checks and approval workflows.",result:"Credit applications can be assessed consistently"},
+{heading:"From approval to execution",detail:"Connect approved decisions with banking operations, loan processing, payments and customer communications.",result:"Approved workflows move into digital operations"},
+{heading:"Understand the business impact",detail:"Monitor processing times, portfolio performance, operational efficiency and customer outreach.",result:"Business performance informs continuous improvement"}
+];
+const current=outcomes[active];
 return <section id="intelligence-flow" className={styles.section} aria-labelledby="intelligence-heading"><div className="container">
-<div className={styles.intro}><div><div className="eyebrow">THE MFSYS INTELLIGENCE ENGINE</div><h2 id="intelligence-heading">Data becomes intelligence.<br/><span>Intelligence becomes impact.</span></h2></div><p>MFSYS connects financial data, AI-driven insights, intelligent decisions and digital execution to help institutions operate efficiently, manage risk and expand financial inclusion.</p></div>
-<div className={styles.engine}>
-<div className={styles.engineTop}><div><span className={styles.overline}>INTELLIGENCE-TO-IMPACT ENGINE</span><h3>From insight to action. From action to outcomes.</h3></div><span className={styles.live}>CONNECTED INTELLIGENCE</span></div>
-<div className={styles.stages} role="group" aria-label="Explore five intelligence stages">{stages.map((stage,i)=><button key={stage.number} type="button" className={styles.stage+" "+styles["stage"+i]+(active===i?" "+styles.selected:"")} onClick={()=>setActive(i)} aria-pressed={active===i} aria-controls="intelligence-detail"><span className={styles.stageNumber}>{stage.number}</span><span className={styles.stageIcon}><StageIcon name={stage.icon}/></span><span className={styles.stageLabel}>{stage.label}</span><span className={styles.stageVerb}>{stage.verb}</span></button>)}</div>
-<div className={styles.feedback}><span className={styles.feedbackArrow} aria-hidden="true">↶</span><span>Continuous learning, measurement and improvement</span></div>
-<div id="intelligence-detail" className={styles.detail} aria-live="polite"><div className={styles.detailText}><span className={styles.detailNumber}>STAGE {selected.number} / 05</span><h4>{selected.label}</h4><p>{selected.desc}</p></div><div className={styles.detailSide}><div><span>BUSINESS APPLICATION</span><strong>{selected.example}</strong></div><div><span>MFSYS CAPABILITIES</span><strong>{selected.products}</strong></div></div></div>
-</div>
-<div className={styles.note}>Connecting banking, lending and digital finance capabilities with data-driven decisions and measurable business outcomes.</div>
+<div className={styles.intro}><div><div className="eyebrow">THE MFSYS INTELLIGENCE ENGINE</div><h2 id="intelligence-heading">Data becomes intelligence.<br/><span>Intelligence becomes impact.</span></h2></div><p>See how MFSYS connects banking data, intelligent decisions and digital operations to help financial institutions serve customers more efficiently.</p></div>
+<div className={styles.journey}>
+<div className={styles.journeyHeader}><div><span className={styles.kicker}>INTELLIGENCE IN ACTION</span><h3>From financial data to better business outcomes.</h3><p>Explore a microfinance lending journey, one step at a time.</p></div><span className={styles.exampleLabel}>EXAMPLE · MICROFINANCE LENDING</span></div>
+<div className={styles.stepper} role="group" aria-label="Explore the five stages of a lending journey">{stages.map((stage,i)=><button type="button" key={stage.number} className={styles.step+" "+styles["step"+i]+(active===i?" "+styles.active:"")} onClick={()=>setActive(i)} aria-pressed={active===i} aria-controls="intelligence-detail"><span className={styles.stepIcon}><StageIcon name={stage.icon}/></span><span className={styles.stepNumber}>STEP {stage.number}</span><span className={styles.stepName}>{["Connect","Analyze","Decide","Execute","Improve"][i]}</span></button>)}</div>
+<div id="intelligence-detail" className={styles.story} aria-live="polite"><div className={styles.storyMain}><span className={styles.storyStep}>STEP {selected.number} OF 05</span><h4>{current.heading}</h4><p>{current.detail}</p><div className={styles.outcome}><span aria-hidden="true">✓</span><span>{current.result}</span></div></div><aside className={styles.storyAside}><span className={styles.asideEyebrow}>IN PRACTICE</span><h5>Microfinance loan application</h5><p>{selected.example}</p><div className={styles.products}><span>MFSYS SOLUTIONS</span><strong>{selected.products}</strong></div></aside></div>
+<div className={styles.controls}><button type="button" onClick={()=>setActive(v=>Math.max(0,v-1))} disabled={active===0}>← Previous stage</button><span aria-label={`Stage ${active+1} of 5`}>{active+1} / 5</span><button type="button" onClick={()=>setActive(v=>Math.min(4,v+1))} disabled={active===4}>Next stage →</button></div>
+</div><p className={styles.note}>Illustrative customer journey. Available automation, analytics and AI capabilities depend on product configuration and integrations.</p>
 </div></section>;
 }
