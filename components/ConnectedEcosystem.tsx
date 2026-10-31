@@ -17,7 +17,7 @@ function SolutionIcon({name}:{name:SolutionIconName}) {
 const solutions=[
 ["02","Digital Lending","Digitize loan origination, approvals and servicing.","LoanLeaf · LoanIQ","/solutions/loan-origination","lending"],
 ["03","Payments & Digital Channels","Connect wallets, mobile banking, remittances and payment networks.","mConnect · Digital Wallet","/solutions/payments","payments"],
-["04","Islamic Finance","Digitize Shariah-compliant financing workflows.","Smart Mudarabah · Zaroorat24","/solutions/islamic-finance","islamic"],
+["04","Islamic Finance","Connect Islamic financing products, Shariah governance, contracts and asset-based transactions.","ShariahOne · Smart Mudarba","/solutions/islamic-finance","islamic"],
 ["05","AI & Credit Intelligence","Support smarter credit decisions through scoring and analytics.","AI Credit Intelligence","/solutions/ai-credit","ai"],
 ["06","Agriculture & Rural Finance","Enable farmer financing and rural value chains.","DigitalKisaan","/solutions/agri-finance","agriculture"],
 ["07","Risk, Compliance & Reporting","Support expected credit losses, portfolio risk and reporting.","IFRS 9 · Analytics","/products/ifrs9","risk"],
