@@ -1,6 +1,7 @@
 import Link from "next/link";
 import HeroNarrative from "../components/hero/HeroNarrative";
 import IntelligenceFlow from "../components/IntelligenceFlow";
+import ConnectedEcosystem from "../components/ConnectedEcosystem";
 import ProductsShowcase from "../components/ProductsShowcase";
 import SolutionsChallenge from "../components/SolutionsChallenge";
 import AIInnovation from "../components/AIInnovation";
@@ -30,15 +31,7 @@ export default function Home(){
       </div>
     </section>
 
-    <section className="container ecosystem">
-      <div className="eyebrow">THE MFSYS INTELLIGENCE ECOSYSTEM</div>
-      <h2>One intelligence core. Multiple sectors. Measurable impact.</h2>
-      <div className="ecosystem-grid">
-        {["Banking","Lending","Islamic Finance","Agriculture","Payments","Climate","Logistics","Agentic AI"].map((x,i)=>
-          <div className="ecosystem-card card" key={x}><span>0{i+1}</span><strong>{x}</strong><p>Intelligent digital capabilities.</p></div>
-        )}
-      </div>
-    </section>
+    <ConnectedEcosystem/>
 
     <IntelligenceFlow/>
 
