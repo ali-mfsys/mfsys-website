@@ -4,6 +4,7 @@ import PageHero from "../../../components/PageHero";
 import { solutions } from "../../../lib/site-data";
 import type { Metadata } from "next";
 import DigitalBankingExperience from "../../../components/DigitalBankingExperience";
+import IslamicFinanceExperience from "../../../components/IslamicFinanceExperience";
 
 const details: Record<string, {eyebrow:string; intro:string; capabilities:string[]; outcomes:string[]}> = {
   "digital-banking": { eyebrow:"DIGITAL BANKING", intro:"Modern, cloud-native banking technology that connects core operations, digital channels, data and intelligence in one scalable ecosystem.", capabilities:["Core banking and account management","Digital onboarding, KYC and customer 360","Mobile and web banking channels","Workflow, API and ecosystem integration"], outcomes:["Faster digital transformation","Lower operational complexity","Consistent customer experience"] },
@@ -40,6 +41,7 @@ export default async function SolutionDetail({params}:{params:Promise<{slug:stri
   const detail=details[slug];
   if(!match || !detail) notFound();
   if(slug === "digital-banking") return <main id="main"><DigitalBankingExperience /></main>;
+  if(slug === "islamic-finance") return <main id="main"><IslamicFinanceExperience /></main>;
   return <main id="main">
     <PageHero eyebrow={detail.eyebrow} title={match[0]} text={detail.intro}/>
     <section className="container section solution-detail">
