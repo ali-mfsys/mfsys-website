@@ -22,7 +22,7 @@ export const products=[
 ["ShariahOne","Shariah-compliant banking platform for Islamic financial products","/products/shariahone","Islamic Finance"],
 ["Smart Mudarba","Mudaraba pool management, profit calculation & weightage-based distribution","/products/smart-mudarabah","Islamic Finance"],
 ["LoanIQ","AI & ML based credit scoring that uses alternative data for thin-file borrowers","/products/loaniq","AI & Credit Scoring"],
-["IFRS9","Expected credit loss staging, provisioning and reporting","/products/ifrs9","Compliance and Risk"],
+["IFRS9","Classification, SICR staging, PD/LGD/EAD modelling, forward-looking ECL, disclosures and GL posting","/products/ifrs9","Compliance and Risk"],
 ["DigitalKisaan","Agriculture MIS for farmer cooperatives and value chains","/products/digitalkisaan","Digital Agriculture"],
 ["XchangeCarbon","Carbon credit Marketplace linking community projects to climate finance","/products/xchangecarbon","Climate Solutions"],
 ["CargoGuard","Logistics platform, protects loads against fraud and theft, real-time tracking","/products/cargoguard","Logistic Solutions"]
