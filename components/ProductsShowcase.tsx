@@ -3,7 +3,7 @@ import Link from "next/link";
 import {useState} from "react";
 
 const portfolio=[
-{name:"LoanLeaf",category:"DIGITAL LENDING",description:"Originate, assess and manage loans from application through approval and disbursement.",href:"/products/loanleaf",icon:"↗",color:"teal"},
+{name:"LoanLeaf",category:"DIGITAL LENDING",description:"Connect eKYC, scoring, field verification, approvals and CiiHive disbursement in one traceable workflow.",href:"/products/loanleaf",icon:"↗",color:"teal"},
 {name:"ShariahOne",category:"ISLAMIC FINANCE",description:"A connected Islamic finance ecosystem for customer onboarding, Shariah-governed products, assets, partners, financing contracts and settlement.",href:"/solutions/islamic-finance",icon:"◇",color:"green"},
 {name:"CargoGuard",category:"LOGISTICS",description:"Improve freight visibility, shipment security and operational coordination.",href:"/products/cargoguard",icon:"⇢",color:"blue"},
 {name:"DigitalKisaan",category:"AGRICULTURE",description:"Connect farmer records, agricultural finance and rural value-chain operations.",href:"/products/digitalkisaan",icon:"✳",color:"green"},
