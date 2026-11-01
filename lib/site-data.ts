@@ -1,6 +1,6 @@
 export const solutions=[
 ["Digital Banking Solution","Modern, cloud-native digital banking and core banking capabilities.","/solutions/digital-banking"],
-["Digital Loan Origination System (LOS)","AI-assisted origination, workflow, verification and decisioning.","/solutions/loan-origination"],
+["Digital Loan Origination System (LOS)","LoanLeaf-led onboarding, eKYC, scoring, field verification and multi-level approval.","/solutions/loan-origination"],
 ["Islamic Finance","Digital Mudarabah and Shariah-aligned financing ecosystems.","/solutions/islamic-finance"],
 ["Agri Finance & Supply Chain","Digital finance and value-chain platforms for farmers and cooperatives.","/solutions/agri-finance"],
 ["AI-Based Credit Intelligence","Explainable scoring, risk intelligence and portfolio decision support.","/solutions/ai-credit"],
@@ -16,7 +16,7 @@ export const products=[
 ["CiiHive","Banking system for microfinance banks, SACOs, MFIs, NBFCs, fintechs and cooperatives.","/products/ciihive","Core Banking Platform"],
 ["Glaxity","The ultimate cloud-native, multi-tenant core banking platform","/products/glaxity","Core Banking Platform"],
 ["mConnect","Middleware that connects core to delivery channels","/products/mconnect","Core Banking Platform"],
-["LoanLeaf","End-to-end digital loan origination system","/products/loanleaf","Digital Finance"],
+["LoanLeaf","Connected eKYC, scoring, field visits, approvals and CiiHive disbursement","/products/loanleaf","Digital Finance"],
 ["Include Mobile App","Manage all financials from your mobile","/products/include-mobile-app","Digital Finance"],
 ["Zaroorat24","Nano lending app, on-demand access to financing, 24/7 & disbursement within minutes","/products/zaroraat24","Digital Finance"],
 ["ShariahOne","Shariah-compliant banking platform for Islamic financial products","/products/shariahone","Islamic Finance"],
