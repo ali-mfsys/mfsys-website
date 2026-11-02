@@ -1,14 +1,4 @@
-import type { Metadata } from "next";
-import ProductPage from "../../../components/ProductPage";
-import { productData } from "../../../lib/product-data";
-
-export const metadata: Metadata = {
-  title: "ShariahOne | MFSYS",
-  description: "A Shariah-compliant banking platform for Islamic products, contracts and profit distribution.",
-  alternates: { canonical: "/products/shariahone" },
-};
-
-export default function Page(){
-  const product=productData.find((item)=>item.name==="ShariahOne")!;
-  return <ProductPage product={product}/>;
-}
+import type {Metadata} from "next";
+import IslamicFinanceExperience from "../../../components/IslamicFinanceExperience";
+export const metadata:Metadata={title:"ShariahOne | Islamic Finance Platform | MFSYS",description:"ShariahOne connects Islamic financing products, customer onboarding, partners, assets, Shariah governance, contracts, settlement and reporting.",alternates:{canonical:"/products/shariahone"},openGraph:{title:"ShariahOne | MFSYS Islamic Finance",description:"A connected Islamic finance ecosystem for governed financing workflows.",url:"https://mfsys.ca/products/shariahone"}};
+export default function Page(){return <main id="main"><IslamicFinanceExperience /></main>}
