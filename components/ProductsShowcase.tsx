@@ -3,12 +3,12 @@ import Link from "next/link";
 import {useState} from "react";
 
 const portfolio=[
-{name:"LoanLeaf",category:"DIGITAL LENDING",description:"Originate, assess and manage loans from application through approval and disbursement.",href:"/products/loanleaf",icon:"↗",color:"teal"},
+{name:"LoanLeaf",category:"DIGITAL LENDING",description:"Connect onboarding, eKYC, scoring, field inspections, approvals and CiiHive disbursement.",href:"/products/loanleaf",icon:"↗",color:"teal"},
 {name:"ShariahOne",category:"ISLAMIC FINANCE",description:"A connected Islamic finance ecosystem for customer onboarding, Shariah-governed products, assets, partners, financing contracts and settlement.",href:"/solutions/islamic-finance",icon:"◇",color:"green"},
 {name:"CargoGuard",category:"LOGISTICS",description:"Improve freight visibility, shipment security and operational coordination.",href:"/products/cargoguard",icon:"⇢",color:"blue"},
 {name:"DigitalKisaan",category:"AGRICULTURE",description:"Connect farmer records, agricultural finance and rural value-chain operations.",href:"/products/digitalkisaan",icon:"✳",color:"green"},
 {name:"XchangeCarbon",category:"CLIMATE TECHNOLOGY",description:"Support carbon marketplace operations and digital monitoring, reporting and verification.",href:"/products/xchangecarbon",icon:"◈",color:"green"},
-{name:"IFRS 9",category:"RISK & COMPLIANCE",description:"Support expected credit loss modelling, impairment and financial risk reporting.",href:"/products/ifrs9",icon:"▣",color:"amber"},
+{name:"IFRS 9",category:"RISK & COMPLIANCE",description:"Classify, stage, model PD/LGD/EAD and calculate forward-looking ECL with audit-ready disclosures.",href:"/products/ifrs9",icon:"▣",color:"amber"},
 ];
 const modules=[{name:"Customer Accounts",icon:"◎",sub:"Customer & account management"},{name:"Loans & Credit",icon:"↗",sub:"Origination & servicing"},{name:"Savings & Deposits",icon:"▤",sub:"Deposit operations"},{name:"Payments",icon:"⇄",sub:"Digital channels"},{name:"General Ledger",icon:"▦",sub:"Financial operations"},{name:"Risk & Analytics",icon:"◈",sub:"Insights & reporting"}];
 export default function ProductsShowcase(){
