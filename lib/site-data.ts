@@ -1,15 +1,14 @@
 export const solutions=[
-["Digital Banking Solution","Modern, cloud-native digital banking and core banking capabilities.","/solutions/digital-banking"],
-["Digital Loan Origination System (LOS)","AI-assisted origination, workflow, verification and decisioning.","/solutions/loan-origination"],
-["Islamic Finance","Digital Mudarabah and Shariah-aligned financing ecosystems.","/solutions/islamic-finance"],
-["Agri Finance & Supply Chain","Digital finance and value-chain platforms for farmers and cooperatives.","/solutions/agri-finance"],
-["AI-Based Credit Intelligence","Explainable scoring, risk intelligence and portfolio decision support.","/solutions/ai-credit"],
-["AI-Enabled Mobile Lending","Fast, responsible digital lending from onboarding through servicing.","/solutions/mobile-lending"],
-["Digital Wallet & Payment","Connected wallets, payment rails and transaction experiences.","/solutions/payments"],
-["Climate & Carbon","Digital MRV, carbon markets and climate intelligence.","/solutions/climate-carbon"],
-["Logistics & Supply Chain","Connected freight, tracking, compliance and operational visibility.","/solutions/logistics"],
-["Agentic AI Enterprise Automation","AI agents and workflow automation for high-value enterprise processes.","/solutions/agentic-ai"],
-["AI & Digital Transformation Consulting","Strategy, architecture and implementation for intelligent enterprises.","/solutions/ai-transformation"]
+["Digital Core Banking Solution","CiiHive and Glaxity — scalable core banking for financial institutions.","/solutions/digital-banking"],
+["Digital Loan Origination System (LOS)","LoanLeaf — digital onboarding, credit assessment, approval and disbursement.","/products/loanleaf"],
+["Islamic Finance","ShariahOne — connected Islamic finance products, contracts and Shariah governance.","/products/shariahone"],
+["AI-Based Credit Intelligence","LoanIQ — AI-assisted credit scoring and risk decision support.","/products/loaniq"],
+["AI-Based Mobile Lending","Zaroorat24 — borrower-first digital loan application and repayment.","/products/zaroraat24"],
+["Digital Wallet & Payment","Include — digital financial access, accounts and payment experiences.","/products/include-mobile-app"],
+["Agri Finance & Supply Chain","DigitalKisaan — cooperative management and agricultural value-chain finance.","/products/digitalkisaan"],
+["Climate & Carbon","XchangeCarbon — carbon marketplace and climate project workflows.","/products/xchangecarbon"],
+["Logistics & Supply Chain","CargoGuard — driver verification, shipment tracking and delivery evidence.","/products/cargoguard"],
+["Risk Management & Compliance","IFRS 9 impairment and IFRS 16 lease accounting solutions.","/solutions/risk-compliance"]
 ] as const;
 
 export const products=[
