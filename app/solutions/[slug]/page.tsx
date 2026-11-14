@@ -6,7 +6,20 @@ import type { Metadata } from "next";
 import DigitalBankingExperience from "../../../components/DigitalBankingExperience";
 import IslamicFinanceExperience from "../../../components/IslamicFinanceExperience";
 
+const legacySolutions: Record<string, readonly [string,string,string]> = {
+ "loan-origination":["Digital Loan Origination System (LOS)","Digital loan origination","/solutions/loan-origination"],
+ "islamic-finance":["Islamic Finance","Shariah-aligned financial services","/solutions/islamic-finance"],
+ "agri-finance":["Agri Finance & Supply Chain","Agricultural finance","/solutions/agri-finance"],
+ "ai-credit":["AI-Based Credit Intelligence","Credit decision support","/solutions/ai-credit"],
+ "mobile-lending":["AI-Based Mobile Lending","Digital lending","/solutions/mobile-lending"],
+ "payments":["Digital Wallet & Payment","Digital payments","/solutions/payments"],
+ "climate-carbon":["Climate & Carbon","Climate solutions","/solutions/climate-carbon"],
+ "logistics":["Logistics & Supply Chain","Logistics solutions","/solutions/logistics"],
+ "agentic-ai":["Agentic AI Enterprise Automation","Enterprise automation","/solutions/agentic-ai"],
+ "ai-transformation":["AI & Digital Transformation Consulting","Digital transformation","/solutions/ai-transformation"]
+};
 const details: Record<string, {eyebrow:string; intro:string; capabilities:string[]; outcomes:string[]}> = {
+  "risk-compliance": { eyebrow:"RISK MANAGEMENT & COMPLIANCE", intro:"Connected financial reporting and risk management solutions for expected credit loss under IFRS 9 and lease accounting under IFRS 16.", capabilities:["IFRS 9: credit risk staging, PD, LGD, EAD and ECL calculations","IFRS 9: scenario analysis, provisioning and audit-ready reporting","IFRS 16: lease registers, right-of-use assets and lease liabilities","IFRS 16: lease payment schedules, interest and depreciation calculations","Reconciliations, controls and management reporting"], outcomes:["Consistent and traceable financial reporting","Reduced spreadsheet dependence","Greater visibility into impairment and lease obligations"] },
   "digital-banking": { eyebrow:"DIGITAL BANKING", intro:"Modern, cloud-native banking technology that connects core operations, digital channels, data and intelligence in one scalable ecosystem.", capabilities:["Core banking and account management","Digital onboarding, KYC and customer 360","Mobile and web banking channels","Workflow, API and ecosystem integration"], outcomes:["Faster digital transformation","Lower operational complexity","Consistent customer experience"] },
   "loan-origination": { eyebrow:"LENDING & ORIGINATION", intro:"AI-assisted loan origination designed to move applications from capture to verification, decisioning and disbursement with greater speed and control.", capabilities:["Digital application and document capture","Workflow and approval orchestration","AI-assisted risk and decision support","Disbursement and servicing integration"], outcomes:["Shorter turnaround time","Better credit governance","Improved borrower experience"] },
   "islamic-finance": { eyebrow:"ISLAMIC FINANCE", intro:"Digital infrastructure for Shariah-aligned financing, including Mudarabah workflows, governance, contracts, profit allocation and reporting.", capabilities:["Digital Mudarabah lifecycle","Shariah-aligned product configuration","Partner, investor and beneficiary workflows","Profit calculation and reporting"], outcomes:["Transparent financing operations","Stronger governance","Scalable Islamic finance delivery"] },
@@ -22,7 +35,7 @@ const details: Record<string, {eyebrow:string; intro:string; capabilities:string
 
 export async function generateMetadata({params}:{params:Promise<{slug:string}>}):Promise<Metadata>{
   const {slug}=await params;
-  const match=solutions.find(([, , path])=>path.endsWith("/"+slug));
+  const match=solutions.find(([, , path])=>path.endsWith("/"+slug)) || legacySolutions[slug];
   const detail=details[slug];
   if(!match || !detail) return {};
   return {
@@ -33,11 +46,11 @@ export async function generateMetadata({params}:{params:Promise<{slug:string}>})
   };
 }
 
-export function generateStaticParams(){ return solutions.map(([, , path])=>({slug:path.split("/").pop()!})); }
+export function generateStaticParams(){ return [...new Set([...solutions.map(([, , path])=>path.split("/").pop()!),...Object.keys(legacySolutions)])].map(slug=>({slug})); }
 
 export default async function SolutionDetail({params}:{params:Promise<{slug:string}>}) {
   const {slug}=await params;
-  const match=solutions.find(([, , path])=>path.endsWith("/"+slug));
+  const match=solutions.find(([, , path])=>path.endsWith("/"+slug)) || legacySolutions[slug];
   const detail=details[slug];
   if(!match || !detail) notFound();
   if(slug === "digital-banking") return <main id="main"><DigitalBankingExperience /></main>;
@@ -49,6 +62,7 @@ export default async function SolutionDetail({params}:{params:Promise<{slug:stri
         <div><div className="eyebrow">CAPABILITIES</div><h2>Designed around the workflow.</h2><div className="detail-list">{detail.capabilities.map(x=><div className="detail-item" key={x}><span>+</span><p>{x}</p></div>)}</div></div>
         <aside className="solution-outcomes"><div className="eyebrow">BUSINESS OUTCOMES</div><h3>Built for measurable impact.</h3>{detail.outcomes.map(x=><div className="outcome" key={x}>{x}</div>)}</aside>
       </div>
+      {slug === "risk-compliance" && <div className="solution-cta"><div><div className="eyebrow">EXPLORE THE PRODUCTS</div><h2>IFRS 9 impairment and IFRS 16 lease accounting.</h2><p>Explore our IFRS 9 solution or speak with our team about IFRS 16 capabilities.</p></div><div style={{display:"flex",gap:12,flexWrap:"wrap"}}><Link className="nav-cta" href="/products/ifrs9">Explore IFRS 9 →</Link><Link className="nav-cta" href="/products/ifrs16">Explore IFRS 16 →</Link></div></div>}
       <div className="solution-cta"><div><div className="eyebrow">MFSYS</div><h2>Let’s design the right solution for your organization.</h2></div><Link className="nav-cta" href="/contact">Talk to MFSYS →</Link></div>
     </section>
   </main>;

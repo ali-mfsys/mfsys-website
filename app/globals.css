@@ -1861,3 +1861,14 @@ brand{line-height:0}.solution-detail-grid{display:grid;grid-template-columns:min
 @media(max-width:850px){.products-showcase .product-discovery-tab{flex:0 0 auto}.products-showcase .product-discovery-panel{grid-template-columns:1fr}.products-showcase .product-discovery-art{min-height:180px;border-left:0;border-top:1px solid #e4edf5}.products-showcase .product-discovery-art-ring{width:100px;height:100px;margin:14px 0 0}.products-showcase .product-discovery-art-center{width:50px;height:50px;font-size:28px}.products-showcase .product-discovery-art{padding-bottom:17px}}
 @media(max-width:640px){.products-showcase .product-discovery-copy{padding:26px 21px}.products-showcase .product-discovery-tab{font-size:11px;padding:8px 10px}.products-showcase .product-discovery-art{min-height:155px}.products-showcase .product-discovery-benefits span{font-size:10px}}
 @media(prefers-reduced-motion:reduce){.products-showcase .product-discovery-tab{transition:none}}
+
+
+/* Solutions-first navigation: all ten needs, readable and viewport-safe */
+@media(min-width:901px){
+ .primary-nav .solutions-menu{width:min(480px,calc(100vw - 32px))!important;max-height:min(78vh,710px)!important;overflow-y:auto!important;overscroll-behavior:contain!important;scrollbar-width:thin!important;background:#fffaf5!important}
+ .primary-nav .solutions-menu .solutions-list{display:flex!important;flex-direction:column!important;gap:3px!important}
+ .primary-nav .solutions-menu .mfsys-editorial-item{min-height:58px!important;padding:8px 10px!important}
+ .primary-nav .solutions-menu .mfsys-editorial-item-copy strong{font-size:13px!important;line-height:1.3!important}
+ .primary-nav .solutions-menu .mfsys-editorial-item-copy small{font-size:10px!important;line-height:1.4!important}
+ .primary-nav .solutions-menu .mfsys-editorial-item:focus-visible{outline:2px solid #1c72bf!important;outline-offset:-2px!important}
+}

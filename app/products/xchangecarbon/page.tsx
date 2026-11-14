@@ -1,5 +1,4 @@
-import type { Metadata } from "next";
-import ProductPage from "../../../components/ProductPage";import {productData} from "../../../lib/product-data";
-export const metadata: Metadata = { title: "XchangeCarbon | MFSYS", description: "A digital carbon ecosystem connecting green projects, MRV, carbon-credit computation and marketplace participants.", alternates: { canonical: "/products/xchangecarbon" }, openGraph: { title: "XchangeCarbon | MFSYS", description: "A digital carbon ecosystem connecting green projects, MRV, carbon-credit computation and marketplace participants.", url: "https://mfsys.ca/products/xchangecarbon" } };
-
-export default function Page(){return <ProductPage product={productData.find(x=>x.name==="XchangeCarbon")!}/>}
+import type {Metadata} from "next";
+import XchangeCarbonExperience from "../../../components/XchangeCarbonExperience";
+export const metadata:Metadata={title:"XchangeCarbon | Carbon Credit Marketplace & Digital MRV | MFSYS",description:"Explore XchangeCarbon: a connected carbon project registry, digital MRV, independent auditor workflows, transparent listings, trading and credit retirement records.",alternates:{canonical:"/products/xchangecarbon"},openGraph:{title:"XchangeCarbon | Make Climate Action Visible. Verifiable. Valuable.",description:"From field surveys to independent verification, carbon trading and retirement — discover the XchangeCarbon marketplace.",url:"https://mfsys.ca/products/xchangecarbon"}};
+export default function Page(){return <XchangeCarbonExperience/>;}

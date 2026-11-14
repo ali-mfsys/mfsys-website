@@ -2,25 +2,11 @@
 import Link from "next/link";
 import {useEffect,useRef,useState} from "react";
 import {usePathname} from "next/navigation";
-import {solutions,products,industries} from "../lib/site-data";
+import {solutions} from "../lib/site-data";
 import BrandLogo from "./BrandLogo";
 
-type MenuName="solutions"|"products"|"industries"|"aiInnovation"|"insights";
-const solutionGroups=[
- {title:"Financial Services",items:["Digital Banking Solution","Digital Loan Origination System (LOS)","Islamic Finance"]},
- {title:"Intelligence & Digital",items:["AI-Based Credit Intelligence","AI-Enabled Mobile Lending","Digital Wallet & Payment"]},
- {title:"Sector & Enterprise",items:["Agri Finance & Supply Chain","Climate & Carbon","Logistics & Supply Chain","Agentic AI Enterprise Automation","AI & Digital Transformation Consulting"]}
-];
-const productGroups=[
- {title:"Core Banking Platform",items:["CiiHive","Glaxity","mConnect"]},
- {title:"Digital Finance",items:["LoanLeaf","Include Mobile App","Zaroorat24"]},
- {title:"Islamic Finance",items:["ShariahOne","Smart Mudarba"]},
- {title:"AI & Credit Scoring",items:["LoanIQ"]},
- {title:"Compliance and Risk",items:["IFRS9"]},
- {title:"Digital Agriculture",items:["DigitalKisaan"]},
- {title:"Climate Solutions",items:["XchangeCarbon"]},
- {title:"Logistic Solutions",items:["CargoGuard"]}
-];const aiInnovationItems=[
+type MenuName="solutions"|"industries"|"aiInnovation"|"insights";
+const aiInnovationItems=[
  {name:"AI-Based Credit Intelligence",description:"Explainable scoring and risk models",icon:"/menu-assets/icons/icon-ai-credit.svg"},
  {name:"Agentic AI Enterprise Automation",description:"AI agents and workflow automation",icon:"/menu-assets/icons/icon-agentic-ai.svg"},
  {name:"Data Analytics & Insights",description:"Advanced analytics for better decisions",icon:"/menu-assets/icons/icon-consulting.svg"},
@@ -36,7 +22,7 @@ const productGroups=[
 ];
 
 
-const solutionMap=new Map(solutions.map(x=>[x[0],x]));
+
 const industryGroups=[
  {title:"Financial Services",items:["Microfinance & Banking","Islamic Finance"]},
  {title:"Agriculture & Climate",items:["Agriculture & Rural Development","Climate & Carbon"]},
@@ -51,41 +37,25 @@ const industryDescriptions:Record<string,string>={
  "Government & Development":"Digital solutions for greater impact"
 };
 
-const productMap=new Map(products.map(x=>[x[0],x]));const productIconMap: Record<string, string> = {
- "CiiHive": "/menu-assets/icons/icon-banking.svg",
- "mConnect": "/menu-assets/icons/icon-consulting.svg",
- "Glaxity": "/menu-assets/icons/icon-banking.svg",
- "LoanLeaf": "/menu-assets/icons/icon-los.svg",
- "Smart Mudarba": "/menu-assets/icons/icon-islamic-finance.svg",
- "DigitalKisaan": "/menu-assets/icons/icon-agriculture.svg",
- "LoanIQ": "/menu-assets/icons/icon-ai-credit.svg",
- "Zaroorat24": "/menu-assets/icons/icon-wallet.svg",
- "Include Mobile App": "/menu-assets/icons/icon-mobile-lending.svg",
- "ShariahOne": "/menu-assets/icons/icon-islamic-finance.svg",
- "XchangeCarbon": "/menu-assets/icons/icon-climate.svg",
- "CargoGuard": "/menu-assets/icons/icon-logistics.svg",
- "IFRS9": "/menu-assets/icons/icon-consulting.svg",
-};
-
 const iconMap: Record<string, string> = {
- "Digital Banking Solution": "/menu-assets/icons/icon-banking.svg",
+ "Digital Core Banking Solution": "/menu-assets/icons/icon-banking.svg",
  "Digital Loan Origination System (LOS)": "/menu-assets/icons/icon-los.svg",
  "Islamic Finance": "/menu-assets/icons/icon-islamic-finance.svg",
  "AI-Based Credit Intelligence": "/menu-assets/icons/icon-ai-credit.svg",
- "AI-Enabled Mobile Lending": "/menu-assets/icons/icon-mobile-lending.svg",
+ "AI-Based Mobile Lending": "/menu-assets/icons/icon-mobile-lending.svg",
  "Digital Wallet & Payment": "/menu-assets/icons/icon-wallet.svg",
  "Agri Finance & Supply Chain": "/menu-assets/icons/icon-agriculture.svg",
  "Climate & Carbon": "/menu-assets/icons/icon-climate.svg",
  "Logistics & Supply Chain": "/menu-assets/icons/icon-logistics.svg",
- "Agentic AI Enterprise Automation": "/menu-assets/icons/icon-agentic-ai.svg",
- "AI & Digital Transformation Consulting": "/menu-assets/icons/icon-consulting.svg",
+ "Risk Management & Compliance": "/menu-assets/icons/icon-consulting.svg",
+
 };
 
-function GroupLink({name,kind,onNavigate,featured=false}:{name:string;kind:"solution"|"product";onNavigate:()=>void;featured?:boolean}){
- const item=kind==="solution"?solutions.find(x=>x[0]===name):products.find(x=>x[0]===name);
+function GroupLink({name,onNavigate,featured=false}:{name:string;onNavigate:()=>void;featured?:boolean}){
+ const item=solutions.find(x=>x[0]===name);
  if(!item)return null;
  return <Link href={item[2]} className={`mfsys-editorial-item${featured?" is-featured":""}`} onClick={onNavigate}>
-  <span className="mfsys-editorial-icon"><img src={(kind==="product"?productIconMap[name]:iconMap[name]) || "/menu-assets/icons/icon-innovation.svg"} alt="" /></span>
+  <span className="mfsys-editorial-icon"><img src={iconMap[name] || "/menu-assets/icons/icon-innovation.svg"} alt="" /></span>
   <span className="mfsys-editorial-item-copy"><strong>{item[0]}</strong><small>{item[1]}</small></span>
   <span className="mfsys-editorial-arrow">›</span>
  </Link>;
@@ -149,14 +119,7 @@ export default function SiteHeader(){
     <div className="nav-menu"><button className="nav-menu-trigger" aria-haspopup="true" aria-expanded={open==="solutions"} onClick={()=>setOpen(open==="solutions"?null:"solutions")}>Solutions <span aria-hidden="true">⌄</span></button>
      {open==="solutions"&&<div id="solutions-menu" className="mfsys-editorial-mega solutions-menu" role="menu">
       <section className="solutions-list">
-       {solutionGroups.flatMap(group=>group.items).map(name=><GroupLink key={name} name={name} kind="solution" featured={name==="Digital Banking Solution"} onNavigate={closeAll}/>)}
-      </section>
-     </div>}
-    </div>
-    <div className="nav-menu"><button className="nav-menu-trigger" aria-haspopup="true" aria-expanded={open==="products"} onClick={()=>setOpen(open==="products"?null:"products")}>Products <span aria-hidden="true">⌄</span></button>
-     {open==="products"&&<div className="mfsys-editorial-mega products-menu" role="menu">
-      <section className="products-list">
-       {productGroups.flatMap(group=>group.items).map(name=><GroupLink key={name} name={name} kind="product" featured={name==="CiiHive"} onNavigate={closeAll}/>)}
+       {solutions.map(([name])=><GroupLink key={name} name={name} featured={name==="Digital Core Banking Solution"} onNavigate={closeAll}/>)}
       </section>
      </div>}
     </div>
@@ -191,7 +154,7 @@ export default function SiteHeader(){
     </div><Link href="/about" onClick={closeAll}>About MFSYS</Link><Link className="nav-cta" href="/contact" onClick={closeAll}>Get in Touch <span>→</span></Link>
    </nav>
    <div id="mobile-navigation" className={mobileOpen?"mfsys-mobile-nav is-open":"mfsys-mobile-nav"} aria-hidden={!mobileOpen}>
-    {(["solutions","products","industries"] as MenuName[]).map(section=>{const label=section[0].toUpperCase()+section.slice(1);return <div className="mfsys-mobile-section" key={section}><button type="button" onClick={()=>toggleMobileSection(section)} aria-expanded={mobileSection===section}>{label}<span>{mobileSection===section?"−":"+"}</span></button>{mobileSection===section&&<div className="mfsys-mobile-links">{section==="solutions"&&solutions.map(x=><Link key={x[0]} href={x[2]} onClick={closeAll}>{x[0]}</Link>)}{section==="products"&&productGroups.map(group=><div className="mfsys-mobile-product-group" key={group.title}><strong>{group.title}</strong>{group.items.map(name=>{const item=products.find(x=>x[0]===name);return item?<Link key={name} href={item[2]} onClick={closeAll}>{name}</Link>:null})}</div>)}{section==="industries"&&industryGroups.map(group=><div className="mfsys-mobile-product-group" key={group.title}><strong>{group.title}</strong>{group.items.map(name=><Link key={name} href="/industries" onClick={closeAll}>{name}</Link>)}</div>)}</div>}</div>})}
+    {(["solutions","industries"] as MenuName[]).map(section=>{const label=section[0].toUpperCase()+section.slice(1);return <div className="mfsys-mobile-section" key={section}><button type="button" onClick={()=>toggleMobileSection(section)} aria-expanded={mobileSection===section}>{label}<span>{mobileSection===section?"−":"+"}</span></button>{mobileSection===section&&<div className="mfsys-mobile-links">{section==="solutions"&&solutions.map(x=><Link key={x[0]} href={x[2]} onClick={closeAll}>{x[0]}</Link>)}{section==="industries"&&industryGroups.map(group=><div className="mfsys-mobile-product-group" key={group.title}><strong>{group.title}</strong>{group.items.map(name=><Link key={name} href="/industries" onClick={closeAll}>{name}</Link>)}</div>)}</div>}</div>})}
     <Link href="/ai-innovation" onClick={closeAll}>AI & Innovation</Link><Link href="/insights" onClick={closeAll}>Insights</Link><Link href="/about" onClick={closeAll}>About MFSYS</Link><Link className="mfsys-mobile-cta" href="/contact" onClick={closeAll}>Get in Touch →</Link>
    </div>
   </div>
