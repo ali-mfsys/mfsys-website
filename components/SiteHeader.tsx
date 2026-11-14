@@ -7,12 +7,12 @@ import BrandLogo from "./BrandLogo";
 
 type MenuName="solutions"|"industries"|"aiInnovation"|"insights";
 const aiInnovationItems=[
- {name:"AI-Based Credit Intelligence",description:"Explainable scoring and risk models",icon:"/menu-assets/icons/icon-ai-credit.svg"},
- {name:"Agentic AI Enterprise Automation",description:"AI agents and workflow automation",icon:"/menu-assets/icons/icon-agentic-ai.svg"},
- {name:"Data Analytics & Insights",description:"Advanced analytics for better decisions",icon:"/menu-assets/icons/icon-consulting.svg"},
- {name:"AI for Financial Inclusion",description:"Responsible and inclusive AI solutions",icon:"/menu-assets/icons/icon-mobile-lending.svg"},
- {name:"Emerging Technologies",description:"Blockchain, open finance and digital identity",icon:"/menu-assets/icons/icon-agentic-ai.svg"},
- {name:"Innovation Lab",description:"Co-creating solutions for real-world impact",icon:"/menu-assets/icons/icon-consulting.svg"}
+ {name:"AI-Based Credit Intelligence",href:"/products/loaniq",description:"Explainable scoring and risk models",icon:"/menu-assets/icons/icon-ai-credit.svg"},
+ {name:"Agentic AI Enterprise Automation",href:"/solutions/agentic-ai",description:"AI agents and workflow automation",icon:"/menu-assets/icons/icon-agentic-ai.svg"},
+ {name:"Data Analytics & Insights",href:"/ai-innovation/data-analytics",description:"Advanced analytics for better decisions",icon:"/menu-assets/icons/icon-consulting.svg"},
+ {name:"AI for Financial Inclusion",href:"/ai-innovation/financial-inclusion",description:"Responsible and inclusive AI solutions",icon:"/menu-assets/icons/icon-mobile-lending.svg"},
+ {name:"Emerging Technologies",href:"/ai-innovation/emerging-technologies",description:"Blockchain, open finance and digital identity",icon:"/menu-assets/icons/icon-agentic-ai.svg"},
+ {name:"Innovation Lab",href:"/ai-innovation/innovation-lab",description:"Co-creating solutions for real-world impact",icon:"/menu-assets/icons/icon-consulting.svg"}
 ];const insightItems=[
  {name:"Research",description:"Curated MFSYS thinking and knowledge",icon:"/menu-assets/icons/icon-consulting.svg"},
  {name:"Case Studies",description:"Real-world solutions, results and lessons",icon:"/menu-assets/icons/icon-banking.svg"},
@@ -126,7 +126,7 @@ export default function SiteHeader(){
     <div className="nav-menu"><button className="nav-menu-trigger" aria-haspopup="true" aria-expanded={open==="aiInnovation"} onClick={()=>setOpen(open==="aiInnovation"?null:"aiInnovation")}>AI & Innovation <span aria-hidden="true">⌄</span></button>
      {open==="aiInnovation"&&<div className="mfsys-editorial-mega ai-innovation-menu" role="menu">
       <section className="ai-innovation-list">
-       {aiInnovationItems.map(item=><Link key={item.name} href="/ai-innovation" className="mfsys-editorial-item" onClick={closeAll}>
+       {aiInnovationItems.map(item=><Link key={item.name} href={item.href} className="mfsys-editorial-item" onClick={closeAll}>
         <span className="mfsys-editorial-icon"><img src={item.icon} alt="" /></span>
         <span className="mfsys-editorial-item-copy"><strong>{item.name}</strong><small>{item.description}</small></span>
         <span className="mfsys-editorial-arrow">›</span>
