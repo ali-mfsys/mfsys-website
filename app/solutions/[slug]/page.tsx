@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import Link from "next/link";
 import PageHero from "../../../components/PageHero";
 import { solutions } from "../../../lib/site-data";
@@ -50,6 +50,7 @@ export function generateStaticParams(){ return [...new Set([...solutions.map(([,
 
 export default async function SolutionDetail({params}:{params:Promise<{slug:string}>}) {
   const {slug}=await params;
+  if(slug === "risk-compliance") permanentRedirect("/products/ifrs9");
   const match=solutions.find(([, , path])=>path.endsWith("/"+slug)) || legacySolutions[slug];
   const detail=details[slug];
   if(!match || !detail) notFound();
