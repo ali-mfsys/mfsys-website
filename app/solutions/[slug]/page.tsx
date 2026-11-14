@@ -62,7 +62,7 @@ export default async function SolutionDetail({params}:{params:Promise<{slug:stri
         <div><div className="eyebrow">CAPABILITIES</div><h2>Designed around the workflow.</h2><div className="detail-list">{detail.capabilities.map(x=><div className="detail-item" key={x}><span>+</span><p>{x}</p></div>)}</div></div>
         <aside className="solution-outcomes"><div className="eyebrow">BUSINESS OUTCOMES</div><h3>Built for measurable impact.</h3>{detail.outcomes.map(x=><div className="outcome" key={x}>{x}</div>)}</aside>
       </div>
-      {slug === "risk-compliance" && <div className="solution-cta"><div><div className="eyebrow">EXPLORE THE PRODUCTS</div><h2>IFRS 9 impairment and IFRS 16 lease accounting.</h2><p>Explore our IFRS 9 solution or speak with our team about IFRS 16 capabilities.</p></div><Link className="nav-cta" href="/products/ifrs9">Explore IFRS 9 →</Link></div>}
+      {slug === "risk-compliance" && <div className="solution-cta"><div><div className="eyebrow">EXPLORE THE PRODUCTS</div><h2>IFRS 9 impairment and IFRS 16 lease accounting.</h2><p>Explore our IFRS 9 solution or speak with our team about IFRS 16 capabilities.</p></div><div style={{display:"flex",gap:12,flexWrap:"wrap"}}><Link className="nav-cta" href="/products/ifrs9">Explore IFRS 9 →</Link><Link className="nav-cta" href="/products/ifrs16">Explore IFRS 16 →</Link></div></div>}
       <div className="solution-cta"><div><div className="eyebrow">MFSYS</div><h2>Let’s design the right solution for your organization.</h2></div><Link className="nav-cta" href="/contact">Talk to MFSYS →</Link></div>
     </section>
   </main>;
