@@ -2,7 +2,7 @@
 import Link from "next/link";
 import {useEffect,useRef,useState} from "react";
 import {usePathname} from "next/navigation";
-import {solutions,products,industries} from "../lib/site-data";
+import {solutions} from "../lib/site-data";
 import BrandLogo from "./BrandLogo";
 
 type MenuName="solutions"|"industries"|"aiInnovation"|"insights";
