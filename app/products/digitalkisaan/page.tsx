@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
-import BrochureExperience from "../../../components/BrochureExperience";
-export const metadata: Metadata = {title:"DigitalKisaan | MFSYS",description:"Integrated cooperative MIS: governance, farmer profiles, revolving funds, accounting, inventory and 34 reports.",alternates:{canonical:"/products/digitalkisaan"}};
-export default function Page(){return <BrochureExperience kind="digitalkisaan"/>;}
+import type {Metadata} from "next";
+import DigitalKisaanExperience from "../../../components/DigitalKisaanExperience";
+export const metadata:Metadata={title:"DigitalKisaan | Agri Finance & Supply Chain | MFSYS",description:"DigitalKisaan connects agricultural cooperatives, farmer profiles, revolving funds, inventory, accounting, governance and 34 reports. Explore MFSYS's integrated cooperative MIS.",alternates:{canonical:"/products/digitalkisaan"},openGraph:{title:"DigitalKisaan | Where Technology Meets the Soil",description:"From farmer records to community finance, inventory and programme oversight — one connected platform.",url:"https://mfsys.ca/products/digitalkisaan"}};
+export default function Page(){return <DigitalKisaanExperience/>;}
