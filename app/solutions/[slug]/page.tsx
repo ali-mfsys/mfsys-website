@@ -50,7 +50,7 @@ export function generateStaticParams(){ return [...new Set([...solutions.map(([,
 
 export default async function SolutionDetail({params}:{params:Promise<{slug:string}>}) {
   const {slug}=await params;
-  const match=solutions.find(([, , path])=>path.endsWith("/"+slug));
+  const match=solutions.find(([, , path])=>path.endsWith("/"+slug)) || legacySolutions[slug];
   const detail=details[slug];
   if(!match || !detail) notFound();
   if(slug === "digital-banking") return <main id="main"><DigitalBankingExperience /></main>;
