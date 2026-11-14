@@ -3,14 +3,14 @@ import BrandLogo from "./BrandLogo";
 
 export default function SiteFooter(){
  const columns: Array<[string,string[],string[]]>=[
-  ["SOLUTIONS",["Core Banking","Digital Lending","Islamic Finance","Climate & Carbon","Digital Agriculture","Logistics"],["/solutions/digital-banking","/solutions/loan-origination","/solutions/islamic-finance","/solutions/climate-carbon","/solutions/agri-finance","/solutions/logistics"]],
-  ["PRODUCTS",["CiiHive","LoanLeaf","Smart Mudarabah","CargoGuard","XchangeCarbon","IFRS9"],["/products/ciihive","/products/loanleaf","/products/smart-mudarabah","/products/cargoguard","/products/xchangecarbon","/products/ifrs9"]],
-  ["COMPANY",["About MFSYS","AI & Innovation","Case Studies","Insights","Careers","Contact"],["/about","/ai-innovation","/case-studies","/insights","/careers","/contact"]],
+  ["SOLUTIONS",["Digital Core Banking","Loan Origination","Islamic Finance","AI Credit Intelligence","Mobile Lending","Digital Wallet & Payments"],["/solutions/digital-banking","/products/loanleaf","/products/shariahone","/products/loaniq","/products/zaroraat24","/products/include-mobile-app"]],
+  ["MORE SOLUTIONS",["Agri Finance & Supply Chain","Climate & Carbon","Logistics & Supply Chain","Risk & Compliance","Explore All Solutions"],["/products/digitalkisaan","/products/xchangecarbon","/products/cargoguard","/solutions/risk-compliance","/solutions"]],
+  ["COMPANY",["About MFSYS","AI & Innovation","Case Studies","Insights","Careers","Contact"],["/about","/ai-innovation","/case-studies","/insights","/careers","/contact"]]
  ];
  return <footer className="site-footer">
   <div className="container">
    <div className="footer-top">
-    <div className="footer-brand"><BrandLogo className="footer-logo" alt="MFSYS — Intelligence for Impact"/><p>Intelligent technology for financial services, digital economies and sustainable enterprises.</p><div className="footer-social"><a href="https://www.linkedin.com/company/mfsys" target="_blank" rel="noreferrer">LinkedIn ↗</a></div></div>
+    <div className="footer-brand"><BrandLogo className="footer-logo" alt="MFSYS — Intelligence for Impact"/><p>Building Smarter Financial Futures.</p><div className="footer-social"><a href="https://www.linkedin.com/company/mfsys" target="_blank" rel="noreferrer">LinkedIn ↗</a></div></div>
     {columns.map(([title,labels,hrefs])=><div className="footer-column" key={title}><h3>{title}</h3>{labels.map((x,i)=><Link href={hrefs[i]} key={x}>{x}</Link>)}</div>)}
     <div className="footer-contact"><h3>LET'S TALK</h3><a href="mailto:info@mfsys.ca">info@mfsys.ca</a><a href="tel:+16479607418">+1 647 960 7418</a><p>Toronto · Islamabad · Melbourne</p></div>
    </div>
