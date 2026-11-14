@@ -1,14 +1,4 @@
-import type { Metadata } from "next";
-import ProductPage from "../../../components/ProductPage";
-import { productData } from "../../../lib/product-data";
-
-export const metadata: Metadata = {
-  title: "Include Mobile App | MFSYS",
-  description: "Full mobile banking for customers to manage their financial lives from their mobile device.",
-  alternates: { canonical: "/products/include-mobile-app" },
-};
-
-export default function Page(){
-  const product=productData.find((item)=>item.name==="Include Mobile App")!;
-  return <ProductPage product={product}/>;
-}
+import type {Metadata} from "next";
+import SolutionExperience from "../../../components/SolutionExperience";
+export const metadata:Metadata={title:"Include | Digital Wallet & Payment | MFSYS",description:"Mobile financial access, accounts and payment journeys connected to banking infrastructure.",alternates:{canonical:"/products/include-mobile-app"}};
+export default function Page(){return <SolutionExperience data={{eyebrow:"Digital Wallet & Payment",name:"Include",headline:"A connected mobile experience for everyday financial services.",description:"Mobile financial access, accounts and payment journeys connected to banking infrastructure.",accent:"#168f91",secondary:"#e7a43d",metrics:[["Mobile-first","Customer access"],["Accounts","Financial visibility"],["Payments","Transaction journeys"],["Connected","Core & channels"]],steps:[{"title":"Sign in","detail":"Access financial services through the mobile experience."},{"title":"View finances","detail":"See available account and financial information."},{"title":"Initiate transactions","detail":"Access supported payment and transfer journeys."},{"title":"Review activity","detail":"Track transaction history and statuses."},{"title":"Stay connected","detail":"Reach supported banking services through digital channels."}],features:[{"title":"Mobile financial access","detail":"A customer-facing experience for managing financial services from a mobile device."},{"title":"Account visibility","detail":"Present account balances and financial information where supported by the connected core."},{"title":"Payments and transfers","detail":"Support payment-related journeys subject to institution configuration."},{"title":"Connected architecture","detail":"Link digital channels with core banking and payment infrastructure."},{"title":"Security by design","detail":"Use authenticated, permission-controlled access to financial information."}],audience:[{"title":"Financial institutions","detail":"Extend digital access to customers."},{"title":"Account holders","detail":"Manage finances from a phone."},{"title":"Digital transformation teams","detail":"Connect mobile channels to banking operations."}],related:[{"title":"mConnect","href":"/products/mconnect"},{"title":"CiiHive","href":"/products/ciihive"},{"title":"Digital Banking","href":"/solutions/digital-banking"}],note:"The Include brochure was not available in the accessible project files. This is an interim, conservatively scoped design based on the existing MFSYS Include Mobile App description; exact wallet functions, integrations and screenshots require brochure verification."}}/>}
