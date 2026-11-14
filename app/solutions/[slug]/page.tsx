@@ -6,6 +6,18 @@ import type { Metadata } from "next";
 import DigitalBankingExperience from "../../../components/DigitalBankingExperience";
 import IslamicFinanceExperience from "../../../components/IslamicFinanceExperience";
 
+const legacySolutions: Record<string, readonly [string,string,string]> = {
+ "loan-origination":["Digital Loan Origination System (LOS)","Digital loan origination","/solutions/loan-origination"],
+ "islamic-finance":["Islamic Finance","Shariah-aligned financial services","/solutions/islamic-finance"],
+ "agri-finance":["Agri Finance & Supply Chain","Agricultural finance","/solutions/agri-finance"],
+ "ai-credit":["AI-Based Credit Intelligence","Credit decision support","/solutions/ai-credit"],
+ "mobile-lending":["AI-Based Mobile Lending","Digital lending","/solutions/mobile-lending"],
+ "payments":["Digital Wallet & Payment","Digital payments","/solutions/payments"],
+ "climate-carbon":["Climate & Carbon","Climate solutions","/solutions/climate-carbon"],
+ "logistics":["Logistics & Supply Chain","Logistics solutions","/solutions/logistics"],
+ "agentic-ai":["Agentic AI Enterprise Automation","Enterprise automation","/solutions/agentic-ai"],
+ "ai-transformation":["AI & Digital Transformation Consulting","Digital transformation","/solutions/ai-transformation"]
+};
 const details: Record<string, {eyebrow:string; intro:string; capabilities:string[]; outcomes:string[]}> = {
   "risk-compliance": { eyebrow:"RISK MANAGEMENT & COMPLIANCE", intro:"Connected financial reporting and risk management solutions for expected credit loss under IFRS 9 and lease accounting under IFRS 16.", capabilities:["IFRS 9: credit risk staging, PD, LGD, EAD and ECL calculations","IFRS 9: scenario analysis, provisioning and audit-ready reporting","IFRS 16: lease registers, right-of-use assets and lease liabilities","IFRS 16: lease payment schedules, interest and depreciation calculations","Reconciliations, controls and management reporting"], outcomes:["Consistent and traceable financial reporting","Reduced spreadsheet dependence","Greater visibility into impairment and lease obligations"] },
   "digital-banking": { eyebrow:"DIGITAL BANKING", intro:"Modern, cloud-native banking technology that connects core operations, digital channels, data and intelligence in one scalable ecosystem.", capabilities:["Core banking and account management","Digital onboarding, KYC and customer 360","Mobile and web banking channels","Workflow, API and ecosystem integration"], outcomes:["Faster digital transformation","Lower operational complexity","Consistent customer experience"] },
@@ -23,7 +35,7 @@ const details: Record<string, {eyebrow:string; intro:string; capabilities:string
 
 export async function generateMetadata({params}:{params:Promise<{slug:string}>}):Promise<Metadata>{
   const {slug}=await params;
-  const match=solutions.find(([, , path])=>path.endsWith("/"+slug));
+  const match=solutions.find(([, , path])=>path.endsWith("/"+slug)) || legacySolutions[slug];
   const detail=details[slug];
   if(!match || !detail) return {};
   return {
@@ -34,7 +46,7 @@ export async function generateMetadata({params}:{params:Promise<{slug:string}>})
   };
 }
 
-export function generateStaticParams(){ return solutions.map(([, , path])=>({slug:path.split("/").pop()!})); }
+export function generateStaticParams(){ return [...new Set([...solutions.map(([, , path])=>path.split("/").pop()!),...Object.keys(legacySolutions)])].map(slug=>({slug})); }
 
 export default async function SolutionDetail({params}:{params:Promise<{slug:string}>}) {
   const {slug}=await params;
