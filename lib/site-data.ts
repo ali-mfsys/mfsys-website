@@ -8,7 +8,7 @@ export const solutions=[
 ["Agri Finance & Supply Chain","DigitalKisaan — cooperative management and agricultural value-chain finance.","/products/digitalkisaan"],
 ["Climate & Carbon","XchangeCarbon — carbon marketplace and climate project workflows.","/products/xchangecarbon"],
 ["Logistics & Supply Chain","CargoGuard — driver verification, shipment tracking and delivery evidence.","/products/cargoguard"],
-["Risk Management & Compliance","IFRS 9 impairment and IFRS 16 lease accounting solutions.","/solutions/risk-compliance"]
+["Risk Management & Compliance","IFRS 9 expected credit loss and IFRS 16 lease accounting overview.","/products/ifrs9"]
 ] as const;
 
 export const products=[
