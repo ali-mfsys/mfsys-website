@@ -1,5 +1,4 @@
 import Link from "next/link";
-import type {ReactNode} from "react";
 type Step={title:string;detail:string};
 type Spec={eyebrow:string;name:string;headline:string;description:string;accent:string;secondary:string;metrics:[string,string][];steps:Step[];features:Step[];audience:Step[];related:{title:string;href:string}[];note?:string;external?:{title:string;href:string}};
 export default function SolutionExperience({data:d}:{data:Spec}){
