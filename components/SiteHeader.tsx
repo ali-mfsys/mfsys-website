@@ -14,11 +14,11 @@ const aiInnovationItems=[
  {name:"Emerging Technologies",href:"/ai-innovation/emerging-technologies",description:"Blockchain, open finance and digital identity",icon:"/menu-assets/icons/icon-agentic-ai.svg"},
  {name:"Innovation Lab",href:"/ai-innovation/innovation-lab",description:"Co-creating solutions for real-world impact",icon:"/menu-assets/icons/icon-consulting.svg"}
 ];const insightItems=[
- {name:"Research",description:"Curated MFSYS thinking and knowledge",icon:"/menu-assets/icons/icon-consulting.svg"},
- {name:"Case Studies",description:"Real-world solutions, results and lessons",icon:"/menu-assets/icons/icon-banking.svg"},
- {name:"Articles",description:"Perspectives on technology, finance and impact",icon:"/menu-assets/icons/icon-consulting.svg"},
- {name:"Reports",description:"Research, analysis and industry insights",icon:"/menu-assets/icons/icon-ai-credit.svg"},
- {name:"News",description:"MFSYS updates, announcements and developments",icon:"/menu-assets/icons/icon-climate.svg"}
+ {name:"Research",href:"/insights/research",description:"Curated MFSYS thinking and knowledge",icon:"/menu-assets/icons/icon-consulting.svg"},
+ {name:"Case Studies",href:"/insights/case-studies",description:"Real-world solutions, results and lessons",icon:"/menu-assets/icons/icon-banking.svg"},
+ {name:"Articles",href:"/insights/articles",description:"Perspectives on technology, finance and impact",icon:"/menu-assets/icons/icon-consulting.svg"},
+ {name:"Reports",href:"/insights/reports",description:"Research, analysis and industry insights",icon:"/menu-assets/icons/icon-ai-credit.svg"},
+ {name:"News",href:"/insights/news",description:"MFSYS updates, announcements and developments",icon:"/menu-assets/icons/icon-climate.svg"}
 ];
 
 
@@ -110,7 +110,7 @@ export default function SiteHeader(){
  return <header className="site-header">
   <div className="utility-bar"><div className="container utility-inner">
    <div className="utility-left"><span>◉</span><span>Global Presence</span><i/><span>12+ Countries</span><i/><span>30+ Financial Institutions</span></div>
-   <div className="utility-right"><Link href="/careers" onClick={closeAll}>Careers</Link><Link href="/insights" onClick={closeAll}>News</Link><Link href="/insights" onClick={closeAll}>Resources</Link><Link href="/contact" onClick={closeAll}>Contact</Link><span aria-hidden="true">⌕</span></div>
+   <div className="utility-right"><Link href="/careers" onClick={closeAll}>Careers</Link><Link href="/insights/news" onClick={closeAll}>News</Link><Link href="/insights/reports" onClick={closeAll}>Resources</Link><Link href="/contact" onClick={closeAll}>Contact</Link><span aria-hidden="true">⌕</span></div>
   </div></div>
   <div className="container nav-wrap">
    <Link className="brand" href="/" onClick={closeAll} aria-label="MFSYS home"><BrandLogo className="brand-logo" alt="MFSYS Technologies Limited"/></Link>
@@ -137,7 +137,7 @@ export default function SiteHeader(){
     <div className="nav-menu"><button className="nav-menu-trigger" aria-haspopup="true" aria-expanded={open==="insights"} onClick={()=>setOpen(open==="insights"?null:"insights")}>Insights <span aria-hidden="true">⌄</span></button>
      {open==="insights"&&<div className="mfsys-editorial-mega insights-menu" role="menu">
       <section className="insights-list">
-       {insightItems.map(item=><Link key={item.name} href="/insights" className="mfsys-editorial-item" onClick={closeAll}>
+       {insightItems.map(item=><Link key={item.name} href={item.href} className="mfsys-editorial-item" onClick={closeAll}>
         <span className="mfsys-editorial-icon"><img src={item.icon} alt="" /></span>
         <span className="mfsys-editorial-item-copy"><strong>{item.name}</strong><small>{item.description}</small></span>
         <span className="mfsys-editorial-arrow">›</span>
@@ -155,7 +155,7 @@ export default function SiteHeader(){
    </nav>
    <div id="mobile-navigation" className={mobileOpen?"mfsys-mobile-nav is-open":"mfsys-mobile-nav"} aria-hidden={!mobileOpen}>
     {(["solutions","industries"] as MenuName[]).map(section=>{const label=section[0].toUpperCase()+section.slice(1);return <div className="mfsys-mobile-section" key={section}><button type="button" onClick={()=>toggleMobileSection(section)} aria-expanded={mobileSection===section}>{label}<span>{mobileSection===section?"−":"+"}</span></button>{mobileSection===section&&<div className="mfsys-mobile-links">{section==="solutions"&&solutions.map(x=><Link key={x[0]} href={x[2]} onClick={closeAll}>{x[0]}</Link>)}{section==="industries"&&industryGroups.map(group=><div className="mfsys-mobile-product-group" key={group.title}><strong>{group.title}</strong>{group.items.map(name=><Link key={name} href="/industries" onClick={closeAll}>{name}</Link>)}</div>)}</div>}</div>})}
-    <Link href="/ai-innovation" onClick={closeAll}>AI & Innovation</Link><Link href="/insights" onClick={closeAll}>Insights</Link><Link href="/about" onClick={closeAll}>About MFSYS</Link><Link className="mfsys-mobile-cta" href="/contact" onClick={closeAll}>Get in Touch →</Link>
+    <div className="mfsys-mobile-section"><button type="button" onClick={()=>toggleMobileSection("aiInnovation")} aria-expanded={mobileSection==="aiInnovation"}>AI & Innovation<span>{mobileSection==="aiInnovation"?"−":"+"}</span></button>{mobileSection==="aiInnovation"&&<div className="mfsys-mobile-links">{aiInnovationItems.map(item=><Link key={item.name} href={item.href} onClick={closeAll}>{item.name}</Link>)}</div>}</div><div className="mfsys-mobile-section"><button type="button" onClick={()=>toggleMobileSection("insights")} aria-expanded={mobileSection==="insights"}>Insights<span>{mobileSection==="insights"?"−":"+"}</span></button>{mobileSection==="insights"&&<div className="mfsys-mobile-links"><Link href="/insights" onClick={closeAll}>All Insights</Link>{insightItems.map(item=><Link key={item.name} href={item.href} onClick={closeAll}>{item.name}</Link>)}</div>}</div><Link href="/about" onClick={closeAll}>About MFSYS</Link><Link className="mfsys-mobile-cta" href="/contact" onClick={closeAll}>Get in Touch →</Link>
    </div>
   </div>
  </header>;
