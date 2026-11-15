@@ -1,0 +1,4 @@
+import type {Metadata} from "next";import {notFound} from "next/navigation";import InsightsExperience from "../../../components/InsightsExperience";import {insightSections,type InsightSlug} from "../../../lib/insight-content";
+export function generateStaticParams(){return insightSections.map(x=>({slug:x.slug}));}
+export async function generateMetadata({params}:{params:Promise<{slug:string}>}):Promise<Metadata>{const {slug}=await params;const x=insightSections.find(x=>x.slug===slug);return x?{title:x.name+" | MFSYS Insights",description:x.description,alternates:{canonical:"/insights/"+slug}}:{};}
+export default async function Page({params}:{params:Promise<{slug:string}>}){const {slug}=await params;if(!insightSections.some(x=>x.slug===slug))notFound();return <InsightsExperience section={slug as InsightSlug}/>;}
