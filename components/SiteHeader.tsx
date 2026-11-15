@@ -61,6 +61,7 @@ function GroupLink({name,onNavigate,featured=false}:{name:string;onNavigate:()=>
  </Link>;
 }
 
+const industryRoutes:Record<string,string>={"Microfinance & Banking":"/industries/microfinance-banking","Islamic Finance":"/industries/islamic-finance","Agriculture & Rural Development":"/industries/agriculture-rural-development","Climate & Carbon":"/industries/climate-carbon","Logistics & Supply Chain":"/industries/logistics-supply-chain","Government & Development":"/industries/government-development"};
 const industryCardData:Record<string,{image:string;icon:string}>={
  "Microfinance & Banking":{image:"/menu-assets/graphics/microfinance-banking-custom.svg",icon:"/menu-assets/icons/icon-banking.svg"},
  "Islamic Finance":{image:"/menu-assets/graphics/islamic-finance-custom.svg",icon:"/menu-assets/icons/icon-islamic-finance.svg"},
@@ -73,7 +74,7 @@ const industryCardData:Record<string,{image:string;icon:string}>={
 function IndustryCard({name,onNavigate}:{name:string;onNavigate:()=>void}){
  const data=industryCardData[name];
  if(!data)return null;
- return <Link href="/industries" className="industry-card" onClick={onNavigate}>
+ return <Link href={industryRoutes[name] || "/industries"} className="industry-card" onClick={onNavigate}>
   <div className={`industry-card-image${data.image?"":" industry-card-image--no-image"}`}>
    {data.image&&<img src={data.image} alt="" />}
   </div>
@@ -154,7 +155,7 @@ export default function SiteHeader(){
     </div><Link href="/about" onClick={closeAll}>About MFSYS</Link><Link className="nav-cta" href="/contact" onClick={closeAll}>Get in Touch <span>→</span></Link>
    </nav>
    <div id="mobile-navigation" className={mobileOpen?"mfsys-mobile-nav is-open":"mfsys-mobile-nav"} aria-hidden={!mobileOpen}>
-    {(["solutions","industries"] as MenuName[]).map(section=>{const label=section[0].toUpperCase()+section.slice(1);return <div className="mfsys-mobile-section" key={section}><button type="button" onClick={()=>toggleMobileSection(section)} aria-expanded={mobileSection===section}>{label}<span>{mobileSection===section?"−":"+"}</span></button>{mobileSection===section&&<div className="mfsys-mobile-links">{section==="solutions"&&solutions.map(x=><Link key={x[0]} href={x[2]} onClick={closeAll}>{x[0]}</Link>)}{section==="industries"&&industryGroups.map(group=><div className="mfsys-mobile-product-group" key={group.title}><strong>{group.title}</strong>{group.items.map(name=><Link key={name} href="/industries" onClick={closeAll}>{name}</Link>)}</div>)}</div>}</div>})}
+    {(["solutions","industries"] as MenuName[]).map(section=>{const label=section[0].toUpperCase()+section.slice(1);return <div className="mfsys-mobile-section" key={section}><button type="button" onClick={()=>toggleMobileSection(section)} aria-expanded={mobileSection===section}>{label}<span>{mobileSection===section?"−":"+"}</span></button>{mobileSection===section&&<div className="mfsys-mobile-links">{section==="solutions"&&solutions.map(x=><Link key={x[0]} href={x[2]} onClick={closeAll}>{x[0]}</Link>)}{section==="industries"&&industryGroups.map(group=><div className="mfsys-mobile-product-group" key={group.title}><strong>{group.title}</strong>{group.items.map(name=><Link key={name} href={industryRoutes[name] || "/industries"} onClick={closeAll}>{name}</Link>)}</div>)}</div>}</div>})}
     <div className="mfsys-mobile-section"><button type="button" onClick={()=>toggleMobileSection("aiInnovation")} aria-expanded={mobileSection==="aiInnovation"}>AI & Innovation<span>{mobileSection==="aiInnovation"?"−":"+"}</span></button>{mobileSection==="aiInnovation"&&<div className="mfsys-mobile-links">{aiInnovationItems.map(item=><Link key={item.name} href={item.href} onClick={closeAll}>{item.name}</Link>)}</div>}</div><div className="mfsys-mobile-section"><button type="button" onClick={()=>toggleMobileSection("insights")} aria-expanded={mobileSection==="insights"}>Insights<span>{mobileSection==="insights"?"−":"+"}</span></button>{mobileSection==="insights"&&<div className="mfsys-mobile-links"><Link href="/insights" onClick={closeAll}>All Insights</Link>{insightItems.map(item=><Link key={item.name} href={item.href} onClick={closeAll}>{item.name}</Link>)}</div>}</div><Link href="/about" onClick={closeAll}>About MFSYS</Link><Link className="mfsys-mobile-cta" href="/contact" onClick={closeAll}>Get in Touch →</Link>
    </div>
   </div>
