@@ -5,7 +5,7 @@ import { products, solutions } from "../lib/site-data";
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   const base = "https://mfsys.ca";
-  const routes = ["/", "/about", "/industries", "/ai-innovation", "/insights", "/products", "/solutions", "/case-studies", "/contact"];
+  const routes = ["/", "/about", "/industries", "/ai-innovation", "/insights", "/products", "/solutions", "/insights/case-studies", "/insights/news", "/insights/articles", "/insights/research", "/insights/reports", "/contact"];
 
   return [
     ...routes.map((path): MetadataRoute.Sitemap[number] => ({
