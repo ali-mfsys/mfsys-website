@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import PageHero from "../../components/PageHero";import CardGrid from "../../components/CardGrid";import {solutions} from "../../lib/site-data";
-export const metadata: Metadata = { title: "Solutions | MFSYS", description: "Explore MFSYS solutions for digital banking, lending, Islamic finance, agriculture, payments, climate, logistics and AI.", alternates: { canonical: "/solutions" }, openGraph: { title: "Solutions | MFSYS", description: "Explore MFSYS solutions for digital banking, lending, Islamic finance, agriculture, payments, climate, logistics and AI.", url: "https://mfsys.ca/solutions" } };
-
-export default function Page(){return <main id="main"><PageHero eyebrow="SOLUTIONS" title="Technology built around real-world challenges." text="From digital banking and lending to climate, logistics and agentic AI, MFSYS brings intelligence into the workflows that matter."/><section className="container section"><CardGrid items={solutions}/></section></main>}
+import SolutionsLanding from "../../components/SolutionsLanding";
+export const metadata: Metadata = { title: "Solutions | MFSYS Technologies", description: "Explore connected MFSYS solutions for digital banking, lending, Islamic finance, AI, agriculture, climate and logistics.", alternates: { canonical: "/solutions" }, openGraph: { title: "Solutions | MFSYS Technologies", description: "Technology that moves industries forward. Explore modern banking, digital lending and connected industry solutions.", url: "https://mfsys.ca/solutions" } };
+export default function Page(){return <main id="main"><SolutionsLanding/></main>}
