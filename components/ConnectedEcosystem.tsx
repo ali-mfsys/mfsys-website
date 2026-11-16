@@ -15,13 +15,13 @@ function SolutionIcon({name}:{name:SolutionIconName}) {
  return <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{paths[name]}</svg>;
 }
 const solutions=[
-["02","Digital Lending","Digitize loan origination, approvals and servicing.","LoanLeaf · LoanIQ","/solutions/loan-origination","lending"],
-["03","Payments & Digital Channels","Connect wallets, mobile banking, remittances and payment networks.","mConnect · Digital Wallet","/solutions/payments","payments"],
-["04","Islamic Finance","Connect Islamic financing products, Shariah governance, contracts and asset-based transactions.","ShariahOne · Smart Mudarba","/solutions/islamic-finance","islamic"],
-["05","AI & Credit Intelligence","Support smarter credit decisions through scoring and analytics.","AI Credit Intelligence","/solutions/ai-credit","ai"],
-["06","Agriculture & Rural Finance","Enable farmer financing and rural value chains.","DigitalKisaan","/solutions/agri-finance","agriculture"],
+["02","Digital Lending","Digitize loan origination, approvals and servicing.","LoanLeaf · LoanIQ","/products/loanleaf","lending"],
+["03","Payments & Digital Channels","Connect wallets, mobile banking, remittances and payment networks.","mConnect · Digital Wallet","/products/mconnect","payments"],
+["04","Islamic Finance","Connect Islamic financing products, Shariah governance, contracts and asset-based transactions.","ShariahOne · Smart Mudarba","/products/shariahone","islamic"],
+["05","AI & Credit Intelligence","Support smarter credit decisions through scoring and analytics.","AI Credit Intelligence","/products/loaniq","ai"],
+["06","Agriculture & Rural Finance","Enable farmer financing and rural value chains.","DigitalKisaan","/products/digitalkisaan","agriculture"],
 ["07","Risk, Compliance & Reporting","Support expected credit losses, portfolio risk and reporting.","IFRS 9 · Analytics","/products/ifrs9","risk"],
-["08","Integration & Automation","Connect banking systems, digital channels and workflows.","mConnect · Agentic AI","/solutions/agentic-ai","integration"]
+["08","Integration & Automation","Connect banking systems, digital channels and workflows.","mConnect · Agentic AI","/products/mconnect","integration"]
 ];
 export default function ConnectedEcosystem(){return <section className="connected-ecosystem" aria-labelledby="connected-heading"><div className="container">
 <div className="eyebrow">THE MFSYS CONNECTED ECOSYSTEM</div>
