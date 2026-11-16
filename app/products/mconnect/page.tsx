@@ -1,8 +1,4 @@
 import type { Metadata } from "next";
-import ProductPage from "../../../components/ProductPage";
-import {productData} from "../../../lib/product-data";
-export const metadata: Metadata={title:"mConnect Integration Suite | MFSYS",description:"Secure middleware and integration for core banking, digital channels, identity, payment infrastructure and third-party financial services.",alternates:{canonical:"/products/mconnect"}};
-export default function Page(){
- const product=productData.find(x=>x.name==="mConnect")!;
- return <main id="main"><ProductPage product={product}/><section className="integration-flow-section"><div className="container"><div className="eyebrow">mCONNECT INTEGRATION FABRIC</div><h2>Connect the financial ecosystem without exposing the core.</h2><p>mConnect provides a controlled integration layer between core systems, channels, identity services, payment infrastructure and third-party applications.</p><div className="integration-flow">{["Mobile & Web","mConnect API Layer","Core Banking","Identity & KYC","Payment Switches","Fintech & Partners"].map((x,i)=><div className={"integration-step s"+i} key={x}><span>{String(i+1).padStart(2,"0")}</span><strong>{x}</strong>{i<5&&<i>→</i>}</div>)}</div></div></section></main>
-}
+import MConnectExperience from "../../../components/MConnectExperience";
+export const metadata: Metadata={title:"mConnect | Enterprise Middleware & Banking Transaction Switch | MFSYS",description:"Connect core banking with mobile, ATM, POS, wallets, web and financial partners using mConnect enterprise middleware and transaction switching.",alternates:{canonical:"/products/mconnect"},openGraph:{title:"mConnect — Every Channel. One Connection. | MFSYS",description:"Enterprise middleware connecting core banking to alternative delivery channels and financial partners.",url:"https://mfsys.ca/products/mconnect"}};
+export default function Page(){return <main id="main"><MConnectExperience/></main>}
