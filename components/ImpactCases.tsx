@@ -11,7 +11,7 @@ export default function ImpactCases(){
   <div className="container">
    <div className="impact-head">
     <div><div className="eyebrow">GLOBAL IMPACT</div><h2>Built for complexity.<br/><span>Proven in the real world.</span></h2></div>
-    <div><p>MFSYS brings more than two decades of technology and financial-services experience to complex environments. Our platforms are designed for institutions where reliability, scale, security and local context matter.</p><Link className="text-link" href="/case-studies">View case studies →</Link></div>
+    <div><p>MFSYS brings more than two decades of technology and financial-services experience to complex environments. Our platforms are designed for institutions where reliability, scale, security and local context matter.</p><Link className="text-link" href="/insights/case-studies">View case studies →</Link></div>
    </div>
    <div className="impact-grid">
     {cases.map((c,i)=><Link href={c.href} className={i===0?"impact-card impact-feature":"impact-card"} key={c.num}>
