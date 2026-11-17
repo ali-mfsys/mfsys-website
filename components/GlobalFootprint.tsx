@@ -4,10 +4,13 @@ import Link from "next/link";
 import s from "./GlobalFootprint.module.css";
 type Site={country:string,lat:number,lon:number,organization:string,work:string,kind:"implementation"|"institutional"|"collaboration"};
 const sites:Site[]=[
+{country:"Syria",lat:33.51,lon:36.29,organization:"The First MicroFinance Bank — Syria",work:"Prime MFSYS customer using our banking technology for over a decade",kind:"implementation"},
 {country:"Pakistan",lat:33.69,lon:73.06,organization:"Karakoram Co-operative Bank",work:"Core banking; cooperative financial services",kind:"implementation"},
 {country:"Pakistan",lat:35.92,lon:74.31,organization:"AKRSP / DigitalKisaan",work:"Cooperative and rural development information systems",kind:"implementation"},
+{country:"Pakistan",lat:36.31,lon:74.65,organization:"Aliabad Co-operative Thrift & Credit Society",work:"Cooperative financial services client reference",kind:"institutional"},
+{country:"Pakistan",lat:32.1,lon:72.1,organization:"Soon Valley Development Program",work:"Development-sector client reference",kind:"institutional"},
 {country:"Bahrain",lat:26.23,lon:50.59,organization:"EBDAA Microfinance",work:"Core financial system and loan origination engagement",kind:"implementation"},
-{country:"Syria",lat:33.51,lon:36.29,organization:"The First MicroFinance Bank",work:"Core banking and digital financial services",kind:"implementation"},
+
 {country:"Mali",lat:12.64,lon:-8.00,organization:"Sama Finance",work:"Core banking and mobile enablement",kind:"implementation"},
 {country:"Kyrgyzstan",lat:42.87,lon:74.60,organization:"FMFC",work:"Microfinance banking technology reference",kind:"institutional"},
 {country:"Tajikistan",lat:38.56,lon:68.78,organization:"The First MicroFinance Bank",work:"Financial-sector technology reference",kind:"institutional"},
