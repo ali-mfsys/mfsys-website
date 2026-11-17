@@ -1,5 +1,5 @@
 export const solutions=[
-["Digital Core Banking Solution","CiiHive and Glaxity — scalable core banking for financial institutions.","/solutions/digital-banking"],
+["Digital Core Banking Solution","Glaxity — the AI-enabled evolution of CiiHive, built for modern financial institutions.","/solutions/digital-banking"],
 ["Digital Loan Origination System (LOS)","LoanLeaf — digital onboarding, credit assessment, approval and disbursement.","/products/loanleaf"],
 ["Islamic Finance","ShariahOne — connected Islamic finance products, contracts and Shariah governance.","/products/shariahone"],
 ["AI-Based Credit Intelligence","LoanIQ — AI-assisted credit scoring and risk decision support.","/products/loaniq"],
@@ -12,8 +12,7 @@ export const solutions=[
 ] as const;
 
 export const products=[
-["CiiHive","Banking system for microfinance banks, SACOs, MFIs, NBFCs, fintechs and cooperatives.","/products/ciihive","Core Banking Platform"],
-["Glaxity","The ultimate cloud-native, multi-tenant core banking platform","/products/glaxity","Core Banking Platform"],
+["Glaxity","Next-generation, AI-enabled core banking evolved from CiiHive","/products/glaxity","Core Banking Platform"],
 ["mConnect","Middleware that connects core to delivery channels","/products/mconnect","Core Banking Platform"],
 ["LoanLeaf","End-to-end digital loan origination system","/products/loanleaf","Digital Finance"],
 ["Include Mobile App","Manage all financials from your mobile","/products/include-mobile-app","Digital Finance"],
