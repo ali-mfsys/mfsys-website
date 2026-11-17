@@ -1,5 +1,6 @@
 import {NextRequest,NextResponse} from "next/server";
 import {z} from "zod";
+import {getCloudflareContext} from "@opennextjs/cloudflare";
 export const runtime="nodejs";
 const schema=z.object({name:z.string().trim().min(2).max(120),email:z.email().max(254),company:z.string().trim().max(180).optional().default(""),interest:z.string().trim().max(180).optional().default(""),message:z.string().trim().min(10).max(6000),website:z.string().max(200).optional().default("")});
 const recipient=["mfsys.software@gmail.com","info@mfsys.ca"];
@@ -11,7 +12,10 @@ export async function POST(req:NextRequest){
  let input:unknown;try{input=await req.json()}catch{return NextResponse.json({error:"Invalid request."},{status:400})}
  const parsed=schema.safeParse(input);if(!parsed.success)return NextResponse.json({error:"Please check the form fields."},{status:400});
  if(parsed.data.website)return NextResponse.json({error:"Your browser may have autofilled a hidden field. Please refresh the page and try again."},{status:400});
- const key=process.env.RESEND_API_KEY;const from=process.env.CONTACT_FROM_EMAIL;
+ let bindings:Record<string,unknown>={};
+ try{bindings=getCloudflareContext().env as unknown as Record<string,unknown>}catch{/* Local Next.js runtime uses process.env. */}
+ const key=(typeof bindings.RESEND_API_KEY==="string"?bindings.RESEND_API_KEY:process.env.RESEND_API_KEY)?.trim();
+ const from=(typeof bindings.CONTACT_FROM_EMAIL==="string"?bindings.CONTACT_FROM_EMAIL:process.env.CONTACT_FROM_EMAIL)?.trim();
  if(!key||!from)return NextResponse.json({error:"Message delivery is temporarily unavailable. Please contact info@mfsys.ca."},{status:503});
  const {name,email,company,interest,message}=parsed.data;
  const rows=[["Name",name],["Email",email],["Organisation",company],["Interest",interest],["Message",message]];
