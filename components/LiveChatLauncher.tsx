@@ -20,5 +20,6 @@ export default function LiveChatLauncher(){
   script.onerror=()=>{requested.current=false;setLoading(false);setOpened(false)};
   document.body.appendChild(script);
  };
+ if(opened)return null;
  return <button type="button" className={s.launcher} onClick={openChat} disabled={loading} aria-label={loading?"Loading live chat":"Open MFSYS live chat"} title="Chat with MFSYS"><svg viewBox="0 0 24 24" width="27" height="27" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5 8 8 0 0 1-3.2-.7L4 20l1.7-5.3A8 8 0 1 1 20 11.5Z"/><path d="M9 12h.01M12 12h.01M15 12h.01"/></svg>{loading&&<span className={s.srOnly}>Loading chat…</span>}</button>
 }
