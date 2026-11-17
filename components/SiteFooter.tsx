@@ -5,7 +5,7 @@ export default function SiteFooter(){
  const columns: Array<[string,string[],string[]]>=[
   ["SOLUTIONS",["Digital Core Banking","Loan Origination","Islamic Finance","AI Credit Intelligence","Mobile Lending","Digital Wallet & Payments"],["/solutions/digital-banking","/products/loanleaf","/products/shariahone","/products/loaniq","/products/zaroraat24","/products/include-mobile-app"]],
   ["MORE SOLUTIONS",["Agri Finance & Supply Chain","Climate & Carbon","Logistics & Supply Chain","Risk & Compliance","Explore All Solutions"],["/products/digitalkisaan","/products/xchangecarbon","/products/cargoguard","/solutions/risk-compliance","/solutions"]],
-  ["COMPANY",["About MFSYS","AI & Innovation","Case Studies","Insights","Careers","Contact"],["/about","/ai-innovation","/insights/case-studies","/insights","/careers","/contact"]]
+  ["COMPANY",["About MFSYS","Global Presence","Partners & Ecosystem","AI & Innovation","Case Studies","Insights","Careers","Contact"],["/about","/global-presence","/partners","/ai-innovation","/insights/case-studies","/insights","/careers","/contact"]]
  ];
  return <footer className="site-footer">
   <div className="container">
