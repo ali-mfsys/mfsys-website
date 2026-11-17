@@ -1,17 +1,4 @@
-import type { Metadata } from "next";
-import ProductPage from "../../../components/ProductPage";
-import CiiHiveArchitecture from "../../../components/CiiHiveArchitecture";
-import CiiHiveCapabilityMap from "../../../components/CiiHiveCapabilityMap";
-import {productData} from "../../../lib/product-data";
-
-export const metadata: Metadata = {
-  title: "CiiHive Digital Core Banking | MFSYS",
-  description: "CiiHive is a cloud-native, cloud-agnostic digital core banking platform for banks, microfinance institutions, credit unions, fintechs and specialized financial-service providers.",
-  alternates: { canonical: "/products/ciihive" },
-  openGraph: { title: "CiiHive Digital Core Banking | MFSYS", description: "A configurable digital core for modern financial services, with banking, lending, deposits, digital channels, analytics and open integration.", url: "https://mfsys.ca/products/ciihive" }
-};
-
-export default function Page(){
-  const product=productData.find(x=>x.name==="CiiHive")!;
-  return <><ProductPage product={product}/><CiiHiveCapabilityMap/><CiiHiveArchitecture/></>;
-}
+import type {Metadata} from "next";
+import Link from "next/link";
+export const metadata:Metadata={title:"CiiHive Has Evolved into Glaxity | MFSYS",description:"Discover Glaxity, the next-generation AI-enabled evolution of MFSYS CiiHive core banking platform.",alternates:{canonical:"/products/glaxity"},robots:{index:false,follow:true}};
+export default function Page(){return <main id="main" style={{background:"linear-gradient(145deg,#071b34,#194a78)",minHeight:"70vh",color:"#fff",display:"flex",alignItems:"center",padding:"90px 24px"}}><div style={{width:"min(100%,1000px)",margin:"auto"}}><span style={{color:"#82dce9",fontWeight:800,letterSpacing:".15em",fontSize:12}}>MFSYS / CORE BANKING EVOLUTION</span><h1 style={{fontSize:"clamp(44px,7vw,86px)",letterSpacing:"-.055em",lineHeight:1.06,margin:"25px 0"}}>CiiHive has evolved.<br/><span style={{color:"#96d4ff"}}>Meet Glaxity.</span></h1><p style={{fontSize:19,lineHeight:1.8,maxWidth:730,color:"#d6e8f6"}}>CiiHive established the foundation of MFSYS core banking technology. Glaxity is its next generation, built on an upgraded technology stack with cloud-native architecture and AI-enabled capabilities.</p><p style={{color:"#d6e8f6",maxWidth:710,lineHeight:1.7}}>Existing CiiHive implementations and historical customer references remain part of our journey. For new core banking enquiries, explore Glaxity.</p><div style={{display:"flex",flexWrap:"wrap",gap:14,marginTop:32}}><Link href="/products/glaxity" style={{background:"#f5b34f",color:"#09263f",padding:"16px 23px",borderRadius:10,fontWeight:800,textDecoration:"none"}}>Explore Glaxity ↗</Link><Link href="/contact" style={{border:"1px solid #9bbad3",color:"#fff",padding:"16px 23px",borderRadius:10,fontWeight:800,textDecoration:"none"}}>Discuss your transition ↗</Link></div></div></main>}
