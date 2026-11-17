@@ -110,7 +110,7 @@ export default function SiteHeader(){
  const toggleMobileSection=(s:MenuName)=>setMobileSection(v=>v===s?null:s);
  return <header className="site-header">
   <div className="utility-bar"><div className="container utility-inner">
-   <div className="utility-left"><span>◉</span><span>Global Presence</span><i/><span>12+ Countries</span><i/><span>30+ Financial Institutions</span></div>
+   <div className="utility-identity"><span className="utility-identity-accent" aria-hidden="true"/><span className="utility-identity-brand">MFSYS</span><span className="utility-identity-legal">TECHNOLOGIES LIMITED</span></div><div className="utility-left"><span>◉</span><span>Global Presence</span><i/><span>12+ Countries</span><i/><span>30+ Financial Institutions</span></div>
    <div className="utility-right"><Link href="/careers" onClick={closeAll}>Careers</Link><Link href="/insights/news" onClick={closeAll}>News</Link><Link href="/insights/reports" onClick={closeAll}>Resources</Link><Link href="/contact" onClick={closeAll}>Contact</Link><span aria-hidden="true">⌕</span></div>
   </div></div>
   <div className="container nav-wrap">
