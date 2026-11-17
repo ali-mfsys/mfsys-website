@@ -10,7 +10,7 @@ export async function POST(req:NextRequest){
  if(Number(req.headers.get("content-length")||0)>12000)return NextResponse.json({error:"Request too large."},{status:413});
  let input:unknown;try{input=await req.json()}catch{return NextResponse.json({error:"Invalid request."},{status:400})}
  const parsed=schema.safeParse(input);if(!parsed.success)return NextResponse.json({error:"Please check the form fields."},{status:400});
- if(parsed.data.website)return NextResponse.json({ok:true});
+ if(parsed.data.website)return NextResponse.json({error:"Your browser may have autofilled a hidden field. Please refresh the page and try again."},{status:400});
  const key=process.env.RESEND_API_KEY;const from=process.env.CONTACT_FROM_EMAIL;
  if(!key||!from)return NextResponse.json({error:"Message delivery is temporarily unavailable. Please contact info@mfsys.ca."},{status:503});
  const {name,email,company,interest,message}=parsed.data;
