@@ -4,7 +4,7 @@ import BrandLogo from "./BrandLogo";
 export default function SiteFooter(){
  const columns: Array<[string,string[],string[]]>=[
   ["SOLUTIONS",["Digital Core Banking","Loan Origination","Islamic Finance","AI Credit Intelligence","Mobile Lending","Digital Wallet & Payments"],["/solutions/digital-banking","/products/loanleaf","/products/shariahone","/products/loaniq","/products/zaroraat24","/products/include-mobile-app"]],
-  ["MORE SOLUTIONS",["Agri Finance & Supply Chain","Climate & Carbon","Logistics & Supply Chain","Risk & Compliance","Explore All Solutions"],["/products/digitalkisaan","/products/xchangecarbon","/products/cargoguard","/solutions/risk-compliance","/solutions"]],
+  ["MORE SOLUTIONS",["Collection Management System","Mobile Banking Software","Software Development & AI Integration","Agri Finance & Supply Chain","Climate & Carbon","Logistics & Supply Chain","Risk & Compliance","Explore All Solutions"],["/solutions/collection-management-system","/solutions/mobile-banking","/solutions/enterprise-software-development","/products/digitalkisaan","/products/xchangecarbon","/products/cargoguard","/products/ifrs9","/solutions"]],
   ["COMPANY",["About MFSYS","Global Presence","Partners & Ecosystem","People & Culture","AI & Innovation","Case Studies","Insights","Careers","Contact"],["/about","/global-presence","/partners","/people","/ai-innovation","/insights/case-studies","/insights","/careers","/contact"]]
  ];
  return <footer className="site-footer">
