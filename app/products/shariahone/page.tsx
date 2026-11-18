@@ -1,4 +1,4 @@
 import type {Metadata} from "next";
 import IslamicFinanceExperience from "../../../components/IslamicFinanceExperience";
-export const metadata:Metadata={title:"ShariahOne | Islamic Finance Platform | MFSYS",description:"ShariahOne connects Islamic financing products, customer onboarding, partners, assets, Shariah governance, contracts, settlement and reporting.",alternates:{canonical:"/products/shariahone"},openGraph:{title:"ShariahOne | MFSYS Islamic Finance",description:"A connected Islamic finance ecosystem for governed financing workflows.",url:"https://mfsys.ca/products/shariahone"}};
+export const metadata:Metadata={title:"ShariahOne | Islamic Finance Platform | MFSYS",description:"ShariahOne connects Islamic financing products, customer onboarding, partners, assets, Shariah governance, contracts, settlement and reporting.",alternates:{canonical:"/products/shariahone"},openGraph:{title:"ShariahOne | MFSYS Islamic Finance",description:"A connected Islamic finance ecosystem for governed financing workflows.",url:"https://mfsys.net/products/shariahone"}};
 export default function Page(){return <main id="main"><IslamicFinanceExperience /></main>}
