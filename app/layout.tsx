@@ -7,7 +7,7 @@ import SiteFooter from "../components/SiteFooter";
 import {SITE_URL, safeJsonLd} from "../lib/seo";
 
 const homeTitle="Core Banking, Microfinance & Digital Financial Solutions | MFSYS";
-const homeDescription="MFSYS builds core banking systems, microfinance software, digital banking, loan origination, payments, Islamic finance and AI-enabled financial technology for banks, SACCOs, credit unions, NBFCs and fintechs.";
+const homeDescription="MFSYS builds core banking, microfinance, digital lending, mobile banking, payments, Islamic finance and AI software for banks, SACCOs, credit unions and NBFCs.";
 
 export const metadata:Metadata={
  metadataBase:new URL(SITE_URL),
@@ -28,7 +28,7 @@ export const metadata:Metadata={
 };
 
 const identity={"@context":"https://schema.org","@graph":[
- {"@type":"Organization","@id":SITE_URL+"/#organization",name:"MFSYS Technologies",alternateName:["MFSYS Technologies Limited","MFSYS Technologies (Pvt) Ltd","MFSYS"],url:SITE_URL,
+ {"@type":"Organization","@id":SITE_URL+"/#organization",name:"MFSYS Technologies",sameAs:["https://www.linkedin.com/company/mfsys"],alternateName:["MFSYS Technologies Limited","MFSYS Technologies (Pvt) Ltd","MFSYS"],url:SITE_URL,
   logo:{"@type":"ImageObject",url:SITE_URL+"/brand/mfsys-logo.svg"},
   description:"Enterprise software company specializing in core banking, microfinance technology, loan origination, digital financial services, Islamic finance, integration and digital transformation.",
   email:"info@mfsys.ca",
