@@ -19,6 +19,22 @@ const modules: Module[] = [
 const channels=["Mobile Banking","Internet Banking","Branch / Teller","Agent Banking","Corporate Banking"];
 const institutions=["Microfinance Banks","Fintechs","NBFCs","SACOs","Cooperatives","Credit Unions"];
 const foundations=["Cloud-Native Microservices","API-First & Open APIs","Event-Driven Integration","High Availability & Scalability","Cybersecurity & Data Encryption","IAM / RBAC","Observability & Monitoring","Backup & Disaster Recovery"];
+const orbitNodes=[
+ {id:1,name:"Customers",detail:"CRM & KYC",glyph:"◉"},
+ {id:2,name:"Lending",detail:"Origination & servicing",glyph:"↗"},
+ {id:3,name:"Accounts",detail:"Savings & deposits",glyph:"▣"},
+ {id:4,name:"Payments",detail:"Transfers & channels",glyph:"⇄"},
+ {id:5,name:"Ledger",detail:"Automated accounting",glyph:"▤"},
+ {id:6,name:"Intelligence",detail:"Reporting & insights",glyph:"▥"},
+];
+const bankingJourney=[
+ {num:"01",name:"Connect",tag:"Customer channels",detail:"Mobile, web, branches and agent banking"},
+ {num:"02",name:"Understand",tag:"Customer & KYC",detail:"A unified customer profile and onboarding"},
+ {num:"03",name:"Operate",tag:"Products & decisions",detail:"Loans, deposits and banking products"},
+ {num:"04",name:"Transact",tag:"Payments & ledger",detail:"Controlled transactions and accounting"},
+ {num:"05",name:"Learn",tag:"Insight & oversight",detail:"Reports, risk controls and analytics"},
+];
+
 
 export default function DigitalBankingExperience(){
  const [active,setActive]=useState(2);
@@ -40,21 +56,56 @@ export default function DigitalBankingExperience(){
   </div></section>
 
   <section id="architecture" className="dbx-architecture container section">
-   <div className="dbx-section-intro"><div><div className="eyebrow">THE GLAXITY DIGITAL BANKING CORE</div><h2>One intelligence core.<br/><span>Every banking capability connected.</span></h2></div><p>Explore the platform by selecting a capability. Each module connects to the same digital core, data layer and enterprise foundation.</p></div>
-   <div className="dbx-platform">
-    <aside className="dbx-side dbx-side-left"><div className="dbx-side-title">Channels & Customers</div>{channels.map((x,i)=><button key={x} onClick={()=>setActive((i%8)+1)}><span>{["▯","▱","▥","♙","▦"][i]}</span>{x}</button>)}<div className="dbx-side-card"><strong>Languages</strong><p>Multilingual UI<br/><small>English, Urdu, Arabic and more</small></p></div></aside>
-    <div className="dbx-core-layout">
-     <div key={selected.id} className={"dbx-selected dbx-selected-"+selected.color} aria-live="polite">
-      <div className="dbx-selected-copy"><div className="dbx-selected-kicker"><span className={"dbx-dot dbx-dot-"+selected.color}></span><small>SELECTED CAPABILITY</small><b>{String(selected.id).padStart(2,"0")} / 08</b></div><h3>{selected.title}</h3><p>{selected.description}</p></div>
-      <ul>{selected.features.map(f=><li key={f}>{f}</li>)}</ul>
+   <div className="dbx-section-intro">
+    <div><div className="eyebrow">THE GLAXITY CORE BANKING ECOSYSTEM</div><h2>One connected core.<br/><span>Every banking capability in focus.</span></h2></div>
+    <p>Explore how the modules fit together. Choose a capability in the map or the cards below to see its role in the platform—without losing sight of the whole banking operation.</p>
+   </div>
+   <div className="dbx-v2-board">
+    <div className="dbx-v2-board-head"><span>PLATFORM BLUEPRINT / 01</span><span>SELECT A CAPABILITY TO EXPLORE <span aria-hidden="true">↘</span></span></div>
+    <div className="dbx-v2-network" aria-label="Glaxity digital core connected to six banking capabilities">
+     <div className="dbx-v2-node-column">{orbitNodes.slice(0,3).map(n=><button type="button" key={n.id} className="dbx-v2-node" aria-pressed={active===n.id} onClick={()=>setActive(n.id)}><span className="dbx-v2-node-icon" aria-hidden="true">{n.glyph}</span><span><strong>{n.name}</strong><small>{n.detail}</small></span><span className="dbx-v2-node-arrow" aria-hidden="true">→</span></button>)}</div>
+     <div className="dbx-v2-hub-area">
+      <div className="dbx-v2-orbit dbx-v2-orbit-one" aria-hidden="true"/><div className="dbx-v2-orbit dbx-v2-orbit-two" aria-hidden="true"/>
+      <div className="dbx-v2-hub" role="img" aria-label="Glaxity, the connected digital banking core and single banking system of record"><small>THE CONNECTED CORE</small><strong>Glaxity</strong><span>Digital Banking Core</span><em>Single System of Record</em></div>
+      <div className="dbx-v2-hub-caption">API-FIRST · MODULAR · CLOUD-NATIVE</div>
      </div>
-     <div className="dbx-module-grid">{modules.map(m=><button key={m.id} className={"dbx-module dbx-"+m.color+(active===m.id?" is-active":"")} onClick={()=>setActive(m.id)}><span className="dbx-module-num">{String(m.id).padStart(2,"0")}</span><span className="dbx-module-icon">{m.icon}</span><strong>{m.title}</strong><p>{m.description}</p><div className="dbx-feature-preview">{m.features.slice(0,3).map(f=><span key={f}>• {f}</span>)}</div></button>)}</div>
-     <div className="dbx-core"><div className="dbx-core-ring"><span>Customers</span><span>Accounts</span><span>Products</span><span>Transactions</span><span>Ledger</span><span>Data</span></div><div className="dbx-core-center"><small>MFSYS</small><b>Glaxity</b><strong>Digital Banking Core</strong><em>Single Banking System of Record</em></div></div>
+     <div className="dbx-v2-node-column">{orbitNodes.slice(3).map(n=><button type="button" key={n.id} className="dbx-v2-node" aria-pressed={active===n.id} onClick={()=>setActive(n.id)}><span className="dbx-v2-node-icon" aria-hidden="true">{n.glyph}</span><span><strong>{n.name}</strong><small>{n.detail}</small></span><span className="dbx-v2-node-arrow" aria-hidden="true">↗</span></button>)}</div>
     </div>
-    <aside className="dbx-side dbx-side-right"><div className="dbx-side-title">Supported Institutions</div>{institutions.map((x,i)=><button key={x} onClick={()=>setActive(((i+3)%8)+1)}><span>{["◒","◈","▥","♙","⌘","◫"][i]}</span>{x}</button>)}<div className="dbx-side-card"><strong>Multi-Currency</strong><p>USD · EUR · GBP · PKR</p></div></aside>
+    <div className="dbx-v2-board-footer"><span><b>01</b> Digital channels</span><span aria-hidden="true">→</span><span><b>02</b> Connected banking core</span><span aria-hidden="true">→</span><span><b>03</b> Partners & insight</span></div>
+   </div>
+   <div className="dbx-v2-capabilities-head"><div><span className="eyebrow">EIGHT CONNECTED CAPABILITIES</span><h3>Explore the building blocks.</h3></div><p>Tap any card to explore its features in the spotlight below.</p></div>
+   <div className="dbx-v2-module-grid">{modules.map(m=><button key={m.id} type="button" aria-pressed={active===m.id} className={"dbx-v2-module dbx-"+m.color+(active===m.id?" is-active":"")} onClick={()=>setActive(m.id)}><span className="dbx-v2-module-top"><span className="dbx-v2-module-icon" aria-hidden="true">{m.icon}</span><span>{String(m.id).padStart(2,"0")} / 08</span></span><strong>{m.title}</strong><p>{m.description}</p><span className="dbx-v2-module-cta">Explore capability <span aria-hidden="true">↗</span></span></button>)}</div>
+   <div key={selected.id} className={"dbx-v2-selected dbx-selected-"+selected.color} aria-live="polite">
+    <div><span className="dbx-v2-selected-label">SELECTED CAPABILITY / {String(selected.id).padStart(2,"0")} OF 08</span><h3>{selected.title}</h3><p>{selected.description}</p></div>
+    <ul>{selected.features.map(f=><li key={f}>{f}</li>)}</ul>
+   </div>
+   <div className="dbx-v2-context">
+    <div><span>CONNECTED CHANNELS</span><div>{channels.map(c=><span key={c}>{c}</span>)}</div></div>
+    <div><span>DESIGNED FOR</span><div>{institutions.map(inst=><span key={inst}>{inst}</span>)}</div></div>
+   </div>
+   <p className="dbx-v2-diagram-note">Conceptual product architecture. Modules, local integrations, currency support and AI capabilities are scoped to each implementation.</p>
+  </section>
+  <section className="dbx-v2-journey-band" aria-labelledby="dbx-journey-title">
+   <div className="container">
+    <div className="dbx-v2-journey-head"><span className="eyebrow">HOW DIGITAL BANKING CONNECTS</span><h2 id="dbx-journey-title">From first interaction to <span>trusted financial insight.</span></h2><p>Follow one end-to-end journey across the platform. Each stage connects through controlled services and an auditable banking record.</p></div>
+    <div className="dbx-v2-journey">{bankingJourney.map(step=><article key={step.num}><span className="dbx-v2-journey-num">{step.num} / 05</span><strong>{step.name}</strong><span className="dbx-v2-journey-tag">{step.tag}</span><p>{step.detail}</p></article>)}</div>
+    <div className="dbx-v2-journey-base"><span>SECURE APIS & INTEGRATION</span><span>ROLE-BASED CONTROL & AUDIT TRAIL</span><span>UNIFIED REPORTING</span></div>
    </div>
   </section>
-
+  <section className="dbx-v2-workspace" aria-labelledby="dbx-workspace-title">
+   <div className="container">
+    <div className="dbx-v2-workspace-intro"><div><span className="eyebrow">A CLEARER OPERATIONS VIEW</span><h2 id="dbx-workspace-title">Clarity across the banking day.</h2></div><p>From customer relationships to lending approvals and financial reporting, the platform is designed around a single connected operational view.</p></div>
+    <div className="dbx-v2-ui" role="img" aria-label="Illustrative operations dashboard with customer and lending work queues, reporting charts and ledger controls. Not a real customer deployment or production data.">
+     <div className="dbx-v2-ui-top"><span><i/> <b>GLAXITY</b> / OPERATIONS</span><span>Illustrative interface concept</span></div>
+     <div className="dbx-v2-ui-content"><div className="dbx-v2-ui-sidebar"><strong>Overview</strong><span>Customers</span><span>Lending</span><span>Accounts</span><span>Transactions</span><span>Reporting</span></div><div className="dbx-v2-ui-main">
+      <div className="dbx-v2-ui-welcome"><div><small>OPERATIONS DASHBOARD</small><strong>Banking at a glance</strong></div><span>● &nbsp; Connected</span></div>
+      <div className="dbx-v2-ui-metrics"><article><small>Customer onboarding</small><strong>In review</strong><span>KYB & KYC workflows</span></article><article><small>Credit approvals</small><strong>Controlled</strong><span>Maker-checker decisions</span></article><article><small>Ledger operations</small><strong>Balanced</strong><span>Automated postings</span></article></div>
+      <div className="dbx-v2-ui-bottom"><div className="dbx-v2-ui-chart"><div><strong>Portfolio intelligence</strong><small>Illustrative activity</small></div><div className="dbx-v2-ui-bars">{[40,52,47,68,62,82,73,91,79,96].map((n,i)=><i key={i} style={{height:n+"%"}}/>)}</div></div><div className="dbx-v2-ui-checks"><strong>Control checkpoints</strong><div><span>Identity verification</span><b>Verified</b></div><div><span>Approval workflow</span><b>Reviewed</b></div><div><span>General ledger</span><b>Balanced</b></div><div><span>Management reports</span><b>Ready</b></div></div></div>
+     </div></div>
+    </div>
+    <p className="dbx-v2-diagram-note">Illustrative design mockup only. It demonstrates intended workflow experiences, not real-time operational data or a released customer interface.</p>
+   </div>
+  </section>
   <section className="dbx-foundation"><div className="container"><div className="eyebrow">ENTERPRISE PLATFORM FOUNDATION</div><h2>Built for resilience, security and scale.</h2><div className="dbx-foundation-grid">{foundations.map((x,i)=><div key={x}><span>{["☁","API","⌘","▤","◇","♙","⌕","◉"][i]}</span><strong>{x}</strong></div>)}</div></div></section>
 
   <section className="dbx-impact container section"><div className="eyebrow">WHY GLAXITY</div><h2>Designed to connect the whole banking operation.</h2><div className="dbx-impact-grid">{[["One platform","Core banking, digital channels, lending, payments, accounting and reporting in one connected ecosystem."],["Intelligence at the core","AI-assisted credit, portfolio intelligence and data-driven decision support across workflows."],["Ready to integrate","API-first architecture connects fintechs, payment providers, channels and enterprise systems."],["Built for inclusive growth","A flexible foundation for microfinance, cooperatives, fintechs and other emerging-market institutions."]].map(([t,d])=><article key={t}><h3>{t}</h3><p>{d}</p></article>)}</div></section>
