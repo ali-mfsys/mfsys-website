@@ -3,8 +3,8 @@ import s from "./SolutionSeoLanding.module.css";
 import {breadcrumbSchema,serviceSchema,safeJsonLd} from "../lib/seo";
 
 export type SeoSolution={
- slug:string;eyebrow:string;title:string;subtitle:string;audience:string[];
- introTitle:string;intro:string[];whatTitle:string;
+ slug:string;eyebrow:string;title:string;subtitle:string;audience:readonly string[];
+ introTitle:string;intro:readonly string[];whatTitle:string;
  capabilities:ReadonlyArray<{title:string;text:string}>;
  steps:ReadonlyArray<{title:string;text:string}>;
  outcomes:ReadonlyArray<{title:string;text:string}>;
