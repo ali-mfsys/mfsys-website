@@ -51,6 +51,7 @@ export function generateStaticParams(){ return [...new Set([...solutions.map(([,
 export default async function SolutionDetail({params}:{params:Promise<{slug:string}>}) {
   const {slug}=await params;
   if(slug === "risk-compliance") permanentRedirect("/products/ifrs9");
+  if(slug === "climate-carbon") permanentRedirect("/products/xchangecarbon");
   const match=solutions.find(([, , path])=>path.endsWith("/"+slug)) || legacySolutions[slug];
   const detail=details[slug];
   if(!match || !detail) notFound();
