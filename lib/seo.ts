@@ -13,7 +13,7 @@ export function safeJsonLd(data:unknown){return JSON.stringify(data).replace(/</
 export function breadcrumbSchema(entries:ReadonlyArray<{name:string;path:string}>){
  return{"@context":"https://schema.org","@type":"BreadcrumbList",itemListElement:entries.map((x,i)=>({"@type":"ListItem",position:i+1,name:x.name,item:canonicalUrl(x.path)}))};
 }
-export function serviceSchema(details:{name:string;description:string;path:string;audience?:string[]}){
+export function serviceSchema(details:{name:string;description:string;path:string;audience?:readonly string[]}){
  return {"@context":"https://schema.org","@type":"Service","@id":canonicalUrl(details.path)+"#service",
  name:details.name,description:details.description,url:canonicalUrl(details.path),
  provider:{"@id":SITE_URL+"/#organization"},serviceType:details.name,
