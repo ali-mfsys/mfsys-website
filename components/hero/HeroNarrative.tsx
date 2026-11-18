@@ -1,6 +1,7 @@
 "use client";
 // Homepage hero: five interactive slides with automatic rotation.
 import Link from "next/link";
+import CorporateFilmModal from "./CorporateFilmModal";
 import { useEffect, useState } from "react";
 
 const slides = [
@@ -48,6 +49,7 @@ const slides = [
 
 export default function HeroNarrative(){
  const [active, setActive] = useState(0);
+ const [videoOpen, setVideoOpen] = useState(false);
 
  useEffect(() => {
   const timer = window.setInterval(() => {
@@ -58,7 +60,7 @@ export default function HeroNarrative(){
 
  const slide = slides[active];
 
- return <section className="hero" aria-labelledby="hero-title">
+ return <><section className="hero" aria-labelledby="hero-title">
   <div className="hero-video-wrap" aria-hidden="true"><video key={active} className="hero-video" autoPlay muted loop playsInline preload="metadata"><source src={active === 4 ? "/hero-video-mfsyslogo.mp4" : "/mfsys-hero-bg-15s.mp4"} type="video/mp4" /><source src="/mfsys-hero-bg-15s.mp4" type="video/mp4" /></video></div>
   <div className="hero-visual" aria-hidden="true">
    <div className="hero-grid"/><div className="hero-glow"/>
@@ -74,7 +76,7 @@ export default function HeroNarrative(){
     <p>{slide.text}</p>
     <div className="hero-actions">
      <Link className="btn btn-orange" href={slide.href}>{slide.primary} <span>→</span></Link>
-     <a className="btn hero-video-btn" href="#intelligence-flow"><span className="play">▶</span> Watch Video</a>
+     <button type="button" className="btn hero-video-btn" onClick={() => setVideoOpen(true)}><span className="play" aria-hidden="true">▶</span> Watch Video</button>
     </div>
    </div>
    <div className="hero-dots" role="tablist" aria-label="MFSYS homepage hero navigation">
@@ -91,5 +93,5 @@ export default function HeroNarrative(){
    </div>
    <div className="hero-signature">{slide.signature} <i/> MFSYS TECHNOLOGIES <i/> INTELLIGENCE FOR IMPACT</div>
   </div>
- </section>;
+ </section><CorporateFilmModal open={videoOpen} onClose={() => setVideoOpen(false)} /></>;
 }
