@@ -1,30 +1,32 @@
-import type { MetadataRoute } from "next";
-import { products, solutions } from "../lib/site-data";
+import type {MetadataRoute} from "next";
+import {SITE_URL} from "../lib/seo";
+import {products} from "../lib/site-data";
+import {industryPages} from "../lib/industry-content";
+import {insightEntries,insightSections} from "../lib/insight-content";
 
+/** Public, indexable destinations only; omit aliases, admin, offline and redirects. */
+const staticPaths=[
+ "/","/about","/global-presence","/partners","/people","/careers","/industries",
+ "/ai-innovation","/insights","/products","/solutions","/contact","/case-studies",
+ "/solutions/digital-banking","/solutions/islamic-finance",
+ "/solutions/agentic-ai","/solutions/ai-transformation",
+ "/solutions/mobile-banking","/solutions/collection-management-system",
+ "/solutions/enterprise-software-development",
+ "/products/ifrs16"
+];
+const aiPaths=["data-analytics","financial-inclusion","emerging-technologies","innovation-lab"].map(x=>"/ai-innovation/"+x);
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
-  const base = "https://mfsys.ca";
-  const routes = ["/", "/about", "/global-presence", "/partners", "/people", "/careers", "/industries", "/ai-innovation", "/insights", "/products", "/solutions", "/insights/case-studies", "/insights/news", "/insights/articles", "/insights/research", "/insights/reports", "/contact"];
-
-  return [
-    ...routes.map((path): MetadataRoute.Sitemap[number] => ({
-      url: `${base}${path}`,
-      lastModified: now,
-      changeFrequency: path === "/" ? "weekly" : "monthly",
-      priority: path === "/" ? 1 : 0.7,
-    })),
-    ...products.map(([, , path]): MetadataRoute.Sitemap[number] => ({
-      url: `${base}${path}`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    })),
-    ...solutions.map(([, , path]): MetadataRoute.Sitemap[number] => ({
-      url: `${base}${path}`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.65,
-    })),
-  ];
+export default function sitemap():MetadataRoute.Sitemap{
+ const paths=new Set<string>([
+  ...staticPaths,...products.map(([, , path])=>path),
+  ...industryPages.map(x=>"/industries/"+x.slug),
+  ...insightSections.map(x=>"/insights/"+x.slug),
+  ...insightEntries.map(x=>"/insights/"+x.section+"/"+x.id),
+  ...aiPaths
+ ]);
+ return [...paths].sort().map(path=>({
+  url:SITE_URL+(path==="/"?"/":path),
+  changeFrequency:path==="/insights/news"?"weekly":"monthly",
+  priority:path==="/"?1:path.startsWith("/products/")||path.startsWith("/solutions/")||path.startsWith("/industries/")?0.8:0.65
+ }));
 }
