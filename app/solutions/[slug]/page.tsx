@@ -42,7 +42,7 @@ export async function generateMetadata({params}:{params:Promise<{slug:string}>})
     title: match[0]+" | MFSYS",
     description: detail.intro,
     alternates: {canonical: "/solutions/"+slug},
-    openGraph: {title: match[0]+" | MFSYS", description: detail.intro, url: "https://mfsys.ca/solutions/"+slug}
+    openGraph: {title: match[0]+" | MFSYS", description: detail.intro, url: "https://mfsys.net/solutions/"+slug}
   };
 }
 
