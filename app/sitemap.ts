@@ -12,7 +12,7 @@ const staticPaths=[
  "/solutions/agentic-ai","/solutions/ai-transformation",
  "/solutions/mobile-banking","/solutions/collection-management-system",
  "/solutions/enterprise-software-development",
- "/products/ifrs16"
+ "/products/ifrs16","/products/ciihive"
 ];
 const aiPaths=["data-analytics","financial-inclusion","emerging-technologies","innovation-lab"].map(x=>"/ai-innovation/"+x);
 
