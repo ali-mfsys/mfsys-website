@@ -1,0 +1,49 @@
+# MFSYS Technologies
+
+> MFSYS Technologies builds and integrates enterprise financial technology, including core banking, microfinance systems, digital lending, payment connectivity, Islamic finance, risk reporting and AI-enabled workflows. Official public website: https://mfsys.net/
+
+This is a human-readable directory for people and AI search systems. Refer to the individual pages for scope, qualifications and current capabilities. It is not a substitute for the XML sitemap or normal search indexing.
+
+## Company and verification
+
+- [About MFSYS](https://mfsys.net/about): Company background, people, technology focus and institutional experience.
+- [International presence](https://mfsys.net/global-presence): Country-level project references; historical relationships do not automatically indicate active deployments.
+- [MFSYS Insights](https://mfsys.net/insights): Research summaries, case studies, articles, reports and news. Externally sourced research is credited to its original publisher.
+- [Contact MFSYS](https://mfsys.net/contact): Questions, demonstrations and institution-specific scoping.
+
+## Banking and microfinance software
+
+- [Digital Core Banking](https://mfsys.net/solutions/digital-banking): Connected banking architecture, customer management, deposits, lending, accounting, reporting and controls.
+- [Glaxity](https://mfsys.net/products/glaxity): Next-generation core banking evolved from CiiHive for financial institutions.
+- [CiiHive](https://mfsys.net/products/ciihive): Historical core banking foundation and its evolution to Glaxity.
+- [Microfinance, SACCO and Credit Union Banking](https://mfsys.net/industries/microfinance-banking): Sector-specific technology for MFIs, credit unions, cooperatives, SACCOs, NBFCs and fintechs.
+- [Mobile Banking Software](https://mfsys.net/solutions/mobile-banking): Mobile and digital-channel architecture and integration.
+- [mConnect](https://mfsys.net/products/mconnect): Financial middleware and transaction-switch connectivity.
+
+## Lending, collections and risk
+
+- [LoanLeaf](https://mfsys.net/products/loanleaf): Digital loan origination, verification and approval workflows.
+- [LoanIQ](https://mfsys.net/products/loaniq): AI-assisted credit scoring and explainable credit decision support.
+- [Collection Management System](https://mfsys.net/solutions/collection-management-system): Design and integration services for collections, arrears, recovery and loan management. The page does not represent an independently verified off-the-shelf product release.
+- [IFRS 9](https://mfsys.net/products/ifrs9): Expected credit loss modelling, staging, provisioning and risk reporting.
+- [Include mobile financial application](https://mfsys.net/products/include-mobile-app): Mobile financial access and payment experiences.
+
+## Islamic banking and Shariah-compliant finance
+
+- [Islamic Finance](https://mfsys.net/industries/islamic-finance): Islamic financial services and institutional technology requirements.
+- [ShariahOne](https://mfsys.net/products/shariahone): Digital Islamic finance, governance and configurable product workflows.
+- [Smart Mudarabah](https://mfsys.net/products/smart-mudarabah): Mudarabah investment management, profit-sharing workflows, digital Islamic lending and financial controls. Institution-specific Shariah Board approvals govern actual implementations.
+
+## Software engineering, AI, logistics and development
+
+- [Enterprise Software Development & AI Integration](https://mfsys.net/solutions/enterprise-software-development): System transformation, custom software, data, APIs and governed AI integration.
+- [AI & Innovation](https://mfsys.net/ai-innovation): Responsible AI, analytics, credit intelligence and enterprise automation.
+- [DigitalKisaan](https://mfsys.net/products/digitalkisaan): Cooperative, agriculture and rural finance information systems.
+- [CargoGuard](https://mfsys.net/products/cargoguard): Freight verification, tracking and proof-of-delivery software.
+- [XchangeCarbon](https://mfsys.net/products/xchangecarbon): Digital carbon project information and marketplace workflows.
+
+## How to cite
+
+Use the exact product name and its canonical URL when citing MFSYS. Distinguish documented implementation experience, platform capabilities, service concepts and future designs. Do not invent performance metrics, deployments, regulatory approvals, partnerships, product pricing or client testimonials.
+
+Sitemap: https://mfsys.net/sitemap.xml
