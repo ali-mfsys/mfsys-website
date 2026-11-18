@@ -2193,3 +2193,22 @@ brand{line-height:0}.solution-detail-grid{display:grid;grid-template-columns:min
  .dbx-v2-ui-welcome>span{font-size:10px}
 }
 @media(prefers-reduced-motion:reduce){.dbx-v2-node,.dbx-v2-module,.dbx-v2-selected{transition:none;animation:none}}
+
+
+/* Preserve distinct banking-capability accents instead of overriding them with the base card colour. */
+.dbx-v2-module.dbx-blue{--module:#1479d1}
+.dbx-v2-module.dbx-orange{--module:#f47730}
+.dbx-v2-module.dbx-teal{--module:#18a695}
+.dbx-v2-module.dbx-violet{--module:#7652d7}
+.dbx-v2-module.dbx-green{--module:#1fa978}
+.dbx-v2-module.dbx-gold{--module:#d89d1e}
+.dbx-v2-module.dbx-red{--module:#e5505c}
+.dbx-v2-module.dbx-purple{--module:#7442db}
+.dbx-v2-selected.dbx-selected-blue{--selected-module:#1479d1}
+.dbx-v2-selected.dbx-selected-orange{--selected-module:#f47730}
+.dbx-v2-selected.dbx-selected-teal{--selected-module:#18a695}
+.dbx-v2-selected.dbx-selected-violet{--selected-module:#7652d7}
+.dbx-v2-selected.dbx-selected-green{--selected-module:#1fa978}
+.dbx-v2-selected.dbx-selected-gold{--selected-module:#d89d1e}
+.dbx-v2-selected.dbx-selected-red{--selected-module:#e5505c}
+.dbx-v2-selected.dbx-selected-purple{--selected-module:#7442db}
