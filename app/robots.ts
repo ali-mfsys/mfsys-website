@@ -11,6 +11,6 @@ export default function robots():MetadataRoute.Robots{
    disallow:["/admin/","/api/admin/","/offline"]
   }],
   sitemap:SITE_URL+"/sitemap.xml",
-  host:SITE_URL
+  host:"mfsys.net"
  };
 }
