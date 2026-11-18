@@ -18,7 +18,7 @@ export const products=[
 ["Include Mobile App","Manage all financials from your mobile","/products/include-mobile-app","Digital Finance"],
 ["Zaroorat24","Nano lending app, on-demand access to financing, 24/7 & disbursement within minutes","/products/zaroraat24","Digital Finance"],
 ["ShariahOne","Shariah-compliant banking platform for Islamic financial products","/products/shariahone","Islamic Finance"],
-["Smart Mudarba","Mudaraba pool management, profit calculation & weightage-based distribution","/products/smart-mudarabah","Islamic Finance"],
+["Smart Mudarabah","Connected investment and treasury operations, digital Islamic lending, profit sharing and automated financial control","/products/smart-mudarabah","Islamic Finance"],
 ["LoanIQ","AI & ML based credit scoring that uses alternative data for thin-file borrowers","/products/loaniq","AI & Credit Scoring"],
 ["IFRS9","Expected credit loss staging, provisioning and reporting","/products/ifrs9","Compliance and Risk"],
 ["DigitalKisaan","Agriculture MIS for farmer cooperatives and value chains","/products/digitalkisaan","Digital Agriculture"],
