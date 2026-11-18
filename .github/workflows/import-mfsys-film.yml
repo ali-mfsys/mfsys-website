@@ -1,0 +1,50 @@
+name: Import MFSYS corporate film asset
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/import-mfsys-film.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  import-film:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Fetch completed MFSYS corporate film
+        env:
+          SOURCE_VIDEO: https://at.adobe.com/KIiyU1FK8pHf6tJQ
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 4 --retry-delay 4 --max-time 300 "$SOURCE_VIDEO" -o /tmp/mfsys-film-original.mp4
+          ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 /tmp/mfsys-film-original.mp4
+      - name: Produce Cloudflare-compatible web edition
+        run: |
+          set -euo pipefail
+          mkdir -p public/videos
+          ffmpeg -nostdin -hide_banner -loglevel error -y -i /tmp/mfsys-film-original.mp4 \
+            -map 0:v:0 -map 0:a:0 -vf "scale=1280:720:flags=lanczos,format=yuv420p" \
+            -c:v libx264 -preset slow -b:v 1250k -maxrate 1550k -bufsize 3100k \
+            -r 24 -c:a aac -b:a 128k -ar 48000 \
+            -movflags +faststart public/videos/mfsys-corporate-film-web.mp4
+          size=$(stat -c %s public/videos/mfsys-corporate-film-web.mp4)
+          echo "Optimized size: $size bytes"
+          test "$size" -gt 10000000
+          test "$size" -le 25000000
+          ffprobe -v error -show_entries format=duration -show_entries stream=codec_name,width,height -of compact=p=0 public/videos/mfsys-corporate-film-web.mp4
+      - name: Commit optimized video to website assets
+        run: |
+          set -euo pipefail
+          git config user.name "MFSYS Website Automation"
+          git config user.email "actions@users.noreply.github.com"
+          git add public/videos/mfsys-corporate-film-web.mp4
+          if ! git diff --cached --quiet; then
+            git commit -m "Add optimized MFSYS corporate film for Watch Video"
+            git push origin HEAD:main
+          fi
