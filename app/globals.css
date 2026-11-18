@@ -1885,3 +1885,154 @@ brand{line-height:0}.solution-detail-grid{display:grid;grid-template-columns:min
 @media(max-width:1150px){.utility-left{display:none}.utility-right{margin-left:auto}}
 @media(max-width:680px){.utility-identity{display:none}.utility-left{display:flex;margin-left:0;font-size:9px;gap:6px}.utility-left span:nth-of-type(4),.utility-left i:last-of-type{display:none}.utility-right{gap:12px}.utility-right a:nth-child(2),.utility-right a:nth-child(3),.utility-right>span:last-child{display:none}}
 @media(max-width:390px){.utility-left span:nth-of-type(3),.utility-left i{display:none}.utility-right{gap:9px}}
+
+
+/* MFSYS MOBILE MENU FIX 2026-11-18
+   The React mobile navigation toggles "is-open", but the legacy stylesheet
+   only sets .mfsys-mobile-nav {display:none}. Restore its visible state
+   while keeping the desktop navigation unchanged.
+*/
+@media (max-width:760px) {
+  .site-header .menu-toggle {
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-width:74px;
+    min-height:44px;
+    font-size:12px;
+    font-weight:800;
+    border:1px solid #e6d2bc;
+    border-radius:10px;
+    background:#fffaf4;
+    color:#102f47;
+    position:relative;
+    z-index:2;
+  }
+  .site-header .menu-toggle[aria-expanded="true"] {
+    background:#0d304a;
+    color:#fff;
+    border-color:#0d304a;
+  }
+  .site-header .mfsys-mobile-nav {
+    display:none;
+    position:absolute;
+    left:0;
+    right:0;
+    top:100%;
+    z-index:1150;
+    max-height:calc(100vh - 112px);
+    max-height:calc(100dvh - 112px);
+    overflow-y:auto;
+    overscroll-behavior:contain;
+    -webkit-overflow-scrolling:touch;
+    padding:12px 15px 20px;
+    background:#fffaf5;
+    color:#102f47;
+    border:1px solid #ebdecf;
+    border-top:3px solid #1a78bc;
+    border-radius:0 0 18px 18px;
+    box-shadow:0 24px 50px rgba(6,31,50,.22);
+  }
+  .site-header .mfsys-mobile-nav.is-open {display:block;}
+  .site-header .mfsys-mobile-section {
+    display:block;
+    border-bottom:1px solid #e5eaf0;
+  }
+  .site-header .mfsys-mobile-section > button {
+    display:flex;
+    width:100%;
+    min-height:56px;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    text-align:left;
+    padding:14px 8px;
+    border:0;
+    background:transparent;
+    color:#102f47;
+    font-size:15px;
+    font-weight:800;
+    letter-spacing:-.01em;
+  }
+  .site-header .mfsys-mobile-section > button[aria-expanded="true"] {
+    color:#126ca6;
+  }
+  .site-header .mfsys-mobile-section > button span {
+    flex:0 0 28px;
+    display:grid;
+    place-items:center;
+    width:28px;
+    height:28px;
+    border-radius:8px;
+    background:#e8f1f9;
+    color:#1b6aa0;
+    font-size:18px;
+    line-height:1;
+    font-weight:650;
+  }
+  .site-header .mfsys-mobile-links {
+    display:grid;
+    gap:2px;
+    padding:0 4px 13px 12px;
+  }
+  .site-header .mfsys-mobile-links > a,
+  .site-header .mfsys-mobile-product-group > a {
+    display:flex;
+    align-items:center;
+    min-height:44px;
+    padding:10px 13px;
+    border-radius:8px;
+    color:#31546b;
+    font-size:13px;
+    font-weight:650;
+    line-height:1.45;
+  }
+  .site-header .mfsys-mobile-product-group {
+    display:grid;
+    gap:2px;
+    padding:8px 0;
+  }
+  .site-header .mfsys-mobile-product-group > strong {
+    color:#2179b1;
+    font-size:11px;
+    font-weight:850;
+    letter-spacing:.075em;
+    text-transform:uppercase;
+    padding:12px 13px 5px;
+  }
+  .site-header .mfsys-mobile-links a:hover,
+  .site-header .mfsys-mobile-links a:focus-visible,
+  .site-header .mfsys-mobile-nav > a:hover {
+    background:#e9f3fb;
+    color:#0e5b94;
+  }
+  .site-header .mfsys-mobile-nav > a {
+    display:flex;
+    align-items:center;
+    min-height:52px;
+    padding:13px 8px;
+    font-size:15px;
+    font-weight:800;
+    color:#102f47;
+    border-bottom:1px solid #e5eaf0;
+  }
+  .site-header .mfsys-mobile-nav > a.mfsys-mobile-cta {
+    justify-content:center;
+    margin-top:15px;
+    min-height:50px;
+    padding:14px 16px;
+    border:0;
+    border-radius:10px;
+    background:#0d304a;
+    color:white;
+  }
+  .site-header .mfsys-mobile-nav > a.mfsys-mobile-cta:hover {
+    background:#165a83;
+    color:white;
+  }
+  .site-header .mfsys-mobile-nav :is(a,button):focus-visible,
+  .site-header .menu-toggle:focus-visible {
+    outline:3px solid #2a8ed7;
+    outline-offset:2px;
+  }
+}
