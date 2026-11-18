@@ -1,3 +1,4 @@
+import ProductSeoJsonLd from "../../../components/ProductSeoJsonLd";
 import type {Metadata} from "next";
 import SmartMudarabahExperience from "../../../components/SmartMudarabahExperience";
 
@@ -12,4 +13,4 @@ export const metadata:Metadata={
  }
 };
 
-export default function Page(){return <SmartMudarabahExperience/>;}
+export default function Page(){return <><ProductSeoJsonLd path="/products/smart-mudarabah"/><SmartMudarabahExperience/></>;}
