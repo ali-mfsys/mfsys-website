@@ -4,7 +4,46 @@ import LiveChatLauncher from "../components/LiveChatLauncher";
 import ServiceWorker from "../components/ServiceWorker";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
-export const metadata:Metadata={title:"MFSYS | Intelligence for Impact",description:"MFSYS builds intelligent technology for financial services, digital economies, climate and sustainable enterprises.",applicationName:"MFSYS",metadataBase:new URL("https://mfsys.ca"),manifest:"/manifest.webmanifest",themeColor:"#0B3555",icons:{icon:"/icon.svg"},appleWebApp:{capable:true,title:"MFSYS",statusBarStyle:"default"},robots:{index:true,follow:true},openGraph:{title:"MFSYS | Intelligence for Impact",description:"Intelligent technology for financial services, digital economies, climate and sustainable enterprises.",url:"https://mfsys.ca",siteName:"MFSYS",type:"website",images:["/brand/mfsys-logo.svg"]},twitter:{card:"summary_large_image",title:"MFSYS | Intelligence for Impact",description:"Intelligent technology for financial services, digital economies, climate and sustainable enterprises."}};
-const organizationJsonLd={"@context":"https://schema.org","@type":"Organization",name:"MFSYS Technologies",url:"https://mfsys.ca",description:"Technology company delivering AI-powered financial, banking, lending, climate and enterprise solutions.",sameAs:["https://www.linkedin.com/company/mfsys"],logo:"https://mfsys.ca/brand/mfsys-logo.svg",contactPoint:[{"@type":"ContactPoint",contactType:"sales",telephone:"+1-647-960-7418",email:"info@mfsys.ca",areaServed:["CA","PK","AU"]}],location:[{"@type":"Place",name:"MFSYS Islamabad",address:{"@type":"PostalAddress",addressLocality:"Islamabad",addressCountry:"PK"}},{"@type":"Place",name:"MFSYS Toronto",address:{"@type":"PostalAddress",addressLocality:"Toronto",addressCountry:"CA"}},{"@type":"Place",name:"MFSYS Melbourne",address:{"@type":"PostalAddress",addressLocality:"Clayton",addressRegion:"Victoria",addressCountry:"AU"}}]};
+import {SITE_URL, safeJsonLd} from "../lib/seo";
 
-export default function Layout({children}:{children:React.ReactNode}){return <html lang="en"><body><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(organizationJsonLd)}}/><ServiceWorker/><a className="skip" href="#main">Skip to content</a><SiteHeader/>{children}<SiteFooter/><LiveChatLauncher/></body></html>}
+const homeTitle="Core Banking, Microfinance & Digital Financial Solutions | MFSYS";
+const homeDescription="MFSYS builds core banking systems, microfinance software, digital banking, loan origination, payments, Islamic finance and AI-enabled financial technology for banks, SACCOs, credit unions, NBFCs and fintechs.";
+
+export const metadata:Metadata={
+ metadataBase:new URL(SITE_URL),
+ title:{default:homeTitle,template:"%s"},
+ description:homeDescription,
+ applicationName:"MFSYS Technologies",
+ alternates:{canonical:"/"},
+ manifest:"/manifest.webmanifest",
+ icons:{icon:"/icon.svg"},
+ appleWebApp:{capable:true,title:"MFSYS",statusBarStyle:"default"},
+ robots:{index:true,follow:true,"max-image-preview":"large","max-snippet":-1,"max-video-preview":-1},
+ openGraph:{
+  type:"website",locale:"en_US",siteName:"MFSYS Technologies",url:SITE_URL,
+  title:homeTitle,description:homeDescription,
+  images:[{url:"/opengraph-image",width:1200,height:630,alt:"MFSYS Technologies — Building Smarter Financial Futures"}]
+ },
+ twitter:{card:"summary_large_image",title:homeTitle,description:homeDescription,images:["/opengraph-image"]}
+};
+
+const identity={"@context":"https://schema.org","@graph":[
+ {"@type":"Organization","@id":SITE_URL+"/#organization",name:"MFSYS Technologies",alternateName:["MFSYS Technologies Limited","MFSYS Technologies (Pvt) Ltd","MFSYS"],url:SITE_URL,
+  logo:{"@type":"ImageObject",url:SITE_URL+"/brand/mfsys-logo.svg"},
+  description:"Enterprise software company specializing in core banking, microfinance technology, loan origination, digital financial services, Islamic finance, integration and digital transformation.",
+  email:"info@mfsys.ca",
+  contactPoint:[{"@type":"ContactPoint",contactType:"sales",email:"info@mfsys.ca",url:SITE_URL+"/contact",availableLanguage:["en"]}],
+  location:[{"@type":"Place",name:"MFSYS Islamabad",address:{"@type":"PostalAddress",addressLocality:"Islamabad",addressCountry:"PK"}},{"@type":"Place",name:"MFSYS Toronto",address:{"@type":"PostalAddress",addressLocality:"Toronto",addressCountry:"CA"}}],
+  knowsAbout:["Microfinance core banking","Digital banking","Loan origination systems","Loan management","Mobile banking","SACCO and credit union banking software","NBFC software","Islamic finance","Mudarabah","Financial middleware","Credit risk and IFRS 9","Enterprise software development","AI integration"]
+ },
+ {"@type":"WebSite","@id":SITE_URL+"/#website",name:"MFSYS Technologies",url:SITE_URL,inLanguage:"en",publisher:{"@id":SITE_URL+"/#organization"},description:homeDescription}
+]};
+
+export default function Layout({children}:{children:React.ReactNode}){
+ return <html lang="en"><body>
+  <script type="application/ld+json" dangerouslySetInnerHTML={{__html:safeJsonLd(identity)}}/>
+  <ServiceWorker/>
+  <a className="skip" href="#main">Skip to content</a>
+  <SiteHeader/>{children}<SiteFooter/><LiveChatLauncher/>
+ </body></html>;
+}
