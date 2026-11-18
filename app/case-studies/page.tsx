@@ -9,7 +9,7 @@ const cases=[
 ];
 
 
-export const metadata: Metadata = { title: "Case Studies | MFSYS", description: "Explore selected MFSYS technology implementations across financial services, logistics, climate and development finance.", alternates: { canonical: "/case-studies" }, openGraph: { title: "Case Studies | MFSYS", description: "Explore selected MFSYS technology implementations across financial services, logistics, climate and development finance.", url: "https://mfsys.ca/case-studies" } };
+export const metadata: Metadata = { title: "Case Studies | MFSYS", description: "Explore selected MFSYS technology implementations across financial services, logistics, climate and development finance.", alternates: { canonical: "/case-studies" }, openGraph: { title: "Case Studies | MFSYS", description: "Explore selected MFSYS technology implementations across financial services, logistics, climate and development finance.", url: "https://mfsys.net/case-studies" } };
 
 export default function CaseStudies(){
  return <main id="main">
