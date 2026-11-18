@@ -34,7 +34,7 @@ const slides = [
     title: <>Technology for a <span>Climate-Ready Future</span></>,
     text: "Digital platforms for carbon markets, climate finance and sustainable enterprises connect measurable environmental impact with transparent digital ecosystems.",
     primary: "Explore Climate Solutions",
-    href: "/solutions/climate-carbon",
+    href: "/products/xchangecarbon",
     signature: "CLIMATE  •  CARBON  •  SUSTAINABLE FINANCE",
   },
   {
