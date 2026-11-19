@@ -3,7 +3,7 @@ import SolutionSeoLanding from "../../../components/SolutionSeoLanding";
 import type {SeoSolution} from "../../../components/SolutionSeoLanding";
 
 export const metadata:Metadata={
- title:"Enterprise Software Development & AI Integration | MFSYS",
+ title:"AI Integration & Fintech Software Development | MFSYS",
  description:"Enterprise software development, API integration, core system modernization, cloud transformation and responsible AI integration for financial services, fintech, logistics and development organizations.",
  alternates:{canonical:"/solutions/enterprise-software-development"},
  openGraph:{title:"Enterprise Software Development & AI Integration | MFSYS",description:"Enterprise software development, API integration, core system modernization, cloud transformation and responsible AI integration for financial services, fintech, logistics and development organizations.",url:"https://mfsys.net/solutions/enterprise-software-development",images:["/opengraph-image"]},
