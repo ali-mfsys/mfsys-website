@@ -34,7 +34,7 @@ Article/blog content type ARTICLE publishes in existing /insights/articles. Ther
 
 ## Required production secrets
 
-The live Cloudflare Worker name is mfsys-website. At audit time, only RESEND_API_KEY was found as a Worker secret, so admin sign-in and GitHub draft submission are not yet ready.
+The live Cloudflare Worker name is mfsys-website. The five required administrator and publishing secrets have been installed in the production Worker. If login is unavailable, check the deployed app and account hash compatibility; do not assume secrets are missing.
 
 **Recommended secure setup:** On your own computer, clone the repository, run `npm install`, and log into Cloudflare with `npx wrangler login`. Then run:
 
@@ -52,7 +52,7 @@ Alternatively, individual values can be installed through Cloudflare's secure da
 
 - AUTH_SECRET: random high-entropy string used to sign admin cookies.
 - ADMIN_EMAIL: permitted administrator's email address.
-- ADMIN_PASSWORD_HASH: format salt$iterations$derived_key, where the key is PBKDF2-SHA256 32-byte output encoded as base64url. The setup utility uses 310,000 iterations and a random salt. Verification uses asynchronous WebCrypto; never store the plain password.
+- ADMIN_PASSWORD_HASH: the supported format is `scrypt$16384$8$1$base64url-salt$base64url-hash`. A 24-byte random salt and 32-byte derived key are generated locally. Cloudflare uses native `node:crypto.scryptSync` to verify; plain passwords are never stored. The original 310,000-round PBKDF2 setup must be migrated once, as noted below.
 - ADMIN_TOTP_SECRET: unique 160-bit TOTP secret, base32-encoded, entered into an authenticator and verified during local setup. Required for production login.
 - GITHUB_CONTENT_TOKEN: narrowly scoped repository credential that can read/write Contents and create Pull Requests only for ali-mfsys/mfsys-website. Prefer a dedicated GitHub App installation token or fine-grained PAT with an expiration and rotation plan.
 
@@ -61,6 +61,25 @@ Note: ADMIN_EMAIL may be configured as a secret or an environment variable; cred
 **GitHub security:** This repository is public. Draft pull requests and the text in them are public before merge. Do not submit sensitive customer files, unpublished confidential contracts or internal operational details through this workflow. If confidential editorial drafts are needed, move draft storage and review to a private system instead.
 
 Set branch protection/rulesets for main requiring passing CI, appropriate reviewers, and disallowing direct edits. A draft PR should never be auto-merged by the agent.
+
+## One-time repair for accounts provisioned with the old PBKDF2 format
+
+**Why:** Earlier setup created 310,000-round PBKDF2 hashes, exceeding Cloudflare's native 100,000-round cap. The old manual HMAC fallback exhausted Worker CPU, intermittently producing HTTP 503. This is not a credential or MFA entry failure.
+
+On the Windows computer containing your existing `mfsys-website` checkout, from the repository directory:
+
+```powershell
+git pull origin main
+node scripts/upgrade-editor-password.mjs
+```
+
+Type your **existing Content Studio passphrase** twice. The password stays hidden. The utility derives a native scrypt verifier locally and updates **only** the `ADMIN_PASSWORD_HASH` secret using the existing Wrangler/Cloudflare login. It leaves `ADMIN_EMAIL`, `AUTH_SECRET`, `ADMIN_TOTP_SECRET`, `GITHUB_CONTENT_TOKEN`, and the existing Microsoft Authenticator account untouched.
+
+**Never** paste the passphrase or generated hash into a chat or GitHub. A successful command should report `Success! Uploaded secret ADMIN_PASSWORD_HASH`. If Wrangler authentication has expired, run `npx.cmd wrangler login` in the same directory and retry.
+
+Afterward, open `https://mfsys.net/admin/login` and use the same email, passphrase and existing six-digit authenticator code. New environments using `scripts/setup-editor.mjs` now create supported scrypt hashes directly.
+
+This migration does not lower the work factor of existing PBKDF2 hashes in place: it issues a new random-salt scrypt hash using the passphrase you enter locally.
 
 ## Draft interface behavior
 

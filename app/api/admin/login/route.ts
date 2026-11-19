@@ -1,7 +1,7 @@
 import {NextResponse} from "next/server";
 import {z} from "zod";
 import {getEditorialSecret,missingEditorialSecrets} from "../../../../lib/editorial-secrets";
-import {signSession,verifyPassword,verifyTotp} from "../../../../lib/auth";
+import {isSupportedAdminPasswordHash,signSession,verifyPassword,verifyTotp} from "../../../../lib/auth";
 
 export const runtime="nodejs";
 export const dynamic="force-dynamic";
@@ -31,6 +31,11 @@ export async function POST(request:Request){
   // Name-only diagnostics; NEVER log or return the values of bindings.
   console.error("[mfsys-editor-auth] runtime binding unavailable:",missing.length?missing.join(","):"AUTH_SECRET too short");
   return reply({error:"Secure editorial sign-in has not been activated"},503);
+ }
+ if(!isSupportedAdminPasswordHash()){
+  // The legacy verifier caused Worker CPU-limit errors; never invoke it.
+  console.warn("[mfsys-editor-auth] local password-hash upgrade required");
+  return reply({error:"A one-time Content Studio password-hash upgrade is required"},503);
  }
 
  let data:unknown;

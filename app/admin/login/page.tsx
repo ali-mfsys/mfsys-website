@@ -23,7 +23,14 @@ export default function Login(){
     })
    });
    if(!response.ok){
-    if(response.status===503)throw Error("Editorial sign-in has not been activated. Contact your MFSYS website administrator.");
+    if(response.status===503){
+     // Show only the public-safe operational status, never authentication details.
+     const payload=await response.json().catch(()=>null) as {error?:string}|null;
+     const message=payload?.error==="A one-time Content Studio password-hash upgrade is required"
+      ?"The Content Studio password security upgrade must be completed once from your local MFSYS project. No changes to your authenticator or GitHub token are needed."
+      :"Content Studio is temporarily unavailable. Contact the website administrator.";
+     throw Error(message);
+    }
     throw Error("The email, password or authenticator code was not accepted.");
    }
    // Discard the form and force the next server request to re-evaluate its session.
