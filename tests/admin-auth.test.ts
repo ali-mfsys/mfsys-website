@@ -1,6 +1,6 @@
 import {describe,expect,it,afterEach,vi} from "vitest";
-import {pbkdf2Sync} from "node:crypto";
-import {signSession,verifySession,verifyPassword,verifyTotp,derivePbkdf2Sha256Compat} from "../lib/auth";
+import {randomBytes,scryptSync} from "node:crypto";
+import {signSession,verifySession,verifyPassword,verifyTotp,isSupportedAdminPasswordHash} from "../lib/auth";
 
 afterEach(()=>vi.unstubAllEnvs());
 
@@ -25,26 +25,20 @@ describe("Content Studio signed admin sessions",()=>{
 });
 
 describe("admin password and authenticator verification",()=>{
- it("matches the generated PBKDF2-SHA256 hash using asynchronous WebCrypto",async()=>{
-  const salt="example-long-random-salt-safely-tested";
-  const iterations=310000;
-  const secret="a secure test passphrase 12345";
-  const hash=pbkdf2Sync(secret,salt,iterations,32,"sha256").toString("base64url");
-  vi.stubEnv("ADMIN_PASSWORD_HASH",salt+"$"+iterations+"$"+hash);
-  expect(await verifyPassword(secret)).toBe(true);
+ it("matches securely generated native scrypt password verifiers",async()=>{
+  const salt=randomBytes(24);
+  const password="a secure example passphrase 12345";
+  const native=scryptSync(password,salt,32,{N:16384,r:8,p:1,maxmem:64*1024*1024});
+  vi.stubEnv("ADMIN_PASSWORD_HASH",["scrypt",16384,8,1,salt.toString("base64url"),native.toString("base64url")].join("$"));
+  expect(isSupportedAdminPasswordHash()).toBe(true);
+  expect(await verifyPassword(password)).toBe(true);
   expect(await verifyPassword("incorrect password")).toBe(false);
  });
- it("reproduces exactly the pre-existing 310,000-round PBKDF2 hash on Workers",async()=>{
-  const salt="eXamPLe-sAlt-00000000000";
-  const password="A secure test-only passphrase!";
-  const n=310000;
-  const expected=pbkdf2Sync(password,salt,n,32,"sha256");
-  const actual=derivePbkdf2Sha256Compat(password,salt,n);
-  expect(actual.equals(expected)).toBe(true);
-  vi.stubEnv("ADMIN_PASSWORD_HASH",salt+"$"+n+"$"+expected.toString("base64url"));
-  expect(await verifyPassword(password)).toBe(true);
-  expect(await verifyPassword("incorrect passphrase")).toBe(false);
- },30000);
+ it("fails closed on old CPU-exhausting password hashes, without computing them",async()=>{
+  vi.stubEnv("ADMIN_PASSWORD_HASH","long-legacy-salt$310000$legacy-derived-value");
+  expect(isSupportedAdminPasswordHash()).toBe(false);
+  expect(await verifyPassword("sample password")).toBe(false);
+ });
  it("rejects malformed, empty or weak password hashes",async()=>{
   vi.stubEnv("ADMIN_PASSWORD_HASH","");
   expect(await verifyPassword("whatever")).toBe(false);
