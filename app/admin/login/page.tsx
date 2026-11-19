@@ -8,7 +8,10 @@ export default function Login(){
  const [busy,setBusy]=useState(false);
  async function submit(event:FormEvent<HTMLFormElement>){
   event.preventDefault();setError("");setBusy(true);
-  const form=new FormData(event.currentTarget);
+  // React clears event.currentTarget after the event dispatch. Capture the
+  // actual form element before awaiting the login network request.
+  const submittedForm=event.currentTarget;
+  const form=new FormData(submittedForm);
   try{
    const response=await fetch("/api/admin/login",{
     method:"POST",credentials:"same-origin",
@@ -24,7 +27,7 @@ export default function Login(){
     throw Error("The email, password or authenticator code was not accepted.");
    }
    // Discard the form and force the next server request to re-evaluate its session.
-   event.currentTarget.reset();
+   submittedForm.reset();
    router.replace("/admin/insights");
    router.refresh();
   }catch(e){setError(e instanceof Error?e.message:"Sign-in is unavailable");}
