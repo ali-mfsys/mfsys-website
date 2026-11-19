@@ -15,7 +15,8 @@ describe("Content Studio signed admin sessions",()=>{
   const good=signSession({email:"admin@example.com",role:"SUPER_ADMIN",exp:Date.now()+3600000});
   expect(verifySession(good)?.email).toBe("admin@example.com");
   const [payload,signature]=good.split(".");
-  expect(verifySession(payload+"."+signature.slice(0,-1)+"A")).toBeNull();
+  const alteredLast=signature.endsWith("A")?"B":"A";
+  expect(verifySession(payload+"."+signature.slice(0,-1)+alteredLast)).toBeNull();
   const expired=signSession({email:"admin@example.com",role:"SUPER_ADMIN",exp:Date.now()-1000});
   expect(verifySession(expired)).toBeNull();
   const excessivelyLong=signSession({email:"admin@example.com",role:"SUPER_ADMIN",exp:Date.now()+6*60*60*1000});
