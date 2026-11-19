@@ -1,4 +1,5 @@
 import {createHmac,timingSafeEqual} from "node:crypto";
+import {getEditorialSecret} from "./editorial-secrets";
 
 export type Session={
  email:string;
@@ -6,7 +7,7 @@ export type Session={
  exp:number;
 };
 const ISSUER="mfsys-content-studio";
-const secret=()=>process.env.AUTH_SECRET??"";
+const secret=()=>getEditorialSecret("AUTH_SECRET");
 const b64=(value:string)=>Buffer.from(value,"utf8").toString("base64url");
 const unb64=(value:string)=>Buffer.from(value,"base64url").toString("utf8");
 
@@ -65,7 +66,7 @@ export function derivePbkdf2Sha256Compat(password:string,salt:string,iterations:
  */
 export async function verifyPassword(password:string){
  try{
-  const parts=(process.env.ADMIN_PASSWORD_HASH??"").split("$");
+  const parts=getEditorialSecret("ADMIN_PASSWORD_HASH").split("$");
   if(parts.length!==3){console.error("[mfsys-editor-auth] password hash configuration invalid");return false;}
   const [salt,rawIterations,rawExpected]=parts;
   const iterations=Number(rawIterations);
