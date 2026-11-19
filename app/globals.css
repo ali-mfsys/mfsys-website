@@ -2212,3 +2212,110 @@ brand{line-height:0}.solution-detail-grid{display:grid;grid-template-columns:min
 .dbx-v2-selected.dbx-selected-gold{--selected-module:#d89d1e}
 .dbx-v2-selected.dbx-selected-red{--selected-module:#e5505c}
 .dbx-v2-selected.dbx-selected-purple{--selected-module:#7442db}
+
+
+/* MFSYS Content Studio — isolated, accessible sign-in experience.
+   Hide authenticated administration chrome only on the login route. */
+.admin-shell:has(.admin-login){
+  display:block;
+  min-height:100vh;
+  background:linear-gradient(135deg,#eff6f7 0%,#f8fafb 55%,#fff8f0 100%);
+}
+.admin-shell:has(.admin-login) .admin-sidebar,
+.admin-shell:has(.admin-login) .admin-topbar{
+  display:none;
+}
+.admin-shell:has(.admin-login) .admin-main{width:100%;min-width:0}
+.admin-login{
+  display:grid;
+  place-items:center;
+  min-height:min(780px,calc(100vh - 100px));
+  padding:clamp(35px,6vw,85px) 20px;
+}
+.admin-login .login-card{
+  width:min(100%,480px);
+  padding:clamp(26px,4vw,43px);
+  border:1px solid #dce8ea;
+  border-radius:20px;
+  background:#fff;
+  box-shadow:0 25px 85px rgba(12,43,63,.11);
+}
+.admin-login .admin-kicker{
+  color:#0d80a0;
+  font-size:11px;
+  letter-spacing:.17em;
+}
+.admin-login h1{
+  font-size:clamp(35px,4vw,48px);
+  line-height:1.15;
+  letter-spacing:-.045em;
+  margin:14px 0 11px;
+  color:#102f44;
+}
+.admin-login .login-card>p{
+  color:#5c7584;
+  font-size:14px;
+  line-height:1.75;
+  margin:0 0 28px;
+}
+.admin-login form{display:grid;gap:19px}
+.admin-login label{
+  display:grid;
+  gap:7px;
+  font-size:13px;
+  font-weight:750;
+  color:#24475a;
+}
+.admin-login input{
+  display:block;
+  width:100%;
+  max-width:100%;
+  min-height:47px;
+  padding:12px 13px;
+  border:1px solid #cbdbe3;
+  border-radius:9px;
+  background:#fbfdfe;
+  color:#112f42;
+  font-size:15px;
+  outline:none;
+  transition:border-color .18s,box-shadow .18s;
+}
+.admin-login input:focus{
+  border-color:#2087a7;
+  box-shadow:0 0 0 3px #2087a720;
+}
+.admin-login .admin-primary{
+  width:100%;
+  min-height:48px;
+  margin-top:5px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:9px;
+  background:#0b3552;
+  color:#fff;
+  font-size:14px;
+  font-weight:850;
+}
+.admin-login .admin-primary:hover{background:#125175}
+.admin-login .admin-primary:disabled{opacity:.65;cursor:wait}
+.admin-login .login-error{
+  padding:12px 14px;
+  border:1px solid #efb3b3;
+  border-radius:9px;
+  background:#fff3f2;
+  color:#9c2525;
+  font-size:13px;
+  line-height:1.5;
+}
+.admin-login .login-card>small{
+  display:block;
+  margin-top:22px;
+  color:#6b8590;
+  font-size:11px;
+  line-height:1.65;
+}
+@media(max-width:520px){
+  .admin-login{min-height:calc(100vh - 90px);padding:28px 16px}
+  .admin-login .login-card{padding:26px 22px;border-radius:14px}
+}
