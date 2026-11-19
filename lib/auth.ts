@@ -1,4 +1,4 @@
-import {createHmac,timingSafeEqual} from "node:crypto";
+import {createHmac,scryptSync,timingSafeEqual} from "node:crypto";
 import {getEditorialSecret} from "./editorial-secrets";
 
 export type Session={
@@ -39,53 +39,38 @@ export function verifySession(token?:string):Session|null{
  }catch{return null;}
 }
 
-/** RFC 8018 PBKDF2-HMAC-SHA256 for Cloudflare Workers at higher iteration counts.
- * Cloudflare WebCrypto refuses PBKDF2 above 100,000 iterations, while our
- * existing credentials were securely created at 310,000. Preserve these
- * password hashes instead of resetting or silently lowering their cost.
- * The only admin login endpoint is rate-limited at the Cloudflare edge.
+/**
+ * The Worker verifies scrypt hashes using a native memory-hard KDF.
+ * Do NOT reintroduce the old 310,000-round JS PBKDF2 loop here: Cloudflare
+ * terminated requests with "Worker exceeded CPU time limit".
+ *
+ * Format: scrypt$N$r$p$base64url-salt$base64url-derived-key
+ * This remains server-side; only its nonsecret format identifier is inspected.
  */
-export function derivePbkdf2Sha256Compat(password:string,salt:string,iterations:number):Buffer{
- if(!Number.isInteger(iterations)||iterations<1||iterations>1000000)throw Error("Unsupported PBKDF2 cost");
- const key=Buffer.from(password,"utf8");
- const initial=Buffer.alloc(Buffer.byteLength(salt,"utf8")+4);
- initial.write(salt,0,"utf8");
- initial.writeUInt32BE(1,initial.length-4); // PBKDF2 block index 1 (32-byte output)
- let u=createHmac("sha256",key).update(initial).digest();
- const output=Buffer.from(u);
- for(let i=1;i<iterations;i++){
-  u=createHmac("sha256",key).update(u).digest();
-  for(let j=0;j<32;j++)output[j]^=u[j];
- }
- return output;
+export function isSupportedAdminPasswordHash(){
+ return getEditorialSecret("ADMIN_PASSWORD_HASH").startsWith("scrypt$");
 }
 
-/** Verify credentials using the same algorithm and cost used at setup time.
- * Standard WebCrypto is preferred for <=100k; Node-compatible HMAC primitives
- * provide an exact PBKDF2 implementation above Cloudflare's native cap.
- */
 export async function verifyPassword(password:string){
  try{
   const parts=getEditorialSecret("ADMIN_PASSWORD_HASH").split("$");
-  if(parts.length!==3){console.error("[mfsys-editor-auth] password hash configuration invalid");return false;}
-  const [salt,rawIterations,rawExpected]=parts;
-  const iterations=Number(rawIterations);
-  if(!salt||salt.length<16||!Number.isInteger(iterations)||iterations<200000||iterations>1000000)return false;
-  const expected=Buffer.from(rawExpected,"base64url");
-  if(expected.length!==32)return false;
-  let derived:Buffer;
-  if(iterations>100000){
-   derived=derivePbkdf2Sha256Compat(password,salt,iterations);
-  }else{
-   const key=await crypto.subtle.importKey("raw",new TextEncoder().encode(password),"PBKDF2",false,["deriveBits"]);
-   const bits=await crypto.subtle.deriveBits({
-    name:"PBKDF2",salt:new TextEncoder().encode(salt),iterations,hash:"SHA-256"
-   },key,256);
-   derived=Buffer.from(bits);
+  if(parts.length!==6||parts[0]!=="scrypt"){
+   // Fail closed while a legacy hash is migrated using the local-only script.
+   console.warn("[mfsys-editor-auth] unsupported password hash format");
+   return false;
   }
+  const [,rawN,rawR,rawP,saltEncoded,hashEncoded]=parts;
+  const N=Number(rawN),r=Number(rawR),p=Number(rawP);
+  if(N!==16384||r!==8||p!==1||password.length<12||password.length>256)return false;
+  const salt=Buffer.from(saltEncoded,"base64url");
+  const expected=Buffer.from(hashEncoded,"base64url");
+  if(salt.length<16||expected.length!==32)return false;
+  // Uses workerd's native node:crypto implementation, not a JS HMAC loop.
+  const derived=scryptSync(password,salt,expected.length,{
+   N,r,p,maxmem:64*1024*1024
+  });
   return secureCompare(derived,expected);
  }catch(e){
-  // Diagnostic metadata only; never reveal password, salt or hash values.
   console.error("[mfsys-editor-auth] password verification exception",e instanceof Error?e.name:"unknown");
   return false;
  }
