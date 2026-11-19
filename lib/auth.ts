@@ -42,7 +42,7 @@ export function verifySession(token?:string):Session|null{
 export async function verifyPassword(password:string){
  try{
   const parts=(process.env.ADMIN_PASSWORD_HASH??"").split("$");
-  if(parts.length!==3)return false;
+  if(parts.length!==3){console.error("[mfsys-editor-auth] password hash configuration invalid");return false;}
   const [salt,rawIterations,rawExpected]=parts;
   const iterations=Number(rawIterations);
   if(!salt||salt.length<16||!Number.isInteger(iterations)||iterations<200000||iterations>1000000)return false;
@@ -53,7 +53,11 @@ export async function verifyPassword(password:string){
    name:"PBKDF2",salt:new TextEncoder().encode(salt),iterations,hash:"SHA-256"
   },key,256);
   return secureCompare(Buffer.from(bits),expected);
- }catch{return false;}
+ }catch(e){
+  // Diagnostic metadata only; never reveal password, salt or hash values.
+  console.error("[mfsys-editor-auth] password verification exception",e instanceof Error?e.name:"unknown");
+  return false;
+ }
 }
 
 function decodeBase32(value:string):Buffer|null{
