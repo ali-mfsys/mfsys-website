@@ -38,7 +38,31 @@ export function verifySession(token?:string):Session|null{
  }catch{return null;}
 }
 
-/** Use WebCrypto rather than CPU-intensive synchronous PBKDF2 on Workers. */
+/** RFC 8018 PBKDF2-HMAC-SHA256 for Cloudflare Workers at higher iteration counts.
+ * Cloudflare WebCrypto refuses PBKDF2 above 100,000 iterations, while our
+ * existing credentials were securely created at 310,000. Preserve these
+ * password hashes instead of resetting or silently lowering their cost.
+ * The only admin login endpoint is rate-limited at the Cloudflare edge.
+ */
+export function derivePbkdf2Sha256Compat(password:string,salt:string,iterations:number):Buffer{
+ if(!Number.isInteger(iterations)||iterations<1||iterations>1000000)throw Error("Unsupported PBKDF2 cost");
+ const key=Buffer.from(password,"utf8");
+ const initial=Buffer.alloc(Buffer.byteLength(salt,"utf8")+4);
+ initial.write(salt,0,"utf8");
+ initial.writeUInt32BE(1,initial.length-4); // PBKDF2 block index 1 (32-byte output)
+ let u=createHmac("sha256",key).update(initial).digest();
+ const output=Buffer.from(u);
+ for(let i=1;i<iterations;i++){
+  u=createHmac("sha256",key).update(u).digest();
+  for(let j=0;j<32;j++)output[j]^=u[j];
+ }
+ return output;
+}
+
+/** Verify credentials using the same algorithm and cost used at setup time.
+ * Standard WebCrypto is preferred for <=100k; Node-compatible HMAC primitives
+ * provide an exact PBKDF2 implementation above Cloudflare's native cap.
+ */
 export async function verifyPassword(password:string){
  try{
   const parts=(process.env.ADMIN_PASSWORD_HASH??"").split("$");
@@ -48,11 +72,17 @@ export async function verifyPassword(password:string){
   if(!salt||salt.length<16||!Number.isInteger(iterations)||iterations<200000||iterations>1000000)return false;
   const expected=Buffer.from(rawExpected,"base64url");
   if(expected.length!==32)return false;
-  const key=await crypto.subtle.importKey("raw",new TextEncoder().encode(password),"PBKDF2",false,["deriveBits"]);
-  const bits=await crypto.subtle.deriveBits({
-   name:"PBKDF2",salt:new TextEncoder().encode(salt),iterations,hash:"SHA-256"
-  },key,256);
-  return secureCompare(Buffer.from(bits),expected);
+  let derived:Buffer;
+  if(iterations>100000){
+   derived=derivePbkdf2Sha256Compat(password,salt,iterations);
+  }else{
+   const key=await crypto.subtle.importKey("raw",new TextEncoder().encode(password),"PBKDF2",false,["deriveBits"]);
+   const bits=await crypto.subtle.deriveBits({
+    name:"PBKDF2",salt:new TextEncoder().encode(salt),iterations,hash:"SHA-256"
+   },key,256);
+   derived=Buffer.from(bits);
+  }
+  return secureCompare(derived,expected);
  }catch(e){
   // Diagnostic metadata only; never reveal password, salt or hash values.
   console.error("[mfsys-editor-auth] password verification exception",e instanceof Error?e.name:"unknown");
