@@ -2,6 +2,7 @@ import {afterEach,beforeEach,describe,expect,it,vi} from "vitest";
 
 vi.mock("../lib/auth",()=>({
   signSession:vi.fn(()=>"mocked-safe-session-token"),
+  isSupportedAdminPasswordHash:vi.fn(()=>true),
   verifyPassword:vi.fn(async(password:string)=>password==="a very long test passphrase"),
   verifyTotp:vi.fn((code:string)=>code==="654321")
 }));
