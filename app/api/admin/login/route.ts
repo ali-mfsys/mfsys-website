@@ -1,5 +1,6 @@
 import {NextResponse} from "next/server";
 import {z} from "zod";
+import {getEditorialSecret,missingEditorialSecrets} from "../../../../lib/editorial-secrets";
 import {signSession,verifyPassword,verifyTotp} from "../../../../lib/auth";
 
 export const runtime="nodejs";
@@ -22,11 +23,15 @@ export async function POST(request:Request){
  if(Number(request.headers.get("content-length")||0)>2048)
   return reply({error:"Request too large"},413);
 
- const email=process.env.ADMIN_EMAIL?.trim().toLowerCase();
- const hash=process.env.ADMIN_PASSWORD_HASH;
- const otpSecret=process.env.ADMIN_TOTP_SECRET;
- if(!email||!hash||!otpSecret||!(process.env.AUTH_SECRET?.length&&process.env.AUTH_SECRET.length>=32))
+ const email=getEditorialSecret("ADMIN_EMAIL").trim().toLowerCase();
+ const hash=getEditorialSecret("ADMIN_PASSWORD_HASH");
+ const otpSecret=getEditorialSecret("ADMIN_TOTP_SECRET");
+ const missing=missingEditorialSecrets(["ADMIN_EMAIL","ADMIN_PASSWORD_HASH","ADMIN_TOTP_SECRET","AUTH_SECRET"]);
+ if(missing.length||getEditorialSecret("AUTH_SECRET").length<32){
+  // Name-only diagnostics; NEVER log or return the values of bindings.
+  console.error("[mfsys-editor-auth] runtime binding unavailable:",missing.length?missing.join(","):"AUTH_SECRET too short");
   return reply({error:"Secure editorial sign-in has not been activated"},503);
+ }
 
  let data:unknown;
  try{data=await request.json()}catch{return reply({error:"Invalid credentials"},401)}
