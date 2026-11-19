@@ -1,6 +1,7 @@
 import {NextResponse} from "next/server";
 import {cookies} from "next/headers";
 import {verifySession} from "../../../../lib/auth";
+import {getEditorialSecret} from "../../../../lib/editorial-secrets";
 import {insightEntries} from "../../../../lib/insight-content";
 import {buildInsightEntry,insightDraftSchema,validateInsightCollection} from "../../../../lib/insights-authoring";
 import type {InsightEntry} from "../../../../lib/insight-content";
@@ -46,7 +47,7 @@ export async function POST(request:Request){
  const origin=request.headers.get("origin");
  if(!origin||origin!==new URL(request.url).origin)return noStore({error:"Origin verification failed"},403);
  if(Number(request.headers.get("content-length")||0)>40000)return noStore({error:"Draft is too large"},413);
- const token=process.env.GITHUB_CONTENT_TOKEN;
+ const token=getEditorialSecret("GITHUB_CONTENT_TOKEN");
  if(!token)return noStore({error:"Git publishing is not configured. An administrator must set the GITHUB_CONTENT_TOKEN secret with Contents: write and Pull requests: write access."},503);
  let json:unknown;
  try{json=await request.json()}catch{return noStore({error:"Invalid JSON body"},400)}
