@@ -6,7 +6,7 @@ import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
 import {SITE_URL, safeJsonLd} from "../lib/seo";
 
-const homeTitle="Core Banking, Microfinance & Digital Financial Solutions | MFSYS";
+const homeTitle="Core Banking, Microfinance & Digital Banking | MFSYS";
 const homeDescription="MFSYS builds core banking, microfinance, digital lending, mobile banking, payments, Islamic finance and AI software for banks, SACCOs, credit unions and NBFCs.";
 
 export const metadata:Metadata={
