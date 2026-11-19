@@ -1,1 +1,12 @@
-import {NextRequest,NextResponse} from "next/server";import {createHmac} from "node:crypto";function verify(token?:string){try{const secret=process.env.AUTH_SECRET??"";if(!token||!secret)return false;const [p,s]=token.split(".");const expected=Buffer.from(createHmac("sha256",secret).update(p).digest("base64url"));return Buffer.from(s).equals(expected)&&JSON.parse(Buffer.from(p,"base64url").toString()).exp>Date.now()}catch{return false}}export function proxy(req:NextRequest){if(!req.nextUrl.pathname.startsWith("/admin")||req.nextUrl.pathname==="/admin/login")return NextResponse.next();if(!verify(req.cookies.get("mfsys_admin_session")?.value))return NextResponse.redirect(new URL("/admin/login",req.url));return NextResponse.next()}export const config={matcher:["/admin/:path*"]};
+import {NextRequest,NextResponse} from "next/server";
+import {verifySession} from "./lib/auth";
+
+export function proxy(request:NextRequest){
+ const pathname=request.nextUrl.pathname;
+ if(pathname==="/admin/login")return NextResponse.next();
+ if(pathname!=="/admin"&&!pathname.startsWith("/admin/"))return NextResponse.next();
+ const valid=verifySession(request.cookies.get("mfsys_admin_session")?.value);
+ if(!valid)return NextResponse.redirect(new URL("/admin/login",request.url),302);
+ return NextResponse.next();
+}
+export const config={matcher:["/admin/:path*"]};

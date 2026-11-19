@@ -11,3 +11,9 @@ coverage/
 .DS_Store
 *.log
 .vercel/
+
+# Never commit local Worker secrets or production credential files
+.dev.vars
+.dev.vars.*
+.env.production
+.env.production.*

@@ -36,11 +36,24 @@ Article/blog content type ARTICLE publishes in existing /insights/articles. Ther
 
 The live Cloudflare Worker name is mfsys-website. At audit time, only RESEND_API_KEY was found as a Worker secret, so admin sign-in and GitHub draft submission are not yet ready.
 
-Set secrets securely through Cloudflare's dashboard (or a controlled CLI). Never paste values into GitHub files or ChatGPT.
+**Recommended secure setup:** On your own computer, clone the repository, run `npm install`, and log into Cloudflare with `npx wrangler login`. Then run:
+
+```bash
+node scripts/setup-editor.mjs
+```
+
+The interactive utility asks for the authorised admin email, a strong passphrase, and a fine-grained GitHub token, then displays a TOTP authenticator key **only in your local terminal**. Enter the six-digit code in the terminal to verify MFA. It installs the five Worker secrets directly using Wrangler; values are not written to files or GitHub. It requires Cloudflare account permissions. Never paste a password, token, TOTP key or recovery code into ChatGPT.
+
+**GitHub token creation:** go to https://github.com/settings/personal-access-tokens/new and create a fine-grained personal access token for **only** `ali-mfsys/mfsys-website`. Grant **Contents: Read and write** and **Pull requests: Read and write** (Metadata read is automatic). Set a limited expiration and plan rotation. No Actions, Administration or Secrets permission is required by the editor workflow.
+
+**Important:** The script installs secrets on the production Worker. It will not be effective until the current secure login implementation is deployed; do not run the script against an older build. Workers' `keep_vars: true` setting preserves separately configured Worker variables during subsequent deployments. Cloudflare's encrypted secrets remain protected.
+
+Alternatively, individual values can be installed through Cloudflare's secure dashboard. Do not send them through a chat, email or a repository file.
 
 - AUTH_SECRET: random high-entropy string used to sign admin cookies.
 - ADMIN_EMAIL: permitted administrator's email address.
-- ADMIN_PASSWORD_HASH: format salt$iterations$derived_key, where the key is PBKDF2-SHA256 32-byte output encoded as base64url. The salt should be random, and iterations sufficiently high for the environment. Generate locally; do not save the plain password.
+- ADMIN_PASSWORD_HASH: format salt$iterations$derived_key, where the key is PBKDF2-SHA256 32-byte output encoded as base64url. The setup utility uses 310,000 iterations and a random salt. Verification uses asynchronous WebCrypto; never store the plain password.
+- ADMIN_TOTP_SECRET: unique 160-bit TOTP secret, base32-encoded, entered into an authenticator and verified during local setup. Required for production login.
 - GITHUB_CONTENT_TOKEN: narrowly scoped repository credential that can read/write Contents and create Pull Requests only for ali-mfsys/mfsys-website. Prefer a dedicated GitHub App installation token or fine-grained PAT with an expiration and rotation plan.
 
 Note: ADMIN_EMAIL may be configured as a secret or an environment variable; credential-associated configuration should remain controlled. The worker authentication and administration model is a minimal current implementation, not a fully verified MFA setup.
@@ -56,7 +69,7 @@ Set branch protection/rulesets for main requiring passing CI, appropriate review
 - Missing GITHUB_CONTENT_TOKEN: API responds with a clear HTTP 503 configuration error.
 - Invalid or unsourced News/Research/Report: API returns HTTP 400.
 - Duplicate slug: API returns HTTP 409.
-- Unauthorised requests: HTTP 401/403.
+- Unauthorised requests: HTTP 401/403. Login is only permitted using an authorised email, strong password and six-digit authenticator code. Without the required secrets, login returns 503 and no session is issued.
 - API errors do not echo the GitHub credential or article content.
 
 ## Future agent integration
