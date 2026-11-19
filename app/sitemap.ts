@@ -1,5 +1,6 @@
 import type {MetadataRoute} from "next";
 import {SITE_URL} from "../lib/seo";
+import {searchGuides} from "../lib/search-guides";
 import {products} from "../lib/site-data";
 import {industryPages} from "../lib/industry-content";
 import {insightEntries,insightSections} from "../lib/insight-content";
@@ -19,6 +20,7 @@ const aiPaths=["data-analytics","financial-inclusion","emerging-technologies","i
 export default function sitemap():MetadataRoute.Sitemap{
  const paths=new Set<string>([
   ...staticPaths,...products.map(([, , path])=>path),
+  ...searchGuides.map(x=>"/insights/guides/"+x.slug),
   ...industryPages.map(x=>"/industries/"+x.slug),
   ...insightSections.map(x=>"/insights/"+x.slug),
   ...insightEntries.map(x=>"/insights/"+x.section+"/"+x.id),
