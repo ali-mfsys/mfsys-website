@@ -68,7 +68,7 @@ function runWrangler(args,input){
  const cmd=process.platform==="win32"?"npx.cmd":"npx";
  const r=spawnSync(cmd,["wrangler",...args],{
   encoding:"utf8",input,stdio:input===undefined?"inherit":["pipe","inherit","inherit"],
-  windowsHide:true,timeout:90000
+  windowsHide:true,shell:process.platform==="win32",timeout:90000
  });
  if(r.error)throw Error("Wrangler failed to start: "+r.error.message);
  if(r.status!==0)throw Error("Wrangler failed; check your Cloudflare login and permissions.");
