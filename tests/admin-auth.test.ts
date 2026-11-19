@@ -1,6 +1,6 @@
 import {describe,expect,it,afterEach,vi} from "vitest";
 import {pbkdf2Sync} from "node:crypto";
-import {signSession,verifySession,verifyPassword,verifyTotp} from "../lib/auth";
+import {signSession,verifySession,verifyPassword,verifyTotp,derivePbkdf2Sha256Compat} from "../lib/auth";
 
 afterEach(()=>vi.unstubAllEnvs());
 
@@ -34,6 +34,17 @@ describe("admin password and authenticator verification",()=>{
   expect(await verifyPassword(secret)).toBe(true);
   expect(await verifyPassword("incorrect password")).toBe(false);
  });
+ it("reproduces exactly the pre-existing 310,000-round PBKDF2 hash on Workers",async()=>{
+  const salt="eXamPLe-sAlt-00000000000";
+  const password="A secure test-only passphrase!";
+  const n=310000;
+  const expected=pbkdf2Sync(password,salt,n,32,"sha256");
+  const actual=derivePbkdf2Sha256Compat(password,salt,n);
+  expect(actual.equals(expected)).toBe(true);
+  vi.stubEnv("ADMIN_PASSWORD_HASH",salt+"$"+n+"$"+expected.toString("base64url"));
+  expect(await verifyPassword(password)).toBe(true);
+  expect(await verifyPassword("incorrect passphrase")).toBe(false);
+ },30000);
  it("rejects malformed, empty or weak password hashes",async()=>{
   vi.stubEnv("ADMIN_PASSWORD_HASH","");
   expect(await verifyPassword("whatever")).toBe(false);
