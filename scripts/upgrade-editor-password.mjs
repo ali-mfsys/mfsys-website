@@ -55,7 +55,7 @@ try{
  const password=await hidden("Enter your Content Studio password (hidden, minimum 16 characters): ");
  if(password.length<16||password.length>256)throw Error("Password must contain 16–256 characters.");
  const confirmation=await hidden("Re-enter the same password (hidden): ");
- if(!timingSafeEqual(Buffer.from(password),Buffer.from(confirmation)))
+ if(Buffer.byteLength(password)!==Buffer.byteLength(confirmation)||!timingSafeEqual(Buffer.from(password),Buffer.from(confirmation)))
   throw Error("Passwords did not match. Nothing was changed.");
  const salt=randomBytes(24);
  const key=scryptSync(password,salt,32,{N,r:R,p:P,maxmem:64*1024*1024});
