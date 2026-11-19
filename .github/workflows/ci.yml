@@ -16,6 +16,7 @@ jobs:
           node-version: 22
       - run: npm install --no-audit --no-fund --legacy-peer-deps
       - run: node --check scripts/setup-editor.mjs
+      - run: node --check scripts/upgrade-editor-password.mjs
       - run: npm run typecheck
       - run: npm test -- --passWithNoTests
       - run: npm run build
