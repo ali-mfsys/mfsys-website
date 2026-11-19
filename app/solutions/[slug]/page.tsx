@@ -39,8 +39,8 @@ export async function generateMetadata({params}:{params:Promise<{slug:string}>})
   const detail=details[slug];
   if(!match || !detail) return {};
   return {
-    title: match[0]+" | MFSYS",
-    description: detail.intro,
+    title: slug==="digital-banking"?"Digital Banking & Core Banking Software | MFSYS":slug==="islamic-finance"?"Islamic Finance Software & Shariah Banking | MFSYS":match[0]+" | MFSYS",
+    description: slug==="digital-banking"?"Digital banking systems, core banking software, mobile channels and loan management for MFIs, SACCOs, credit unions, NBFCs and fintechs.":detail.intro,
     alternates: {canonical: "/solutions/"+slug},
     openGraph: {title: match[0]+" | MFSYS", description: detail.intro, url: "https://mfsys.net/solutions/"+slug}
   };
