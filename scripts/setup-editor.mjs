@@ -4,13 +4,13 @@
  * Run from the repository on your own computer after "npx wrangler login".
  * No password, API token or signing key is written to a file or git history.
  */
-import {randomBytes,pbkdf2Sync,createHmac,timingSafeEqual} from "node:crypto";
+import {randomBytes,scryptSync,createHmac,timingSafeEqual} from "node:crypto";
 import {spawnSync} from "node:child_process";
 import {createInterface} from "node:readline/promises";
 import {stdin,stdout} from "node:process";
 
 const WORKER="mfsys-website";
-const ITERATIONS=310000;
+const SCRYPT_N=16384, SCRYPT_R=8, SCRYPT_P=1;
 
 function requireTerminal(){
  if(!stdin.isTTY||!stdout.isTTY){
@@ -94,8 +94,10 @@ async function main(){
 
  // Keep all secret material in memory, never write a .env file.
  const signingKey=randomBytes(48).toString("base64url");
- const salt=randomBytes(18).toString("base64url");
- const pwHash=pbkdf2Sync(password,salt,ITERATIONS,32,"sha256").toString("base64url");
+ const salt=randomBytes(24);
+ const pwHash=scryptSync(password,salt,32,{
+  N:SCRYPT_N,r:SCRYPT_R,p:SCRYPT_P,maxmem:64*1024*1024
+ }).toString("base64url");
  const otpKey=randomBytes(20);
  const otpSecret=base32(otpKey);
  const otpIssuer="MFSYS Content Studio";
@@ -111,7 +113,7 @@ async function main(){
  stdout.write("\nAuthenticator confirmed. Installing secret names in Cloudflare…\n");
  const secrets=[
   ["AUTH_SECRET",signingKey],["ADMIN_EMAIL",adminEmail],
-  ["ADMIN_PASSWORD_HASH",[salt,String(ITERATIONS),pwHash].join("$")],
+  ["ADMIN_PASSWORD_HASH",["scrypt",SCRYPT_N,SCRYPT_R,SCRYPT_P,salt.toString("base64url"),pwHash].join("$")],
   ["ADMIN_TOTP_SECRET",otpSecret],["GITHUB_CONTENT_TOKEN",githubToken]
  ];
  for(const [name,value] of secrets){
