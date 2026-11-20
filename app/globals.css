@@ -1655,6 +1655,8 @@ brand{line-height:0}.solution-detail-grid{display:grid;grid-template-columns:min
 }
 .pwa-offline-card a{
   display:inline-flex;
+  align-items:center;
+  justify-content:center;
   padding:12px 18px;
   border-radius:9px;
   background:#0B3555;
@@ -1662,6 +1664,9 @@ brand{line-height:0}.solution-detail-grid{display:grid;grid-template-columns:min
   font-weight:800;
   text-decoration:none;
 }
+.pwa-offline-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.pwa-offline-actions a+a{border:1px solid #bdcedd;background:#f3f8fb;color:#0B3555}
+.pwa-offline-actions a:focus-visible{outline:3px solid #1686ce;outline-offset:3px}
 
 
 /* Connected Ecosystem — banking-first homepage */
