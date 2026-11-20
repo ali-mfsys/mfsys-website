@@ -5,9 +5,12 @@ export default function OfflinePage(){
     <main className="pwa-offline-page">
       <div className="pwa-offline-card">
         <span className="pwa-offline-eyebrow">MFSYS TECHNOLOGIES</span>
-        <h1>You’re offline</h1>
-        <p>The page you requested is not available in the current offline cache. Reconnect to the internet and try again.</p>
-        <Link href="/">Return to MFSYS</Link>
+        <h1>Connection interrupted</h1>
+        <p>We couldn’t load this page just now. Your connection may have been interrupted, or the website may be temporarily unavailable. Please try again.</p>
+        <div className="pwa-offline-actions">
+          <a href="">Try this page again</a>
+          <Link href="/">Return to MFSYS</Link>
+        </div>
       </div>
     </main>
   );
